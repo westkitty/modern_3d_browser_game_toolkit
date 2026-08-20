@@ -102,7 +102,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "measured instancing + spatial hash",
     question:
       "Do instancing and a spatial broadphase actually help this crowd, in this distribution, or are they premature optimizations until measured?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/08-crowd-lab/index")
   },
   {

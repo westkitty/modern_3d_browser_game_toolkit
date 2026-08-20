@@ -1,5 +1,17 @@
 # Phase log
 
+## Phase 8 — Instancing and Broadphase Crowd Lab
+
+- **Previous commit SHA:** `57756a5cb5db9ca81e6d0b4a593051a57c36ce21`
+- **Completed scope:**
+  - Crowd agents with naive and instanced render paths
+  - Independent broadphase hash toggle
+  - Uniform vs clustered spawn
+  - Canvas 2D diagnostic bars for sim time and candidate counts
+- **Validation performed:** naive vs hashed candidate counts unit-tested
+- **Unsupported / unverified behavior:** GPU frame-time percentiles not measured on hardware
+- **Architectural decisions:** instancing/broadphase start OFF; no universal performance slogan is printed
+
 ## Phase 7 — IK Creature and CanvasTexture Telemetry Lab
 
 - **Previous commit SHA:** `b25672343edb515c1a5048c418bea26c6f3eea19`

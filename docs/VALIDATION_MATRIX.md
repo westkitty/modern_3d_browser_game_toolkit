@@ -28,7 +28,7 @@ Never upgrade a row because files exist.
 | 05 WebGL2 arena | yes | typecheck/test; no Three.js | unverified | shader sources present | unverified | n/a | GPU screenshot and context-loss hardware path unverified |
 | 06 Puzzle museum | yes | typecheck/test | unverified | rooms solvable from DOM data | unverified | n/a | 3D gallery visual unverified |
 | 07 IK telemetry | yes | typecheck/test | unverified | IK poses unit-tested | unverified | texture upload gated by content change (unit) | in-browser creature visual unverified |
-| 08 Crowd lab | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 08 Crowd lab | yes | typecheck/test | unverified | toggles exist; pair counts unit-tested | unverified | CPU candidate counts unit-tested | GPU timings unverified |
 | 09 Strategy globe | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
 | 10 GPU field | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
 
