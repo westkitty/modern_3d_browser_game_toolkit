@@ -23,6 +23,10 @@ describe("demo registry", () => {
     ]);
   });
 
+  it("marks every canonical demo ready after phase 10", () => {
+    expect(DEMOS.every((demo) => demo.status === "ready")).toBe(true);
+  });
+
   it("keeps unique routes and renderer identities", () => {
     const routes = new Set(DEMOS.map((demo) => demo.route));
     expect(routes.size).toBe(10);

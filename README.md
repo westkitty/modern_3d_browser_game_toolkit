@@ -6,9 +6,9 @@ The launcher is not a game engine. It is a catalog with a strict lifecycle host:
 
 Governing principle: **the game’s requirements determine the architecture.**
 
-## Status (Phase 0)
+## Status
 
-The launcher foundation is implemented. Demos 01–04 are playable. Demos 05–10 remain registered placeholders.
+All ten canonical demonstrations are implemented. Phase 11 records cross-demo validation without upgrading evidence that was not collected.
 
 | Phase | Scope | Status |
 | --- | --- | --- |
@@ -17,8 +17,13 @@ The launcher foundation is implemented. Demos 01–04 are playable. Demos 05–1
 | 2 | High-DPI Canvas 2D Ray-Cast Labyrinth | complete |
 | 3 | Fixed-Step Three.js Character Course | complete |
 | 4 | Verified-GLB Generated Adventure | complete |
-| 5–10 | Canonical demonstrations 05–10 | not built |
-| 11 | Cross-demo validation and polish | not started |
+| 5 | Raw WebGL2 Shader Arena | complete |
+| 6 | Accessible 3D Puzzle Museum | complete |
+| 7 | IK Creature and CanvasTexture Telemetry | complete |
+| 8 | Instancing and Broadphase Crowd Lab | complete |
+| 9 | Offline Hybrid Strategy Globe | complete |
+| 10 | Cross-Origin-Isolated GPU Field Simulator | complete |
+| 11 | Integration, validation, documentation | in this commit |
 
 ## Installation
 
@@ -39,6 +44,7 @@ Open `http://127.0.0.1:5173/`. Hash routes work on static hosting.
 | `npm run preview` | Serve the production build |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm test` | Vitest unit tests |
+| `npm run generate:demo04` | Rebuild demo 04 GLBs and the emitted manifest |
 
 Pinned versions live in `package-lock.json` after install. Do not treat this README as a substitute for the lockfile.
 

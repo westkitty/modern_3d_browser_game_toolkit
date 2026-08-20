@@ -105,3 +105,5 @@ The launcher never assumes garbage collection releases GPU allocations.
 ## Contracts
 
 There is **no** repository-wide `renderPath`. Each demo has `architecture.project.json`. The launcher CSS and chrome are shared presentation, not a rendering architecture.
+
+Production builds keep Three.js in a shared chunk loaded only by demos that import it. Canvas 2D, raw WebGL2, and raw WebGPU demos are separate entry chunks and must not import `three`.

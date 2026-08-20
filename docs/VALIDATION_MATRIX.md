@@ -12,7 +12,7 @@ Never upgrade a row because files exist.
 | Type/build tested | yes | `npm run typecheck`, `npm run build` |
 | Unit tests | yes | 12 Vitest tests |
 | Browser executed | yes | Chrome headless `http://127.0.0.1:5173/#/` and `#/demo/01-tactics-table` |
-| Visual verification | yes, catalog + placeholder | screenshots inspected; cards list renderer/timing/capability; demo 01 placeholder and Return control visible |
+| Visual verification | yes, catalog | Chrome screenshot of ten cards with renderer/timing/capability and Built badges |
 | Interaction verified | partial | hash routing visually confirmed; native links present; arrow-key card focus not exercised in-browser |
 | Performance measurement | not applicable | launcher has no gameplay loop |
 | Unsupported/unverified | demos 01–10 gameplay | placeholders only |

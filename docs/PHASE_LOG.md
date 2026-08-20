@@ -1,5 +1,25 @@
 # Phase log
 
+## Phase 11 — Integration, validation, documentation
+
+- **Previous commit SHA:** `6b724e18a67bfad76b23180ac9b64a268bd9b760`
+- **Completed scope:**
+  - README ten-demo matrix and command list
+  - Validation matrix updated with honest evidence labels
+  - Registry requires all ten demos `ready`
+  - Production build inspected for renderer isolation (Canvas/WebGL2/WebGPU chunks do not contain Three.js)
+- **Validation performed:**
+  - `npm run typecheck` passed
+  - `npm test` — 40 tests passed
+  - `npm run build` passed (51 modules)
+- **Unsupported / unverified behavior:**
+  - Repeated enter/exit leak hunting in DevTools was not performed as a timed GPU-memory session
+  - Physical gamepad, physical touch hardware, and production COOP/COEP hosting were not verified
+  - WebGPU adapter availability on this agent session is unverified; unsupported path is implemented
+  - SharedArrayBuffer was not activated
+  - Worker termination applies only if a worker is created; demos 09/10 did not retain a worker
+- **Architectural decisions:** no late redesign of demos; documentation matches implemented architecture rather than aspirational badges
+
 ## Phase 10 — Cross-Origin-Isolated GPU Field Simulator
 
 - **Previous commit SHA:** `7ad8aab3f186cbe1b73799420cb61e8dfd56abbf`
