@@ -22,7 +22,7 @@ Never upgrade a row because files exist.
 | Demo | Source | Type/build | Browser | Interaction | Visual | Performance | Unsupported / unverified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 01 Tactics table | yes | typecheck/test/build passed | Chrome headless (GPU-less + SwiftShader) | unit-tested keyboard-equivalent turn; DOM controls visually present | SwiftShader: table + units visible; GPU-less: explicit unsupported | not measured (event-driven) | headed GPU pointer picking unverified; DevTools leak session unverified |
-| 02 Raycast labyrinth | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 02 Raycast labyrinth | yes | typecheck/test/build; no Three.js import | Chrome headless | unit-tested occlusion/collision; DOM/touch buttons visible | corridor, shading, billboard inspected | not measured | physical touch device and named frame-budget profile unverified |
 | 03 Character course | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
 | 04 Verified GLB | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
 | 05 WebGL2 arena | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |

@@ -24,7 +24,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "CanvasRenderingContext2D + Web Audio",
     question:
       "When the visual grammar is retro column-cast walls, is Canvas 2D simpler than a scene graph — and what does high-DPI resize actually reset?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/02-raycast-labyrinth/index")
   },
   {

@@ -1,5 +1,26 @@
 # Phase log
 
+## Phase 2 — High-DPI Canvas 2D Ray-Cast Labyrinth
+
+- **Previous commit SHA:** `de45fe8c89c4e2534c7ade837de18db46b8a7947`
+- **Completed scope:**
+  - Grid world, DDA column caster, 1D depth buffer, distance-sorted billboards
+  - High-DPI canvas resize with explicit Canvas 2D state restoration
+  - Keyboard + DOM/touch movement, map-based collision, clamped variable delta
+  - Web Audio chime after user activation
+  - Source and bundle contain no Three.js for this demo (7.4 kB chunk)
+- **Validation performed:**
+  - `npm test` including no-Three import, wall collision, sprite occlusion, canvas state restore
+  - `npm run build` — demo 02 chunk 7.42 kB vs demo 01 Three.js chunk 536 kB
+  - Chrome headless screenshot of a perspective corridor, orb billboard, touch controls, READY
+- **Unsupported / unverified behavior:**
+  - Frame-budget profiling on target hardware was not recorded
+  - Touch swipe-on-canvas was implemented; physical touch hardware was not used
+- **Architectural decisions:**
+  - `CanvasRenderingContext2D` is the primary renderer; HTML canvas is only the surface
+  - Collision uses the cell map, never painted pixels
+  - Background/blur clears keys so a stalled tab cannot apply a huge movement delta
+
 ## Phase 1 — Accessible Turn-Based 3D Tactics Table
 
 - **Previous commit SHA:** `49c3aaafa3ca36f00c23423661be5c4f3e1be5d2`
