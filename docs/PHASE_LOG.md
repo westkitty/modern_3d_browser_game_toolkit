@@ -1,5 +1,16 @@
 # Phase log
 
+## Phase 6 — Accessible 3D Puzzle Museum
+
+- **Previous commit SHA:** `be794cef21831702b8f6ecd20a8a6c6f8d7aea0a`
+- **Completed scope:**
+  - Three puzzle rooms with required instructions in semantic DOM
+  - Keyboard-operable options, live status, hints, localStorage completion
+  - Reduced-motion toggle that stops decorative camera orbit
+- **Validation performed:** `npm run typecheck`; museum unit tests
+- **Unsupported / unverified behavior:** in-browser visual of the 3D gallery not captured
+- **Architectural decisions:** required information is never only on 3D textures
+
 ## Phase 5 — Raw WebGL2 Shader Arena
 
 - **Previous commit SHA:** `aa11e3c3d32c3c876ab05067916230836a55eebb`

@@ -76,7 +76,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "semantic accessibility + reduced-motion",
     question:
       "If 3D is spatial presentation, can every required instruction and action live in semantic DOM so keyboard users complete every puzzle?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/06-puzzle-museum/index")
   },
   {
