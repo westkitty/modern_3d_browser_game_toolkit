@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-20T04:39:45.980Z",
+  "generator": "scripts/generate-demo04-assets.mjs",
+  "assets": [
+    {
+      "id": "player",
+      "uri": "assets/demos/04-verified-glb-adventure/player.glb",
+      "bytes": 1692,
+      "sha256": "0ac3bb6fc7986cc03d0cbe4b68d148167058934601870b33dff1c8f56c29173a",
+      "nodes": [
+        "Player"
+      ],
+      "animations": [
+        "Idle",
+        "Walk"
+      ]
+    },
+    {
+      "id": "environment",
+      "uri": "assets/demos/04-verified-glb-adventure/environment.glb",
+      "bytes": 1104,
+      "sha256": "a6f2b92e615554d18ac3c0abe40dd0e1a8de72feddecefc41de636b17fdee55f",
+      "nodes": [
+        "Arch"
+      ],
+      "animations": []
+    },
+    {
+      "id": "prop",
+      "uri": "assets/demos/04-verified-glb-adventure/crystal.glb",
+      "bytes": 1124,
+      "sha256": "355ddef0b314f4558e8aa7ce3c7c3fe619e7168e1620e17c318cb78356a6a304",
+      "nodes": [
+        "Crystal"
+      ],
+      "animations": []
+    },
+    {
+      "id": "npc",
+      "uri": "assets/demos/04-verified-glb-adventure/npc.glb",
+      "bytes": 1544,
+      "sha256": "e11c5205f4997ce9f2d6257286f17abdc2f8e4ed42026dbb43ad9786470a2e71",
+      "nodes": [
+        "Npc"
+      ],
+      "animations": [
+        "Wave"
+      ]
+    }
+  ]
+}

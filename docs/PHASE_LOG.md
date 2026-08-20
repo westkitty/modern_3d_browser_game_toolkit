@@ -1,5 +1,25 @@
 # Phase log
 
+## Phase 4 — Verified-GLB Generated Adventure
+
+- **Previous commit SHA:** `89d64185b1e50abc3f97b7d4d08345eb6c022842`
+- **Completed scope:**
+  - `scripts/generate-demo04-assets.mjs` writes player/environment/crystal/npc GLBs
+  - Manifest emitted from those files with sha256, node names, animation names
+  - Runtime validator checks existence, hash, nodes, clips before binding
+  - Animation mixer uses verified clip names only
+  - IndexedDB save schema 2 with migration from schema 1
+- **Validation performed:**
+  - Generator ran; four GLBs + manifest written
+  - `npm test` validates hashes/nodes/clips, missing-asset failure, schema migration
+  - `npm run typecheck` passed
+- **Unsupported / unverified behavior:**
+  - Browser visual of loaded GLBs not captured in this phase (WebGL screenshot path is slow on this host)
+  - GLB geometry is intentionally primitive boxes produced by the repo generator, not artist-authored hero assets
+- **Architectural decisions:**
+  - No guessed clip/node names in runtime; they are copied from the generated manifest after validation
+  - Asset files are build outputs of the generator, committed so the demo runs without a pre-step
+
 ## Phase 3 — Fixed-Step Three.js Character Course
 
 - **Previous commit SHA:** `85f21905276435e271c50a776124ea12cfc34ea2`

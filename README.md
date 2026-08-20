@@ -8,7 +8,7 @@ Governing principle: **the game’s requirements determine the architecture.**
 
 ## Status (Phase 0)
 
-The launcher foundation is implemented. Demos 01–03 are playable. Demos 04–10 remain registered placeholders.
+The launcher foundation is implemented. Demos 01–04 are playable. Demos 05–10 remain registered placeholders.
 
 | Phase | Scope | Status |
 | --- | --- | --- |
@@ -16,7 +16,8 @@ The launcher foundation is implemented. Demos 01–03 are playable. Demos 04–1
 | 1 | Accessible Turn-Based 3D Tactics Table | complete |
 | 2 | High-DPI Canvas 2D Ray-Cast Labyrinth | complete |
 | 3 | Fixed-Step Three.js Character Course | complete |
-| 4–10 | Canonical demonstrations 04–10 | not built |
+| 4 | Verified-GLB Generated Adventure | complete |
+| 5–10 | Canonical demonstrations 05–10 | not built |
 | 11 | Cross-demo validation and polish | not started |
 
 ## Installation
@@ -48,7 +49,7 @@ Pinned versions live in `package-lock.json` after install. Do not treat this REA
 | 01 | `#/demo/01-tactics-table` | Three.js WebGL2 + semantic DOM | event / render-on-demand | ready |
 | 02 | `#/demo/02-raycast-labyrinth` | CanvasRenderingContext2D projected | variable | ready |
 | 03 | `#/demo/03-character-course` | Three.js WebGL2 | fixed interpolated | ready |
-| 04 | `#/demo/04-verified-glb-adventure` | Three.js WebGL2 + verified GLB | fixed interpolated | not built |
+| 04 | `#/demo/04-verified-glb-adventure` | Three.js WebGL2 + verified GLB | fixed interpolated | ready |
 | 05 | `#/demo/05-webgl-shader-arena` | raw WebGL2, no Three.js | fixed interpolated | not built |
 | 06 | `#/demo/06-puzzle-museum` | Three.js WebGL2 + semantic DOM | event | not built |
 | 07 | `#/demo/07-ik-telemetry` | Three.js + Canvas 2D textures | fixed interpolated | not built |

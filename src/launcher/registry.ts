@@ -50,7 +50,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "asset manifest + IndexedDB",
     question:
       "Can a 3D adventure bind only to verified GLB facts — nodes, clips, hashes — instead of inventing asset metadata in runtime code?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/04-verified-glb-adventure/index")
   },
   {
