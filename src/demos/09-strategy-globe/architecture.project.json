@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "projectName": "Offline Hybrid Strategy Globe",
+  "renderPath": "hybrid",
+  "timingModel": "event",
+  "existingFramework": null,
+  "status": "not-built",
+  "targetBrowsers": ["current Chromium", "current Firefox", "current Safari"],
+  "capabilities": {
+    "generatedAssets": false,
+    "assetManifest": null,
+    "assetAuthority": "none",
+    "gltf": false,
+    "webAudio": false,
+    "gamepad": false,
+    "workers": false,
+    "sharedArrayBuffer": false,
+    "deploymentAutomation": false,
+    "postprocessing": false,
+    "inverseKinematics": false,
+    "spatialBroadphase": false,
+    "instancing": false,
+    "webgpu": false,
+    "canvasDynamicTextures": false,
+    "semanticDom": true,
+    "physics": "off",
+    "persistence": "indexedDB"
+  },
+  "hybridSurfaces": ["threejs-webgl2", "canvas2d-minimap", "semantic-dom"],
+  "notes": "Turn resolution starts on the main thread. A Worker is retained only with recorded evidence.",
+  "paths": {
+    "frontend": ["src/demos/09-strategy-globe"],
+    "ignore": ["node_modules", "dist", "build", ".git", "coverage"],
+    "allowedAssetLiteralFiles": []
+  },
+  "validation": {
+    "commands": ["npm run typecheck", "npm test", "npm run build"],
+    "browserUrl": "http://127.0.0.1:5173/#/demo/09-strategy-globe",
+    "readyExpression": "() => Boolean(window.__DEMO_STATUS__ && window.__DEMO_STATUS__.state === 'ready')"
+  },
+  "lint": { "ignoreCodes": [], "ignorePaths": [] }
+}

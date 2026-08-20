@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "projectName": "Fixed-Step Three.js Character Course",
+  "renderPath": "threejs-webgl2",
+  "timingModel": "fixed_interpolated",
+  "existingFramework": null,
+  "status": "not-built",
+  "targetBrowsers": ["current Chromium", "current Firefox", "current Safari"],
+  "capabilities": {
+    "generatedAssets": false,
+    "assetManifest": null,
+    "assetAuthority": "none",
+    "gltf": false,
+    "webAudio": true,
+    "gamepad": true,
+    "workers": false,
+    "sharedArrayBuffer": false,
+    "deploymentAutomation": false,
+    "postprocessing": false,
+    "inverseKinematics": false,
+    "spatialBroadphase": false,
+    "instancing": false,
+    "webgpu": false,
+    "canvasDynamicTextures": false,
+    "semanticDom": true,
+    "physics": "custom",
+    "persistence": "none"
+  },
+  "paths": {
+    "frontend": ["src/demos/03-character-course"],
+    "ignore": ["node_modules", "dist", "build", ".git", "coverage"],
+    "allowedAssetLiteralFiles": []
+  },
+  "validation": {
+    "commands": ["npm run typecheck", "npm test", "npm run build"],
+    "browserUrl": "http://127.0.0.1:5173/#/demo/03-character-course",
+    "readyExpression": "() => Boolean(window.__DEMO_STATUS__ && window.__DEMO_STATUS__.state === 'ready')"
+  },
+  "lint": { "ignoreCodes": [], "ignorePaths": [] }
+}

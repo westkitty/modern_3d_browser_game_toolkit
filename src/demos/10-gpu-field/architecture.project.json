@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "projectName": "Cross-Origin-Isolated GPU Field Simulator",
+  "renderPath": "raw-webgpu",
+  "timingModel": "fixed_interpolated",
+  "existingFramework": null,
+  "status": "not-built",
+  "targetBrowsers": ["current Chromium", "current Firefox"],
+  "capabilities": {
+    "generatedAssets": false,
+    "assetManifest": null,
+    "assetAuthority": "none",
+    "gltf": false,
+    "webAudio": false,
+    "gamepad": false,
+    "workers": true,
+    "sharedArrayBuffer": false,
+    "deploymentAutomation": false,
+    "postprocessing": false,
+    "inverseKinematics": false,
+    "spatialBroadphase": false,
+    "instancing": false,
+    "webgpu": true,
+    "canvasDynamicTextures": false,
+    "semanticDom": true,
+    "canvasDiagnostics": true,
+    "physics": "off",
+    "persistence": "none"
+  },
+  "forbidden": ["threejs"],
+  "notes": "SharedArrayBuffer starts false. Transferable-buffer handoff is the baseline. SAB activates only with measured evidence and crossOriginIsolated.",
+  "paths": {
+    "frontend": ["src/demos/10-gpu-field"],
+    "ignore": ["node_modules", "dist", "build", ".git", "coverage"],
+    "allowedAssetLiteralFiles": []
+  },
+  "validation": {
+    "commands": ["npm run typecheck", "npm test", "npm run build"],
+    "browserUrl": "http://127.0.0.1:5173/#/demo/10-gpu-field",
+    "readyExpression": "() => Boolean(window.__DEMO_STATUS__ && (window.__DEMO_STATUS__.state === 'ready' || window.__DEMO_STATUS__.state === 'unsupported'))"
+  },
+  "lint": { "ignoreCodes": [], "ignorePaths": [] }
+}

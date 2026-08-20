@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "projectName": "IK Creature and CanvasTexture Telemetry Lab",
+  "renderPath": "hybrid",
+  "timingModel": "fixed_interpolated",
+  "existingFramework": null,
+  "status": "not-built",
+  "targetBrowsers": ["current Chromium", "current Firefox", "current Safari"],
+  "capabilities": {
+    "generatedAssets": true,
+    "assetManifest": "public/assets/demos/07-ik-telemetry/manifest.json",
+    "assetAuthority": "manifest",
+    "gltf": true,
+    "webAudio": false,
+    "gamepad": false,
+    "workers": false,
+    "sharedArrayBuffer": false,
+    "deploymentAutomation": false,
+    "postprocessing": false,
+    "inverseKinematics": true,
+    "spatialBroadphase": false,
+    "instancing": false,
+    "webgpu": false,
+    "canvasDynamicTextures": true,
+    "semanticDom": true,
+    "physics": "off",
+    "persistence": "none"
+  },
+  "hybridSurfaces": ["threejs-webgl2", "canvas2d-dynamic-texture"],
+  "paths": {
+    "frontend": ["src/demos/07-ik-telemetry"],
+    "ignore": ["node_modules", "dist", "build", ".git", "coverage"],
+    "allowedAssetLiteralFiles": ["src/demos/07-ik-telemetry"]
+  },
+  "validation": {
+    "commands": ["npm run typecheck", "npm test", "npm run build"],
+    "browserUrl": "http://127.0.0.1:5173/#/demo/07-ik-telemetry",
+    "readyExpression": "() => Boolean(window.__DEMO_STATUS__ && window.__DEMO_STATUS__.state === 'ready')"
+  },
+  "lint": { "ignoreCodes": [], "ignorePaths": [] }
+}

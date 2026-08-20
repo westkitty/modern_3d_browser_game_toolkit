@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "projectName": "Instancing and Broadphase Crowd Lab",
+  "renderPath": "threejs-webgl2",
+  "timingModel": "fixed",
+  "existingFramework": null,
+  "status": "not-built",
+  "targetBrowsers": ["current Chromium", "current Firefox", "current Safari"],
+  "capabilities": {
+    "generatedAssets": false,
+    "assetManifest": null,
+    "assetAuthority": "none",
+    "gltf": false,
+    "webAudio": false,
+    "gamepad": false,
+    "workers": false,
+    "sharedArrayBuffer": false,
+    "deploymentAutomation": false,
+    "postprocessing": false,
+    "inverseKinematics": false,
+    "spatialBroadphase": false,
+    "instancing": false,
+    "webgpu": false,
+    "canvasDynamicTextures": false,
+    "semanticDom": true,
+    "canvasDiagnostics": true,
+    "physics": "off",
+    "persistence": "none"
+  },
+  "notes": "Instancing and spatial broadphase start OFF. They become true only after this lab records evidence.",
+  "paths": {
+    "frontend": ["src/demos/08-crowd-lab"],
+    "ignore": ["node_modules", "dist", "build", ".git", "coverage"],
+    "allowedAssetLiteralFiles": []
+  },
+  "validation": {
+    "commands": ["npm run typecheck", "npm test", "npm run build"],
+    "browserUrl": "http://127.0.0.1:5173/#/demo/08-crowd-lab",
+    "readyExpression": "() => Boolean(window.__DEMO_STATUS__ && window.__DEMO_STATUS__.state === 'ready')"
+  },
+  "lint": { "ignoreCodes": [], "ignorePaths": [] }
+}

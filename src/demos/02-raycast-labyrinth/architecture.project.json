@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "projectName": "High-DPI Canvas 2D Ray-Cast Labyrinth",
+  "renderPath": "canvas2d-projected",
+  "timingModel": "variable",
+  "existingFramework": null,
+  "status": "not-built",
+  "targetBrowsers": ["current Chromium", "current Firefox", "current Safari"],
+  "capabilities": {
+    "generatedAssets": false,
+    "assetManifest": null,
+    "assetAuthority": "none",
+    "gltf": false,
+    "webAudio": true,
+    "gamepad": false,
+    "workers": false,
+    "sharedArrayBuffer": false,
+    "deploymentAutomation": false,
+    "postprocessing": false,
+    "inverseKinematics": false,
+    "spatialBroadphase": false,
+    "instancing": false,
+    "webgpu": false,
+    "canvasDynamicTextures": false,
+    "semanticDom": true,
+    "physics": "off",
+    "persistence": "none"
+  },
+  "forbidden": ["threejs", "webgl-primary-renderer"],
+  "paths": {
+    "frontend": ["src/demos/02-raycast-labyrinth"],
+    "ignore": ["node_modules", "dist", "build", ".git", "coverage"],
+    "allowedAssetLiteralFiles": []
+  },
+  "validation": {
+    "commands": ["npm run typecheck", "npm test", "npm run build"],
+    "browserUrl": "http://127.0.0.1:5173/#/demo/02-raycast-labyrinth",
+    "readyExpression": "() => Boolean(window.__DEMO_STATUS__ && window.__DEMO_STATUS__.state === 'ready')"
+  },
+  "lint": { "ignoreCodes": [], "ignorePaths": [] }
+}

@@ -1,0 +1,35 @@
+# Validation matrix
+
+Evidence labels follow the handbook: SOURCE-VERIFIED, SYNTAX-VERIFIED, TEST-EXECUTED, BROWSER-EXECUTED, VISUALLY-VERIFIED, INTERACTION-VERIFIED, PERFORMANCE-MEASURED, IMPLEMENTED-UNVERIFIED.
+
+Never upgrade a row because files exist.
+
+## Launcher (Phase 0)
+
+| Check | Status | Evidence |
+| --- | --- | --- |
+| Source implemented | yes | `src/launcher`, `src/shared`, hash routing, host |
+| Type/build tested | yes | `npm run typecheck`, `npm run build` |
+| Unit tests | yes | 12 Vitest tests |
+| Browser executed | yes | Chrome headless `http://127.0.0.1:5173/#/` and `#/demo/01-tactics-table` |
+| Visual verification | yes, catalog + placeholder | screenshots inspected; cards list renderer/timing/capability; demo 01 placeholder and Return control visible |
+| Interaction verified | partial | hash routing visually confirmed; native links present; arrow-key card focus not exercised in-browser |
+| Performance measurement | not applicable | launcher has no gameplay loop |
+| Unsupported/unverified | demos 01–10 gameplay | placeholders only |
+
+## Per-demo rows
+
+| Demo | Source | Type/build | Browser | Interaction | Visual | Performance | Unsupported / unverified |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 01 Tactics table | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 02 Raycast labyrinth | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 03 Character course | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 04 Verified GLB | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 05 WebGL2 arena | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 06 Puzzle museum | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 07 IK telemetry | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 08 Crowd lab | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 09 Strategy globe | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 10 GPU field | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+
+Browser Playwright smoke is not claimed in Phase 0.

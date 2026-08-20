@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://westkitty.github.io/modern_3d_browser_game_toolkit/schemas/architecture-project.schema.json",
+  "title": "3D Browser Game Architecture Project Contract",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "projectName",
+    "renderPath",
+    "timingModel",
+    "capabilities",
+    "paths",
+    "validation"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "projectName": { "type": "string", "minLength": 1 },
+    "renderPath": {
+      "enum": [
+        "canvas2d-projected",
+        "threejs-webgl2",
+        "threejs-webgpu",
+        "raw-webgl2",
+        "raw-webgpu",
+        "existing-engine",
+        "hybrid"
+      ]
+    },
+    "timingModel": {
+      "enum": ["event", "variable", "fixed", "fixed_interpolated"]
+    },
+    "existingFramework": { "type": ["string", "null"] },
+    "status": { "enum": ["not-built", "ready"] },
+    "targetBrowsers": { "type": "array", "items": { "type": "string" } },
+    "forbidden": { "type": "array", "items": { "type": "string" } },
+    "hybridSurfaces": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" },
+    "capabilities": {
+      "type": "object",
+      "required": [
+        "generatedAssets",
+        "webAudio",
+        "gamepad",
+        "workers",
+        "sharedArrayBuffer",
+        "postprocessing",
+        "inverseKinematics",
+        "spatialBroadphase",
+        "persistence"
+      ]
+    },
+    "paths": {
+      "type": "object",
+      "required": ["frontend", "ignore", "allowedAssetLiteralFiles"]
+    },
+    "validation": {
+      "type": "object",
+      "required": ["commands"]
+    },
+    "lint": { "type": "object" }
+  },
+  "additionalProperties": true
+}
