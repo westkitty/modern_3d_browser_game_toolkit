@@ -128,7 +128,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "raw WebGPU + conditional SharedArrayBuffer",
     question:
       "When GPU compute is the architecture, what is an honest unsupported path, and when does SharedArrayBuffer actually beat transferable buffers?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/10-gpu-field/index")
   }
 ];

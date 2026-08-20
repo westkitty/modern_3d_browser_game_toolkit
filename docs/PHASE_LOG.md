@@ -1,5 +1,20 @@
 # Phase log
 
+## Phase 10 — Cross-Origin-Isolated GPU Field Simulator
+
+- **Previous commit SHA:** `7ad8aab3f186cbe1b73799420cb61e8dfd56abbf`
+- **Completed scope:**
+  - WebGPU adapter/device checks and explicit unsupported states
+  - Compute + render pipelines, storage and vertex buffer ownership, device.lost
+  - Canvas 2D diagnostics for isolation/SAB
+  - Dev/preview COOP/COEP headers
+  - SharedArrayBuffer is detected but not activated
+- **Validation performed:** no-Three.js source test; typecheck
+- **Unsupported / unverified behavior:**
+  - WebGPU hardware path depends on the browser; unsupported path is intentional
+  - Local isolation headers do not prove production hosting
+- **Architectural decisions:** transferable/SAB remains a documented non-activation; Canvas 2D is not the GPU renderer
+
 ## Phase 9 — Offline Hybrid Strategy Globe
 
 - **Previous commit SHA:** `abff238ebb8df5e8d3791d7a5d65a3673e542146`

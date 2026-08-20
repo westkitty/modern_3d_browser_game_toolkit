@@ -30,6 +30,6 @@ Never upgrade a row because files exist.
 | 07 IK telemetry | yes | typecheck/test | unverified | IK poses unit-tested | unverified | texture upload gated by content change (unit) | in-browser creature visual unverified |
 | 08 Crowd lab | yes | typecheck/test | unverified | toggles exist; pair counts unit-tested | unverified | CPU candidate counts unit-tested | GPU timings unverified |
 | 09 Strategy globe | yes | typecheck/test | unverified | turn resolver unit-tested | unverified | main-thread only; no worker evidence | globe visual and IDB quota unverified |
-| 10 GPU field | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 10 GPU field | yes | typecheck/test; no Three.js | unverified | unsupported path implemented | unverified | SAB not activated | WebGPU adapter presence unverified in this session |
 
 Browser Playwright smoke is not claimed in Phase 0.

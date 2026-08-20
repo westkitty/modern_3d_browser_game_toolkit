@@ -4,7 +4,7 @@
   "renderPath": "raw-webgpu",
   "timingModel": "fixed_interpolated",
   "existingFramework": null,
-  "status": "not-built",
+  "status": "ready",
   "targetBrowsers": ["current Chromium", "current Firefox"],
   "capabilities": {
     "generatedAssets": false,
@@ -26,6 +26,10 @@
     "canvasDiagnostics": true,
     "physics": "off",
     "persistence": "none"
+  },
+  "deploymentHeaders": {
+    "Cross-Origin-Opener-Policy": "same-origin",
+    "Cross-Origin-Embedder-Policy": "require-corp"
   },
   "forbidden": ["threejs"],
   "notes": "SharedArrayBuffer starts false. Transferable-buffer handoff is the baseline. SAB activates only with measured evidence and crossOriginIsolated.",

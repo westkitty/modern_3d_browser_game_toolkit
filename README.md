@@ -55,7 +55,7 @@ Pinned versions live in `package-lock.json` after install. Do not treat this REA
 | 07 | `#/demo/07-ik-telemetry` | Three.js + Canvas 2D textures | fixed interpolated | ready |
 | 08 | `#/demo/08-crowd-lab` | Three.js, instancing off until measured | fixed | ready |
 | 09 | `#/demo/09-strategy-globe` | Three.js + Canvas 2D + DOM | event | ready |
-| 10 | `#/demo/10-gpu-field` | raw WebGPU, no Three.js | fixed interpolated | not built |
+| 10 | `#/demo/10-gpu-field` | raw WebGPU, no Three.js | fixed interpolated | ready |
 
 These four rendering paths are intentionally not collapsed:
 
