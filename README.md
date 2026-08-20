@@ -52,7 +52,7 @@ Pinned versions live in `package-lock.json` after install. Do not treat this REA
 | 04 | `#/demo/04-verified-glb-adventure` | Three.js WebGL2 + verified GLB | fixed interpolated | ready |
 | 05 | `#/demo/05-webgl-shader-arena` | raw WebGL2, no Three.js | fixed interpolated | ready |
 | 06 | `#/demo/06-puzzle-museum` | Three.js WebGL2 + semantic DOM | event | ready |
-| 07 | `#/demo/07-ik-telemetry` | Three.js + Canvas 2D textures | fixed interpolated | not built |
+| 07 | `#/demo/07-ik-telemetry` | Three.js + Canvas 2D textures | fixed interpolated | ready |
 | 08 | `#/demo/08-crowd-lab` | Three.js, instancing off until measured | fixed | not built |
 | 09 | `#/demo/09-strategy-globe` | Three.js + Canvas 2D + DOM | event | not built |
 | 10 | `#/demo/10-gpu-field` | raw WebGPU, no Three.js | fixed interpolated | not built |

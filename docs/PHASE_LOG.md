@@ -1,5 +1,16 @@
 # Phase log
 
+## Phase 7 — IK Creature and CanvasTexture Telemetry Lab
+
+- **Previous commit SHA:** `b25672343edb515c1a5048c418bea26c6f3eea19`
+- **Completed scope:**
+  - Two-bone IK poses: reachable, unreachable, folded, near-zero, mirrored
+  - Verified rig contract (Root/Femur/Tibia)
+  - Canvas 2D telemetry plate uploaded only when text changes
+- **Validation performed:** IK finite-number tests; telemetry dirty-flag test; typecheck
+- **Unsupported / unverified behavior:** visual of the creature in-browser not captured
+- **Architectural decisions:** CanvasTexture.needsUpdate is set only after a plate content change
+
 ## Phase 6 — Accessible 3D Puzzle Museum
 
 - **Previous commit SHA:** `be794cef21831702b8f6ecd20a8a6c6f8d7aea0a`

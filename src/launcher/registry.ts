@@ -89,7 +89,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "inverse kinematics + CanvasTexture",
     question:
       "How do Canvas 2D telemetry plates enter a Three.js world without uploading unchanged textures every frame, and how does a verified rig fail honestly?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/07-ik-telemetry/index")
   },
   {
