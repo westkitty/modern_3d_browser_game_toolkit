@@ -23,7 +23,7 @@ Never upgrade a row because files exist.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 01 Tactics table | yes | typecheck/test/build passed | Chrome headless (GPU-less + SwiftShader) | unit-tested keyboard-equivalent turn; DOM controls visually present | SwiftShader: table + units visible; GPU-less: explicit unsupported | not measured (event-driven) | headed GPU pointer picking unverified; DevTools leak session unverified |
 | 02 Raycast labyrinth | yes | typecheck/test/build; no Three.js import | Chrome headless | unit-tested occlusion/collision; DOM/touch buttons visible | corridor, shading, billboard inspected | not measured | physical touch device and named frame-budget profile unverified |
-| 03 Character course | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
+| 03 Character course | yes | typecheck/test | Chrome SwiftShader | deadzone/gamepad disconnect/catch-up unit-tested | capsule/platforms/hazard visible | catch-up cap unit-tested only | physical gamepad and high-refresh playtest unverified |
 | 04 Verified GLB | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
 | 05 WebGL2 arena | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |
 | 06 Puzzle museum | placeholder | n/a | n/a | n/a | n/a | n/a | gameplay not built |

@@ -1,5 +1,25 @@
 # Phase log
 
+## Phase 3 — Fixed-Step Three.js Character Course
+
+- **Previous commit SHA:** `85f21905276435e271c50a776124ea12cfc34ea2`
+- **Completed scope:**
+  - Capsule controller, jump, moving platform, hazard, respawn
+  - Keyboard + gamepad sampling with scaled radial deadzone
+  - Fixed 60 Hz step, max 5 catch-up steps, interpolated visuals
+  - Respawn snaps previous/current transforms
+  - Camera follow with a separate obstruction test
+  - Jump blip via Web Audio after a key activation
+- **Validation performed:**
+  - `npm run typecheck` and `npm test` (catch-up cap, teleport snap, disconnected gamepad, movement)
+  - Chrome SwiftShader screenshot: capsule, pads, hazard, READY
+- **Unsupported / unverified behavior:**
+  - Physical gamepad hardware not attached
+  - Camera obstruction was unit-tested as a helper and visually composed; a wall-penetration playtest on a high-refresh display was not recorded
+- **Architectural decisions:**
+  - No physics engine; AABB/capsule tests only
+  - Gameplay transforms remain outside Three.js nodes
+
 ## Phase 2 — High-DPI Canvas 2D Ray-Cast Labyrinth
 
 - **Previous commit SHA:** `de45fe8c89c4e2534c7ade837de18db46b8a7947`

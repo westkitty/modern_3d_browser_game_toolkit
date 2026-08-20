@@ -37,7 +37,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "gamepad + custom collision",
     question:
       "Can a third-person controller stay stable across refresh rates without a physics engine, and can camera obstruction stay distinct from player collision?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/03-character-course/index")
   },
   {
