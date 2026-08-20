@@ -11,7 +11,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "semantic DOM + localStorage",
     question:
       "When turns are player decisions, does a 3D board need a continuous simulation loop, or is render-on-demand plus accessible DOM the actual architecture?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/01-tactics-table/index")
   },
   {

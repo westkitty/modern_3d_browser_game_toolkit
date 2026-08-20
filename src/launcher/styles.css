@@ -359,6 +359,38 @@ code {
   }
 }
 
+.tactics-panel button {
+  margin: 0.15rem 0.15rem 0 0;
+  background: #1e293b;
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 0.35rem 0.55rem;
+  font: inherit;
+}
+
+.tactics-panel button:disabled {
+  opacity: 0.45;
+}
+
+.tactics-panel button.is-selected,
+.tactics-panel button:focus-visible {
+  border-color: var(--accent);
+}
+
+.tactics-units,
+.tactics-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tactics-units button,
+.tactics-panel li button {
+  width: 100%;
+  text-align: left;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;

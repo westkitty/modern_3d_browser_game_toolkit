@@ -8,12 +8,13 @@ Governing principle: **the game’s requirements determine the architecture.**
 
 ## Status (Phase 0)
 
-The launcher foundation is implemented. All ten cards are registered. Demonstration gameplay is **not built** yet; each route currently mounts a placeholder that declares its architecture contract.
+The launcher foundation is implemented. Demo 01 is playable. Demos 02–10 remain registered placeholders.
 
 | Phase | Scope | Status |
 | --- | --- | --- |
-| 0 | Vite + TypeScript launcher, routing, lifecycle host | in progress in this commit |
-| 1–10 | Canonical demonstrations 01–10 | not built |
+| 0 | Vite + TypeScript launcher, routing, lifecycle host | complete |
+| 1 | Accessible Turn-Based 3D Tactics Table | complete |
+| 2–10 | Canonical demonstrations 02–10 | not built |
 | 11 | Cross-demo validation and polish | not started |
 
 ## Installation
@@ -42,7 +43,7 @@ Pinned versions live in `package-lock.json` after install. Do not treat this REA
 
 | # | Route | Renderer | Timing | Status |
 | --- | --- | --- | --- | --- |
-| 01 | `#/demo/01-tactics-table` | Three.js WebGL2 + semantic DOM | event / render-on-demand | not built |
+| 01 | `#/demo/01-tactics-table` | Three.js WebGL2 + semantic DOM | event / render-on-demand | ready |
 | 02 | `#/demo/02-raycast-labyrinth` | CanvasRenderingContext2D projected | variable | not built |
 | 03 | `#/demo/03-character-course` | Three.js WebGL2 | fixed interpolated | not built |
 | 04 | `#/demo/04-verified-glb-adventure` | Three.js WebGL2 + verified GLB | fixed interpolated | not built |
