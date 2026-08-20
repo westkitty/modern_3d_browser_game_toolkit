@@ -1,5 +1,17 @@
 # Phase log
 
+## Phase 9 — Offline Hybrid Strategy Globe
+
+- **Previous commit SHA:** `abff238ebb8df5e8d3791d7a5d65a3673e542146`
+- **Completed scope:**
+  - Authoritative campaign state driving globe markers, Canvas 2D minimap, and DOM log
+  - Explicit lon/lat → minimap transform
+  - Main-thread turn resolution; worker not activated (no responsiveness evidence)
+  - IndexedDB save schema 2
+- **Validation performed:** turn resolver and map transform unit tests
+- **Unsupported / unverified behavior:** globe visual in-browser not captured; quota errors not hardware-tested
+- **Architectural decisions:** Worker stays off. Failure of IndexedDB does not destroy in-memory campaign state.
+
 ## Phase 8 — Instancing and Broadphase Crowd Lab
 
 - **Previous commit SHA:** `57756a5cb5db9ca81e6d0b4a593051a57c36ce21`

@@ -115,7 +115,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "Three.js + Canvas 2D minimap + IndexedDB",
     question:
       "Can one authoritative campaign state drive a globe, a Canvas minimap, and semantic DOM without deriving truth from pixels or meshes?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/09-strategy-globe/index")
   },
   {
