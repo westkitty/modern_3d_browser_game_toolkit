@@ -1,5 +1,23 @@
 # Phase log
 
+## Phase 5 — Raw WebGL2 Shader Arena
+
+- **Previous commit SHA:** `aa11e3c3d32c3c876ab05067916230836a55eebb`
+- **Completed scope:**
+  - WebGL2 context creation with explicit unsupported state
+  - Shader compile/link diagnostics
+  - Owned buffers, VAOs, textures, framebuffer, programs
+  - Opaque pass, GPU points, vignette postprocess, reduced-effects toggle
+  - Context-lost listener; restore requires remount
+- **Validation performed:**
+  - `npm run typecheck`, `npm test` (no Three.js import)
+- **Unsupported / unverified behavior:**
+  - In-browser WebGL2 visual not captured in this phase
+  - Context-loss reconstruction is a remount policy, not a silent GPU rebuild
+- **Architectural decisions:**
+  - Intentionally small renderer, not a Three.js replacement
+  - Effects measured as separate programs (opaque vs points vs post)
+
 ## Phase 4 — Verified-GLB Generated Adventure
 
 - **Previous commit SHA:** `89d64185b1e50abc3f97b7d4d08345eb6c022842`

@@ -4,7 +4,7 @@
   "renderPath": "raw-webgl2",
   "timingModel": "fixed_interpolated",
   "existingFramework": null,
-  "status": "not-built",
+  "status": "ready",
   "targetBrowsers": ["current Chromium", "current Firefox", "current Safari"],
   "capabilities": {
     "generatedAssets": false,

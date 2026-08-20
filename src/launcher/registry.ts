@@ -63,7 +63,7 @@ export const DEMOS: readonly DemoDefinition[] = [
     capability: "explicit GPU ownership + postprocess",
     question:
       "When the product is shader and buffer ownership, what does a small WebGL2 renderer look like without becoming a home-grown Three.js?",
-    status: "not-built",
+    status: "ready",
     load: () => import("../demos/05-webgl-shader-arena/index")
   },
   {
