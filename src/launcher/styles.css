@@ -396,3 +396,77 @@ code {
     scroll-behavior: auto !important;
   }
 }
+
+.fps-viewport {
+  touch-action: none;
+  user-select: none;
+}
+
+.touch-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.touch-pad,
+.touch-jump {
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.touch-move {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  width: 7.4rem;
+  height: 7.4rem;
+  border: 1px solid rgba(232, 238, 246, 0.42);
+  border-radius: 50%;
+  background: rgba(11, 14, 18, 0.38);
+}
+
+.touch-knob {
+  position: absolute;
+  left: calc(50% - 1.35rem);
+  top: calc(50% - 1.35rem);
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 238, 246, 0.7);
+  background: rgba(125, 211, 252, 0.42);
+}
+
+.touch-look {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 52%;
+  height: 100%;
+  background: transparent;
+}
+
+.touch-jump {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  min-width: 5rem;
+  min-height: 3.2rem;
+  border: 1px solid rgba(232, 238, 246, 0.55);
+  border-radius: 999px;
+  background: rgba(11, 14, 18, 0.66);
+  color: var(--text);
+  font: inherit;
+  font-weight: 650;
+}
+
+.demo-panel button {
+  margin: 0.15rem 0.2rem 0.35rem 0;
+  background: #1e293b;
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font: inherit;
+}

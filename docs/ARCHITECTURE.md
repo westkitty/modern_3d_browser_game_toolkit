@@ -39,6 +39,7 @@ Shared code is limited to:
 - resize helpers
 - loop ownership counters
 - small DOM helpers
+- narrow explicit resource-ownership counters used by production-reference demos
 
 Renderer-specific code lives under `src/demos/<id>/`.
 
@@ -89,6 +90,48 @@ Workers and `SharedArrayBuffer` start **off** unless a demo records evidence tha
 
 - Demo 09: main-thread turn resolution first; worker only with measured justification.
 - Demo 10: transferable-buffer handoff first; SAB only if `crossOriginIsolated` is true and measurements justify it.
+
+## Production reference systems
+
+Production concerns remain demo-owned. They are not promoted into a generic engine API.
+
+### Demo 03 — first-person kinematic reference
+
+- authoritative movement state lives in the simulation module, not camera/mesh transforms
+- simulation advances at 60 Hz with bounded catch-up
+- acceleration/deceleration, gravity, jump and grounded state are deterministic under fixed deltas
+- local movement input is rotated by camera yaw before integration
+- representative AABB/platform collision includes bounded step-up handling; this is not a general mesh-physics solver
+- pointer lock owns mouse-look only while the canvas is locked
+- keyboard/touch/gamepad state is cleared on blur, visibility loss and pointer-lock loss
+- coarse-pointer touch controls use pointer events with `touch-action: none` and are removed with the demo
+- camera pitch is clamped; desktop controls remain available when touch controls are present
+- the demo explicitly disposes renderer resources and listener ownership
+
+### Demo 04 — versioned persistence and streaming
+
+Save data is gameplay state only. Schema v3 stores player position/orientation, deterministic seed, collected/spoken flags and activated zone IDs. v1 and v2 payloads migrate through one validator. Invalid bounds, malformed shapes and unsupported versions are refused instead of being applied. Three.js objects, loaders and GPU state are never serialized.
+
+Streaming is local and bounded:
+
+1. deterministic distance rule queues a zone
+2. at most one Demo 04 zone load runs concurrently
+3. the loaded object receives unique ownership
+4. activation inserts it into the scene
+5. leaving the retention boundary deactivates it
+6. geometry/material/texture ownership is disposed on unload
+7. late results from stale loads are disposed instead of activated
+8. a failed GLB runtime load produces visible fallback geometry rather than a missing-world blank
+
+Generated GLBs are already validated from the manifest before streaming. Streaming demonstrates runtime lifetime, not asset-authority discovery.
+
+### Resource instrumentation
+
+`src/shared/resources.ts` is deliberately narrow. It counts only ownership acquired through its scopes: runtime, scene, geometry, material, texture, listener and streamed-zone registrations. Demo UI combines those ownership counts with `WebGLRenderer.info` where available. The counters are for leak visibility and repeated mount/unmount checks, not memory-byte estimates.
+
+### Demo 08 — comparative performance reference
+
+Demo 08 has five reproducible scenarios: baseline idle, representative movement/collision CPU work, streamed-zone churn, resource mount/unmount churn and the crowd/broadphase workload. It samples frame interval, simulation/update cost and renderer call cost and displays Three.js draw calls, triangles and renderer resource counts. These are raw local measurements; no cross-device FPS threshold is encoded.
 
 ## Cleanup strategy
 

@@ -1,8 +1,4 @@
-export interface Vec3 {
-  x: number;
-  y: number;
-  z: number;
-}
+export interface Vec3 { x: number; y: number; z: number; }
 
 export interface Body {
   id: string;
@@ -24,20 +20,25 @@ export interface CourseState {
   finished: boolean;
 }
 
+export interface CourseInput {
+  x: number;
+  y: number;
+  jump: boolean;
+  yaw?: number;
+}
+
 export const PLAYER_RADIUS = 0.35;
 export const PLAYER_HEIGHT = 1.2;
-
+export const STEP_HEIGHT = 0.42;
 const GRAVITY = -20;
 const JUMP = 8.2;
 const SPEED = 6;
+const GROUND_ACCEL = 28;
+const AIR_ACCEL = 10;
+const BRAKE = 34;
 
-export function vec(x: number, y: number, z: number): Vec3 {
-  return { x, y, z };
-}
-
-function copy(v: Vec3): Vec3 {
-  return { x: v.x, y: v.y, z: v.z };
-}
+export function vec(x: number, y: number, z: number): Vec3 { return { x, y, z }; }
+function copy(v: Vec3): Vec3 { return { x: v.x, y: v.y, z: v.z }; }
 
 export function createCourse(): CourseState {
   const spawn = vec(-6, 1.2, 0);
@@ -63,30 +64,6 @@ export function createCourse(): CourseState {
   };
 }
 
-function aabb(
-  cx: number,
-  cy: number,
-  cz: number,
-  hx: number,
-  hy: number,
-  hz: number,
-  px: number,
-  py: number,
-  pz: number,
-  pr: number,
-  ph: number
-): { x: number; y: number; z: number } | null {
-  const closestX = Math.min(cx + hx, Math.max(cx - hx, px));
-  const closestY = Math.min(cy + hy, Math.max(cy - hy, py));
-  const closestZ = Math.min(cz + hz, Math.max(cz - hz, pz));
-  const dx = px - closestX;
-  const dy = py - closestY;
-  const dz = pz - closestZ;
-  if (dx * dx + dz * dz > pr * pr) return null;
-  if (py - ph / 2 > cy + hy || py + ph / 2 < cy - hy) return null;
-  return { x: dx, y: dy, z: dz };
-}
-
 export function interpolate(previous: Vec3, current: Vec3, alpha: number): Vec3 {
   return {
     x: previous.x + (current.x - previous.x) * alpha,
@@ -100,20 +77,72 @@ export function snapTeleport(body: Body, to: Vec3): void {
   body.current = copy(to);
 }
 
-export function stepCourse(
-  state: CourseState,
-  dt: number,
-  input: { x: number; y: number; jump: boolean }
-): CourseState {
-  state.elapsed += dt;
-  for (const body of [...state.platforms, ...state.hazards, state.player]) {
-    body.previous = copy(body.current);
+function approach(value: number, target: number, amount: number): number {
+  if (value < target) return Math.min(target, value + amount);
+  if (value > target) return Math.max(target, value - amount);
+  return value;
+}
+
+interface Box { body: Body; hx: number; hy: number; hz: number; }
+
+function overlaps(box: Box, p: Vec3): boolean {
+  const half = PLAYER_HEIGHT / 2;
+  return (
+    p.x + PLAYER_RADIUS > box.body.current.x - box.hx &&
+    p.x - PLAYER_RADIUS < box.body.current.x + box.hx &&
+    p.y + half > box.body.current.y - box.hy &&
+    p.y - half < box.body.current.y + box.hy &&
+    p.z + PLAYER_RADIUS > box.body.current.z - box.hz &&
+    p.z - PLAYER_RADIUS < box.body.current.z + box.hz
+  );
+}
+
+function resolveHorizontal(state: CourseState, box: Box): void {
+  if (!overlaps(box, state.player.current)) return;
+  const feet = state.player.current.y - PLAYER_HEIGHT / 2;
+  const top = box.body.current.y + box.hy;
+  if (box.body.kind === "platform" && top >= feet - 0.03 && top - feet <= STEP_HEIGHT) {
+    state.player.current.y = top + PLAYER_HEIGHT / 2;
+    state.velocity.y = 0;
+    state.grounded = true;
+    state.platformId = box.body.id;
+    return;
   }
+  const left = Math.abs((box.body.current.x - box.hx) - (state.player.current.x + PLAYER_RADIUS));
+  const right = Math.abs((box.body.current.x + box.hx) - (state.player.current.x - PLAYER_RADIUS));
+  const front = Math.abs((box.body.current.z - box.hz) - (state.player.current.z + PLAYER_RADIUS));
+  const back = Math.abs((box.body.current.z + box.hz) - (state.player.current.z - PLAYER_RADIUS));
+  const min = Math.min(left, right, front, back);
+  if (min === left) state.player.current.x = box.body.current.x - box.hx - PLAYER_RADIUS;
+  else if (min === right) state.player.current.x = box.body.current.x + box.hx + PLAYER_RADIUS;
+  else if (min === front) state.player.current.z = box.body.current.z - box.hz - PLAYER_RADIUS;
+  else state.player.current.z = box.body.current.z + box.hz + PLAYER_RADIUS;
+}
+
+function resolveVertical(state: CourseState, box: Box, previousY: number): void {
+  if (!overlaps(box, state.player.current)) return;
+  const half = PLAYER_HEIGHT / 2;
+  const top = box.body.current.y + box.hy;
+  const bottom = box.body.current.y - box.hy;
+  const previousFeet = previousY - half;
+  const previousHead = previousY + half;
+  if (state.velocity.y <= 0 && previousFeet >= top - 0.08) {
+    state.player.current.y = top + half;
+    state.velocity.y = 0;
+    state.grounded = box.body.kind === "platform";
+    state.platformId = box.body.kind === "platform" ? box.body.id : null;
+  } else if (state.velocity.y > 0 && previousHead <= bottom + 0.08) {
+    state.player.current.y = bottom - half;
+    state.velocity.y = 0;
+  }
+}
+
+export function stepCourse(state: CourseState, dt: number, input: CourseInput): CourseState {
+  state.elapsed += dt;
+  for (const body of [...state.platforms, ...state.hazards, state.player]) body.previous = copy(body.current);
 
   const mover = state.platforms.find((item) => item.id === "pad-move");
-  if (mover) {
-    mover.current.z = Math.sin(state.elapsed * 0.8) * 2.4;
-  }
+  if (mover) mover.current.z = Math.sin(state.elapsed * 0.8) * 2.4;
 
   if (state.platformId) {
     const platform = state.platforms.find((item) => item.id === state.platformId);
@@ -124,64 +153,60 @@ export function stepCourse(
     }
   }
 
-  state.velocity.x = input.x * SPEED;
-  state.velocity.z = input.y * SPEED;
-  state.velocity.y += GRAVITY * dt;
+  const yaw = input.yaw ?? 0;
+  const sin = Math.sin(yaw);
+  const cos = Math.cos(yaw);
+  const wishX = input.x * cos - input.y * sin;
+  const wishZ = input.x * sin + input.y * cos;
+  const magnitude = Math.min(1, Math.hypot(wishX, wishZ));
+  const targetX = magnitude ? (wishX / magnitude) * SPEED * magnitude : 0;
+  const targetZ = magnitude ? (wishZ / magnitude) * SPEED * magnitude : 0;
+  const accel = state.grounded ? (magnitude ? GROUND_ACCEL : BRAKE) : AIR_ACCEL;
+  state.velocity.x = approach(state.velocity.x, targetX, accel * dt);
+  state.velocity.z = approach(state.velocity.z, targetZ, accel * dt);
+
   if (state.grounded && input.jump) {
     state.velocity.y = JUMP;
     state.grounded = false;
     state.platformId = null;
   }
+  state.velocity.y += GRAVITY * dt;
 
-  state.player.current.x += state.velocity.x * dt;
-  state.player.current.y += state.velocity.y * dt;
-  state.player.current.z += state.velocity.z * dt;
-
-  state.grounded = false;
-  state.platformId = null;
-  const boxes: Array<{ body: Body; hx: number; hy: number; hz: number }> = [
+  const boxes: Box[] = [
     ...state.platforms.map((body) => ({ body, hx: 1.6, hy: 0.18, hz: 1.6 })),
     { body: state.hazards[0]!, hx: 0.35, hy: 1.1, hz: 1.4 }
   ];
+
+  const previousY = state.player.current.y;
+  state.player.current.x += state.velocity.x * dt;
   for (const box of boxes) {
-    const hit = aabb(
-      box.body.current.x,
-      box.body.current.y,
-      box.body.current.z,
-      box.hx,
-      box.hy,
-      box.hz,
-      state.player.current.x,
-      state.player.current.y,
-      state.player.current.z,
-      PLAYER_RADIUS,
-      PLAYER_HEIGHT
-    );
-    if (!hit) continue;
-    if (box.body.kind === "hazard") {
+    if (box.body.kind === "hazard" && overlaps(box, state.player.current)) {
       respawn(state);
       return state;
     }
-    if (hit.y > 0 && state.velocity.y <= 0) {
-      state.player.current.y = box.body.current.y + box.hy + PLAYER_HEIGHT / 2;
-      state.velocity.y = 0;
-      state.grounded = true;
-      state.platformId = box.body.id;
-    } else {
-      const push = Math.hypot(hit.x, hit.z) || 1;
-      state.player.current.x += (hit.x / push) * 0.08;
-      state.player.current.z += (hit.z / push) * 0.08;
-    }
+    resolveHorizontal(state, box);
   }
+
+  state.player.current.z += state.velocity.z * dt;
+  for (const box of boxes) {
+    if (box.body.kind === "hazard" && overlaps(box, state.player.current)) {
+      respawn(state);
+      return state;
+    }
+    resolveHorizontal(state, box);
+  }
+
+  state.player.current.y += state.velocity.y * dt;
+  state.grounded = false;
+  state.platformId = null;
+  for (const box of boxes) resolveVertical(state, box, previousY);
 
   const goal = state.hazards.find((item) => item.kind === "goal");
   if (
     goal &&
     Math.hypot(state.player.current.x - goal.current.x, state.player.current.z - goal.current.z) < 0.9 &&
     Math.abs(state.player.current.y - goal.current.y) < 1.4
-  ) {
-    state.finished = true;
-  }
+  ) state.finished = true;
 
   if (state.player.current.y < -6) respawn(state);
   return state;
@@ -194,30 +219,4 @@ function respawn(state: CourseState): void {
   state.platformId = null;
   state.respawns += 1;
   state.finished = false;
-}
-
-export function cameraObstruction(
-  from: Vec3,
-  to: Vec3,
-  obstacles: Array<{ x: number; z: number; hx: number; hz: number }>
-): Vec3 {
-  const dx = to.x - from.x;
-  const dz = to.z - from.z;
-  let t = 1;
-  for (const box of obstacles) {
-    const minX = box.x - box.hx;
-    const maxX = box.x + box.hx;
-    const minZ = box.z - box.hz;
-    const maxZ = box.z + box.hz;
-    if (dx !== 0) {
-      const tx1 = (minX - from.x) / dx;
-      const tx2 = (maxX - from.x) / dx;
-      const tz1 = dz === 0 ? Number.NEGATIVE_INFINITY : (minZ - from.z) / dz;
-      const tz2 = dz === 0 ? Number.POSITIVE_INFINITY : (maxZ - from.z) / dz;
-      const tmin = Math.max(Math.min(tx1, tx2), Math.min(tz1, tz2));
-      const tmax = Math.min(Math.max(tx1, tx2), Math.max(tz1, tz2));
-      if (tmax >= tmin && tmin > 0.05 && tmin < t) t = tmin * 0.92;
-    }
-  }
-  return vec(from.x + dx * t, to.y, from.z + dz * t);
 }

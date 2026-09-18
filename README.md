@@ -8,7 +8,7 @@ Governing principle: **the game’s requirements determine the architecture.**
 
 ## Status
 
-All ten canonical demonstrations are implemented. Phase 11 records cross-demo validation without upgrading evidence that was not collected.
+All ten canonical demonstrations are implemented. Phase 12 adds bounded production-reference systems while preserving the ten-demo architecture and evidence discipline.
 
 | Phase | Scope | Status |
 | --- | --- | --- |
@@ -23,7 +23,19 @@ All ten canonical demonstrations are implemented. Phase 11 records cross-demo va
 | 8 | Instancing and Broadphase Crowd Lab | complete |
 | 9 | Offline Hybrid Strategy Globe | complete |
 | 10 | Cross-Origin-Isolated GPU Field Simulator | complete |
-| 11 | Integration, validation, documentation | in this commit |
+| 11 | Integration, validation, documentation | complete |
+| 12 | Production reference systems | in this commit |
+
+## Production reference systems
+
+The launcher still contains exactly ten independent architectural demonstrations. Production concerns are taught where they naturally belong rather than through a new engine layer:
+
+- **Demo 03** owns the first-person kinematic reference: 60 Hz fixed-step movement, acceleration/deceleration, gravity/jump, collision/step handling, pointer-lock mouse look, coarse-pointer touch controls, focus-loss clearing and explicit teardown.
+- **Demo 04** owns persistence and streaming: schema-v3 IndexedDB saves with v1/v2 migration and validation, explicit Save/Load/Clear controls, deterministic streamed-zone activation, bounded one-at-a-time loading, stale-load rejection, unload disposal and local fallback geometry.
+- **Demo 08** owns comparative performance evidence: baseline, movement/collision, streamed-zone churn, resource mount/unmount churn and crowd/broadphase scenarios with raw frame/update/render-call samples plus Three.js draw, triangle and renderer-memory counters.
+- **Shared resource instrumentation** counts production-reference runtime, scene, geometry, material, texture, listener and streamed-zone ownership from actual acquire/release operations. Counts are not device-performance claims.
+
+Physical touch feel and device-specific frame behavior still require representative hardware. No FPS guarantee is asserted.
 
 ## Installation
 
@@ -54,12 +66,12 @@ Pinned versions live in `package-lock.json` after install. Do not treat this REA
 | --- | --- | --- | --- | --- |
 | 01 | `#/demo/01-tactics-table` | Three.js WebGL2 + semantic DOM | event / render-on-demand | ready |
 | 02 | `#/demo/02-raycast-labyrinth` | CanvasRenderingContext2D projected | variable | ready |
-| 03 | `#/demo/03-character-course` | Three.js WebGL2 | fixed interpolated | ready |
-| 04 | `#/demo/04-verified-glb-adventure` | Three.js WebGL2 + verified GLB | fixed interpolated | ready |
+| 03 | `#/demo/03-character-course` | Three.js WebGL2 | fixed interpolated | ready · first-person/touch reference |
+| 04 | `#/demo/04-verified-glb-adventure` | Three.js WebGL2 + verified GLB | fixed interpolated | ready · save/stream reference |
 | 05 | `#/demo/05-webgl-shader-arena` | raw WebGL2, no Three.js | fixed interpolated | ready |
 | 06 | `#/demo/06-puzzle-museum` | Three.js WebGL2 + semantic DOM | event | ready |
 | 07 | `#/demo/07-ik-telemetry` | Three.js + Canvas 2D textures | fixed interpolated | ready |
-| 08 | `#/demo/08-crowd-lab` | Three.js, instancing off until measured | fixed | ready |
+| 08 | `#/demo/08-crowd-lab` | Three.js comparative stress lab | fixed | ready · performance reference |
 | 09 | `#/demo/09-strategy-globe` | Three.js + Canvas 2D + DOM | event | ready |
 | 10 | `#/demo/10-gpu-field` | raw WebGPU, no Three.js | fixed interpolated | ready |
 

@@ -34,9 +34,9 @@ export const DEMOS: readonly DemoDefinition[] = [
     route: "#/demo/03-character-course",
     renderPath: "threejs-webgl2",
     timingModel: "fixed_interpolated",
-    capability: "gamepad + custom collision",
+    capability: "first-person + touch + custom collision",
     question:
-      "Can a third-person controller stay stable across refresh rates without a physics engine, and can camera obstruction stay distinct from player collision?",
+      "Can a production first-person controller stay deterministic across refresh rates without a large physics engine, while desktop and touch input share one lifecycle-safe simulation?",
     status: "ready",
     load: () => import("../demos/03-character-course/index")
   },
@@ -47,9 +47,9 @@ export const DEMOS: readonly DemoDefinition[] = [
     route: "#/demo/04-verified-glb-adventure",
     renderPath: "threejs-webgl2",
     timingModel: "fixed_interpolated",
-    capability: "asset manifest + IndexedDB",
+    capability: "asset manifest + schema-v3 saves + zone streaming",
     question:
-      "Can a 3D adventure bind only to verified GLB facts — nodes, clips, hashes — instead of inventing asset metadata in runtime code?",
+      "Can verified local assets also demonstrate versioned persistence and bounded load -> own -> activate -> deactivate -> dispose streaming without becoming an engine?",
     status: "ready",
     load: () => import("../demos/04-verified-glb-adventure/index")
   },
@@ -99,9 +99,9 @@ export const DEMOS: readonly DemoDefinition[] = [
     route: "#/demo/08-crowd-lab",
     renderPath: "threejs-webgl2",
     timingModel: "fixed",
-    capability: "measured instancing + spatial hash",
+    capability: "comparative stress scenarios + spatial hash",
     question:
-      "Do instancing and a spatial broadphase actually help this crowd, in this distribution, or are they premature optimizations until measured?",
+      "What can browser-observable frame, update, render, draw, triangle, memory and churn measurements prove without inventing device-wide performance guarantees?",
     status: "ready",
     load: () => import("../demos/08-crowd-lab/index")
   },

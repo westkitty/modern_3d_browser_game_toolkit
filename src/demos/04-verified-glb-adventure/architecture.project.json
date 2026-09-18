@@ -23,9 +23,13 @@
     "webgpu": false,
     "canvasDynamicTextures": false,
     "semanticDom": true,
+    "resourceInstrumentation": true,
+    "streaming": "bounded-local-zones",
+    "streamingConcurrency": 1,
     "physics": "off",
-    "persistence": "indexedDB"
+    "persistence": "indexedDB-schema-v3"
   },
+  "notes": "Demo-owned save v3 validates/migrates bounded gameplay state only. Streaming uses deterministic radii, stale-load rejection, local GLBs, unique ownership, unload disposal and fallback geometry on GLB load failure.",
   "paths": {
     "frontend": ["src/demos/04-verified-glb-adventure"],
     "ignore": ["node_modules", "dist", "build", ".git", "coverage"],

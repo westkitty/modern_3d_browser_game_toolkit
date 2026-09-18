@@ -1,5 +1,28 @@
 # Phase log
 
+## Phase 12 — Production reference systems
+
+- **Previous commit SHA:** `22fb843`
+- **Completed scope:**
+  - Demo 03: fixed-step first-person kinematic controller, acceleration/deceleration, gravity/jump, grounded state, representative collision/step handling, pointer-lock look, coarse-pointer touch controls, focus/visibility cleanup
+  - Demo 04: validated schema-v3 save/load/clear with v1/v2 migration, deterministic local streamed zones, bounded loading, stale-load rejection, fallback geometry and explicit unload disposal
+  - Shared: acquire/release resource ownership counters for runtime, scene, geometry, material, texture, listener and streamed-zone registrations
+  - Demo 08: five comparative scenarios covering idle, movement/collision, streaming churn, resource churn and crowd/broadphase with raw browser-observable timing and renderer counters
+  - Focused regression coverage for movement, touch state, persistence, streaming and repeated ownership lifecycle
+- **Validation performed:**
+  - focused production-reference tests: 23/23 passed
+  - `npm run typecheck` passed after one bounded event-handler typing repair
+  - `npm test` — 54/54 tests passed across 15 files
+  - `npm run build` passed; 55 modules transformed
+  - built output contains distinct emitted chunks for demos 01 through 10
+  - local preview server responded successfully at `http://127.0.0.1:4173/`
+- **Unsupported / unverified behavior:**
+  - headless Chrome on this execution host exited without DOM output, so Phase 12 does not claim browser interaction verification for pointer lock, IndexedDB buttons, stream in/out or coarse-pointer UI
+  - no physical touch device was used; touch feel remains unverified
+  - no cross-device FPS guarantee is asserted; performance UI reports raw comparative measurements only
+  - Demo 10 hardware WebGPU execution remains browser/device dependent; its explicit unsupported path remains source/test covered
+- **Architectural decisions:** production concerns remain owned by demos 03, 04 and 08 plus one narrow resource-counter helper; no generic engine layer or renderer abstraction was introduced
+
 ## Phase 11 — Integration, validation, documentation
 
 - **Previous commit SHA:** `6b724e18a67bfad76b23180ac9b64a268bd9b760`

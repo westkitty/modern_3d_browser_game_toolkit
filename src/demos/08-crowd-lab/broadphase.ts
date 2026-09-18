@@ -31,22 +31,33 @@ export function hashPairs(agents: Agent[], cell: number): { candidates: number; 
   return { candidates, cells: buckets.size };
 }
 
-export function spawnAgents(count: number, mode: "uniform" | "clustered"): Agent[] {
+function seededRandom(seed: number): () => number {
+  let state = seed >>> 0 || 1;
+  return () => {
+    state ^= state << 13;
+    state ^= state >>> 17;
+    state ^= state << 5;
+    return (state >>> 0) / 0x100000000;
+  };
+}
+
+export function spawnAgents(count: number, mode: "uniform" | "clustered", seed = 0x5eed1234): Agent[] {
   const agents: Agent[] = [];
+  const random = seededRandom(seed);
   for (let i = 0; i < count; i += 1) {
     if (mode === "uniform") {
       agents.push({
         id: i,
-        x: (Math.random() - 0.5) * 20,
-        z: (Math.random() - 0.5) * 20,
-        vx: (Math.random() - 0.5) * 2,
-        vz: (Math.random() - 0.5) * 2
+        x: (random() - 0.5) * 20,
+        z: (random() - 0.5) * 20,
+        vx: (random() - 0.5) * 2,
+        vz: (random() - 0.5) * 2
       });
     } else {
       const cluster = i % 4;
-      const cx = (cluster % 2 === 0 ? -4 : 4) + (Math.random() - 0.5) * 1.5;
-      const cz = (cluster < 2 ? -4 : 4) + (Math.random() - 0.5) * 1.5;
-      agents.push({ id: i, x: cx, z: cz, vx: (Math.random() - 0.5) * 2, vz: (Math.random() - 0.5) * 2 });
+      const cx = (cluster % 2 === 0 ? -4 : 4) + (random() - 0.5) * 1.5;
+      const cz = (cluster < 2 ? -4 : 4) + (random() - 0.5) * 1.5;
+      agents.push({ id: i, x: cx, z: cz, vx: (random() - 0.5) * 2, vz: (random() - 0.5) * 2 });
     }
   }
   return agents;

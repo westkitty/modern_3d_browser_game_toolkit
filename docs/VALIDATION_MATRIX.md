@@ -17,18 +17,29 @@ Never upgrade a row because files exist.
 | Performance measurement | not applicable | launcher has no gameplay loop |
 | Unsupported/unverified | demos 01–10 gameplay | placeholders only |
 
+## Production-reference additions (Phase 12)
+
+| Capability | Owner | Automated evidence planned / recorded | Browser/device evidence |
+| --- | --- | --- | --- |
+| Fixed-step first-person movement | Demo 03 | deterministic identical-delta test; grounded/collision invariant; acceleration test | browser smoke required for pointer lock |
+| Touch input state | Demo 03 | stick normalization, one-shot look/jump consumption, reset test | coarse-pointer DOM smoke where available; physical-device feel remains unverified |
+| Save schema v3 | Demo 04 | v3 JSON round-trip; malformed/unsupported refusal; v1 + v2 migration fixtures | IndexedDB control smoke where available |
+| Streamed zones | Demo 04 | deterministic activation; stale-load rejection; active unload/dispose | browser stream-in/out smoke where available |
+| Resource ownership | shared + demos 03/04/08 | repeated scope acquire/dispose returns to baseline | in-demo counters + repeated route smoke where available |
+| Performance scenarios | Demo 08 | five-scenario inventory; deterministic representative workloads; raw sample statistics | local browser measurements only; no device guarantee |
+
 ## Per-demo rows
 
 | Demo | Source | Type/build | Browser | Interaction | Visual | Performance | Unsupported / unverified |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 01 Tactics table | yes | typecheck/test/build passed | Chrome headless (GPU-less + SwiftShader) | unit-tested keyboard-equivalent turn; DOM controls visually present | SwiftShader: table + units visible; GPU-less: explicit unsupported | not measured (event-driven) | headed GPU pointer picking unverified; DevTools leak session unverified |
 | 02 Raycast labyrinth | yes | typecheck/test/build; no Three.js import | Chrome headless | unit-tested occlusion/collision; DOM/touch buttons visible | corridor, shading, billboard inspected | not measured | physical touch device and named frame-budget profile unverified |
-| 03 Character course | yes | typecheck/test | Chrome SwiftShader | deadzone/gamepad disconnect/catch-up unit-tested | capsule/platforms/hazard visible | catch-up cap unit-tested only | physical gamepad and high-refresh playtest unverified |
-| 04 Verified GLB | yes | typecheck/test; generator executed | not visually captured | missing-asset and hash tests executed | unverified | n/a | in-browser GLB appearance unverified |
+| 03 Character course | yes | typecheck/test/build passed | prior Chrome SwiftShader baseline; Phase 12 headless smoke unavailable | deterministic movement/grounded/touch state tests added; pointer-lock source path present | prior course visual baseline | fixed-step + renderer counters; no FPS claim | physical touch/gamepad feel and high-refresh playtest unverified |
+| 04 Verified GLB | yes | typecheck/test/build passed | Phase 12 headless smoke unavailable | manifest + save migration/refusal + stream lifecycle tests added | prior visual unverified | renderer/resource counters only | physical/device streaming behavior and GLB appearance remain unverified until browser smoke |
 | 05 WebGL2 arena | yes | typecheck/test; no Three.js | unverified | shader sources present | unverified | n/a | GPU screenshot and context-loss hardware path unverified |
 | 06 Puzzle museum | yes | typecheck/test | unverified | rooms solvable from DOM data | unverified | n/a | 3D gallery visual unverified |
 | 07 IK telemetry | yes | typecheck/test | unverified | IK poses unit-tested | unverified | texture upload gated by content change (unit) | in-browser creature visual unverified |
-| 08 Crowd lab | yes | typecheck/test | unverified | toggles exist; pair counts unit-tested | unverified | CPU candidate counts unit-tested | GPU timings unverified |
+| 08 Crowd lab | yes | typecheck/test/build passed | Phase 12 headless smoke unavailable | five comparative scenarios + broadphase tests | unverified | raw frame/update/render/draw/triangle/memory instrumentation; no universal threshold | hardware/device comparison remains unverified |
 | 09 Strategy globe | yes | typecheck/test | unverified | turn resolver unit-tested | unverified | main-thread only; no worker evidence | globe visual and IDB quota unverified |
 | 10 GPU field | yes | typecheck/test; no Three.js | unverified | unsupported path implemented | unverified | SAB not activated | WebGPU adapter presence unverified in this session |
 
