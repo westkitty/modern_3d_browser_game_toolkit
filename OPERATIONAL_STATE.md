@@ -39,5 +39,9 @@ Modern 3D Browser Game Toolkit: ten independently runnable architectural demonst
 - No cross-device performance threshold or FPS guarantee is claimed.
 - Demo 10 WebGPU hardware availability remains browser/device dependent.
 
+## Delivery state
+- Production-reference upgrade committed as `b48cb515e19c7938134a14a2d2b8464fcd262600` (`feat: add production gameplay reference systems`).
+- Push to `origin/main` verified; local `HEAD` and `origin/main` matched after push.
+
 ## Remaining work
-- Git preflight, attributable staging, commit, push and post-push verification.
+- Optional only: obtain browser-interaction evidence for pointer lock, IndexedDB controls, streaming behavior and coarse-pointer UI on a stable browser/runtime path or representative physical device.
