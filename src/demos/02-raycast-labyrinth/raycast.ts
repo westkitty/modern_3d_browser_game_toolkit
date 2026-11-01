@@ -55,9 +55,16 @@ export function castFrame(
     .sort((a, b) => b.distance - a.distance);
 
   for (const billboard of billboards) {
-    const column = Math.floor(billboard.screenX);
-    const wallDepth = depth[column] ?? MAX_DIST;
-    billboard.occluded = billboard.distance >= wallDepth;
+    // Only call a sprite fully occluded when no column across its projected
+    // horizontal ellipse passes the wall depth test.
+    const halfWidth = Math.max(6, Math.min(billboard.size, height)) * 0.22;
+    const left = Math.max(0, Math.floor(billboard.screenX - halfWidth));
+    const right = Math.min(width - 1, Math.ceil(billboard.screenX + halfWidth));
+    let visible = false;
+    for (let x = left; x <= right; x += 1) {
+      if (billboard.distance < (depth[x] ?? 0)) { visible = true; break; }
+    }
+    billboard.occluded = !visible;
   }
 
   return { walls, depth, billboards };

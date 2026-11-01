@@ -36,9 +36,22 @@ export function drawLabyrinth(
     const x = billboard.screenX - size / 2;
     const y = (cssHeight - size) / 2;
     ctx.fillStyle = billboard.sprite.kind === "orb" ? "#7dd3fc" : "#f0a3a3";
+    // Clip the ellipse to the depth-visible columns, so it cannot bleed through
+    // a wall when the billboard straddles a corner.
+    ctx.save();
+    ctx.beginPath();
+    const left = Math.max(0, Math.floor(billboard.screenX - size * 0.22));
+    const right = Math.min(frame.depth.length - 1, Math.ceil(billboard.screenX + size * 0.22));
+    for (let column = left; column <= right; column += 1) {
+      if (billboard.distance < (frame.depth[column] ?? 0)) {
+        ctx.rect(column, y, 1, size);
+      }
+    }
+    ctx.clip();
     ctx.beginPath();
     ctx.ellipse(x + size / 2, y + size / 2, size * 0.22, size * 0.38, 0, 0, Math.PI * 2);
     ctx.fill();
+    ctx.restore();
   }
 
   ctx.fillStyle = "#e8eef6";
