@@ -96,11 +96,19 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     return fail(error instanceof Error ? error.message : "Bad manifest.");
   }
 
-  const result = await validateAssets(manifest, async (uri) => {
-    const response = await fetch(`/${uri}`);
-    if (!response.ok) return null;
-    return new Uint8Array(await response.arrayBuffer());
-  });
+  const verifiedBytes = new Map<string, Uint8Array>();
+  let result: Awaited<ReturnType<typeof validateAssets>>;
+  try {
+    result = await validateAssets(manifest, async (uri) => {
+      const response = await fetch(`/${uri}`);
+      if (!response.ok) return null;
+      const bytes = new Uint8Array(await response.arrayBuffer());
+      verifiedBytes.set(uri, bytes);
+      return bytes;
+    });
+  } catch (error) {
+    return fail(`Asset validation failed: ${error instanceof Error ? error.message : String(error)}`);
+  }
   if (!result.ok) return fail(result.issues.map((issue) => `${issue.id}: ${issue.message}`).join("\n"));
 
   let { save, notice } = await loadAdventure();
@@ -126,7 +134,10 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     const assetScope = createResourceScope();
     if (streamed) assetScope.own("streamedZone");
     try {
-      const gltf = await loader.loadAsync(`/${asset.uri}`);
+      const bytes = verifiedBytes.get(asset.uri);
+      if (!bytes) throw new Error(`Validated asset ${asset.id} bytes are unavailable.`);
+      // Parse the exact bytes whose hash was verified: no second unverified URL request.
+      const gltf = await loader.parseAsync(bytes.slice().buffer as ArrayBuffer, "/assets/demos/04-verified-glb-adventure/");
       const names = gltf.animations.map((clip) => clip.name);
       for (const clip of asset.animations) {
         if (!names.includes(clip)) throw new Error(`Verified clip ${clip} missing at runtime.`);

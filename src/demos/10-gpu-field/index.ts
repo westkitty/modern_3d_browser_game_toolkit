@@ -67,14 +67,25 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     return { dispose() { host.replaceChildren(); } };
   }
   const device = await adapter.requestDevice();
+  let stopLoop = (): void => undefined;
+  let terminated = false;
   const lost = device.lost.then((info) => {
+    if (terminated) return;
+    stopLoop();
     context.setStatus({ state: "error", detail: `Device lost: ${info.reason}` });
     log.textContent = `Device lost (${info.reason}). ${info.message}`;
   });
 
-  const contextGpu = canvas.getContext("webgpu");
+  let contextGpu: GPUCanvasContext | null = null;
+  try { contextGpu = canvas.getContext("webgpu"); }
+  catch {
+    device.destroy();
+    context.setStatus({ state: "unsupported", detail: "WebGPU canvas context acquisition failed." });
+    return { dispose() { host.replaceChildren(); } };
+  }
   if (!contextGpu) {
     context.setStatus({ state: "unsupported", detail: "canvas.getContext('webgpu') failed." });
+    device.destroy();
     return { dispose() { host.replaceChildren(); } };
   }
   const format = navigator.gpu.getPreferredCanvasFormat();
@@ -118,6 +129,7 @@ export const mount: DemoModule["mount"] = async (host, context) => {
   device.queue.writeBuffer(buffer, 0, verts);
 
   const loop = createFrameLoop(() => {
+    if (terminated) return;
     const encoder = device.createCommandEncoder();
     const compute = encoder.beginComputePass();
     compute.setPipeline(computePipeline);
@@ -147,13 +159,14 @@ export const mount: DemoModule["mount"] = async (host, context) => {
       chartCtx.fillText(sabAvailable ? "SAB present, not activated" : "SAB off", 8, 42);
     }
   });
+  stopLoop = () => { terminated = true; loop.stop(); };
   loop.start();
   log.textContent = `WebGPU device acquired.\n${mode}\nCompute shader module compiled alongside the render pipeline. Canvas 2D is diagnostics only.`;
   context.setStatus({ state: "ready", detail: "Raw WebGPU field. SAB not activated." });
 
   return {
     dispose() {
-      loop.stop();
+      stopLoop();
       resize.disconnect();
       buffer.destroy();
       storage.destroy();
