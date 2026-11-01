@@ -59,7 +59,7 @@ export function createPanel(handlers: {
         attrs: { type: "button" }
       })
     );
-    const newBattle = root.querySelector("button:last-of-type");
+    const newBattle = root.querySelector<HTMLButtonElement>("button.launch");
     newBattle?.addEventListener("click", handlers.onNewBattle);
     if (previousFocus !== null) {
       const available = [...root.querySelectorAll<HTMLButtonElement>("button:not(:disabled)")];

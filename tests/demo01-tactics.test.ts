@@ -71,6 +71,28 @@ describe("demo 01 tactics table", () => {
     expect(loaded.save.battle.units).toHaveLength(battle.units.length);
   });
 
+  it("does not attach New battle to a unit button", async () => {
+    const { createPanel } = await import("../src/demos/01-tactics-table/panel");
+    const battle = createBattle();
+    let selected = "";
+    let resets = 0;
+    const panel = createPanel({
+      onSelectUnit: (id) => { selected = id; },
+      onAction: () => undefined,
+      onTile: () => undefined,
+      onTarget: () => undefined,
+      onCancel: () => undefined,
+      onNewBattle: () => { resets += 1; },
+      onOrbit: () => undefined
+    });
+    panel.sync(battle, { renders: 0, looping: false, persistNotice: "" });
+    panel.root.querySelector<HTMLButtonElement>(".tactics-units button")?.click();
+    expect(selected).toBe("p-ranger");
+    expect(resets).toBe(0);
+    panel.root.querySelector<HTMLButtonElement>("button.launch")?.click();
+    expect(resets).toBe(1);
+  });
+
   it("preserves yaw of zero and refuses malformed nested saves", () => {
     const original = createBattle();
     const payload = {
