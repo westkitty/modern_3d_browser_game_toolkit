@@ -22,7 +22,14 @@ export function observeElementSize(
 
   const observer = new ResizeObserver(() => apply());
   observer.observe(element);
-  apply();
+  try {
+    apply();
+  } catch (error) {
+    // A size callback may throw while configuring a GPU device. Do not leave
+    // the observer attached if the caller never received its cleanup handle.
+    observer.disconnect();
+    throw error;
+  }
 
   return {
     get width() {
