@@ -24,9 +24,11 @@ export function hashPairs(agents: Agent[], cell: number): { candidates: number; 
   }
   let candidates = 0;
   // Only count each unordered cell pair once, including adjacent cells.
-  const neighbors = [[0, 0], [1, -1], [1, 0], [1, 1], [0, 1]];
+  const neighbors: Array<readonly [number, number]> = [[0, 0], [1, -1], [1, 0], [1, 1], [0, 1]];
   for (const [key, list] of buckets) {
-    const [cx, cz] = key.split(",").map(Number);
+    const parts = key.split(",");
+    const cx = Number(parts[0]);
+    const cz = Number(parts[1]);
     for (const [dx, dz] of neighbors) {
       const other = buckets.get(`${cx + dx},${cz + dz}`);
       if (!other) continue;
