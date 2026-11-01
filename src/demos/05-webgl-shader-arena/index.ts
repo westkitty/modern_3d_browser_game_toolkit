@@ -147,8 +147,8 @@ export const mount: DemoModule["mount"] = (host, context) => {
     context.setStatus({ state: "error", detail: "context lost" });
   };
   const onRestored = (): void => {
-    lost = false;
-    log.textContent = "Context restored. Re-link is required by policy; reload the demo to rebuild GPU objects.";
+    lost = true;
+    log.textContent = "Context restored; GPU objects are invalid. Return to the launcher and reopen this demo.";
     context.setStatus({ state: "unsupported", detail: "Context restored; demo requires remount to rebuild programs." });
   };
   canvas.addEventListener("webglcontextlost", onLost);
@@ -168,7 +168,12 @@ export const mount: DemoModule["mount"] = (host, context) => {
     }
   };
   window.addEventListener("keydown", onKey);
-  window.addEventListener("keyup", (event) => keys.delete(event.code));
+  const onKeyUp = (event: KeyboardEvent): void => { keys.delete(event.code); };
+  const clearKeys = (): void => { keys.clear(); };
+  const onVisibility = (): void => { if (document.hidden) clearKeys(); };
+  window.addEventListener("keyup", onKeyUp);
+  window.addEventListener("blur", clearKeys);
+  document.addEventListener("visibilitychange", onVisibility);
 
   const loop = createFixedStepLoop({
     simulate: (dt) => {
@@ -225,6 +230,9 @@ export const mount: DemoModule["mount"] = (host, context) => {
       canvas.removeEventListener("webglcontextlost", onLost);
       canvas.removeEventListener("webglcontextrestored", onRestored);
       window.removeEventListener("keydown", onKey);
+      window.removeEventListener("keyup", onKeyUp);
+      window.removeEventListener("blur", clearKeys);
+      document.removeEventListener("visibilitychange", onVisibility);
       void audio?.close();
       destroyResources(gl, resources);
       host.replaceChildren();
