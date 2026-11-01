@@ -88,6 +88,7 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     device.destroy();
     return { dispose() { host.replaceChildren(); } };
   }
+  const gpuContext = contextGpu;
   const format = navigator.gpu.getPreferredCanvasFormat();
   const resize = observeElementSize(viewport, (w, h) => {
     const dpr = cappedDevicePixelRatio(2);
@@ -95,7 +96,7 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     canvas.height = Math.max(64, Math.floor(h * dpr));
     canvas.style.width = `${w}px`;
     canvas.style.height = `${h}px`;
-    contextGpu.configure({ device, format, alphaMode: "opaque" });
+    gpuContext.configure({ device, format, alphaMode: "opaque" });
   });
 
   const computeModule = device.createShaderModule({ code: COMPUTE });
@@ -137,7 +138,7 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     const pass = encoder.beginRenderPass({
       colorAttachments: [
         {
-          view: contextGpu.getCurrentTexture().createView(),
+          view: gpuContext.getCurrentTexture().createView(),
           loadOp: "clear",
           storeOp: "store",
           clearValue: { r: 0.04, g: 0.06, b: 0.09, a: 1 }
