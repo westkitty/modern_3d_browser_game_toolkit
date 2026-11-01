@@ -65,3 +65,11 @@ Modern 3D Browser Game Toolkit: ten independently runnable architectural demonst
 - Browser artifacts from the CI run (individual route screenshots and JSON result) are retained by GitHub Actions according to workflow retention settings.
 - Remaining unknowns: physical mobile touch usability; WebGPU supported adapter/render path and real device loss; actual GPU context loss/restoration; complete assistive technology review; visual correctness in additional browsers; performance/thermal tests. This run does not certify those paths.
 - No merge or production deployment was performed. The repair PR remains draft.
+
+## GPU lifecycle and context-loss regression evidence (2026-11-01)
+- **Verified branch CI:** [run 41285459998](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/41285459998) on commit `30339c8ad19dd0601ec97c20e1dbcc8b05ea89d1` passed TypeScript typecheck, 63/63 unit tests, production build, 16/16 ten-demo Chromium smoke checks, and 4/4 focused resilience checks.
+- Real Chromium with Linux software rendering exposed `WEBGL_lose_context`; tested context loss, explicit refusal to reuse invalid context-restored GPU objects, navigation away, and a successful new WebGL2 mount. Verified zero loop owners after returning home.
+- A scripted **mock** WebGPU device exercised visible 64-point vertex-buffer draw contract (initialized on an 8x8 grid), normal disposal, device-loss teardown, and shader initialization exception cleanup. All mock devices/buffers and ResizeObservers were disposed exactly once.
+- Implemented WebGPU cleanup stack for owned GPU buffers and size observer; initialization failure and device-loss paths now terminate and clean up deterministically. Initial field positions are distinct instead of overlapping at origin.
+- Limitation: mock WebGPU evidence does **not** prove actual WebGPU adapter availability, WGSL compilation, pipeline correctness on a hardware device, GPU synchronization, visual quality, or physical-device performance.
+- Still requires separate physical-browser/device evidence for WebGPU available path, assistive-technology audit, cross-browser differences, and real mobile control ergonomics. No main-branch merge or deployment was performed.
