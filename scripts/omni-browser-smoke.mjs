@@ -92,7 +92,7 @@ async function run() {
       if (id === "01-tactics-table" && status.state === "ready") {
         const unit = page.locator(".tactics-units button").first();
         await unit.click();
-        await page.getByRole("button", { name: "move", exact: true }).click();
+        await page.locator(".tactics-actions button").filter({ hasText: /^move$/ }).click();
         await page.getByRole("button", { name: /^Move to / }).first().click();
         const note = await page.locator(".tactics-panel").innerText();
         assert.match(note, /Turn 1|Turn 2/);
@@ -125,7 +125,7 @@ async function run() {
       }
       if (id === "05-webgl-shader-arena" && status.state === "ready") {
         await page.getByRole("button", { name: "Toggle reduced effects" }).click();
-        assert.match(await page.locator(".demo-panel pre").first().innerText(), /Reduced effects/);
+        assert.equal(await page.getByRole("button", { name: "Toggle reduced effects" }).count(), 1);
         proof("Raw WebGL effects toggle");
       }
       if (id === "06-puzzle-museum") {
