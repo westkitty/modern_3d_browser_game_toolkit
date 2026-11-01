@@ -12,7 +12,9 @@ import {
 import { createBoardView } from "./view";
 
 export const mount: DemoModule["mount"] = (host, context) => {
-  const { save, notice } = loadSave(window.localStorage.getItem(STORAGE_KEY));
+  let stored: string | null = null;
+  try { stored = window.localStorage.getItem(STORAGE_KEY); } catch { /* in-memory fallback */ }
+  const { save, notice } = loadSave(stored);
   let battle: TacticsState = save.battle;
   let camera: CameraPose = save.camera;
   let campaign = save.campaign;
@@ -55,7 +57,7 @@ export const mount: DemoModule["mount"] = (host, context) => {
       campaign,
       battle: snapshotGameplay(battle)
     };
-    writeSave(payload);
+    if (!writeSave(payload)) persistNotice = "Storage unavailable; progress stays in memory.";
   };
 
   const apply = (next: TacticsState, message?: string): void => {
@@ -168,6 +170,9 @@ export const mount: DemoModule["mount"] = (host, context) => {
   viewport.addEventListener("pointerdown", onDown);
   viewport.addEventListener("pointermove", onMove);
   viewport.addEventListener("pointerup", onUp);
+  const cancelDrag = (): void => { dragging = false; };
+  viewport.addEventListener("pointercancel", cancelDrag);
+  viewport.addEventListener("lostpointercapture", cancelDrag);
   window.addEventListener("keydown", onKey);
 
   apply(battle, persistNotice);
@@ -182,6 +187,8 @@ export const mount: DemoModule["mount"] = (host, context) => {
       viewport.removeEventListener("pointerdown", onDown);
       viewport.removeEventListener("pointermove", onMove);
       viewport.removeEventListener("pointerup", onUp);
+      viewport.removeEventListener("pointercancel", cancelDrag);
+      viewport.removeEventListener("lostpointercapture", cancelDrag);
       window.removeEventListener("keydown", onKey);
       view?.dispose();
       host.replaceChildren();

@@ -27,6 +27,19 @@ describe("demo 04 verified GLB pipeline", () => {
     }
   });
 
+  it("reports corrupt GLB bytes as a validation issue instead of throwing", async () => {
+    const manifest = parseManifest(JSON.parse(readFileSync(join(assetDir, "manifest.json"), "utf8")));
+    const result = await validateAssets(manifest, async (uri) =>
+      uri.endsWith("player.glb")
+        ? new Uint8Array([1, 2, 3])
+        : new Uint8Array(readFileSync(join(root, "public", uri)))
+    );
+    expect(result.ok).toBe(false);
+    if (!result.ok) {
+      expect(result.issues.some((issue) => issue.id === "player" && issue.code === "manifest")).toBe(true);
+    }
+  });
+
   it("fails visibly when a required asset is missing", async () => {
     const manifest = parseManifest(JSON.parse(readFileSync(join(assetDir, "manifest.json"), "utf8")));
     const result = await validateAssets(manifest, async (uri) => {

@@ -49,7 +49,8 @@ export function loadMuseum(raw: string | null): MuseumSave {
     if (parsed.schemaVersion !== 1) throw new Error("schema");
     return {
       schemaVersion: 1,
-      completed: Array.isArray(parsed.completed) ? parsed.completed : [],
+      completed: Array.isArray(parsed.completed) ? parsed.completed.filter((id): id is string =>
+        typeof id === "string" && ROOMS.some((room) => room.id === id)) : [],
       reducedMotion: Boolean(parsed.reducedMotion)
     };
   } catch {

@@ -67,16 +67,40 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     return { dispose() { host.replaceChildren(); } };
   }
   const device = await adapter.requestDevice();
+  const cleanups: Array<() => void> = [];
+  let gpuDisposed = false;
+  const disposeGpu = (): void => {
+    if (gpuDisposed) return;
+    gpuDisposed = true;
+    for (const cleanup of cleanups.reverse()) cleanup();
+    device.destroy();
+  };
+  let stopLoop = (): void => undefined;
+  let terminated = false;
   const lost = device.lost.then((info) => {
+    if (terminated) return;
+    stopLoop();
+    disposeGpu();
     context.setStatus({ state: "error", detail: `Device lost: ${info.reason}` });
     log.textContent = `Device lost (${info.reason}). ${info.message}`;
   });
 
-  const contextGpu = canvas.getContext("webgpu");
-  if (!contextGpu) {
-    context.setStatus({ state: "unsupported", detail: "canvas.getContext('webgpu') failed." });
+  let contextGpu: GPUCanvasContext | null = null;
+  try { contextGpu = canvas.getContext("webgpu"); }
+  catch {
+    terminated = true;
+    disposeGpu();
+    context.setStatus({ state: "unsupported", detail: "WebGPU canvas context acquisition failed." });
     return { dispose() { host.replaceChildren(); } };
   }
+  if (!contextGpu) {
+    context.setStatus({ state: "unsupported", detail: "canvas.getContext('webgpu') failed." });
+    terminated = true;
+    disposeGpu();
+    return { dispose() { host.replaceChildren(); } };
+  }
+  const gpuContext = contextGpu;
+  try {
   const format = navigator.gpu.getPreferredCanvasFormat();
   const resize = observeElementSize(viewport, (w, h) => {
     const dpr = cappedDevicePixelRatio(2);
@@ -84,8 +108,9 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     canvas.height = Math.max(64, Math.floor(h * dpr));
     canvas.style.width = `${w}px`;
     canvas.style.height = `${h}px`;
-    contextGpu.configure({ device, format, alphaMode: "opaque" });
+    gpuContext.configure({ device, format, alphaMode: "opaque" });
   });
+  cleanups.push(() => resize.disconnect());
 
   const computeModule = device.createShaderModule({ code: COMPUTE });
   const renderModule = device.createShaderModule({ code: `${VERT}\n${FRAG}` });
@@ -97,13 +122,20 @@ export const mount: DemoModule["mount"] = async (host, context) => {
       buffers: [{ arrayStride: 8, attributes: [{ shaderLocation: 0, offset: 0, format: "float32x2" }] }]
     },
     fragment: { module: renderModule, entryPoint: "fs_main", targets: [{ format }] },
-    primitive: { topology: "triangle-list" }
+    primitive: { topology: "point-list" }
   });
   const field = new Float32Array(128);
+  // Distinct deterministic positions make the compute result visible as a field,
+  // rather than 64 overlapping points at the origin.
+  for (let index = 0; index < field.length / 2; index += 1) {
+    field[index * 2] = -0.875 + (index % 8) * 0.25;
+    field[index * 2 + 1] = -0.875 + Math.floor(index / 8) * 0.25;
+  }
   const storage = device.createBuffer({
     size: field.byteLength,
-    usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST
+    usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST | GPUBufferUsage.VERTEX
   });
+  cleanups.push(() => storage.destroy());
   device.queue.writeBuffer(storage, 0, field);
   const computePipeline = device.createComputePipeline({
     layout: "auto",
@@ -113,11 +145,10 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     layout: computePipeline.getBindGroupLayout(0),
     entries: [{ binding: 0, resource: { buffer: storage } }]
   });
-  const verts = new Float32Array([-0.6, -0.6, 0.6, -0.6, 0.0, 0.6]);
-  const buffer = device.createBuffer({ size: verts.byteLength, usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST });
-  device.queue.writeBuffer(buffer, 0, verts);
+  // Compute writes the same GPU buffer consumed by the render pipeline.
 
   const loop = createFrameLoop(() => {
+    if (terminated) return;
     const encoder = device.createCommandEncoder();
     const compute = encoder.beginComputePass();
     compute.setPipeline(computePipeline);
@@ -127,7 +158,7 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     const pass = encoder.beginRenderPass({
       colorAttachments: [
         {
-          view: contextGpu.getCurrentTexture().createView(),
+          view: gpuContext.getCurrentTexture().createView(),
           loadOp: "clear",
           storeOp: "store",
           clearValue: { r: 0.04, g: 0.06, b: 0.09, a: 1 }
@@ -135,8 +166,8 @@ export const mount: DemoModule["mount"] = async (host, context) => {
       ]
     });
     pass.setPipeline(pipeline);
-    pass.setVertexBuffer(0, buffer);
-    pass.draw(3);
+    pass.setVertexBuffer(0, storage);
+    pass.draw(field.length / 2);
     pass.end();
     device.queue.submit([encoder.finish()]);
     if (chartCtx) {
@@ -147,19 +178,25 @@ export const mount: DemoModule["mount"] = async (host, context) => {
       chartCtx.fillText(sabAvailable ? "SAB present, not activated" : "SAB off", 8, 42);
     }
   });
-  loop.start();
+  stopLoop = () => { terminated = true; loop.stop(); };
+  if (!terminated) loop.start();
   log.textContent = `WebGPU device acquired.\n${mode}\nCompute shader module compiled alongside the render pipeline. Canvas 2D is diagnostics only.`;
   context.setStatus({ state: "ready", detail: "Raw WebGPU field. SAB not activated." });
 
   return {
     dispose() {
-      loop.stop();
-      resize.disconnect();
-      buffer.destroy();
-      storage.destroy();
-      device.destroy();
+      stopLoop();
+      disposeGpu();
       void lost;
       host.replaceChildren();
     }
   };
+  } catch (error) {
+    terminated = true;
+    disposeGpu();
+    const detail = error instanceof Error ? error.message : String(error);
+    context.setStatus({ state: "error", detail });
+    log.textContent = `WebGPU initialization failed: ${detail}`;
+    return { dispose() { host.replaceChildren(); } };
+  }
 };

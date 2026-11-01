@@ -20,6 +20,23 @@ describe("explicit resource ownership", () => {
     expect(resourceSnapshot()).toEqual(before);
   });
 
+
+  it("immediately disposes late acquisitions without registering new ownership", () => {
+    const before = resourceSnapshot();
+    const scope = createResourceScope();
+    scope.dispose();
+    let called = 0;
+    scope.own("runtime", () => { called += 1; });
+    const target = new EventTarget();
+    let observed = 0;
+    scope.listen(target, "event", () => { observed += 1; });
+    target.dispatchEvent(new Event("event"));
+    scope.dispose();
+    expect(called).toBe(1);
+    expect(observed).toBe(0);
+    expect(resourceSnapshot()).toEqual(before);
+  });
+
   it("disposes owned resources exactly once", () => {
     const scope = createResourceScope();
     let disposed = 0;

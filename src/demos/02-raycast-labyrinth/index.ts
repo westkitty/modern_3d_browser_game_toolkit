@@ -90,6 +90,8 @@ export const mount: DemoModule["mount"] = (host, context) => {
             void audio.unlock();
           });
           button.addEventListener("pointerup", () => keys.delete(code));
+          button.addEventListener("pointercancel", () => keys.delete(code));
+          button.addEventListener("lostpointercapture", () => keys.delete(code));
           button.addEventListener("pointerleave", () => keys.delete(code));
           return button;
         })

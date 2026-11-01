@@ -47,6 +47,11 @@ export function createResourceScope(): ResourceScope {
   let disposed = false;
 
   const own = (kind: ResourceKind, disposer?: () => void): (() => void) => {
+    // A late async callback must not resurrect a disposed scope.
+    if (disposed) {
+      disposer?.();
+      return () => undefined;
+    }
     add(kind, 1);
     let released = false;
     const release = (): void => {
@@ -68,6 +73,7 @@ export function createResourceScope(): ResourceScope {
     },
     own,
     listen(target, type, listener, options) {
+      if (disposed) return;
       target.addEventListener(type, listener, options);
       own("listener", () => target.removeEventListener(type, listener, options));
     },

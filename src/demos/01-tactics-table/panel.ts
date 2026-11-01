@@ -31,6 +31,8 @@ export function createPanel(handlers: {
     state: TacticsState,
     extras: { renders: number; looping: boolean; persistNotice: string }
   ): void => {
+    const previousFocus = root.contains(document.activeElement) && document.activeElement instanceof HTMLButtonElement
+      ? document.activeElement.textContent : null;
     const selected = state.units.find((item) => item.id === state.selectedUnitId);
     const ready = living(state, "player");
     root.replaceChildren(
@@ -57,8 +59,15 @@ export function createPanel(handlers: {
         attrs: { type: "button" }
       })
     );
-    const newBattle = root.querySelector("button:last-of-type");
+    const newBattle = root.querySelector<HTMLButtonElement>("button.launch");
     newBattle?.addEventListener("click", handlers.onNewBattle);
+    if (previousFocus !== null) {
+      const available = [...root.querySelectorAll<HTMLButtonElement>("button:not(:disabled)")];
+      const preferred = available.find((button) => button.textContent === previousFocus);
+      const next = preferred ?? available.find((button) => button.textContent?.startsWith("Move to") ||
+        button.textContent?.startsWith("Attack ")) ?? available[0];
+      next?.focus();
+    }
   };
 
   return { root, sync };

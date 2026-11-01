@@ -58,3 +58,24 @@ export const SAVE_VERSION = 2;
 export function worldToMap(lon: number, lat: number, size: number): { x: number; y: number } {
   return { x: ((lon + 180) / 360) * size, y: ((90 - lat) / 180) * size };
 }
+
+export function restoreCampaign(raw: unknown): Campaign | null {
+  if (!raw || typeof raw !== "object") return null;
+  const value = raw as Partial<Campaign>;
+  if (!Number.isSafeInteger(value.turn) || (value.turn ?? 0) < 1 ||
+      !Number.isFinite(value.food) || !Array.isArray(value.regions) ||
+      !Array.isArray(value.log) || value.log.length > 100 ||
+      !value.log.every((line) => typeof line === "string" && line.length <= 300) ||
+      value.regions.length < 1 || value.regions.length > 100) return null;
+  const ids = new Set<string>();
+  for (const region of value.regions) {
+    if (!region || typeof region.id !== "string" || !region.id || ids.has(region.id) ||
+        typeof region.name !== "string" || region.name.length > 100 ||
+        !["player", "rival", "neutral"].includes(region.owner) ||
+        !Number.isFinite(region.lon) || Math.abs(region.lon) > 180 ||
+        !Number.isFinite(region.lat) || Math.abs(region.lat) > 90 ||
+        !Number.isSafeInteger(region.armies) || region.armies < 0) return null;
+    ids.add(region.id);
+  }
+  return { turn: value.turn!, food: value.food!, regions: value.regions.map((region) => ({ ...region })), log: [...value.log] };
+}

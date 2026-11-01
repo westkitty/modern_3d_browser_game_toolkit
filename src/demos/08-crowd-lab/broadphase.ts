@@ -23,9 +23,20 @@ export function hashPairs(agents: Agent[], cell: number): { candidates: number; 
     else buckets.set(key, [agent]);
   }
   let candidates = 0;
-  for (const list of buckets.values()) {
-    for (let i = 0; i < list.length; i += 1) {
-      for (let j = i + 1; j < list.length; j += 1) candidates += 1;
+  // Only count each unordered cell pair once, including adjacent cells.
+  const neighbors: Array<readonly [number, number]> = [[0, 0], [1, -1], [1, 0], [1, 1], [0, 1]];
+  for (const [key, list] of buckets) {
+    const parts = key.split(",");
+    const cx = Number(parts[0]);
+    const cz = Number(parts[1]);
+    for (const [dx, dz] of neighbors) {
+      const other = buckets.get(`${cx + dx},${cz + dz}`);
+      if (!other) continue;
+      if (dx === 0 && dz === 0) {
+        candidates += list.length * (list.length - 1) / 2;
+      } else {
+        candidates += list.length * other.length;
+      }
     }
   }
   return { candidates, cells: buckets.size };

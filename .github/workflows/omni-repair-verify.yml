@@ -1,0 +1,45 @@
+name: OMNI repair verification
+on:
+  push:
+    branches:
+      - fix/omni-verified-bugs-20261101
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm test -- --run
+      - run: npm run build
+      - name: Install isolated browser smoke runtime
+        run: |
+          mkdir -p /tmp/omni-playwright
+          npm install --prefix /tmp/omni-playwright --no-audit --no-fund playwright@1.56.1
+          /tmp/omni-playwright/node_modules/.bin/playwright install --with-deps chromium
+      - name: Browser smoke (ten demos and lifecycle)
+        run: |
+          npm run preview -- --host 127.0.0.1 > /tmp/omni-vite-preview.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl -f http://127.0.0.1:4173/
+          cp scripts/omni-browser-smoke.mjs /tmp/omni-playwright/omni-browser-smoke.mjs
+          node /tmp/omni-playwright/omni-browser-smoke.mjs
+          cp scripts/omni-browser-resilience.mjs /tmp/omni-playwright/omni-browser-resilience.mjs
+          node /tmp/omni-playwright/omni-browser-resilience.mjs
+      - name: Preserve browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: omni-browser-evidence
+          path: omni-browser-evidence/
+          if-no-files-found: ignore
+          retention-days: 7

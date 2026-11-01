@@ -71,6 +71,42 @@ describe("demo 01 tactics table", () => {
     expect(loaded.save.battle.units).toHaveLength(battle.units.length);
   });
 
+  it("does not attach New battle to a unit button", async () => {
+    const { createPanel } = await import("../src/demos/01-tactics-table/panel");
+    const battle = createBattle();
+    let selected = "";
+    let resets = 0;
+    const panel = createPanel({
+      onSelectUnit: (id) => { selected = id; },
+      onAction: () => undefined,
+      onTile: () => undefined,
+      onTarget: () => undefined,
+      onCancel: () => undefined,
+      onNewBattle: () => { resets += 1; },
+      onOrbit: () => undefined
+    });
+    panel.sync(battle, { renders: 0, looping: false, persistNotice: "" });
+    panel.root.querySelector<HTMLButtonElement>(".tactics-units button")?.click();
+    expect(selected).toBe("p-ranger");
+    expect(resets).toBe(0);
+    panel.root.querySelector<HTMLButtonElement>("button.launch")?.click();
+    expect(resets).toBe(1);
+  });
+
+  it("preserves yaw of zero and refuses malformed nested saves", () => {
+    const original = createBattle();
+    const payload = {
+      schemaVersion: 1,
+      camera: { yaw: 0, pitch: 0.9, distance: 13 },
+      campaign: { battlesStarted: 1, battlesWon: 0 },
+      battle: original
+    };
+    expect(loadSave(JSON.stringify(payload)).save.camera.yaw).toBe(0);
+    const malformed = loadSave(JSON.stringify({ ...payload, battle: { ...original, units: "invalid" } }));
+    expect(malformed.notice).toMatch(/invalid/i);
+    expect(malformed.save.battle.units).toHaveLength(original.units.length);
+  });
+
   it("resets unreadable saves instead of inventing a board", () => {
     const { save, notice } = loadSave("{not json");
     expect(notice).toMatch(/unreadable/i);

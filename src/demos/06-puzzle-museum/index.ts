@@ -6,12 +6,16 @@ import type { DemoModule } from "../../shared/types";
 import { loadMuseum, ROOMS, STORAGE_KEY, type MuseumSave } from "./puzzles";
 
 export const mount: DemoModule["mount"] = (host, context) => {
-  let save: MuseumSave = loadMuseum(window.localStorage.getItem(STORAGE_KEY));
+  let stored: string | null = null;
+  try { stored = window.localStorage.getItem(STORAGE_KEY); } catch { /* in-memory fallback */ }
+  let save: MuseumSave = loadMuseum(stored);
   if (context.reducedMotion) save.reducedMotion = true;
-  let roomIndex = 0;
+  let roomIndex = Math.max(0, ROOMS.findIndex((room) => !save.completed.includes(room.id)));
+  if (ROOMS.every((room) => save.completed.includes(room.id))) roomIndex = ROOMS.length;
 
   const persist = (): void => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(save));
+    try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(save)); }
+    catch { live.textContent = "Storage unavailable; puzzle progress remains in memory."; }
   };
 
   const shell = el("div", { className: "demo-shell" });
@@ -80,7 +84,18 @@ export const mount: DemoModule["mount"] = (host, context) => {
 
   const renderPanel = (): void => {
     const room = ROOMS[roomIndex];
-    if (!room) return;
+    if (!room) {
+      live.textContent = "All three rooms completed. Museum finished.";
+      const replay = el("button", { text: "Replay museum", attrs: { type: "button" } });
+      replay.addEventListener("click", () => {
+        save.completed = [];
+        roomIndex = 0;
+        persist();
+        renderPanel();
+      });
+      controls.replaceChildren(replay);
+      return;
+    }
     live.textContent = `${room.title}. ${room.instruction} Completed rooms: ${save.completed.length}/3.`;
     controls.replaceChildren(
       el("p", { text: room.hint }),
@@ -91,7 +106,7 @@ export const mount: DemoModule["mount"] = (host, context) => {
             if (!save.completed.includes(room.id)) save.completed.push(room.id);
             persist();
             context.announce(`${room.title} solved.`);
-            roomIndex = Math.min(ROOMS.length - 1, roomIndex + 1);
+            roomIndex = Math.min(ROOMS.length, roomIndex + 1);
           } else {
             context.announce("Incorrect. Try another option.");
           }

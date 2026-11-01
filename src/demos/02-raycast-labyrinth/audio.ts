@@ -4,25 +4,37 @@ export interface LabyrinthAudio {
   dispose(): void;
   readonly unlocked: boolean;
 }
-
 export function createLabyrinthAudio(): LabyrinthAudio {
   let context: AudioContext | null = null;
   let unlocked = false;
-
+  let disposed = false;
+  let pending: Promise<void> | null = null;
   return {
-    get unlocked() {
-      return unlocked;
-    },
-    async unlock() {
-      if (unlocked) return;
+    get unlocked() { return unlocked; },
+    unlock() {
+      if (disposed || unlocked) return Promise.resolve();
+      if (pending) return pending;
       const Ctor = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-      if (!Ctor) return;
-      context = new Ctor();
-      if (context.state === "suspended") await context.resume();
-      unlocked = true;
+      if (!Ctor) return Promise.resolve();
+      let next: AudioContext;
+      try { next = new Ctor(); }
+      catch { return Promise.resolve(); }
+      context = next;
+      pending = (async () => {
+        try {
+          if (next.state === "suspended") await next.resume();
+          if (disposed) { await next.close(); context = null; return; }
+          unlocked = true;
+        } catch {
+          if (context === next) context = null;
+          await next.close().catch(() => undefined);
+          unlocked = false;
+        }
+      })().finally(() => { pending = null; });
+      return pending;
     },
     chime() {
-      if (!context || !unlocked) return;
+      if (!context || !unlocked || disposed) return;
       const osc = context.createOscillator();
       const gain = context.createGain();
       osc.frequency.value = 660;
@@ -33,9 +45,11 @@ export function createLabyrinthAudio(): LabyrinthAudio {
       osc.stop(context.currentTime + 0.12);
     },
     dispose() {
-      void context?.close();
-      context = null;
+      disposed = true;
       unlocked = false;
+      const previous = context;
+      context = null;
+      if (previous && !pending) void previous.close().catch(() => undefined);
     }
   };
 }

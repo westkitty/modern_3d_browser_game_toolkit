@@ -62,6 +62,52 @@ describe("demo host lifecycle", () => {
     expect(host.activeId).toBeNull();
   });
 
+
+  it("serializes competing async mounts and never drops the newest handle", async () => {
+    const host = createDemoHost();
+    const surface = document.createElement("div");
+    let finishA!: (handle: DemoHandle) => void;
+    const pendingA = new Promise<DemoHandle>((resolve) => { finishA = resolve; });
+    let startedA!: () => void;
+    const started = new Promise<void>((resolve) => { startedA = resolve; });
+    const events: string[] = [];
+    const mountA = host.mount(definition("a", () => {
+      events.push("start-a");
+      startedA();
+      return pendingA;
+    }), surface);
+    await started;
+    const mountB = host.mount(definition("b", () => {
+      events.push("start-b");
+      return { dispose: () => { events.push("dispose-b"); } };
+    }), surface);
+    finishA({ dispose: () => { events.push("dispose-a"); } });
+    await Promise.all([mountA, mountB]);
+    expect(events).toEqual(["start-a", "dispose-a", "start-b"]);
+    expect(host.activeId).toBe("b");
+    await host.dispose();
+    expect(events).toEqual(["start-a", "dispose-a", "start-b", "dispose-b"]);
+  });
+
+  it("does not let a stale in-flight mount survive host disposal", async () => {
+    const host = createDemoHost();
+    const surface = document.createElement("div");
+    let finish!: (handle: DemoHandle) => void;
+    let started!: () => void;
+    const ready = new Promise<void>((resolve) => { started = resolve; });
+    let cleanups = 0;
+    const mount = host.mount(definition("slow", () => new Promise((resolve) => {
+      finish = resolve;
+      started();
+    })), surface);
+    await ready;
+    const dispose = host.dispose();
+    finish({ dispose: () => { cleanups += 1; } });
+    await Promise.all([mount, dispose]);
+    expect(cleanups).toBe(1);
+    expect(host.activeId).toBeNull();
+  });
+
   it("stops a demo-owned frame loop on dispose", async () => {
     const host = createDemoHost();
     const surface = document.createElement("div");

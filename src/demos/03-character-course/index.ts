@@ -58,7 +58,8 @@ export const mount: DemoModule["mount"] = (host, context) => {
     const touchActive = Math.hypot(touch.moveX, touch.moveY) > 0.01;
     const x = touchActive ? touch.moveX : gamepad.x || keyboard.x;
     const y = touchActive ? touch.moveY : gamepad.y || keyboard.y;
-    const jump = jumpEdge || gamepad.jump || consumeJump(touch);
+    const touchJump = consumeJump(touch);
+    const jump = jumpEdge || gamepad.jump || touchJump;
     jumpEdge = false;
     return { x, y, jump, yaw };
   };

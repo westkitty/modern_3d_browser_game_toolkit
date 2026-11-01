@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createCampaign, resolveTurn, worldToMap } from "../src/demos/09-strategy-globe/state";
+import { createCampaign, resolveTurn, restoreCampaign, worldToMap } from "../src/demos/09-strategy-globe/state";
 
 describe("demo 09 strategy globe", () => {
   it("resolves turns on pure campaign state", () => {
@@ -7,6 +7,13 @@ describe("demo 09 strategy globe", () => {
     const second = resolveTurn(first);
     expect(second.turn).toBe(first.turn + 1);
     expect(first.turn).toBe(1);
+  });
+
+  it("refuses malformed IndexedDB campaign shape", () => {
+    const good = createCampaign();
+    expect(restoreCampaign(good)).toEqual(good);
+    expect(restoreCampaign({ ...good, regions: "not an array" })).toBeNull();
+    expect(restoreCampaign({ ...good, regions: [{ id: "x", owner: "intruder" }] })).toBeNull();
   });
 
   it("maps lon/lat with an explicit transform", () => {
