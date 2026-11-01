@@ -3,7 +3,7 @@ import { el } from "../../shared/dom";
 import { createDemandRenderer } from "../../shared/loop";
 import { cappedDevicePixelRatio, observeElementSize } from "../../shared/resize";
 import type { DemoModule } from "../../shared/types";
-import { createCampaign, resolveTurn, SAVE_DB, SAVE_VERSION, worldToMap, type Campaign } from "./state";
+import { createCampaign, resolveTurn, restoreCampaign, SAVE_DB, SAVE_VERSION, worldToMap, type Campaign } from "./state";
 
 async function openDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -28,7 +28,9 @@ export const mount: DemoModule["mount"] = async (host, context) => {
       req.onerror = () => resolve(undefined);
     });
     db.close();
-    if (loaded?.regions) campaign = loaded;
+    const restored = restoreCampaign(loaded);
+    if (restored) campaign = restored;
+    else if (loaded !== undefined) workerEvidence += " Invalid saved campaign ignored.";
   } catch {
     workerEvidence += " IndexedDB unavailable; campaign stays in memory.";
   }
@@ -36,11 +38,18 @@ export const mount: DemoModule["mount"] = async (host, context) => {
   const persist = async (): Promise<void> => {
     try {
       const db = await openDb();
-      const tx = db.transaction("saves", "readwrite");
-      tx.objectStore("saves").put(campaign, "current");
-      db.close();
-    } catch {
-      /* quota/error is visible via panel text if persist fails later */
+      try {
+        await new Promise<void>((resolve, reject) => {
+          const tx = db.transaction("saves", "readwrite");
+          tx.objectStore("saves").put(campaign, "current");
+          tx.oncomplete = () => resolve();
+          tx.onerror = () => reject(tx.error);
+          tx.onabort = () => reject(tx.error);
+        });
+      } finally { db.close(); }
+    } catch (error) {
+      workerEvidence = `Campaign save failed: ${error instanceof Error ? error.message : String(error)}`;
+      paint();
     }
   };
 
