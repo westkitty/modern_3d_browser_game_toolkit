@@ -67,8 +67,8 @@ export function loadSave(raw: string | null): { save: Demo01Save; notice: string
         schemaVersion: SCHEMA_VERSION,
         camera: {
           yaw: Number.isFinite(parsed.camera.yaw) ? parsed.camera.yaw : 0.7,
-          pitch: Number(parsed.camera.pitch) || 0.95,
-          distance: Number(parsed.camera.distance) || 13
+          pitch: Number.isFinite(parsed.camera.pitch) ? parsed.camera.pitch : 0.95,
+          distance: Number.isFinite(parsed.camera.distance) && parsed.camera.distance > 0 ? parsed.camera.distance : 13
         },
         campaign: {
           battlesStarted: Number(parsed.campaign.battlesStarted) || 1,

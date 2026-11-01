@@ -108,12 +108,12 @@ export const mount: DemoModule["mount"] = async (host, context) => {
       buffers: [{ arrayStride: 8, attributes: [{ shaderLocation: 0, offset: 0, format: "float32x2" }] }]
     },
     fragment: { module: renderModule, entryPoint: "fs_main", targets: [{ format }] },
-    primitive: { topology: "triangle-list" }
+    primitive: { topology: "point-list" }
   });
   const field = new Float32Array(128);
   const storage = device.createBuffer({
     size: field.byteLength,
-    usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST
+    usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST | GPUBufferUsage.VERTEX
   });
   device.queue.writeBuffer(storage, 0, field);
   const computePipeline = device.createComputePipeline({
@@ -124,9 +124,7 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     layout: computePipeline.getBindGroupLayout(0),
     entries: [{ binding: 0, resource: { buffer: storage } }]
   });
-  const verts = new Float32Array([-0.6, -0.6, 0.6, -0.6, 0.0, 0.6]);
-  const buffer = device.createBuffer({ size: verts.byteLength, usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST });
-  device.queue.writeBuffer(buffer, 0, verts);
+  // Compute writes the same GPU buffer consumed by the render pipeline.
 
   const loop = createFrameLoop(() => {
     if (terminated) return;
@@ -147,8 +145,8 @@ export const mount: DemoModule["mount"] = async (host, context) => {
       ]
     });
     pass.setPipeline(pipeline);
-    pass.setVertexBuffer(0, buffer);
-    pass.draw(3);
+    pass.setVertexBuffer(0, storage);
+    pass.draw(field.length / 2);
     pass.end();
     device.queue.submit([encoder.finish()]);
     if (chartCtx) {
@@ -168,7 +166,6 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     dispose() {
       stopLoop();
       resize.disconnect();
-      buffer.destroy();
       storage.destroy();
       device.destroy();
       void lost;
