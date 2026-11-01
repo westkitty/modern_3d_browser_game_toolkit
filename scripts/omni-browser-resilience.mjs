@@ -97,7 +97,7 @@ try {
             lost,
             queue: {
               writeBuffer(buffer, offset, data) {
-                m.writes.push({ count: data.length, first: data[0], second: data[1], last: data[data.length - 1] });
+                m.writes.push({ count: data.length, first: data[0], second: data[1], nextPointX: data[2], last: data[data.length - 1] });
               },
               submit() { /* no GPU in this mocked lifecycle contract */ }
             },
@@ -132,7 +132,7 @@ try {
   }));
   assert.equal(before.drawVertices, 64);
   assert.equal(before.field?.count, 128);
-  assert.notEqual(before.field?.first, before.field?.second);
+  assert.notEqual(before.field?.first, before.field?.nextPointX);
   await home(mock);
   const released = await mock.evaluate(() => ({
     devices: window.__omniMockGPU.devices,
