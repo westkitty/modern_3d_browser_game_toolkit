@@ -92,6 +92,11 @@ async function run() {
       if (id === "01-tactics-table" && status.state === "ready") {
         const unit = page.locator(".tactics-units button").first();
         await unit.click();
+        console.log("TACTICS STATE " + JSON.stringify(await page.locator(".tactics-panel").evaluate((panel) => ({
+          text: panel.textContent?.slice(0, 380),
+          units: [...panel.querySelectorAll(".tactics-units button")].map((node) => ({ text: node.textContent, disabled: node.disabled, selected: node.getAttribute("aria-selected") })),
+          actions: [...panel.querySelectorAll(".tactics-actions button")].map((node) => ({ text: node.textContent, disabled: node.disabled }))
+        }))));
         await page.locator(".tactics-actions button").filter({ hasText: /^move$/ }).click();
         await page.getByRole("button", { name: /^Move to / }).first().click();
         const note = await page.locator(".tactics-panel").innerText();
