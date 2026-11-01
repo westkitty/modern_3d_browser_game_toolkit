@@ -43,9 +43,13 @@ export function parseManifest(raw: unknown): AssetManifest {
 }
 
 export function parseGlbJson(bytes: Uint8Array): { nodes: string[]; animations: string[] } {
+  if (bytes.byteLength < 20) throw new Error("Truncated GLB header.");
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  if (view.getUint32(4, true) !== 2 || view.getUint32(8, true) !== bytes.byteLength ||
+      view.getUint32(16, true) !== 0x4e4f534a) throw new Error("Malformed GLB header.");
   if (view.getUint32(0, true) !== 0x46546c67) throw new Error("Not a GLB file.");
   const jsonLength = view.getUint32(12, true);
+  if (jsonLength > bytes.byteLength - 20) throw new Error("Truncated GLB JSON.");
   const json = JSON.parse(encoder.decode(bytes.subarray(20, 20 + jsonLength))) as {
     nodes?: Array<{ name?: string }>;
     animations?: Array<{ name?: string }>;
@@ -84,7 +88,16 @@ export async function validateAssets(
     if (hash !== asset.sha256) {
       issues.push({ id: asset.id, code: "hash", message: `${asset.id} hash mismatch.` });
     }
-    const parsed = parseGlbJson(bytes);
+    let parsed: ReturnType<typeof parseGlbJson>;
+    try { parsed = parseGlbJson(bytes); }
+    catch (error) {
+      issues.push({ id: asset.id, code: "manifest", message: error instanceof Error ? error.message : "Invalid GLB." });
+      continue;
+    }
+    if (!Array.isArray(asset.nodes) || !Array.isArray(asset.animations)) {
+      issues.push({ id: asset.id, code: "manifest", message: "Malformed node or clip manifest." });
+      continue;
+    }
     for (const node of asset.nodes) {
       if (!parsed.nodes.includes(node)) {
         issues.push({ id: asset.id, code: "nodes", message: `Expected node ${node} was not in ${asset.id}.` });

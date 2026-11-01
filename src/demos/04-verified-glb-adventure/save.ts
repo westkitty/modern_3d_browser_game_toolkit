@@ -99,13 +99,15 @@ function openDb(): Promise<IDBDatabase> {
 export async function loadAdventure(): Promise<{ save: AdventureSave; notice: string }> {
   try {
     const db = await openDb();
-    const raw = await new Promise<unknown>((resolve, reject) => {
-      const tx = db.transaction(STORE, "readonly");
-      const req = tx.objectStore(STORE).get("current");
-      req.onsuccess = () => resolve(req.result ?? null);
-      req.onerror = () => reject(req.error);
-    });
-    db.close();
+    let raw: unknown;
+    try {
+      raw = await new Promise<unknown>((resolve, reject) => {
+        const tx = db.transaction(STORE, "readonly");
+        const req = tx.objectStore(STORE).get("current");
+        req.onsuccess = () => resolve(req.result ?? null);
+        req.onerror = () => reject(req.error);
+      });
+    } finally { db.close(); }
     if (!raw) return { save: defaultAdventureSave(), notice: "No save. New expedition." };
     return { save: migrateAdventureSave(raw), notice: "Restored versioned IndexedDB save." };
   } catch (error) {
@@ -119,22 +121,26 @@ export async function loadAdventure(): Promise<{ save: AdventureSave; notice: st
 export async function writeAdventure(save: AdventureSave): Promise<void> {
   const validated = migrateAdventureSave(save);
   const db = await openDb();
-  await new Promise<void>((resolve, reject) => {
-    const tx = db.transaction(STORE, "readwrite");
-    tx.objectStore(STORE).put(validated, "current");
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error);
-  });
-  db.close();
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction(STORE, "readwrite");
+      tx.objectStore(STORE).put(validated, "current");
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+      tx.onabort = () => reject(tx.error);
+    });
+  } finally { db.close(); }
 }
 
 export async function clearAdventureSave(): Promise<void> {
   const db = await openDb();
-  await new Promise<void>((resolve, reject) => {
-    const tx = db.transaction(STORE, "readwrite");
-    tx.objectStore(STORE).delete("current");
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error);
-  });
-  db.close();
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction(STORE, "readwrite");
+      tx.objectStore(STORE).delete("current");
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+      tx.onabort = () => reject(tx.error);
+    });
+  } finally { db.close(); }
 }
