@@ -8,7 +8,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,3 +18,24 @@ jobs:
       - run: npm run typecheck
       - run: npm test -- --run
       - run: npm run build
+      - name: Install isolated browser smoke runtime
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Browser smoke (ten demos and lifecycle)
+        run: |
+          npm run preview -- --host 127.0.0.1 > /tmp/omni-vite-preview.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then break; fi
+            sleep 1
+          done
+          curl -f http://127.0.0.1:4173/
+          node scripts/omni-browser-smoke.mjs
+      - name: Preserve browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: omni-browser-evidence
+          path: omni-browser-evidence/
+          if-no-files-found: ignore
+          retention-days: 7
