@@ -43,22 +43,29 @@ export function link(
   label: string,
   resources: GpuResources
 ): WebGLProgram {
-  const vs = compile(gl, gl.VERTEX_SHADER, vert, `${label} vertex`);
-  const fs = compile(gl, gl.FRAGMENT_SHADER, frag, `${label} fragment`);
-  const program = gl.createProgram();
-  if (!program) throw new GlError(`Could not create program ${label}.`);
-  gl.attachShader(program, vs);
-  gl.attachShader(program, fs);
-  gl.linkProgram(program);
-  gl.deleteShader(vs);
-  gl.deleteShader(fs);
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    const log = gl.getProgramInfoLog(program) ?? "no log";
-    gl.deleteProgram(program);
-    throw new GlError(`${label} link failed:\n${log}`);
+  let vs: WebGLShader | null = null;
+  let fs: WebGLShader | null = null;
+  let program: WebGLProgram | null = null;
+  try {
+    vs = compile(gl, gl.VERTEX_SHADER, vert, `${label} vertex`);
+    fs = compile(gl, gl.FRAGMENT_SHADER, frag, `${label} fragment`);
+    program = gl.createProgram();
+    if (!program) throw new GlError(`Could not create program ${label}.`);
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      throw new GlError(`${label} link failed:\n${gl.getProgramInfoLog(program) ?? "no log"}`);
+    }
+    resources.programs.push(program);
+    return program;
+  } catch (error) {
+    if (program) gl.deleteProgram(program);
+    throw error;
+  } finally {
+    if (vs) gl.deleteShader(vs);
+    if (fs) gl.deleteShader(fs);
   }
-  resources.programs.push(program);
-  return program;
 }
 
 export function destroyResources(gl: WebGL2RenderingContext, resources: GpuResources): void {

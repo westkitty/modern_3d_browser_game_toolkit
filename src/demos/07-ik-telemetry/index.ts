@@ -83,8 +83,14 @@ export const mount: DemoModule["mount"] = (host, context) => {
     const pose = poses[poseIndex] ?? "reachable";
     const target = targets[pose];
     const ik = twoBoneIk({ x: 0, y: 1.6 }, target, RIG.lengths.Femur, RIG.lengths.Tibia, target.sign);
-    femur.position.set((ik.a.x + ik.b.x) / 2, (ik.a.y + ik.b.y) / 2, 0);
-    tibia.position.set((ik.b.x + ik.end.x) / 2, (ik.b.y + ik.end.y) / 2, 0);
+    const align = (mesh: THREE.Mesh, a: {x: number; y: number}, b: {x: number; y: number}): void => {
+      const direction = new THREE.Vector3(b.x - a.x, b.y - a.y, 0);
+      mesh.position.set((a.x + b.x) / 2, (a.y + b.y) / 2, 0);
+      mesh.scale.y = direction.length();
+      mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+    };
+    align(femur, ik.a, ik.b);
+    align(tibia, ik.b, ik.end);
     const text = `${pose} reach:${ik.reachable ? "yes" : "no"} A:${ik.angleA.toFixed(2)} B:${ik.angleB.toFixed(2)}`;
     if (writePlate(plate, text)) texture.needsUpdate = true;
     live.textContent = text;

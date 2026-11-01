@@ -10,6 +10,15 @@ describe("demo 08 crowd lab", () => {
     expect(hashPairs(clustered, 2).candidates).toBeLessThan(naivePairs(clustered));
   });
 
+  it("includes cross-cell candidates without duplicates", () => {
+    const agents = [
+      { id: 1, x: 1.99, z: 0, vx: 0, vz: 0 },
+      { id: 2, x: 2.01, z: 0, vx: 0, vz: 0 }
+    ];
+    expect(hashPairs(agents, 2).candidates).toBe(1);
+    expect(hashPairs(agents, 2).candidates).toBeLessThanOrEqual(naivePairs(agents));
+  });
+
   it("exposes all five required comparative scenarios", () => {
     expect(PERFORMANCE_SCENARIOS).toEqual([
       "baseline",

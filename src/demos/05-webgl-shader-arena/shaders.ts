@@ -44,6 +44,6 @@ uniform float u_strength;
 out vec4 outColor;
 void main() {
   vec3 color = texture(u_color, v_uv).rgb;
-  float vig = smoothstep(1.0, 0.35, distance(v_uv, vec2(0.5)));
+  float vig = 1.0 - smoothstep(0.35, 1.0, distance(v_uv, vec2(0.5)));
   outColor = vec4(color * mix(1.0, vig, u_strength), 1.0);
 }`;

@@ -21,6 +21,21 @@ describe("demo 07 IK", () => {
     });
   });
 
+  it("enforces both reach bounds and segment geometry", () => {
+    const origin = { x: 0, y: 0 };
+    const near = twoBoneIk(origin, { x: 0.01, y: 0 }, 1.1, 1);
+    expect(near.reachable).toBe(false);
+    expect(Math.hypot(near.end.x, near.end.y)).toBeCloseTo(0.1);
+    const far = twoBoneIk(origin, { x: 4, y: 0 }, 1.1, 1);
+    expect(far.reachable).toBe(false);
+    expect(Math.hypot(far.end.x, far.end.y)).toBeCloseTo(2.1);
+    const mirrored = twoBoneIk(origin, { x: 1.2, y: 0.2 }, 1.1, 1, -1);
+    expect(Math.hypot(mirrored.b.x, mirrored.b.y)).toBeCloseTo(1.1);
+    expect(Math.hypot(mirrored.end.x - mirrored.b.x, mirrored.end.y - mirrored.b.y)).toBeCloseTo(1);
+    expect(() => twoBoneIk(origin, { x: 1, y: 0 }, NaN, 1)).toThrow();
+    expect(() => twoBoneIk(origin, { x: 1, y: 0 }, 0, 1)).toThrow();
+  });
+
   it("does not mark unchanged telemetry as dirty", () => {
     const plate: TelemetryPlate = {
       canvas: {} as HTMLCanvasElement,
