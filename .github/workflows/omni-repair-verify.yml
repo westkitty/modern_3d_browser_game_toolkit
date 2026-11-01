@@ -20,8 +20,9 @@ jobs:
       - run: npm run build
       - name: Install isolated browser smoke runtime
         run: |
-          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.56.1
-          npx playwright install --with-deps chromium
+          mkdir -p /tmp/omni-playwright
+          npm install --prefix /tmp/omni-playwright --no-audit --no-fund playwright@1.56.1
+          /tmp/omni-playwright/node_modules/.bin/playwright install --with-deps chromium
       - name: Browser smoke (ten demos and lifecycle)
         run: |
           npm run preview -- --host 127.0.0.1 > /tmp/omni-vite-preview.log 2>&1 &
@@ -30,7 +31,8 @@ jobs:
             sleep 1
           done
           curl -f http://127.0.0.1:4173/
-          node scripts/omni-browser-smoke.mjs
+          cp scripts/omni-browser-smoke.mjs /tmp/omni-playwright/omni-browser-smoke.mjs
+          node /tmp/omni-playwright/omni-browser-smoke.mjs
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@v4
