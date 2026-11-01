@@ -16,7 +16,9 @@ export function createLabyrinthAudio(): LabyrinthAudio {
       if (pending) return pending;
       const Ctor = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
       if (!Ctor) return Promise.resolve();
-      const next = new Ctor();
+      let next: AudioContext;
+      try { next = new Ctor(); }
+      catch { return Promise.resolve(); }
       context = next;
       pending = (async () => {
         try {

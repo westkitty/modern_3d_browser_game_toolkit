@@ -89,6 +89,7 @@ export const mount: DemoModule["mount"] = async (host, context) => {
     return { dispose() { host.replaceChildren(); } };
   }
   const gpuContext = contextGpu;
+  try {
   const format = navigator.gpu.getPreferredCanvasFormat();
   const resize = observeElementSize(viewport, (w, h) => {
     const dpr = cappedDevicePixelRatio(2);
@@ -173,4 +174,12 @@ export const mount: DemoModule["mount"] = async (host, context) => {
       host.replaceChildren();
     }
   };
+  } catch (error) {
+    terminated = true;
+    device.destroy();
+    const detail = error instanceof Error ? error.message : String(error);
+    context.setStatus({ state: "error", detail });
+    log.textContent = `WebGPU initialization failed: ${detail}`;
+    return { dispose() { host.replaceChildren(); } };
+  }
 };

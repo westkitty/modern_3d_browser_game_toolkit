@@ -140,9 +140,11 @@ export const mount: DemoModule["mount"] = (host, context) => {
   const player = { x: 0, y: 0 };
   const keys = new Set<string>();
   let lost = false;
+  let stopForLoss = (): void => undefined;
   const onLost = (event: Event): void => {
     event.preventDefault();
     lost = true;
+    stopForLoss();
     log.textContent = "WebGL context lost. Waiting to restore owned resources.";
     context.setStatus({ state: "error", detail: "context lost" });
   };
@@ -219,6 +221,7 @@ export const mount: DemoModule["mount"] = (host, context) => {
       }
     }
   });
+  stopForLoss = () => loop.stop();
   loop.start();
   log.textContent = "WebGL2 programs linked. WASD / gamepad to move. Particles are a separate pass.";
   context.setStatus({ state: "ready", detail: "Raw WebGL2 arena." });

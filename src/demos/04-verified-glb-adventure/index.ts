@@ -133,11 +133,13 @@ export const mount: DemoModule["mount"] = async (host, context) => {
   const loadOwnedAsset = async (asset: ManifestAsset, streamed = false): Promise<OwnedAsset> => {
     const assetScope = createResourceScope();
     if (streamed) assetScope.own("streamedZone");
+    let parsedScene: THREE.Group | null = null;
     try {
       const bytes = verifiedBytes.get(asset.uri);
       if (!bytes) throw new Error(`Validated asset ${asset.id} bytes are unavailable.`);
       // Parse the exact bytes whose hash was verified: no second unverified URL request.
       const gltf = await loader.parseAsync(bytes.slice().buffer as ArrayBuffer, "/assets/demos/04-verified-glb-adventure/");
+      parsedScene = gltf.scene;
       const names = gltf.animations.map((clip) => clip.name);
       for (const clip of asset.animations) {
         if (!names.includes(clip)) throw new Error(`Verified clip ${clip} missing at runtime.`);
@@ -149,8 +151,14 @@ export const mount: DemoModule["mount"] = async (host, context) => {
         mixers.push(mixer);
       }
       ownSceneResources(gltf.scene, assetScope);
+      parsedScene = null;
       return { group: gltf.scene, scope: assetScope, fallbackReason: null };
     } catch (error) {
+      if (parsedScene) {
+        const cleanup = createResourceScope();
+        ownSceneResources(parsedScene, cleanup);
+        cleanup.dispose();
+      }
       const geometry = new THREE.BoxGeometry(1.2, 1.2, 1.2);
       const material = new THREE.MeshBasicMaterial({ color: 0xff6b6b, wireframe: true });
       assetScope.own("geometry", () => geometry.dispose());
