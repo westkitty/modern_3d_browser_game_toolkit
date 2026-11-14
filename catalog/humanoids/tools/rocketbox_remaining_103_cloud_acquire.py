@@ -18,6 +18,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+import urllib.parse
 from zipfile import ZipFile, ZIP_DEFLATED, ZIP_STORED
 
 SOURCE_REPO = "microsoft/Microsoft-Rocketbox"
@@ -112,6 +113,7 @@ def check_zip(path: Path, records: list[dict], license_sha: str):
 def main():
     a=argparse.ArgumentParser()
     a.add_argument("--group", type=int, required=True)
+    a.add_argument("--only-asset", default=None, help="Retry only one exact asset ID belonging to this planned group")
     a.add_argument("--root", default="/tmp/rocketbox-remaining")
     args=a.parse_args()
     base=Path(args.root).resolve()/("group-"+str(args.group))
@@ -130,7 +132,10 @@ def main():
     avatar_map={x["asset_id"]:x for x in plan["avatars"]}
     if len(batch["models"])>10 or batch["index"]!=args.group or not batch["models"]:
         raise RuntimeError("Source group metadata invalid")
-    observed_source_bytes=sum(avatar_map[id]["total_source_bytes"] for id in batch["models"])
+    targets=[args.only_asset] if args.only_asset else batch["models"]
+    if args.only_asset and args.only_asset not in batch["models"]:
+        raise RuntimeError("Selected retry asset is not in this pinned source group")
+    observed_source_bytes=sum(avatar_map[id]["total_source_bytes"] for id in targets)
     if observed_source_bytes>MAX_GROUP:
         raise RuntimeError("Group exceeds fixed admission budget")
     license_data=raw_get(f"https://raw.githubusercontent.com/{SOURCE_REPO}/{COMMIT}/LICENSE.md",max_bytes=200_000)
@@ -141,7 +146,7 @@ def main():
     blocked=[]
     inner_zips=[]
     total_downloaded=0
-    for source_id in batch["models"]:
+    for source_id in targets:
         rec=avatar_map[source_id]
         folder=rec["source_directory"]
         label=folder.rsplit("/",1)[-1]
@@ -159,7 +164,7 @@ def main():
                     raise RuntimeError("Source file exceeds 30 MiB cap: "+source_path)
                 target=originals/source_path.removeprefix("Assets/")
                 target.parent.mkdir(parents=True,exist_ok=True)
-                source_url=f"https://raw.githubusercontent.com/{SOURCE_REPO}/{COMMIT}/{source_path}"
+                source_url=f"https://raw.githubusercontent.com/{SOURCE_REPO}/{COMMIT}/{urllib.parse.quote(source_path, safe='/')}"
                 n=raw_get(source_url,target,max_bytes=MAX_SOURCE_FILE)
                 if n!=f["bytes"] or not valid_signature(target):
                     raise RuntimeError("File byte count or format signature mismatch: "+source_path)
@@ -260,8 +265,8 @@ def main():
                           "state":"runner_verified_drive_pending"})
     receipts={"schema":"rocketbox_remaining_group_receipt_v1",
               "source_repo":SOURCE_REPO,"source_commit":COMMIT,"group":args.group,
-              "expected_source_ids":batch["models"],"successful_source_count":len(completed),
-              "expected_source_count":len(batch["models"]),"blocked_count":len(blocked),
+              "expected_source_ids":targets,"successful_source_count":len(completed),
+              "expected_source_count":len(targets),"blocked_count":len(blocked),
               "source_verified_bytes":sum(x["original_bytes"] for x in completed),
               "source_license":"MIT Copyright (c) 2020 Microsoft",
               "license_sha256":license_sha,"completed":completed,"blocked":blocked,
@@ -276,7 +281,7 @@ def main():
                       "packs":len(pack_info),"expected":len(batch["models"]),
                       "blocked":blocked,"runner_source_bytes":receipts["source_verified_bytes"],
                       "transport_packs":[{"name":p["name"],"bytes":p["bytes"]} for p in pack_info]}),flush=True)
-    if blocked or len(completed)!=len(batch["models"]):
+    if blocked or len(completed)!=len(targets):
         return 2
     return 0
 
