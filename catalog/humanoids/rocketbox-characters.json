@@ -14,12 +14,12 @@
     "source_archive_packages_uploaded": 13,
     "drive_file_metadata_readback": "Batch01 source ZIPs 5_of_5; batch02 source ZIPs 8_of_8; batch02 GLBs 4_of_4 (metadata readbacks, no Drive SHA256 roundtrip)",
     "source_bytes_unique": 287445309,
-    "source_binary_status": "PARTIAL: 12 of 115 distinct Rocketbox avatars have source archives; 6 GLBs have actual Three.js smoke passes; production visual/mobile gates pending",
-    "glb_conversions_static_pass": 6,
-    "glb_loader_tests_performed": 6,
-    "glb_browser_smoke_pass": 6,
+    "source_binary_status": "PARTIAL: 12 of 115 character originals archived; 10 browser-smoke-verified GLBs; 2 original sources remain without GLB, one FBX-only; 103 original sources unacquired",
+    "glb_conversions_static_pass": 10,
+    "glb_loader_tests_performed": 10,
+    "glb_browser_smoke_pass": 10,
     "glb_production_release_verified": 0,
-    "browser_proof": "Batch01 GitHub run 43549437068 (2 models) plus batch02 run 43550104493 (4 models): Three.js r185 WebGL2 GLTFLoader, skinning, texture maps, two animation clips/mixer, draw and reload smoke PASSED_WITH_LIMITATIONS; no visual/mobile/long-session release proof",
+    "browser_proof": "Runs 43549437068 (batch01), 43550104493 (batch02), 43551948111 (batch02 completion): 10 distinct GLBs pass Three.js r185 WebGL2 loader, skin, texture, mixer, render, dispose/reload; still unapproved for production",
     "rocketbox_avatar_originals_remaining": 103,
     "batch02_originals_archived": 8,
     "batch02_processed_glbs_archived": 4,
@@ -33,7 +33,13 @@
     "source_bytes_unique_legacy_scope": "287445309 is a batch01-only historical unique-source count; batch02 sum is in batch02_source_bytes_including_per_archive_license and is not additive as unique because licenses are repeated",
     "batch02_original_preview_pngs_validated": 8,
     "batch02_source_preview_visual_tags_reviewed": 8,
-    "body_proportions_note": "Four converted browser-tested models have model bounds; unconverted model proportions remain unmeasured. Previews cannot prove GLB visual fidelity."
+    "body_proportions_note": "Four converted browser-tested models have model bounds; unconverted model proportions remain unmeasured. Previews cannot prove GLB visual fidelity.",
+    "batch02_completion_new_glbs": 4,
+    "batch02_completion_glb_bytes": 130021668,
+    "batch02_completion_browser_qa_run": 43551948111,
+    "batch02_completion_screenshot_pngs": 20,
+    "batch02_completion_screenshot_drive_folder_record": "Visual_QA_2026-11-13_Batch02_Completion (private access; Drive IDs excluded)",
+    "batch02_completion_visual_verdict": "PASS_WITH_LIMITATIONS: silhouette/clothing present, all ten WebGL2 renders and screen checks passed; face/material brightness parity requires review; no human approval"
   },
   "records": [
     {
@@ -285,8 +291,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed",
+      "conversion_glb": "threejs_r185_browser_loader_render_mixer_reload_PASS_WITH_LIMITATIONS",
+      "rig_animation_test": "two_embedded_clips_advanced_with_ThreeJS_AnimationMixer; actual_WebGL2_views_rendered_and_skinned_reload_passed; motion_quality_approval_pending",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Female_Adult_11_Originals_Batch02_2026-11-13.zip",
       "archive_sha256": "6d019ca6bd0172e2e7fd61745bd3fa5492b4d3e5550740b3ca13ad2a9baea681",
@@ -297,7 +303,7 @@
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
       "archive_note": "Original FBX/texture files rehashed before upload; Drive provider write, byte size and parent verified; Drive byte-level roundtrip hash not performed.",
-      "runtime_integration": "not_performed",
+      "runtime_integration": "isolated_threejs_r185_browser_smoke_pass_not_yet_deployed_to_game",
       "visual_preview_review": {
         "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
         "preview_filename": "Female_Adult_11.png",
@@ -313,7 +319,42 @@
           "long-sleeves"
         ],
         "face_and_body_proportion_quality": "not formally reviewed"
-      }
+      },
+      "processed_file_basename": "Female_Adult_11.glb",
+      "processed_glb_sha256": "ed15c9cccbaea75c1a331d02dc3d0c3ae7302cce620cc60055bde1e253a7cb04",
+      "processed_glb_bytes": 35596408,
+      "processed_glb_format": "GLB/glTF 2.0",
+      "processed_glb_joint_references": 80,
+      "processed_glb_images_embedded": 7,
+      "processed_glb_provider_readback": "Google Drive confirmed file name, size, model/gltf-binary MIME and correct processed parent; Drive SHA256 re-download not performed",
+      "glb_source_transform": "Blender 4.0.2 disposable GitHub Actions runner; source working copies derived from SHA256-matched original ZIPs in private Drive and earlier GitHub artifacts",
+      "browser_smoke_report_filename": "BATCH02_COMPLETION_BROWSER_REPORT.json",
+      "browser_smoke_qa_run": 43551948111,
+      "browser_smoke_runtime": {
+        "threejs_revision": "185",
+        "webgl": "2.0",
+        "skeleton_joints": 80,
+        "animations": 2,
+        "bounds_xyz_m": [
+          1.2173,
+          1.7364,
+          0.3743
+        ],
+        "rendered_frame": true,
+        "disposed_and_reloaded": true,
+        "visual_screenshots": 2
+      },
+      "visual_qa_status": "two actual browser renders archived; observed source-preview clothing identity largely consistent; dark face/material exposure versus publisher preview requires calibration; no production visual approval",
+      "visual_qa_screenshot_count": 2,
+      "visual_qa_screenshot_drive_index_private": "BATCH02_COMPLETION_SCREENSHOT_DRIVE_INDEX.json",
+      "visual_qa_assessment_filename": "VISUAL_QA_ASSESSMENT.md",
+      "restrictions": [
+        "human_visual_release_approval_pending",
+        "material_and_lighting_parity_needs_review",
+        "no_mobile_test",
+        "no_long_session_GPU_memory_or_thermal_test",
+        "not_integrated_into_specific_game"
+      ]
     },
     {
       "asset_id": "rocketbox/adults/female_adult_12",
@@ -1201,8 +1242,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed",
+      "conversion_glb": "threejs_r185_browser_loader_render_mixer_reload_PASS_WITH_LIMITATIONS",
+      "rig_animation_test": "two_embedded_clips_advanced_with_ThreeJS_AnimationMixer; actual_WebGL2_views_rendered_and_skinned_reload_passed; motion_quality_approval_pending",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Business_Male_04_Originals_Batch02_2026-11-13.zip",
       "archive_sha256": "b6e3c3b44aa5099af978b53c00a55deac08c846f41a7091e541b6751fd849742",
@@ -1213,7 +1254,7 @@
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
       "archive_note": "Original FBX/texture files rehashed before upload; Drive provider write, byte size and parent verified; Drive byte-level roundtrip hash not performed.",
-      "runtime_integration": "not_performed",
+      "runtime_integration": "isolated_threejs_r185_browser_smoke_pass_not_yet_deployed_to_game",
       "visual_preview_review": {
         "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
         "preview_filename": "Business_Male_04.png",
@@ -1229,7 +1270,42 @@
           "smart-casual"
         ],
         "face_and_body_proportion_quality": "not formally reviewed"
-      }
+      },
+      "processed_file_basename": "Business_Male_04.glb",
+      "processed_glb_sha256": "47c348230c1ea8818940b7bf2d2ac4bf20f32c4da91c27339988b8e0baf2b335",
+      "processed_glb_bytes": 25962480,
+      "processed_glb_format": "GLB/glTF 2.0",
+      "processed_glb_joint_references": 80,
+      "processed_glb_images_embedded": 6,
+      "processed_glb_provider_readback": "Google Drive confirmed file name, size, model/gltf-binary MIME and correct processed parent; Drive SHA256 re-download not performed",
+      "glb_source_transform": "Blender 4.0.2 disposable GitHub Actions runner; source working copies derived from SHA256-matched original ZIPs in private Drive and earlier GitHub artifacts",
+      "browser_smoke_report_filename": "BATCH02_COMPLETION_BROWSER_REPORT.json",
+      "browser_smoke_qa_run": 43551948111,
+      "browser_smoke_runtime": {
+        "threejs_revision": "185",
+        "webgl": "2.0",
+        "skeleton_joints": 80,
+        "animations": 2,
+        "bounds_xyz_m": [
+          1.3482,
+          1.8009,
+          0.3628
+        ],
+        "rendered_frame": true,
+        "disposed_and_reloaded": true,
+        "visual_screenshots": 2
+      },
+      "visual_qa_status": "two actual browser renders archived; observed source-preview clothing identity largely consistent; dark face/material exposure versus publisher preview requires calibration; no production visual approval",
+      "visual_qa_screenshot_count": 2,
+      "visual_qa_screenshot_drive_index_private": "BATCH02_COMPLETION_SCREENSHOT_DRIVE_INDEX.json",
+      "visual_qa_assessment_filename": "VISUAL_QA_ASSESSMENT.md",
+      "restrictions": [
+        "human_visual_release_approval_pending",
+        "material_and_lighting_parity_needs_review",
+        "no_mobile_test",
+        "no_long_session_GPU_memory_or_thermal_test",
+        "not_integrated_into_specific_game"
+      ]
     },
     {
       "asset_id": "rocketbox/professions/business_male_05",
@@ -1939,8 +2015,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed",
+      "conversion_glb": "threejs_r185_browser_loader_render_mixer_reload_PASS_WITH_LIMITATIONS",
+      "rig_animation_test": "two_embedded_clips_advanced_with_ThreeJS_AnimationMixer; actual_WebGL2_views_rendered_and_skinned_reload_passed; motion_quality_approval_pending",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Medical_Male_02_Originals_Batch02_2026-11-13.zip",
       "archive_sha256": "7ddcda30800cde8a451faaa49e716baecda49e07a735b7a4002c2973964a2267",
@@ -1951,7 +2027,7 @@
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
       "archive_note": "Original FBX/texture files rehashed before upload; Drive provider write, byte size and parent verified; Drive byte-level roundtrip hash not performed.",
-      "runtime_integration": "not_performed",
+      "runtime_integration": "isolated_threejs_r185_browser_smoke_pass_not_yet_deployed_to_game",
       "visual_preview_review": {
         "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
         "preview_filename": "Medical_Male_02.png",
@@ -1968,7 +2044,42 @@
           "not-doctor-coat"
         ],
         "face_and_body_proportion_quality": "not formally reviewed"
-      }
+      },
+      "processed_file_basename": "Medical_Male_02.glb",
+      "processed_glb_sha256": "891e25d6513902b35a7860de971ba16984ac1feeb946dbb2ef2c2862260d123e",
+      "processed_glb_bytes": 32922856,
+      "processed_glb_format": "GLB/glTF 2.0",
+      "processed_glb_joint_references": 80,
+      "processed_glb_images_embedded": 7,
+      "processed_glb_provider_readback": "Google Drive confirmed file name, size, model/gltf-binary MIME and correct processed parent; Drive SHA256 re-download not performed",
+      "glb_source_transform": "Blender 4.0.2 disposable GitHub Actions runner; source working copies derived from SHA256-matched original ZIPs in private Drive and earlier GitHub artifacts",
+      "browser_smoke_report_filename": "BATCH02_COMPLETION_BROWSER_REPORT.json",
+      "browser_smoke_qa_run": 43551948111,
+      "browser_smoke_runtime": {
+        "threejs_revision": "185",
+        "webgl": "2.0",
+        "skeleton_joints": 80,
+        "animations": 2,
+        "bounds_xyz_m": [
+          1.3482,
+          1.8306,
+          0.3521
+        ],
+        "rendered_frame": true,
+        "disposed_and_reloaded": true,
+        "visual_screenshots": 2
+      },
+      "visual_qa_status": "two actual browser renders archived; observed source-preview clothing identity largely consistent; dark face/material exposure versus publisher preview requires calibration; no production visual approval",
+      "visual_qa_screenshot_count": 2,
+      "visual_qa_screenshot_drive_index_private": "BATCH02_COMPLETION_SCREENSHOT_DRIVE_INDEX.json",
+      "visual_qa_assessment_filename": "VISUAL_QA_ASSESSMENT.md",
+      "restrictions": [
+        "human_visual_release_approval_pending",
+        "material_and_lighting_parity_needs_review",
+        "no_mobile_test",
+        "no_long_session_GPU_memory_or_thermal_test",
+        "not_integrated_into_specific_game"
+      ]
     },
     {
       "asset_id": "rocketbox/professions/medical_male_03",
@@ -2461,8 +2572,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed",
+      "conversion_glb": "threejs_r185_browser_loader_render_mixer_reload_PASS_WITH_LIMITATIONS",
+      "rig_animation_test": "two_embedded_clips_advanced_with_ThreeJS_AnimationMixer; actual_WebGL2_views_rendered_and_skinned_reload_passed; motion_quality_approval_pending",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Security_Male_01_Originals_Batch02_2026-11-13.zip",
       "archive_sha256": "ce6fc21bfad6f2500af7baa9146431a7f0a19602a41987e89e76027e8d4a7a12",
@@ -2473,7 +2584,7 @@
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
       "archive_note": "Original FBX/texture files rehashed before upload; Drive provider write, byte size and parent verified; Drive byte-level roundtrip hash not performed.",
-      "runtime_integration": "not_performed",
+      "runtime_integration": "isolated_threejs_r185_browser_smoke_pass_not_yet_deployed_to_game",
       "visual_preview_review": {
         "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
         "preview_filename": "Security_Male_01.png",
@@ -2490,7 +2601,42 @@
           "uniform"
         ],
         "face_and_body_proportion_quality": "not formally reviewed"
-      }
+      },
+      "processed_file_basename": "Security_Male_01.glb",
+      "processed_glb_sha256": "0342e86cfcea57f2b0e2876044d302549a15f207499d1773811e66683b7e6919",
+      "processed_glb_bytes": 35539924,
+      "processed_glb_format": "GLB/glTF 2.0",
+      "processed_glb_joint_references": 80,
+      "processed_glb_images_embedded": 9,
+      "processed_glb_provider_readback": "Google Drive confirmed file name, size, model/gltf-binary MIME and correct processed parent; Drive SHA256 re-download not performed",
+      "glb_source_transform": "Blender 4.0.2 disposable GitHub Actions runner; source working copies derived from SHA256-matched original ZIPs in private Drive and earlier GitHub artifacts",
+      "browser_smoke_report_filename": "BATCH02_COMPLETION_BROWSER_REPORT.json",
+      "browser_smoke_qa_run": 43551948111,
+      "browser_smoke_runtime": {
+        "threejs_revision": "185",
+        "webgl": "2.0",
+        "skeleton_joints": 80,
+        "animations": 2,
+        "bounds_xyz_m": [
+          1.3482,
+          1.8323,
+          0.3503
+        ],
+        "rendered_frame": true,
+        "disposed_and_reloaded": true,
+        "visual_screenshots": 2
+      },
+      "visual_qa_status": "two actual browser renders archived; observed source-preview clothing identity largely consistent; dark face/material exposure versus publisher preview requires calibration; no production visual approval",
+      "visual_qa_screenshot_count": 2,
+      "visual_qa_screenshot_drive_index_private": "BATCH02_COMPLETION_SCREENSHOT_DRIVE_INDEX.json",
+      "visual_qa_assessment_filename": "VISUAL_QA_ASSESSMENT.md",
+      "restrictions": [
+        "human_visual_release_approval_pending",
+        "material_and_lighting_parity_needs_review",
+        "no_mobile_test",
+        "no_long_session_GPU_memory_or_thermal_test",
+        "not_integrated_into_specific_game"
+      ]
     },
     {
       "asset_id": "rocketbox/professions/sports_female_01",
