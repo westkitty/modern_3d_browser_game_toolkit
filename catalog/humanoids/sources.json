@@ -15,9 +15,9 @@
         "TGA"
       ],
       "advertised_content": "115 rigged avatars and animation directories",
-      "source_status": "original_binaries_verified_subset",
-      "archive_status": "partial_acquired_4_avatars_2_animation_samples",
-      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released.",
+      "source_status": "12_original_avatar_archives_provider_write_and_metadata_readback_verified",
+      "archive_status": "partial_acquired_12_of_115_avatars_6_browser_smoke_glbs",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts.",
       "pinned_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "archived_2026_11_13": {
         "individual_avatar_archives": 4,
@@ -32,7 +32,31 @@
         "glb_browser_smoke_pass": 2,
         "glb_production_release_pass": 0,
         "browser_smoke_run": 43549437068,
-        "browser_qa": "Three.js 185 GLTFLoader, 80 bones, textures, two clips, mixer, render, dispose/reload passed; visual/mobile/long-session review pending"
+        "browser_qa": "Three.js 185 GLTFLoader, 80 bones, textures, two clips, mixer, render, dispose/reload passed; visual/mobile/long-session review pending",
+        "record_scope": "historical_batch01_only"
+      },
+      "archived_batch02": {
+        "source_license": "MIT Copyright (c) 2020 Microsoft",
+        "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+        "original_avatar_archives": 8,
+        "source_originals_uncompressed_bytes": 750604203,
+        "source_archive_zip_bytes": 276019102,
+        "independent_source_hashes_verified": true,
+        "original_drive_provider_writes_verified": 8,
+        "original_drive_metadata_readbacks": 8,
+        "glb_conversions_structural_pass": 4,
+        "glb_threejs_r185_browser_smoke_pass": 4,
+        "glb_drive_provider_writes_verified": 4,
+        "glb_drive_metadata_readbacks": 4,
+        "browser_qa_run": 43550104493,
+        "regression_tests": "typecheck, npm tests and production build passed in same runner",
+        "private_source_receipts": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
+        "private_processed_receipts": "BATCH02_DRIVE_PROCESSED_RECEIPTS.json",
+        "private_search_index": "BATCH02_LIBRARY_INDEX.csv",
+        "private_browser_report": "BATCH02_BROWSER_SMOKE_RESULT.json",
+        "archive_roundtrip_sha256": "not_performed",
+        "visual_mobile_production_release": "unverified",
+        "remaining_avatar_sources": 103
       }
     },
     {
