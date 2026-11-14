@@ -1,0 +1,70 @@
+{
+  "schema": "rocketbox_medical_female01_completion_v1",
+  "asset_id": "rocketbox/professions/medical_female_01",
+  "model_name": "Medical_Female_01",
+  "pinned_source_repository": "microsoft/Microsoft-Rocketbox",
+  "pinned_source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+  "license": "MIT Copyright (c) 2020 Microsoft",
+  "historical_archive_name": "Rocketbox_Medical_Female_01_Originals_Batch01_2026-11-13.zip",
+  "historical_archive_sha256": "10628087353b653c4c22ac9070dda31e3ba7e265ddc4956a6c0b9342e2330f20",
+  "historical_archive_bytes": 1816530,
+  "historical_originals_run_id": 43548963931,
+  "historical_originals_artifact": "rocketbox-originals-20261113-batch01",
+  "historical_archive_content_scope": "FBX_only; no textures",
+  "original_files": [
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Export/Medical_Female_01_facial.fbx",
+      "bytes": 2135088,
+      "git_blob_sha": "f0944b421311ec0205c169928ea7a7ea2771ffcd"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Export/Medical_Female_01.fbx",
+      "bytes": 583200,
+      "git_blob_sha": "dad7fc77e6c1f33404f0ee0d1dbfb885de88cc35"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Medical_Female_01.png",
+      "bytes": 295429,
+      "git_blob_sha": "1c4865a29d6c5d10df0396e0c1330e3d04e8934e"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Textures/f152_body_color.tga",
+      "bytes": 12582956,
+      "git_blob_sha": "6eda5f78c726625bad60516b742e524637ee3459"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Textures/f152_body_normal.tga",
+      "bytes": 12582956,
+      "git_blob_sha": "0b2fbae207bf23bea64132abdeef321f18b8ac13"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Textures/f152_body_specular.tga",
+      "bytes": 12582956,
+      "git_blob_sha": "cbda47bc495b55044ce18f3faf2ad5d1afeecfd1"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Textures/f152_head_color.tga",
+      "bytes": 12582956,
+      "git_blob_sha": "13a42d44b341c9f122230bfd16868d7e3dc619d9"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Textures/f152_head_normal.tga",
+      "bytes": 12582956,
+      "git_blob_sha": "781f6c1bb8bd3e5c4422a323ea0acb2c8afbef44"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Textures/f152_head_specular.tga",
+      "bytes": 12582956,
+      "git_blob_sha": "7fba3340dab1b0cb0962e480cc18a091ae61f5a2"
+    },
+    {
+      "path": "Assets/Avatars/Professions/Medical_Female_01/Textures/f152_opacity_color.tga",
+      "bytes": 16777260,
+      "git_blob_sha": "c2ad85f17b180e2a1da5a08c0b49130222b7af7a"
+    }
+  ],
+  "source_bytes": 95288713,
+  "new_archive_policy": "Additive new Drive source ZIP; never replace or delete old historical archive",
+  "convert_policy": "Only after exact pinned official Git blob size and SHA checks and working-copy assembly",
+  "acceptance": "Strict GLB2 geometry, rig, embedded images, clips, Three.js r185 WebGL2 two-view render, disposal/reload, two PNGs, Drive metadata readbacks; no production visual/mobile/lifecycle approval"
+}
