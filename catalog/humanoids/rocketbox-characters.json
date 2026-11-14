@@ -14,10 +14,10 @@
     "source_archive_packages_uploaded": 65,
     "drive_file_metadata_readback": "Batch01 source ZIPs 5_of_5; batch02 source ZIPs 8_of_8; batch02 GLBs 4_of_4 (metadata readbacks, no Drive SHA256 roundtrip)",
     "source_bytes_unique": 287445309,
-    "source_binary_status": "115 Microsoft Rocketbox original avatar archives preserved in private Drive; 113 separate GLBs browser tested on Chromium Three.js r185 and archived with evidence; remaining Delivery_Male_01 source-only and Medical_Female_01 FBX-only (missing textures). No production approval.",
-    "glb_conversions_static_pass": 113,
-    "glb_loader_tests_performed": 113,
-    "glb_browser_smoke_pass": 113,
+    "source_binary_status": "All 115 Rocketbox unique original directory sets preserved in Drive; 114 models have SHA-256 checked GLBs with actual Chromium Three.js r185 browser smoke and Drive metadata readback; Medical_Female_01 remains archived historical FBX-only with missing textures. Zero production visual, mobile or sustained GPU approval.",
+    "glb_conversions_static_pass": 114,
+    "glb_loader_tests_performed": 114,
+    "glb_browser_smoke_pass": 114,
     "glb_production_release_verified": 0,
     "browser_proof": "Runs 43549437068 (batch01), 43550104493 (batch02), 43551948111 (batch02 completion): 10 distinct GLBs pass Three.js r185 WebGL2 loader, skin, texture, mixer, render, dispose/reload; still unapproved for production",
     "rocketbox_avatar_originals_remaining": 0,
@@ -152,7 +152,7 @@
     "batch03_source_equivalence": "Ten original ZIP SHA-256 matched private Drive preupload source receipts and authoritative Git blobs; no post-upload Drive SHA readback",
     "batch03_regression_tests": "npm typecheck, test, build passed on cloud runner",
     "batch03_final_state": "Ten GLBs independently structural-verified, browser-loaded/mixed/rendered/disposed/reloaded, GLB and PNG Drive metadata readback passed, no production approval",
-    "remaining_source_only_for_conversion": 2,
+    "remaining_source_only_for_conversion": 1,
     "batch04_group2": {
       "cloud_run": 43558118152,
       "converted": 7,
@@ -276,7 +276,22 @@
       "no motion retarget signoff",
       "no game integration"
     ],
-    "drive_proof_limit": "Private Drive GLB exact filename, byte size, parent and MIME checked; no postupload Drive GLB full-byte SHA256 roundtrip. Original archives SHA256 verified before upload, not Drive roundtrip."
+    "drive_proof_limit": "Private Drive GLB exact filename, byte size, parent and MIME checked; no postupload Drive GLB full-byte SHA256 roundtrip. Original archives SHA256 verified before upload, not Drive roundtrip.",
+    "batch04_historical_delivery": {
+      "cloud_run": 43611309285,
+      "glb_converted": 1,
+      "source_MIT_and_10_file_hashes_verified": true,
+      "threejs_r185_browser_smoke_pass": 1,
+      "rendered_PNGs": 2,
+      "processed_glb_drive_metadata_pass": 1,
+      "qa_archive_metadata_pass": true,
+      "visual_release_approval": 0
+    },
+    "remaining_originals_without_browser_verified_GLBS": [
+      "Medical_Female_01"
+    ],
+    "remaining_sources_complete_without_GLBS": 0,
+    "historical_Medical_Female_01": "BLOCKED: original archived as FBX-only, no source TGA textures. Separate source-completion repair needed before attempting browser-credible GLB."
   },
   "records": [
     {
@@ -4467,8 +4482,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_validated",
-      "rig_animation_test": "not_performed",
+      "conversion_glb": "threejs_r185_browser_loader_render_mixer_reload_PASS_WITH_LIMITATIONS",
+      "rig_animation_test": "Two embedded clips; tested Three.js r185 Chromium WebGL2 actual GLTFLoader/texture/skinning/animation-mixer/render/dispose/reload with two independently hashed PNG evidence frames",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Delivery_Male_01_Originals_Batch01_2026-11-13.zip",
       "archive_sha256": "454cbf72c52bd3a076d4f7650f66b364ed5ca5bf2eb319979d4c4f7e80bad924",
@@ -4476,7 +4491,28 @@
       "archive_content_scope": "fbx-textures-preview",
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
-      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed."
+      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed.",
+      "processed_file_basename": "Delivery_Male_01.glb",
+      "processed_glb_sha256": "8113e5beb67d9114f2a6e02a2e8d2ffa3e304c47b5510c45443daaaf720c3cdb",
+      "processed_glb_bytes": 27107964,
+      "processed_glb_format": "GLB/glTF 2.0",
+      "processed_glb_joint_references": 80,
+      "processed_glb_images_embedded": 6,
+      "processed_glb_provider_readback": "Google Drive child of original processed-glb folder verified name, exact byte size, model/gltf-binary MIME and correct parent; full Drive SHA-256 postupload not performed",
+      "glb_source_transform": "Historical original FBX/6 TGA textures source byte hashes and pinned Git blobs matched private archived source receipt; converted through disposable GitHub-hosted Blender Ubuntu",
+      "source_licensing": "Microsoft Rocketbox MIT License, Copyright (c) 2020 Microsoft; immutable source archive retained",
+      "browser_smoke_qa_run": 43611309285,
+      "visual_qa_status": "Two separate actual browser 768x768 PNG renders archived in private delivery QA folder, no human visual source parity approval",
+      "visual_qa_screenshot_count": 2,
+      "visual_qa_screenshot_drive_folder_private": "Visual_QA_2026-11-14_Historical_Delivery_Male_01",
+      "runtime_integration": "isolated Chromium Three.js test only; no demo or live game integration",
+      "restrictions": [
+        "human_visual_release_pending",
+        "facial_shading_and_texture_parity_unverified",
+        "physical_mobile_NOT_TESTED",
+        "sustained_gpu_resource_lifecycle_NOT_TESTED",
+        "motion_retarget_quality_NOT_APPROVED"
+      ]
     },
     {
       "asset_id": "rocketbox/professions/fire_female_01",
