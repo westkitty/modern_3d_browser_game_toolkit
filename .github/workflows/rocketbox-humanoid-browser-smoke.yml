@@ -40,33 +40,16 @@ jobs:
         run: |
           set -eu
           mkdir -p catalog/humanoids/qa-evidence
-          command -v google-chrome || command -v chromium
           python3 -m http.server 8911 --bind 127.0.0.1 > catalog/humanoids/qa-evidence/server.log 2>&1 &
           server=$!
-          trap 'kill "$server" 2>/dev/null || true' EXIT
-          sleep 2
           if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
-          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --virtual-time-budget=40000 --dump-dom \
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --remote-allow-origins='*' --remote-debugging-port=9222 --user-data-dir=/tmp/rocketbox-threejs-cdp \
             "http://127.0.0.1:8911/catalog/humanoids/tools/browser_smoke.html" \
-            >catalog/humanoids/qa-evidence/browser_dom.html \
-            2>catalog/humanoids/qa-evidence/browser_stderr.log || true
-          python3 - <<'PY'
-          import html,json,re
-          from pathlib import Path
-          d=Path("catalog/humanoids/qa-evidence")
-          raw=(d/"browser_dom.html").read_text(errors="replace")
-          match=re.search(r'<pre id="qa-result">(.*?)</pre>',raw,re.S)
-          if not match:
-              raise SystemExit("No browser smoke result in DOM")
-          payload=html.unescape(match.group(1)).strip()
-          if not payload.startswith("{"):
-              raise SystemExit("Browser smoke never finished: " + payload[:500])
-          report=json.loads(payload)
-          (d/"browser_smoke_result.json").write_text(json.dumps(report,indent=2)+"\n")
-          print(json.dumps(report,indent=2))
-          assert report.get("finished") and report.get("overall")=="PASS_WITH_LIMITATIONS", "Browser smoke failed"
-          assert len(report.get("modelResults",[]))==2
-          PY
+            >catalog/humanoids/qa-evidence/browser_stdout.log \
+            2>catalog/humanoids/qa-evidence/browser_stderr.log &
+          chrome=$!
+          trap 'kill "$server" "$chrome" 2>/dev/null || true' EXIT
+          node catalog/humanoids/tools/chrome_cdp_wait.mjs
 
       - name: Preserve browser evidence whether check passed or failed
         if: always()
