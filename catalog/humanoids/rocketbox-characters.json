@@ -8,19 +8,19 @@
     "rocketbox_unique_avatar_directories": 115,
     "rocketbox_duplicate_aliases": 2,
     "source_families": 7,
-    "binaries_archived": 114,
+    "binaries_archived": 115,
     "glb_conversions_validated": 0,
     "animation_samples_archived": 2,
-    "source_archive_packages_uploaded": 64,
+    "source_archive_packages_uploaded": 65,
     "drive_file_metadata_readback": "Batch01 source ZIPs 5_of_5; batch02 source ZIPs 8_of_8; batch02 GLBs 4_of_4 (metadata readbacks, no Drive SHA256 roundtrip)",
     "source_bytes_unique": 287445309,
-    "source_binary_status": "PARTIAL: 114/115 original avatar sources confirmed archived; only Male_Adult_02 retry source awaiting Drive transfer; 10 GLB browser smoke results unchanged",
+    "source_binary_status": "FULL ORIGINAL SOURCE ACQUISITION: 115/115 Microsoft Rocketbox unique avatar source sets archived in private Drive. Only 10 converted GLBs have passed isolated Three.js browser smoke; no additional 103 models have been converted or production approved.",
     "glb_conversions_static_pass": 10,
     "glb_loader_tests_performed": 10,
     "glb_browser_smoke_pass": 10,
     "glb_production_release_verified": 0,
     "browser_proof": "Runs 43549437068 (batch01), 43550104493 (batch02), 43551948111 (batch02 completion): 10 distinct GLBs pass Three.js r185 WebGL2 loader, skin, texture, mixer, render, dispose/reload; still unapproved for production",
-    "rocketbox_avatar_originals_remaining": 1,
+    "rocketbox_avatar_originals_remaining": 0,
     "batch02_originals_archived": 8,
     "batch02_processed_glbs_archived": 4,
     "batch02_source_bytes_including_per_archive_license": 750604203,
@@ -46,8 +46,8 @@
     "remaining_103_batch0_source_bytes": 898988373,
     "remaining_103_batch0_drive_receipt": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
     "remaining_103_batch0_cloud_run": 43553390313,
-    "remaining_103_archived": 102,
-    "remaining_103_pending": 1,
+    "remaining_103_archived": 103,
+    "remaining_103_pending": 0,
     "remaining_103_group1": {
       "run_id": 43553780934,
       "archives": 10,
@@ -136,6 +136,13 @@
       "source_bytes": 239581339,
       "private_receipt": "ROCKETBOX_REMAINING_GROUP10_DRIVE_RECEIPT.json",
       "source_status": "complete"
+    },
+    "remaining_103_repaired_source": {
+      "asset_id": "rocketbox/adults/male_adult_02",
+      "cloud_run": 43554819035,
+      "private_receipt": "ROCKETBOX_REMAINING_GROUP04_MALE02_RETRY_DRIVE_RECEIPT.json",
+      "source_file_count": 11,
+      "verified": "GitBlob+SHA256 of original source files plus Drive write/readback; post-upload full SHA not performed"
     }
   },
   "records": [
@@ -1060,16 +1067,40 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
       "rig_animation_test": "not_performed",
       "source_acquisition_failure": {
         "run_id": 43553780934,
         "reason": "Original filename with spaces was not URL encoded; retry triggered with URL encoding fix",
-        "status": "retry_pending"
-      }
+        "status": "resolved_by_single_asset_retry",
+        "resolution_run_id": 43554819035,
+        "original_error_retained": true
+      },
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Male_Adult_02_Originals_Remaining_Group04.zip",
+      "archive_sha256": "f6dabf2f9935a02a07b9ed46523433c716f83c0c8962429cb022ec4bb0e6849b",
+      "archive_zip_bytes": 38143907,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Male_Adult_02_Originals_Remaining_Group04.zip",
+          "sha256": "f6dabf2f9935a02a07b9ed46523433c716f83c0c8962429cb022ec4bb0e6849b",
+          "bytes": 38143907,
+          "file_count": 11
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group04_MaleAdult02_Retry_Pack01_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 107857595,
+      "source_file_count": 11,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP04_MALE02_RETRY_DRIVE_RECEIPT.json",
+      "archive_note": "Single-asset source retry after safe URL-encoding for whitespace filename. Nested GH artifact wrapper -> pack ZIP -> untouched avatar source ZIP. Source Git blob and SHA256 verified; Drive metadata verified; post-upload full-file SHA not performed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/adults/male_adult_03",
