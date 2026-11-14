@@ -34,7 +34,7 @@ async function main(){
     renderer=new THREE.WebGLRenderer({canvas,preserveDrawingBuffer:true,antialias:false,alpha:false});
     renderer.setPixelRatio(1);renderer.setSize(768,768,false);
     renderer.outputColorSpace=THREE.SRGBColorSpace;
-    insist(renderer.capabilities.isWebGL2,'WebGL2 unavailable');
+    insist(renderer.getContext().getParameter(renderer.getContext().VERSION).includes('WebGL 2'),'WebGL2 unavailable');
     report.webGLVersion=renderer.getContext().getParameter(renderer.getContext().VERSION);
     report.webglRenderer=renderer.getContext().getParameter(renderer.getContext().RENDERER);
     const url='/catalog/humanoids/qa-assets/processed-glb/'+name+'.glb';
