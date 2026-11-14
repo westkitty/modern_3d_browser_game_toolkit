@@ -15,9 +15,9 @@
         "TGA"
       ],
       "advertised_content": "115 rigged avatars and animation directories",
-      "source_status": "12_original_avatar_archives_provider_write_and_metadata_readback_verified",
-      "archive_status": "partial_acquired_12_of_115_avatars_6_browser_smoke_glbs",
-      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts.",
+      "source_status": "12_original_avatar_archives_provider_write_and_metadata_readback_verified; ten GLBs browser smoke tested",
+      "archive_status": "partial_acquired_12_of_115_avatars_10_browser_smoke_glbs",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts. Completion run 43551948111 converted four earlier source-only batch02 models and smoke tested all ten GLBs, archived twenty separate Chrome render screenshots and private receipts. Darker browser-render facial/material exposure than source previews flagged for visual QA; no production approval. Source archive count unchanged.",
       "pinned_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "archived_2026_11_13": {
         "individual_avatar_archives": 4,
@@ -57,6 +57,33 @@
         "archive_roundtrip_sha256": "not_performed",
         "visual_mobile_production_release": "unverified",
         "remaining_avatar_sources": 103
+      },
+      "batch02_completion": {
+        "source_archive_count_unchanged": 12,
+        "new_GLBS_from_already_archived_sources": 4,
+        "new_glb_names": [
+          "Female_Adult_11.glb",
+          "Business_Male_04.glb",
+          "Medical_Male_02.glb",
+          "Security_Male_01.glb"
+        ],
+        "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+        "cloud_run_id": 43551948111,
+        "source_zip_full_sha256_matched_drive_copies": 4,
+        "original_glbs_sha256_matched_archived_existing": 6,
+        "new_glb_static_structure_pass": 4,
+        "new_glb_browser_r185_webgl2_pass": 4,
+        "cumulative_glb_browser_pass": 10,
+        "cumulative_glb_production_approved": 0,
+        "individual_png_screenshots": 20,
+        "individual_png_drive_metadata_readbacks": 20,
+        "glb_drive_writes_readback_confirmed": 4,
+        "qa_private_folder_name": "Visual_QA_2026-11-13_Batch02_Completion",
+        "private_glb_lookup": "BATCH02_COMPLETION_10_GLB_PRIVATE_LOOKUP.csv",
+        "private_source_archive_receipts": "BATCH02_COMPLETION_PRIVATE_DRIVE_RECEIPTS.json",
+        "manual_visual_release": "pending; face/material colors darker than source previews in normalized render",
+        "mobile_GPU_resource_lifetime": "not_tested",
+        "drive_postupload_hash_roundtrip": "not_performed"
       }
     },
     {
