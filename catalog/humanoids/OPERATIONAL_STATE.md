@@ -1,7 +1,7 @@
 # Three.js Humanoid Library — Operational State
 
 Date: 2026-11-13 America/Detroit (cloud runs crossed into 2026-11-14 UTC)
-State: PARTIAL — 12 archived character source sets (11 complete plus one FBX-only), 6 browser-smoke-verifiable GLBs; 103 Rocketbox characters remain unacquired. No production-approved universal library.
+State: PARTIAL — 12 archived character originals (11 complete plus one FBX-only); 10 GLBs passed real WebGL2/Three.js r185 browser smoke and have 20 rendered QA PNGs; 103 original avatars remain unacquired. No model has production visual/mobile/lifecycle approval.
 
 ## Authoritative locations
 
@@ -33,7 +33,7 @@ State: PARTIAL — 12 archived character source sets (11 complete plus one FBX-o
 ## Continuation boundary
 
 Acquire further Rocketbox sources in bounded ~4–12 avatar batches through pinned GitHub cloud workflow, inspect raw bytes/hash, split archives to under 100 MiB per Drive upload, verify Drive metadata readbacks, and update only records for actual acquired items. Do not download all 115 in one batch or fill a local Mac. Expand GLB exports, real Three.js smoke, visual signoff and per-project loader integration. Maintain stable public asset IDs and a separate access-controlled Drive file/rights mapping. Keep PR #2 draft until the user chooses merge/release. Record partial outcomes accurately.
-## Batch 02 verified completion — current cumulative state
+## Batch 02 acquisition snapshot — historical at that time, superseded below
 
 **Execution:** existing repository `westkitty/modern_3d_browser_game_toolkit`, feature branch `feat/humanoid-asset-catalog-20261113`, draft PR #2, disposable GitHub Actions run [43550104493](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/43550104493). Public upstream Rocketbox commit remains exactly `0943055db6ec570bcef9f2c8b41c9e5467c808f9`; Microsoft MIT license included in all new source ZIPs.
 
@@ -48,3 +48,21 @@ Acquire further Rocketbox sources in bounded ~4–12 avatar batches through pinn
 **Protected and unknown:** All existing batch01 Drive files remain unchanged. No new Mac downloads, commands, cleanup, or storage mutation. No game demos or toolkit runtime files changed. Cloud `npm ci`, `npm run typecheck`, `npm test` and `npm run build` passed. No human rendered visual approval, cross-model retargeted motion review, real mobile measurement, sustained GPU-resource leak proof, or end-to-end application integration. No byte-for-byte Drive download/re-hash was performed; provider metadata readback is narrower proof. No Quaternius gated downloads, purchases or account logins. No PR merge, deployment or main-branch write.
 
 **Next safe boundary:** preserve immutable archives, only expand in new pinned batch with per-file provenance and below-cap packaging, and separately prove visual/long-session/device quality before calling any GLB production-ready. Commit and validate only this `catalog/humanoids/` area and specifically dedicated source/QA workflows on the feature branch.
+
+## Batch 02 completion — four additional real GLBs, 20 visual screenshots
+
+**Run:** GitHub Actions [43551948111](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/43551948111), successful. Repo `westkitty/modern_3d_browser_game_toolkit`; same feature branch `feat/humanoid-asset-catalog-20261113`; draft PR #2 remains open. The remaining four already-archived batch02 original source ZIPs (`Female_Adult_11`, `Business_Male_04`, `Medical_Male_02`, `Security_Male_01`) were downloaded and independently SHA-256 checked directly from the authenticated Google Drive library. The cloud runner used **byte-identical** artifacts from previous GitHub Actions run 43550104493, verified against the recovered Drive ZIP hashes, rather than embedding signed Drive links in a public workflow. No new source archives were acquired or altered.
+
+**Conversion/validation:** Blender 4.0.2, source FBX and textures copied into an isolated working directory; all four generated real self-contained GLBs. They passed independent GLB structural geometry/skins/embedded-image/animation validations. Each also passed actual Three.js r185 / Chromium WebGL2 `GLTFLoader`, skinned mesh, UV-texture, two animation clips, mixer advancement, two real scene viewpoints, pixel-coverage check, cleanup and skinned reload. New files and byte sizes:
+- `Female_Adult_11.glb` — 35,596,408 bytes, SHA256 `ed15c9cccbaea75c1a331d02dc3d0c3ae7302cce620cc60055bde1e253a7cb04`.
+- `Business_Male_04.glb` — 25,962,480 bytes, SHA256 `47c348230c1ea8818940b7bf2d2ac4bf20f32c4da91c27339988b8e0baf2b335`.
+- `Medical_Male_02.glb` — 32,922,856 bytes, SHA256 `891e25d6513902b35a7860de971ba16984ac1feeb946dbb2ef2c2862260d123e`.
+- `Security_Male_01.glb` — 35,539,924 bytes, SHA256 `0342e86cfcea57f2b0e2876044d302549a15f207499d1773811e66683b7e6919`.
+
+**Private archival and recovery:** four new GLBs uploaded to the **same existing** `processed-glb/` parent; all four provider write/readbacks matched exact name, size, MIME and folder. There are now ten distinct GLB files in that Drive location. The subfolder `processed-glb/Visual_QA_2026-11-13_Batch02_Completion/` contains twenty individually archived 768x768 PNG render screenshots (two for each of ten models), a portable ZIP of all twenty with SHA checksums, browser, source-equality, static/conversion and independent verification reports, and `VISUAL_QA_ASSESSMENT.md`. All twenty screenshot metadata size/MIME/name readbacks passed; the ten supplemental QA artifacts had matching size/parent readbacks. The private Drive manifest folder contains `BATCH02_COMPLETION_PRIVATE_DRIVE_RECEIPTS.json` with exact source->GLB IDs and `BATCH02_COMPLETION_10_GLB_PRIVATE_LOOKUP.csv`, listing stable asset IDs, all ten GLB hashes and private retrieval links. Private IDs are intentionally absent from public GitHub.
+
+**Cumulative real state:** 115 indexed Rocketbox character sources, 12 archived sources, **10 GLBs verified by real Three.js browser smoke**, 2 archived sources without GLBs (`Delivery_Male_01` and FBX-only `Medical_Female_01`), 103 unacquired original avatar sets. Two sample animation FBXs remain archived but **retargeting to new characters has not been visually evaluated**. Ten existing toolkit demonstrations protected; `npm run typecheck`, `npm test`, `npm run build` succeeded in the same isolated Actions job.
+
+**Separate visual QA:** human silhouettes and broad apparel shapes visible in screenshots; model heights 1.7334–1.8575 meters are overall bounds, not approved anatomical proportions. Face and dark-material exposure in automated Three.js renders is consistently darker than the publisher's source previews; root cause could be lighting, color management, or material conversion. **Do not claim exact texture/color fidelity or visual approval.** Headless stills do not prove animation deformation quality, retargeting, mobile thermal performance, sustained GPU memory reclamation or actual per-game integration.
+
+**Preservation/limits:** All prior Drive originals and processed files remain in place, original byte hashes unchanged, no Macs invoked, no paid assets or login-gated Quaternius, no repository files changed outside `catalog/humanoids/` and dedicated Rocketbox workflows, no merge/deploy or `main` writes. Full-file Drive **post-upload re-download SHA256** was *not performed*; only provider write+size/MIME/parent readback is proven. Draft PR #2 stays draft. The quality release gate remains pending.
