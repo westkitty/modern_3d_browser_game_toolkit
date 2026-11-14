@@ -1,0 +1,101 @@
+name: Rocketbox historical Delivery Male 01 source-verified GLB and Chromium QA
+on:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths: [.github/workflows/rocketbox-humanoid-delivery-historical-conversion.yml]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: rocketbox-delivery-male01-historical-20261113
+  cancel-in-progress: false
+jobs:
+  delivery-conversion-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ROCKETBOX_OUTPUT: /tmp/rocketbox-delivery
+    steps:
+      - name: Check out the authorized feature branch without persistent credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch previous public GitHub-hosted archived original source bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/rocketbox-delivery/cloud-artifact
+          gh run download 43548963931 -R "$GITHUB_REPOSITORY" -n rocketbox-originals-20261113-batch01 -D /tmp/rocketbox-delivery/cloud-artifact
+      - name: Verify complete FBX, six textures and Microsoft MIT license against archived SHA-256/Git blobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 catalog/humanoids/tools/rocketbox_delivery_source_admit.py
+      - name: Install Blender on disposable GitHub Ubuntu, never Mac
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy
+          blender -b --factory-startup --python-expr 'import numpy; print("BLENDER_NUMPY_PASS",numpy.__version__)'
+      - name: Convert only verified original working copies to GLB
+        run: |
+          set -euo pipefail
+          blender -b --factory-startup --python catalog/humanoids/tools/rocketbox_delivery_convert.py
+      - name: Independently validate GLB 2 geometry, embedded textures, skinned armature and clips
+        run: |
+          set -euo pipefail
+          python3 catalog/humanoids/tools/inspect_glb_static.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('/tmp/rocketbox-delivery')
+          x=json.loads((root/'evidence/glb_static_validation.json').read_text())['reports']
+          assert len(x)==1 and x[0]['model']=='Delivery_Male_01'
+          assert x[0]['verdict']=='static_glb_structure_pass',x
+          assert x[0]['skins']>0 and x[0]['joint_references']>=40
+          assert x[0]['images']>0 and x[0]['textures']>0 and x[0]['animations']>0
+          assert not x[0]['external_uris']
+          print('DELIVERY_GLTF_STRUCTURAL_PASS',x[0]['size'])
+          PY
+      - name: Install existing toolkit Three.js r185
+        run: npm ci
+      - name: Render two real browser views and prove Three.js GLTFLoader texture skeleton animation disposal reload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p catalog/humanoids/qa-assets catalog/humanoids/delivery-qa-evidence
+          ln -s /tmp/rocketbox-delivery/processed-glb catalog/humanoids/qa-assets/processed-glb
+          python3 -m http.server 8911 --bind 127.0.0.1 >catalog/humanoids/delivery-qa-evidence/server.log 2>&1 &
+          server=$!
+          if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --remote-allow-origins='*' --remote-debugging-port=9222 --user-data-dir=/tmp/rocketbox-delivery-cdp "about:blank" >catalog/humanoids/delivery-qa-evidence/browser_stdout.log 2>catalog/humanoids/delivery-qa-evidence/browser_stderr.log &
+          chrome=$!
+          trap 'kill "$server" "$chrome" 2>/dev/null || true' EXIT
+          node catalog/humanoids/tools/render_qa_delivery_cdp.mjs
+      - name: Verify unmodified ten demo toolkit build, tests and types
+        run: |
+          set -euo pipefail
+          npm run typecheck
+          npm test
+          npm run build
+      - name: Preserve only verified GLB candidate binary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-delivery-male01-cloud-GLB
+          path: /tmp/rocketbox-delivery/processed-glb/Delivery_Male_01.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud source equivalence, structural report, browser evidence and two rendered PNGs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-delivery-male01-browser-visual-and-source-evidence
+          path: |
+            /tmp/rocketbox-delivery/evidence/
+            catalog/humanoids/delivery-qa-evidence/
+          if-no-files-found: warn
+          compression-level: 4
+          retention-days: 3
