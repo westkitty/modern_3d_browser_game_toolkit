@@ -8,19 +8,19 @@
     "rocketbox_unique_avatar_directories": 115,
     "rocketbox_duplicate_aliases": 2,
     "source_families": 7,
-    "binaries_archived": 12,
+    "binaries_archived": 22,
     "glb_conversions_validated": 0,
     "animation_samples_archived": 2,
-    "source_archive_packages_uploaded": 13,
+    "source_archive_packages_uploaded": 18,
     "drive_file_metadata_readback": "Batch01 source ZIPs 5_of_5; batch02 source ZIPs 8_of_8; batch02 GLBs 4_of_4 (metadata readbacks, no Drive SHA256 roundtrip)",
     "source_bytes_unique": 287445309,
-    "source_binary_status": "PARTIAL: 12 of 115 character originals archived; 10 browser-smoke-verified GLBs; 2 original sources remain without GLB, one FBX-only; 103 original sources unacquired",
+    "source_binary_status": "PARTIAL: 22 of 115 original avatar source sets archived; 93 source sets pending; ten GLBs previously browser-validated (no conversions in remaining-source intake).",
     "glb_conversions_static_pass": 10,
     "glb_loader_tests_performed": 10,
     "glb_browser_smoke_pass": 10,
     "glb_production_release_verified": 0,
     "browser_proof": "Runs 43549437068 (batch01), 43550104493 (batch02), 43551948111 (batch02 completion): 10 distinct GLBs pass Three.js r185 WebGL2 loader, skin, texture, mixer, render, dispose/reload; still unapproved for production",
-    "rocketbox_avatar_originals_remaining": 103,
+    "rocketbox_avatar_originals_remaining": 93,
     "batch02_originals_archived": 8,
     "batch02_processed_glbs_archived": 4,
     "batch02_source_bytes_including_per_archive_license": 750604203,
@@ -39,7 +39,15 @@
     "batch02_completion_browser_qa_run": 43551948111,
     "batch02_completion_screenshot_pngs": 20,
     "batch02_completion_screenshot_drive_folder_record": "Visual_QA_2026-11-13_Batch02_Completion (private access; Drive IDs excluded)",
-    "batch02_completion_visual_verdict": "PASS_WITH_LIMITATIONS: silhouette/clothing present, all ten WebGL2 renders and screen checks passed; face/material brightness parity requires review; no human approval"
+    "batch02_completion_visual_verdict": "PASS_WITH_LIMITATIONS: silhouette/clothing present, all ten WebGL2 renders and screen checks passed; face/material brightness parity requires review; no human approval",
+    "remaining_103_plan_file": "catalog/humanoids/rocketbox-remaining-103-plan.json",
+    "remaining_103_batch0_originals_archived": 10,
+    "remaining_103_batch0_archive_transport_packs": 5,
+    "remaining_103_batch0_source_bytes": 898988373,
+    "remaining_103_batch0_drive_receipt": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+    "remaining_103_batch0_cloud_run": 43553390313,
+    "remaining_103_archived": 10,
+    "remaining_103_pending": 93
   },
   "records": [
     {
@@ -117,11 +125,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Female_Adult_02_Originals_Remaining_Group00.zip",
+      "archive_sha256": "1b8b0b93e9e6ffb7974cef095c389f6f009d2c2f006a30869be10f17670b7535",
+      "archive_zip_bytes": 34191178,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Female_Adult_02_Originals_Remaining_Group00.zip",
+          "sha256": "1b8b0b93e9e6ffb7974cef095c389f6f009d2c2f006a30869be10f17670b7535",
+          "bytes": 34191178,
+          "file_count": 10
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack01_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 82739231,
+      "source_file_count": 10,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/adults/female_adult_03",
@@ -136,11 +166,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Female_Adult_03_Originals_Remaining_Group00.zip",
+      "archive_sha256": "7d15f8e35267910a6b80959e714b25daeae79a2f0cecb45181cb10c1d8172198",
+      "archive_zip_bytes": 36312160,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Female_Adult_03_Originals_Remaining_Group00.zip",
+          "sha256": "7d15f8e35267910a6b80959e714b25daeae79a2f0cecb45181cb10c1d8172198",
+          "bytes": 36312160,
+          "file_count": 10
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack01_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 95864331,
+      "source_file_count": 10,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/adults/female_adult_04",
@@ -155,11 +207,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Female_Adult_04_Originals_Remaining_Group00.zip",
+      "archive_sha256": "20333226862674ba40a4fd4b2ed6405735e62d4834fa5737ff261c00815f9013",
+      "archive_zip_bytes": 37234654,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Female_Adult_04_Originals_Remaining_Group00.zip",
+          "sha256": "20333226862674ba40a4fd4b2ed6405735e62d4834fa5737ff261c00815f9013",
+          "bytes": 37234654,
+          "file_count": 10
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack02_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 95689766,
+      "source_file_count": 10,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/adults/female_adult_05",
@@ -174,11 +248,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Female_Adult_05_Originals_Remaining_Group00.zip",
+      "archive_sha256": "56bd26236a3145812912dbc44035b794106ca647bf55801b83093f72458d551a",
+      "archive_zip_bytes": 37486249,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Female_Adult_05_Originals_Remaining_Group00.zip",
+          "sha256": "56bd26236a3145812912dbc44035b794106ca647bf55801b83093f72458d551a",
+          "bytes": 37486249,
+          "file_count": 10
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack02_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 95448025,
+      "source_file_count": 10,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/adults/female_adult_06",
@@ -1030,11 +1126,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Female_Child_01_Originals_Remaining_Group00.zip",
+      "archive_sha256": "b44e4b7187cac1769554dc6c38b867dea0a55395ef1fc436adea9b970601b29e",
+      "archive_zip_bytes": 27901082,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Female_Child_01_Originals_Remaining_Group00.zip",
+          "sha256": "b44e4b7187cac1769554dc6c38b867dea0a55395ef1fc436adea9b970601b29e",
+          "bytes": 27901082,
+          "file_count": 9
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack03_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 78248698,
+      "source_file_count": 9,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/children/female_child_02",
@@ -1106,11 +1224,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Business_Female_01_Originals_Remaining_Group00.zip",
+      "archive_sha256": "00fd59f1ab4a263f6387fc31bbb7ad60b4379d345178bb1af07049290fb6f110",
+      "archive_zip_bytes": 36705853,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Business_Female_01_Originals_Remaining_Group00.zip",
+          "sha256": "00fd59f1ab4a263f6387fc31bbb7ad60b4379d345178bb1af07049290fb6f110",
+          "bytes": 36705853,
+          "file_count": 10
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack03_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 95501759,
+      "source_file_count": 10,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/professions/business_female_02",
@@ -1125,11 +1265,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Business_Female_02_Originals_Remaining_Group00.zip",
+      "archive_sha256": "f2ca7d8a53d1807a488151b518f1e6deb645f0571bc2d1843c5a7268fbcf75d0",
+      "archive_zip_bytes": 43559968,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Business_Female_02_Originals_Remaining_Group00.zip",
+          "sha256": "f2ca7d8a53d1807a488151b518f1e6deb645f0571bc2d1843c5a7268fbcf75d0",
+          "bytes": 43559968,
+          "file_count": 13
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack04_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 96875119,
+      "source_file_count": 13,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/professions/business_female_03",
@@ -1144,11 +1306,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Business_Female_03_Originals_Remaining_Group00.zip",
+      "archive_sha256": "0cd4043ae596dd07e5f2c0f1b9aedb27922abfa73d61adcd018d4348feee4f59",
+      "archive_zip_bytes": 31801986,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Business_Female_03_Originals_Remaining_Group00.zip",
+          "sha256": "0cd4043ae596dd07e5f2c0f1b9aedb27922abfa73d61adcd018d4348feee4f59",
+          "bytes": 31801986,
+          "file_count": 10
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack04_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 95353947,
+      "source_file_count": 10,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/professions/business_female_04",
@@ -1163,11 +1347,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Business_Female_04_Originals_Remaining_Group00.zip",
+      "archive_sha256": "862079229da06b33710886169d4875abe9119586d89247df87c50066337e3810",
+      "archive_zip_bytes": 28080750,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Business_Female_04_Originals_Remaining_Group00.zip",
+          "sha256": "862079229da06b33710886169d4875abe9119586d89247df87c50066337e3810",
+          "bytes": 28080750,
+          "file_count": 10
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack05_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 80682093,
+      "source_file_count": 10,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/professions/business_male_01",
@@ -1182,11 +1388,33 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
       "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_nested_originals_transport_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Business_Male_01_Originals_Remaining_Group00.zip",
+      "archive_sha256": "633287b2d916e6c53876fc0640628ded431e348bcfbcaa741ce0ef8f7ea587b5",
+      "archive_zip_bytes": 25993658,
+      "archive_parts": [
+        {
+          "basename": "Rocketbox_Business_Male_01_Originals_Remaining_Group00.zip",
+          "sha256": "633287b2d916e6c53876fc0640628ded431e348bcfbcaa741ce0ef8f7ea587b5",
+          "bytes": 25993658,
+          "file_count": 10
+        }
+      ],
+      "archive_transport_basenames": [
+        "Rocketbox_Remaining_Group00_Pack05_Transport.zip"
+      ],
+      "archive_content_scope": "full_original_FBX_textures_preview_MIT_notice",
+      "source_uncompressed_bytes": 82585404,
+      "source_file_count": 10,
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+      "archive_note": "Google Drive stores a GitHub artifact ZIP containing verified pack-NN.zip and inner per-avatar source ZIPs. Git blob and SHA256 verified before upload; Drive file name, size, MIME and parent verified; Drive download-and-rehash unperformed.",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/professions/business_male_02",
