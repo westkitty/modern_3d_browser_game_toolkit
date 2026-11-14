@@ -14,9 +14,9 @@ jobs:
     timeout-minutes: 60
     strategy:
       fail-fast: false
-      max-parallel: 2
+      max-parallel: 3
       matrix:
-        group: [0]
+        group: [1,2,3,4,5,6,7,8,9,10]
     steps:
       - name: Check out only the existing authorized feature branch
         uses: actions/checkout@v4
