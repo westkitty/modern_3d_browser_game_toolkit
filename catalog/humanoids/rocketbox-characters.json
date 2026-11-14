@@ -8,8 +8,13 @@
     "rocketbox_unique_avatar_directories": 115,
     "rocketbox_duplicate_aliases": 2,
     "source_families": 7,
-    "binaries_archived": 0,
-    "glb_conversions_validated": 0
+    "binaries_archived": 4,
+    "glb_conversions_validated": 0,
+    "animation_samples_archived": 2,
+    "source_archive_packages_uploaded": 5,
+    "drive_file_metadata_readback": "5_of_5_verified",
+    "source_bytes_unique": 287445309,
+    "source_binary_status": "PARTIAL: 4 of 115 avatars, 2 animation samples; one avatar FBX-only"
   },
   "records": [
     {
@@ -25,11 +30,19 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "conversion_glb": "not_validated",
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_originals_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Female_Adult_01_Originals_Batch01_2026-11-13.zip",
+      "archive_sha256": "23522f9ee27325881f91c0ade62154873ffb96482d016c562e18623faf23352a",
+      "archive_zip_bytes": 43225513,
+      "archive_content_scope": "fbx-textures-preview",
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
+      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed."
     },
     {
       "asset_id": "rocketbox/adults/female_adult_02",
@@ -392,11 +405,19 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "conversion_glb": "not_validated",
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_originals_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Male_Adult_01_Originals_Batch01_2026-11-13.zip",
+      "archive_sha256": "6f8c51a379c73e8ebe0fa6099639a71fa6b019ed6c0d77b44d70c2321f41daed",
+      "archive_zip_bytes": 35219178,
+      "archive_content_scope": "fbx-textures-preview",
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
+      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed."
     },
     {
       "asset_id": "rocketbox/adults/male_adult_02",
@@ -1266,11 +1287,19 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_verified",
+      "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "conversion_glb": "not_validated",
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_originals_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Delivery_Male_01_Originals_Batch01_2026-11-13.zip",
+      "archive_sha256": "454cbf72c52bd3a076d4f7650f66b364ed5ca5bf2eb319979d4c4f7e80bad924",
+      "archive_zip_bytes": 29869348,
+      "archive_content_scope": "fbx-textures-preview",
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
+      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed."
     },
     {
       "asset_id": "rocketbox/professions/fire_female_01",
@@ -1494,11 +1523,19 @@
         "TGA"
       ],
       "license_id": "MIT",
-      "stage": "source-enumerated",
-      "downloaded": false,
+      "stage": "source_archive_partial_fbx_only",
+      "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_performed",
-      "rig_animation_test": "not_performed"
+      "conversion_glb": "not_validated",
+      "rig_animation_test": "not_performed",
+      "archive_status": "google_drive_originals_provider_write_and_size_verified",
+      "archive_basename": "Rocketbox_Medical_Female_01_Originals_Batch01_2026-11-13.zip",
+      "archive_sha256": "10628087353b653c4c22ac9070dda31e3ba7e265ddc4956a6c0b9342e2330f20",
+      "archive_zip_bytes": 1816530,
+      "archive_content_scope": "fbx-only",
+      "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "source_receipt_private": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
+      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed."
     },
     {
       "asset_id": "rocketbox/professions/medical_female_02",
