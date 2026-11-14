@@ -1,0 +1,250 @@
+name: Rocketbox remaining 93 source-complete avatar GLB conversions and browser QA
+on:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths: [.github/workflows/rocketbox-humanoid-conversion-remaining93.yml]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: rocketbox-remainder93-campaign-20261113
+  cancel-in-progress: false
+jobs:
+  conversion:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 65
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        group: [0,1,2,3,4,5,6,7,8,9,10]
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ROCKETBOX_GROUP: "${{ matrix.group }}"
+      ROCKETBOX_OUTPUT: "/tmp/rocketbox-b04/group-${{ matrix.group }}"
+    steps:
+      - name: Check out same authorized feature branch only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate frozen 93-source identity and group limits
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=json.loads(Path('catalog/humanoids/rocketbox-conversion-remaining93.json').read_text())
+          group=int(os.environ['ROCKETBOX_GROUP'])
+          assert p['source_commit']=='0943055db6ec570bcef9f2c8b41c9e5467c808f9'
+          assert len(p['models'])==93 and len(p['batches'])==11
+          assert len({m['asset_id'] for m in p['models']})==93
+          b=next(x for x in p['batches'] if x['group']==group)
+          assert 1<=b['count']<=10 and b['raw_bytes']<=1_400_000_000
+          assert all(len(m['source_zip_sha256'])==64 for m in p['models'] if m['group']==group)
+          print('FROZEN_SOURCE_GROUP_PASS',group,b['count'],b['raw_bytes'])
+          PY
+      - name: Download only exact source packs from prior ephemeral GitHub-hosted runs, no private credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$ROCKETBOX_OUTPUT"
+          python3 - <<'PY' > "$ROCKETBOX_OUTPUT/required_source_artifacts.tsv"
+          import os,json
+          from pathlib import Path
+          p=json.loads(Path('catalog/humanoids/rocketbox-conversion-remaining93.json').read_text())
+          group=int(os.environ['ROCKETBOX_GROUP'])
+          for run,name in sorted({(m['actions_run_id'],m['actions_artifact_name']) for m in p['models'] if m['group']==group}):
+              print(str(run)+'\t'+name)
+          PY
+          while IFS="$(printf '\t')" read -r run artifact; do
+            mkdir -p "$ROCKETBOX_OUTPUT/artifact-input/$artifact"
+            gh run download "$run" -R "$GITHUB_REPOSITORY" -n "$artifact" -D "$ROCKETBOX_OUTPUT/artifact-input/$artifact"
+          done < "$ROCKETBOX_OUTPUT/required_source_artifacts.tsv"
+      - name: Verify per-avatar source ZIP SHA-256 equals recorded private archive original, file SHA and Git blob
+        run: python3 catalog/humanoids/tools/rocketbox_campaign_source_admit.py
+      - name: Install Blender and numpy in GitHub runner only
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy
+          blender -b --factory-startup --python-expr 'import numpy; print("BLENDER_NUMPY_PASS",numpy.__version__)'
+      - name: Convert original source working copies into actual GLB candidates
+        run: blender -b --factory-startup --python catalog/humanoids/tools/rocketbox_campaign_convert.py
+      - name: Independent GLB2 mesh, UV, texture, skinned rig and animation structure gate
+        run: |
+          set -euo pipefail
+          python3 catalog/humanoids/tools/inspect_glb_static.py
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          r=Path(os.environ['ROCKETBOX_OUTPUT'])
+          p=json.loads(Path('catalog/humanoids/rocketbox-conversion-remaining93.json').read_text())
+          group=int(os.environ['ROCKETBOX_GROUP'])
+          names={m['name'] for m in p['models'] if m['group']==group}
+          conv=json.loads((r/'evidence/CAMPAIGN_CONVERSION_REPORT.json').read_text())
+          static=json.loads((r/'evidence/glb_static_validation.json').read_text())['reports']
+          assert {i['name'] for i in conv['models']}==names and len(conv['models'])==len(names)
+          assert all(i['state']=='EXPORTED_NOT_YET_VALIDATED' for i in conv['models']),conv
+          assert {x['model'] for x in static}==names
+          for item in static:
+              assert item['verdict']=='static_glb_structure_pass',item
+              assert item['primitive_count']>0 and item['skins']>=1 and item['joint_references']>=40
+              assert item['images']>0 and item['textures']>0 and item['animations']>0 and not item['external_uris']
+          print('ALL_GROUP_GLBS_STATIC_PASS',group,len(static))
+          PY
+      - name: Install same Three.js r185 toolkit dependencies
+        run: npm ci
+      - name: Capture two real Chromium WebGL2 views per model and verify mixer/dispose/reload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p catalog/humanoids/qa-assets "catalog/humanoids/batch04-qa-evidence/group-$ROCKETBOX_GROUP"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=json.loads(Path('catalog/humanoids/rocketbox-conversion-remaining93.json').read_text())
+          group=int(os.environ['ROCKETBOX_GROUP'])
+          names=[x['name'] for x in p['models'] if x['group']==group]
+          Path('catalog/humanoids/qa-assets/model_names.json').write_text(json.dumps(names))
+          PY
+          ln -s "$ROCKETBOX_OUTPUT/processed-glb" catalog/humanoids/qa-assets/processed-glb
+          python3 -m http.server 8911 --bind 127.0.0.1 >"catalog/humanoids/batch04-qa-evidence/group-$ROCKETBOX_GROUP/server.log" 2>&1 &
+          server=$!
+          if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --remote-allow-origins='*' --remote-debugging-port=9222 --user-data-dir="/tmp/rocketbox-b04-cdp-$ROCKETBOX_GROUP" "about:blank" >"catalog/humanoids/batch04-qa-evidence/group-$ROCKETBOX_GROUP/browser_stdout.log" 2>"catalog/humanoids/batch04-qa-evidence/group-$ROCKETBOX_GROUP/browser_stderr.log" &
+          chrome=$!
+          trap 'kill "$server" "$chrome" 2>/dev/null || true' EXIT
+          node catalog/humanoids/tools/render_qa_campaign_cdp.mjs
+      - name: Verify original ten toolkit demos remain buildable
+        run: |
+          set -euo pipefail
+          npm run typecheck
+          npm test
+          npm run build
+      - name: Stage only browser-approved-for-smoke-not-production GLB outputs in numbered artifact slots
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json,os,hashlib,shutil
+          from pathlib import Path
+          root=Path(os.environ['ROCKETBOX_OUTPUT']); group=int(os.environ['ROCKETBOX_GROUP'])
+          p=json.loads(Path('catalog/humanoids/rocketbox-conversion-remaining93.json').read_text())
+          models=[m for m in p['models'] if m['group']==group]
+          report=json.loads(Path('catalog/humanoids/batch04-qa-evidence/group-'+str(group)+'/campaign_visual_report.json').read_text())
+          assert not report['failures'] and len(report['images'])==2*len(models)
+          good={m['model'] for m in report['models'] if m['status']=='THREEJS_RENDER_ANIMATION_RELOAD_PASS_WITH_LIMITATIONS'}
+          assert good=={m['name'] for m in models},good
+          output=root/'verified-slots';output.mkdir(parents=True,exist_ok=True)
+          receipt=[]
+          for i,m in enumerate(models,1):
+              source=root/'processed-glb'/(m['name']+'.glb')
+              dest=output/('slot-%02d.glb' % i)
+              shutil.copy2(source,dest)
+              sha=hashlib.sha256(dest.read_bytes()).hexdigest()
+              receipt.append({'asset_id':m['asset_id'],'name':m['name'],'slot':i,'size':dest.stat().st_size,'sha256':sha,'source_zip_sha256':m['source_zip_sha256'],'webgl2_browser_smoke':True,'human_visual_approved':False})
+          (root/'evidence'/'VERIFIED_SLOTS_MAP.json').write_text(json.dumps({'group':group,'source_commit':p['source_commit'],'run_id':os.environ.get('GITHUB_RUN_ID'),'records':receipt},indent=2)+'\n')
+          print('GROUP_STAGED_BROWSER_PROVEN_GLBS',group,len(receipt))
+          PY
+      - name: Preserve independent reports and all actual screenshots even on errors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-evidence
+          path: |
+            /tmp/rocketbox-b04/group-${{ matrix.group }}/evidence/
+            catalog/humanoids/batch04-qa-evidence/group-${{ matrix.group }}/
+          if-no-files-found: warn
+          compression-level: 5
+          retention-days: 3
+      - name: Preserve verified GLB slot 01 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-01
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-01.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 02 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-02
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-02.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 03 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-03
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-03.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 04 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-04
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-04.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 05 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-05
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-05.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 06 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-06
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-06.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 07 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-07
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-07.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 08 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-08
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-08.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 09 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-09
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-09.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve verified GLB slot 10 without exposing originals
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b04-group-${{ matrix.group }}-slot-10
+          path: /tmp/rocketbox-b04/group-${{ matrix.group }}/verified-slots/slot-10.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+
