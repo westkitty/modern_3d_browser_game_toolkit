@@ -15,9 +15,9 @@
         "TGA"
       ],
       "advertised_content": "115 rigged avatars and animation directories",
-      "source_status": "22 avatar source sets archived with private Drive provider readback; 93 remaining",
-      "archive_status": "partial_acquired_22_of_115_avatars_10_browser_smoke_glbs",
-      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts. Completion run 43551948111 converted four earlier source-only batch02 models and smoke tested all ten GLBs, archived twenty separate Chrome render screenshots and private receipts. Darker browser-render facial/material exposure than source previews flagged for visual QA; no production approval. Source archive count unchanged. Cloud remaining-source pilot group0 acquired 10 original avatars into five Drive-verified nested transport packs; 93 original avatar sources remain. No new GLB conversion or visual signoff.",
+      "source_status": "ALL_115_DISTINCT_AVATAR_DIRECTORIES_ARCHIVED_TO_PRIVATE_GOOGLE_DRIVE_WITH_WRITE_AND_METADATA_READBACK; one historical source was FBX-only; 10 converted GLBs smoke tested, 105 still source-only",
+      "archive_status": "original_source_acquisition_COMPLETE_115_of_115_browser_smoke_glbs_10",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts. Completion run 43551948111 converted four earlier source-only batch02 models and smoke tested all ten GLBs, archived twenty separate Chrome render screenshots and private receipts. Darker browser-render facial/material exposure than source previews flagged for visual QA; no production approval. Source archive count unchanged. Cloud remaining-source pilot group0 acquired 10 original avatars into five Drive-verified nested transport packs; 93 original avatar sources remain. No new GLB conversion or visual signoff. FINAL ACQUISITION 2026-11-13 local (2026-11-14 UTC): 103 further original sources obtained in 11 cloud batches (group4 had one filename whitespace issue fixed by isolated retry) and archived to original private Drive originals. 52 new transport-pack files, 65 originals-folder objects total; all 115 stable source IDs have private archive references. Source SHA256/Git blobs verified pre-upload, Drive provider filename/size/MIME/parent readbacks passed. Historical Medical_Female_01 source FBX-only; 105 sources have no GLB yet; only 10 GLBs smoke tested and none production approved. Master retrieval records are in private Drive, not public repo.",
       "pinned_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "archived_2026_11_13": {
         "individual_avatar_archives": 4,
@@ -88,17 +88,29 @@
       "remaining_103_campaign": {
         "pinned_plan": "catalog/humanoids/rocketbox-remaining-103-plan.json",
         "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
-        "batch_0": {
-          "run": 43553390313,
-          "source_archives": 10,
-          "drive_transport_packs": 5,
-          "source_bytes": 898988373,
-          "private_receipt": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
-          "verified": "10 full originals with Git blob SHA and individual SHA256, Drive write and metadata readback"
-        },
-        "remaining_unacquired": 93,
-        "production_GLBS_smoke_passed": 10,
-        "production_GLBS_approved": 0
+        "source_ids_targeted": 103,
+        "source_ids_archived": 103,
+        "remaining_unacquired": 0,
+        "grouping": "11 bounded groups (10x10 and final 3), one isolated retry Male_Adult_02",
+        "new_nested_transport_pack_count": 52,
+        "new_source_asset_hash_verification": "each source file checked against official Git blob SHA-1 and independently computed SHA-256 before Drive transport",
+        "github_workflow_runs": [
+          43553390313,
+          43553780934,
+          43554819035
+        ],
+        "private_receipts": "ROCKETBOX_REMAINING_GROUP00..10_DRIVE_RECEIPT.json; ROCKETBOX_REMAINING_GROUP04_MALE02_RETRY_DRIVE_RECEIPT.json",
+        "private_master_index": "ROCKETBOX_115_PRIVATE_MASTER_INDEX.json",
+        "private_master_csv": "ROCKETBOX_115_PRIVATE_MASTER_LOOKUP.csv",
+        "private_howto": "ROCKETBOX_115_README.md",
+        "source_models_content_exception": "Medical_Female_01 batch01 FBX-only; its textures are still missing",
+        "verified_originals_drive_objects": 65,
+        "avatar_relevant_archive_objects": 64,
+        "source_provider_write_and_drive_metadata_readback": "all 52 new transport packs and 13 historical original/archive objects",
+        "full_postupload_sha256_restoration_check": "not_performed",
+        "browser_smoke_glbs": 10,
+        "unconverted_source_sets": 105,
+        "production_visual_mobile_lifecycle_approved": 0
       }
     },
     {
