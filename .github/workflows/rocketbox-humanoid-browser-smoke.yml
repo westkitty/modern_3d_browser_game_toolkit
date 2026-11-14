@@ -1,0 +1,79 @@
+name: Rocketbox Three.js browser smoke (actual GLB)
+
+on:
+  push:
+    branches:
+      - feat/humanoid-asset-catalog-20261113
+    paths:
+      - .github/workflows/rocketbox-humanoid-browser-smoke.yml
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: rocketbox-threejs-browser-smoke
+  cancel-in-progress: true
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Download proven cloud-conversion artifact without reacquiring source
+        uses: actions/download-artifact@v4
+        with:
+          name: rocketbox-glb-candidates-20261113-batch01
+          run-id: 43548963931
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: catalog/humanoids/qa-assets
+
+      - name: Install pinned Three.js project dependencies
+        run: npm ci
+
+      - name: Load, animate, render, unload and reload actual GLBs in browser
+        shell: bash
+        run: |
+          set -eu
+          mkdir -p catalog/humanoids/qa-evidence
+          command -v google-chrome || command -v chromium
+          python3 -m http.server 8911 --bind 127.0.0.1 > catalog/humanoids/qa-evidence/server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          sleep 2
+          if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --virtual-time-budget=40000 --dump-dom \
+            "http://127.0.0.1:8911/catalog/humanoids/tools/browser_smoke.html" \
+            >catalog/humanoids/qa-evidence/browser_dom.html \
+            2>catalog/humanoids/qa-evidence/browser_stderr.log || true
+          python3 - <<'PY'
+          import html,json,re
+          from pathlib import Path
+          d=Path("catalog/humanoids/qa-evidence")
+          raw=(d/"browser_dom.html").read_text(errors="replace")
+          match=re.search(r'<pre id="qa-result">(.*?)</pre>',raw,re.S)
+          if not match:
+              raise SystemExit("No browser smoke result in DOM")
+          payload=html.unescape(match.group(1)).strip()
+          if not payload.startswith("{"):
+              raise SystemExit("Browser smoke never finished: " + payload[:500])
+          report=json.loads(payload)
+          (d/"browser_smoke_result.json").write_text(json.dumps(report,indent=2)+"\n")
+          print(json.dumps(report,indent=2))
+          assert report.get("finished") and report.get("overall")=="PASS_WITH_LIMITATIONS", "Browser smoke failed"
+          assert len(report.get("modelResults",[]))==2
+          PY
+
+      - name: Preserve browser evidence whether check passed or failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-threejs-browser-evidence-20261113-batch01
+          path: |
+            catalog/humanoids/qa-evidence/
+          if-no-files-found: warn
+          retention-days: 2
