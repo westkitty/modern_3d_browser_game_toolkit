@@ -17,7 +17,7 @@
       "advertised_content": "115 rigged avatars and animation directories",
       "source_status": "original_binaries_verified_subset",
       "archive_status": "partial_acquired_4_avatars_2_animation_samples",
-      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated.",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released.",
       "pinned_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "archived_2026_11_13": {
         "individual_avatar_archives": 4,
@@ -28,7 +28,11 @@
         "drive_metadata_readback": "5_of_5",
         "private_receipts_filename": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
         "binary_roundtrip_verification": "not_performed",
-        "glb_conversions_validated": 0
+        "glb_conversions_validated": 0,
+        "glb_browser_smoke_pass": 2,
+        "glb_production_release_pass": 0,
+        "browser_smoke_run": 43549437068,
+        "browser_qa": "Three.js 185 GLTFLoader, 80 bones, textures, two clips, mixer, render, dispose/reload passed; visual/mobile/long-session review pending"
       }
     },
     {
