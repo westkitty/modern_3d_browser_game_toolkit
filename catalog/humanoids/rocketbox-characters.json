@@ -1,0 +1,2207 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "threejs-humanoid-source-registry",
+  "created_local_date": "2026-11-13",
+  "canonical_repository": "westkitty/modern_3d_browser_game_toolkit",
+  "archive_policy": "Store original binary source archives in a restricted Google Drive project archive. Do not put raw third-party assets or Drive private IDs in this public GitHub repository.",
+  "completeness": {
+    "rocketbox_unique_avatar_directories": 115,
+    "rocketbox_duplicate_aliases": 2,
+    "source_families": 7,
+    "binaries_archived": 0,
+    "glb_conversions_validated": 0
+  },
+  "records": [
+    {
+      "asset_id": "rocketbox/adults/female_adult_01",
+      "display_name": "Female Adult 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_02",
+      "display_name": "Female Adult 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_03",
+      "display_name": "Female Adult 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_04",
+      "display_name": "Female Adult 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_05",
+      "display_name": "Female Adult 05",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_05",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_05",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_06",
+      "display_name": "Female Adult 06",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_06",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_06",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_07",
+      "display_name": "Female Adult 07",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_07",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_07",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_08",
+      "display_name": "Female Adult 08",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_08",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_08",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_09",
+      "display_name": "Female Adult 09",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_09",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_09",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_10",
+      "display_name": "Female Adult 10",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_10",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_10",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_11",
+      "display_name": "Female Adult 11",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_11",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_11",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_12",
+      "display_name": "Female Adult 12",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_12",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_12",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_13",
+      "display_name": "Female Adult 13",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_13",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_13",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_14",
+      "display_name": "Female Adult 14",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_14",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_14",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_15",
+      "display_name": "Female Adult 15",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_15",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_15",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_16",
+      "display_name": "Female Adult 16",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_16",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_16",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_adult_17",
+      "display_name": "Female Adult 17",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_17",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Adult_17",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/female_party_01",
+      "display_name": "Female Party 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Party_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Party_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed",
+      "duplicate_source_directories": [
+        "Assets/Avatars/Professions/Female_Party_01"
+      ]
+    },
+    {
+      "asset_id": "rocketbox/adults/female_party_02",
+      "display_name": "Female Party 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Female_Party_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Female_Party_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed",
+      "duplicate_source_directories": [
+        "Assets/Avatars/Professions/Female_Party_02"
+      ]
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_01",
+      "display_name": "Male Adult 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_02",
+      "display_name": "Male Adult 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_03",
+      "display_name": "Male Adult 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_04",
+      "display_name": "Male Adult 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_05",
+      "display_name": "Male Adult 05",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_05",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_05",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_06",
+      "display_name": "Male Adult 06",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_06",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_06",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_07",
+      "display_name": "Male Adult 07",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_07",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_07",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_08",
+      "display_name": "Male Adult 08",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_08",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_08",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_09",
+      "display_name": "Male Adult 09",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_09",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_09",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_10",
+      "display_name": "Male Adult 10",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_10",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_10",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_11",
+      "display_name": "Male Adult 11",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_11",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_11",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_12",
+      "display_name": "Male Adult 12",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_12",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_12",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_13",
+      "display_name": "Male Adult 13",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_13",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_13",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_14",
+      "display_name": "Male Adult 14",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_14",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_14",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_15",
+      "display_name": "Male Adult 15",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_15",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_15",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_16",
+      "display_name": "Male Adult 16",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_16",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_16",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_17",
+      "display_name": "Male Adult 17",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_17",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_17",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_18",
+      "display_name": "Male Adult 18",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_18",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_18",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_19",
+      "display_name": "Male Adult 19",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_19",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_19",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_20",
+      "display_name": "Male Adult 20",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_20",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_20",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_21",
+      "display_name": "Male Adult 21",
+      "source_id": "microsoft-rocketbox",
+      "category": "adult",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_21",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Adults/Male_Adult_21",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/children/female_child_01",
+      "display_name": "Female Child 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "child",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Children/Female_Child_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Children/Female_Child_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/children/female_child_02",
+      "display_name": "Female Child 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "child",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Children/Female_Child_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Children/Female_Child_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/children/male_child_01",
+      "display_name": "Male Child 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "child",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Children/Male_Child_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Children/Male_Child_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/children/male_child_02",
+      "display_name": "Male Child 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "child",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Children/Male_Child_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Children/Male_Child_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_female_01",
+      "display_name": "Business Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_female_02",
+      "display_name": "Business Female 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Female_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Female_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_female_03",
+      "display_name": "Business Female 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Female_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Female_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_female_04",
+      "display_name": "Business Female 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Female_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Female_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_male_01",
+      "display_name": "Business Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_male_02",
+      "display_name": "Business Male 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Male_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Male_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_male_03",
+      "display_name": "Business Male 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Male_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Male_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_male_04",
+      "display_name": "Business Male 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Male_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Male_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_male_05",
+      "display_name": "Business Male 05",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Male_05",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Male_05",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_male_06",
+      "display_name": "Business Male 06",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Male_06",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Male_06",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_male_07",
+      "display_name": "Business Male 07",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Business_Male_07",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Business_Male_07",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/chef_female_01",
+      "display_name": "Chef Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Chef_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Chef_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_female_01",
+      "display_name": "Construction Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_01",
+      "display_name": "Construction Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_02",
+      "display_name": "Construction Male 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Male_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_03",
+      "display_name": "Construction Male 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Male_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_04",
+      "display_name": "Construction Male 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Male_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_05",
+      "display_name": "Construction Male 05",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_05",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Male_05",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_06",
+      "display_name": "Construction Male 06",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_06",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Male_06",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_07",
+      "display_name": "Construction Male 07",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_07",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Male_07",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_08",
+      "display_name": "Construction Male 08",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_08",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Construction_Male_08",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/delivery_male_01",
+      "display_name": "Delivery Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Delivery_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Delivery_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_female_01",
+      "display_name": "Fire Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_female_02",
+      "display_name": "Fire Female 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Female_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Female_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_female_03",
+      "display_name": "Fire Female 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Female_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Female_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_male_01",
+      "display_name": "Fire Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_male_02",
+      "display_name": "Fire Male 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Male_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Male_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_male_03",
+      "display_name": "Fire Male 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Male_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Male_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_male_04",
+      "display_name": "Fire Male 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Male_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Male_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_male_05",
+      "display_name": "Fire Male 05",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Male_05",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Male_05",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_male_06",
+      "display_name": "Fire Male 06",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Male_06",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Male_06",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_male_07",
+      "display_name": "Fire Male 07",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Fire_Male_07",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Fire_Male_07",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/gardener_male_01",
+      "display_name": "Gardener Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Gardener_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Gardener_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_female_01",
+      "display_name": "Medical Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Medical_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Medical_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_female_02",
+      "display_name": "Medical Female 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Medical_Female_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Medical_Female_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_female_03",
+      "display_name": "Medical Female 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Medical_Female_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Medical_Female_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_male_01",
+      "display_name": "Medical Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Medical_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Medical_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_male_02",
+      "display_name": "Medical Male 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Medical_Male_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Medical_Male_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_male_03",
+      "display_name": "Medical Male 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Medical_Male_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Medical_Male_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_male_04",
+      "display_name": "Medical Male 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Medical_Male_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Medical_Male_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_male_05",
+      "display_name": "Medical Male 05",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Medical_Male_05",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Medical_Male_05",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/military_female_01",
+      "display_name": "Military Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Military_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Military_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/military_female_02",
+      "display_name": "Military Female 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Military_Female_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Military_Female_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/military_male_01",
+      "display_name": "Military Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Military_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Military_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/military_male_02",
+      "display_name": "Military Male 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Military_Male_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Military_Male_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/military_male_03",
+      "display_name": "Military Male 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Military_Male_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Military_Male_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/military_male_04",
+      "display_name": "Military Male 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Military_Male_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Military_Male_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/military_male_05",
+      "display_name": "Military Male 05",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Military_Male_05",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Military_Male_05",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/military_male_06",
+      "display_name": "Military Male 06",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Military_Male_06",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Military_Male_06",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/pilot_female_01",
+      "display_name": "Pilot Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Pilot_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Pilot_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/pilot_female_02",
+      "display_name": "Pilot Female 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Pilot_Female_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Pilot_Female_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/pilot_male_01",
+      "display_name": "Pilot Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Pilot_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Pilot_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/pilot_male_02",
+      "display_name": "Pilot Male 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Pilot_Male_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Pilot_Male_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/pilot_male_03",
+      "display_name": "Pilot Male 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Pilot_Male_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Pilot_Male_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/police_female_01",
+      "display_name": "Police Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Police_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Police_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/police_male_01",
+      "display_name": "Police Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Police_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Police_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/police_male_02",
+      "display_name": "Police Male 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Police_Male_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Police_Male_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/police_male_03",
+      "display_name": "Police Male 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Police_Male_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Police_Male_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/police_male_04",
+      "display_name": "Police Male 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Police_Male_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Police_Male_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/police_male_05",
+      "display_name": "Police Male 05",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Police_Male_05",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Police_Male_05",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/police_male_06",
+      "display_name": "Police Male 06",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Police_Male_06",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Police_Male_06",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/police_male_07",
+      "display_name": "Police Male 07",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Police_Male_07",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Police_Male_07",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/security_female_01",
+      "display_name": "Security Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Security_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Security_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/security_male_01",
+      "display_name": "Security Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Security_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Security_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/sports_female_01",
+      "display_name": "Sports Female 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Sports_Female_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Sports_Female_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/sports_female_02",
+      "display_name": "Sports Female 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Sports_Female_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Sports_Female_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/sports_male_01",
+      "display_name": "Sports Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Sports_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Sports_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/sports_male_02",
+      "display_name": "Sports Male 02",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Sports_Male_02",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Sports_Male_02",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/sports_male_03",
+      "display_name": "Sports Male 03",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Sports_Male_03",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Sports_Male_03",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/sports_male_04",
+      "display_name": "Sports Male 04",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Sports_Male_04",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Sports_Male_04",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    },
+    {
+      "asset_id": "rocketbox/professions/wood_male_01",
+      "display_name": "Wood Male 01",
+      "source_id": "microsoft-rocketbox",
+      "category": "profession",
+      "source_repository": "microsoft/Microsoft-Rocketbox",
+      "source_directory": "Assets/Avatars/Professions/Wood_Male_01",
+      "source_url": "https://github.com/microsoft/Microsoft-Rocketbox/tree/master/Assets/Avatars/Professions/Wood_Male_01",
+      "source_formats": [
+        "FBX",
+        "TGA"
+      ],
+      "license_id": "MIT",
+      "stage": "source-enumerated",
+      "downloaded": false,
+      "archive_drive_file_id": null,
+      "conversion_glb": "not_performed",
+      "rig_animation_test": "not_performed"
+    }
+  ]
+}
