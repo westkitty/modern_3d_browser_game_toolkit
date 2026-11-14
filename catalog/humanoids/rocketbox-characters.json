@@ -12,14 +12,14 @@
     "glb_conversions_validated": 0,
     "animation_samples_archived": 2,
     "source_archive_packages_uploaded": 13,
-    "drive_file_metadata_readback": "5_of_5_verified",
+    "drive_file_metadata_readback": "Batch01 source ZIPs 5_of_5; batch02 source ZIPs 8_of_8; batch02 GLBs 4_of_4 (metadata readbacks, no Drive SHA256 roundtrip)",
     "source_bytes_unique": 287445309,
     "source_binary_status": "PARTIAL: 12 of 115 distinct Rocketbox avatars have source archives; 6 GLBs have actual Three.js smoke passes; production visual/mobile gates pending",
     "glb_conversions_static_pass": 6,
     "glb_loader_tests_performed": 6,
     "glb_browser_smoke_pass": 6,
     "glb_production_release_verified": 0,
-    "browser_proof": "GitHub Actions run 43549437068, Three.js r185 WebGL2, two models loaded skinned animated rendered disposed reloaded; PASS_WITH_LIMITATIONS",
+    "browser_proof": "Batch01 GitHub run 43549437068 (2 models) plus batch02 run 43550104493 (4 models): Three.js r185 WebGL2 GLTFLoader, skinning, texture maps, two animation clips/mixer, draw and reload smoke PASSED_WITH_LIMITATIONS; no visual/mobile/long-session release proof",
     "rocketbox_avatar_originals_remaining": 103,
     "batch02_originals_archived": 8,
     "batch02_processed_glbs_archived": 4,
@@ -29,7 +29,8 @@
     "batch02_drive_original_readback": "8_of_8_verified",
     "batch02_drive_glb_readback": "4_of_4_verified",
     "batch02_cloud_run": 43550104493,
-    "batch02_runner_source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9"
+    "batch02_runner_source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+    "source_bytes_unique_legacy_scope": "287445309 is a batch01-only historical unique-source count; batch02 sum is in batch02_source_bytes_including_per_archive_license and is not additive as unique because licenses are repeated"
   },
   "records": [
     {
