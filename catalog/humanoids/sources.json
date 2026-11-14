@@ -15,9 +15,9 @@
         "TGA"
       ],
       "advertised_content": "115 rigged avatars and animation directories",
-      "source_status": "All 115 source directory archives preserved in private Drive. 114 distinct GLBs real Three.js r185 Chromium/WebGL2 browser-smoke and Drive metadata verified; Medical_Female_01 FBX-only source textures missing, conversion blocked.",
-      "archive_status": "original_source_acquisition_COMPLETE_115_of_115_browser_smoke_glbs_114",
-      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts. Completion run 43551948111 converted four earlier source-only batch02 models and smoke tested all ten GLBs, archived twenty separate Chrome render screenshots and private receipts. Darker browser-render facial/material exposure than source previews flagged for visual QA; no production approval. Source archive count unchanged. Cloud remaining-source pilot group0 acquired 10 original avatars into five Drive-verified nested transport packs; 93 original avatar sources remain. No new GLB conversion or visual signoff. FINAL ACQUISITION 2026-11-13 local (2026-11-14 UTC): 103 further original sources obtained in 11 cloud batches (group4 had one filename whitespace issue fixed by isolated retry) and archived to original private Drive originals. 52 new transport-pack files, 65 originals-folder objects total; all 115 stable source IDs have private archive references. Source SHA256/Git blobs verified pre-upload, Drive provider filename/size/MIME/parent readbacks passed. Historical Medical_Female_01 source FBX-only; 105 sources have no GLB yet; only 10 GLBs smoke tested and none production approved. Master retrieval records are in private Drive, not public repo. Batch03: 10 additional distinct full-texture source models converted to GLB in GitHub-hosted Ubuntu, actual Chromium Three.js 0.185.1 WebGL2 loader/mixer/render/dispose/reload plus 20 PNGs; pre-upload source/GLB SHA256 and provider Drive metadata verified. 20 browser smoke GLBs cumulative; 95 source-only remain. 93 source-complete models queued/running in 11 cloud groups; no success asserted pending provider readback. No visual production approval. FINAL CONVERSION CHECKPOINT 2026-11-14: 10 batch03 + 93 group conversion + 1 historical delivery = 104 new GLBs, added to ten earlier browser-tested originals, making 114 Chrome/Three.js r185 GLB smoke-pass models. All new GLBs have recorded original source hashes, 2 actual Chromium PNGs per model, independent structure proof, and private Drive metadata readbacks; NO human visual signoff, mobile hardware test, or sustained GPU memory proof. Medical_Female_01 remains blocked by missing textures in historical FBX-only source. No Mac used and no demonstration files modified. Earlier '10 GLB/105 remaining' notes are historical snapshots.",
+      "source_status": "115 unique source directories archived in original private Drive library; historical Medical_Female_01 FBX-only ZIP retained and full 2-FBX/7-TGA completion ZIP archived separately with independent post-upload SHA256; 115 GLBs smoke tested in Chromium/Three.js r185",
+      "archive_status": "original_source_COMPLETE_115_of_115_full_textures_additively_preserved_GLBS_browser_smoke_115_of_115",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts. Completion run 43551948111 converted four earlier source-only batch02 models and smoke tested all ten GLBs, archived twenty separate Chrome render screenshots and private receipts. Darker browser-render facial/material exposure than source previews flagged for visual QA; no production approval. Source archive count unchanged. Cloud remaining-source pilot group0 acquired 10 original avatars into five Drive-verified nested transport packs; 93 original avatar sources remain. No new GLB conversion or visual signoff. FINAL ACQUISITION 2026-11-13 local (2026-11-14 UTC): 103 further original sources obtained in 11 cloud batches (group4 had one filename whitespace issue fixed by isolated retry) and archived to original private Drive originals. 52 new transport-pack files, 65 originals-folder objects total; all 115 stable source IDs have private archive references. Source SHA256/Git blobs verified pre-upload, Drive provider filename/size/MIME/parent readbacks passed. Historical Medical_Female_01 source FBX-only; 105 sources have no GLB yet; only 10 GLBs smoke tested and none production approved. Master retrieval records are in private Drive, not public repo. Batch03: 10 additional distinct full-texture source models converted to GLB in GitHub-hosted Ubuntu, actual Chromium Three.js 0.185.1 WebGL2 loader/mixer/render/dispose/reload plus 20 PNGs; pre-upload source/GLB SHA256 and provider Drive metadata verified. 20 browser smoke GLBs cumulative; 95 source-only remain. 93 source-complete models queued/running in 11 cloud groups; no success asserted pending provider readback. No visual production approval. FINAL CONVERSION CHECKPOINT 2026-11-14: 10 batch03 + 93 group conversion + 1 historical delivery = 104 new GLBs, added to ten earlier browser-tested originals, making 114 Chrome/Three.js r185 GLB smoke-pass models. All new GLBs have recorded original source hashes, 2 actual Chromium PNGs per model, independent structure proof, and private Drive metadata readbacks; NO human visual signoff, mobile hardware test, or sustained GPU memory proof. Medical_Female_01 remains blocked by missing textures in historical FBX-only source. No Mac used and no demonstration files modified. Earlier '10 GLB/105 remaining' notes are historical snapshots. FINAL verified completion: Medical_Female_01 historical FBX-only ZIP remains preserved, exact pinned official seven TGAs and both FBXs plus preview/unchanged MIT license archived in separate additive complete-source ZIP. Blender/GLB2/Three.js r185 real Chromium WebGL2 tests passed, source and new GLB downloaded back from Drive with matching full-file SHA256. All 115 models now have browser-smoke-tested GLBs; still zero production visual/mobile/lifecycle approvals. See private completion receipt.",
       "pinned_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "archived_2026_11_13": {
         "individual_avatar_archives": 4,
@@ -103,13 +103,13 @@
         "private_master_index": "ROCKETBOX_115_PRIVATE_MASTER_INDEX.json",
         "private_master_csv": "ROCKETBOX_115_PRIVATE_MASTER_LOOKUP.csv",
         "private_howto": "ROCKETBOX_115_README.md",
-        "source_models_content_exception": "Medical_Female_01 batch01 FBX-only; its textures are still missing",
+        "source_models_content_exception": "Historical Medical_Female_01 original ZIP FBX-only (retained unchanged); separate complete source ZIP archived on 2026-11-14 with seven official TGA textures, preview and MIT license",
         "verified_originals_drive_objects": 65,
         "avatar_relevant_archive_objects": 64,
         "source_provider_write_and_drive_metadata_readback": "all 52 new transport packs and 13 historical original/archive objects",
         "full_postupload_sha256_restoration_check": "not_performed",
-        "browser_smoke_glbs": 10,
-        "unconverted_source_sets": 105,
+        "browser_smoke_glbs": 115,
+        "unconverted_source_sets": 0,
         "production_visual_mobile_lifecycle_approved": 0
       },
       "conversion_campaign_20261113": {
@@ -138,6 +138,28 @@
         "mobile_hardware_proof": 0,
         "sustained_GPU_lifecycle_proof": 0,
         "private_master_lookup_next_revision": "V3 should incorporate the 114 GLB records; existing V2 historical snapshot has 20"
+      },
+      "medical_female01_source_completion": {
+        "old_original_archive_retained": "Rocketbox_Medical_Female_01_Originals_Batch01_2026-11-13.zip",
+        "new_completed_archive": "Rocketbox_Medical_Female_01_Complete_Source_2026-11-14.zip",
+        "source_git_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+        "license": "Microsoft MIT",
+        "fbx": 2,
+        "original_textures": 7,
+        "preview": 1,
+        "original_files_verified": 10,
+        "original_zip_bytes": 34332018,
+        "original_zip_sha256": "24689a165d6befa553b0e04534fe5916461f4ef4c8755497174963a7afb837ad",
+        "glb_name": "Medical_Female_01.glb",
+        "glb_bytes": 31743080,
+        "glb_sha256": "2c9d879fb60124579651eb8967cedafb86176c4f96d14317edec3beb82e7ee5f",
+        "source_and_glb_drive_full_byte_roundtrip_sha256_verified": true,
+        "cloud_run": 43644401403,
+        "webgl2_browser_pass": true,
+        "screenshots": 2,
+        "private_receipt": "ROCKETBOX_MEDICAL_FEMALE01_PRIVATE_COMPLETION_RECEIPT.json",
+        "visual_approval": false,
+        "known_material_lighting_warning": true
       }
     },
     {
