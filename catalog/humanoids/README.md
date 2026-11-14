@@ -1,6 +1,6 @@
 # Shared Three.js Humanoid Asset Catalog
 
-**Status: PARTIAL SOURCE LIBRARY. Twelve of 115 unique Rocketbox avatar sources are stored in private Google Drive: eleven complete FBX/texture sets and one FBX-only source. Six GLBs passed actual Chromium/Three.js r185 WebGL2 loader, texture, animation-mixer, render and reload smoke tests. Two standalone Rocketbox motion samples are archived. The other 103 avatars remain unacquired. Visual approval, retargeting quality, long-session GPU lifecycle, mobile measurements and game integration remain pending.**
+**Status: PARTIAL SOURCE LIBRARY. Twelve of 115 unique Rocketbox avatar sources are stored in private Google Drive: eleven complete FBX/texture sets and one FBX-only source. Ten GLBs passed actual Chromium/Three.js r185 WebGL2 loader, texture, animation-mixer, render and reload smoke tests. Two standalone Rocketbox motion samples are archived. The other 103 avatars remain unacquired. Twenty individual two-angle PNG views are archived; lighting/color parity remains open. Visual approval, retargeting quality, long-session GPU lifecycle, mobile measurements and game integration remain pending.**
 
 This is the reusable **asset metadata index** for multiple Three.js projects. The host repository retains exactly ten independent architecture demonstrations; this catalog is data-only and does not alter game behavior.
 
@@ -66,13 +66,13 @@ Eight additional distinct avatars were acquired on a disposable GitHub Actions U
 | Asset ID | Full original ZIP filename | Current model state |
 | --- | --- | --- |
 | `rocketbox/adults/male_adult_08` | `Rocketbox_Male_Adult_08_Originals_Batch02_2026-11-13.zip` | GLB browser smoke PASS |
-| `rocketbox/adults/female_adult_11` | `Rocketbox_Female_Adult_11_Originals_Batch02_2026-11-13.zip` | source archived, GLB not produced |
-| `rocketbox/professions/business_male_04` | `Rocketbox_Business_Male_04_Originals_Batch02_2026-11-13.zip` | source archived, GLB not produced |
+| `rocketbox/adults/female_adult_11` | `Rocketbox_Female_Adult_11_Originals_Batch02_2026-11-13.zip` | GLB browser-smoke PASS in completion run; visual release pending |
+| `rocketbox/professions/business_male_04` | `Rocketbox_Business_Male_04_Originals_Batch02_2026-11-13.zip` | GLB browser-smoke PASS in completion run; visual release pending |
 | `rocketbox/professions/construction_female_01` | `Rocketbox_Construction_Female_01_Originals_Batch02_2026-11-13.zip` | GLB browser smoke PASS |
 | `rocketbox/professions/fire_male_04` | `Rocketbox_Fire_Male_04_Originals_Batch02_2026-11-13.zip` | GLB browser smoke PASS |
-| `rocketbox/professions/medical_male_02` | `Rocketbox_Medical_Male_02_Originals_Batch02_2026-11-13.zip` | source archived, GLB not produced |
+| `rocketbox/professions/medical_male_02` | `Rocketbox_Medical_Male_02_Originals_Batch02_2026-11-13.zip` | GLB browser-smoke PASS in completion run; visual release pending |
 | `rocketbox/professions/sports_female_01` | `Rocketbox_Sports_Female_01_Originals_Batch02_2026-11-13.zip` | GLB browser smoke PASS |
-| `rocketbox/professions/security_male_01` | `Rocketbox_Security_Male_01_Originals_Batch02_2026-11-13.zip` | source archived, GLB not produced |
+| `rocketbox/professions/security_male_01` | `Rocketbox_Security_Male_01_Originals_Batch02_2026-11-13.zip` | GLB browser-smoke PASS in completion run; visual release pending |
 
 ### Batch 02 GLB conversion and browser proof
 
@@ -91,7 +91,7 @@ The reproducible cloud source/conversion/browser/regression run is [GitHub Actio
 
 ## Batch 02 preview-grounded visual search
 
-All eight original Rocketbox 1280×720 source preview PNG files were decoded and inspected, alongside the original hashes and model assets. The descriptions below characterize **those publisher-supplied previews**, not independent screenshots of the exported GLBs; they are search and selection aids, not visual acceptance certificates. Four converted model bounding boxes are recorded in `rocketbox-characters.json` as scene measurements including clothing/equipment, not anatomical proportions.
+All eight original Rocketbox 1280×720 source preview PNG files were decoded and inspected, alongside the original hashes and model assets. The descriptions below characterize **those publisher-supplied previews**, not independent screenshots of the exported GLBs; they are search and selection aids, not visual acceptance certificates. All eight batch-02 converted model bounding boxes are now recorded in `rocketbox-characters.json` as scene measurements including clothing/equipment, not anatomical proportions.
 
 | Stable asset ID | Observed source-preview appearance | Search tags |
 | --- | --- | --- |
@@ -105,3 +105,24 @@ All eight original Rocketbox 1280×720 source preview PNG files were decoded and
 | `rocketbox/professions/sports_female_01` | Pink floral two-piece swimwear, barefoot, hair pulled back; despite the Sports source label, this is swimwear rather than a gym or track uniform. | `swimwear`, `bikini`, `beach`, `barefoot`, `not-track-uniform` |
 
 The source category `Sports_Female_01` corresponds visually to a pink floral two-piece swimsuit, not conventional track or gym attire. `Medical_Male_02` resembles an emergency-response worker in reflective blue uniform rather than a physician in a lab coat. Search using the actual appearance tags before choosing a model for a scene.
+
+## Batch 02 completion — four additional converted GLBs
+
+**Verified cloud run:** [GitHub Actions 43551948111](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/43551948111). The four original ZIPs were downloaded and SHA-256-checked directly from the authenticated private Drive library. The GitHub-hosted runner consumed earlier GitHub artifact copies only after their full ZIP SHA-256s matched the recovered Drive copies; no signed Drive token was committed. The original FBX and textures remain unchanged, and Blender 4.0.2 converted working copies.
+
+| Newly converted GLB | Bytes | SHA-256 (before Drive upload) | Bounds height |
+| --- | ---: | --- | ---: |
+| `Female_Adult_11.glb` | 35596408 | `ed15c9cccbaea75c1a331d02dc3d0c3ae7302cce620cc60055bde1e253a7cb04` | 1.7364 m |
+| `Business_Male_04.glb` | 25962480 | `47c348230c1ea8818940b7bf2d2ac4bf20f32c4da91c27339988b8e0baf2b335` | 1.8009 m |
+| `Medical_Male_02.glb` | 32922856 | `891e25d6513902b35a7860de971ba16984ac1feeb946dbb2ef2c2862260d123e` | 1.8306 m |
+| `Security_Male_01.glb` | 35539924 | `0342e86cfcea57f2b0e2876044d302549a15f207499d1773811e66683b7e6919` | 1.8323 m |
+
+All four GLBs passed independent GLB2 structural checks for skinned mesh, embedded UV-texture images, animation clips and no external media URLs. Every one passed real Chromium WebGL2 / Three.js r185 `GLTFLoader`, animation-mixer updates, rendered geometry, disposal calls and skinned-model reload. The real bytes were uploaded to the existing Drive `processed-glb/` folder and verified by provider file name, byte count, MIME and parent-folder readback. No post-upload Drive full-byte SHA-256 roundtrip was performed.
+
+### Twenty actual rendered views of ten GLBs
+
+The four new and six existing GLBs underwent a fresh real browser render test. Two separate 768x768 PNGs were captured per character; all twenty were validated by PNG signature, image dimensions, their original SHA-256, visible-model pixel coverage and Drive name/size/MIME readback. The private `processed-glb/Visual_QA_2026-11-13_Batch02_Completion/` subfolder holds every individual screenshot, a twenty-image archive ZIP, provenance and checksum reports, `VISUAL_QA_ASSESSMENT.md`, and the private screenshot lookup. A separate private ten-GLB locator CSV and cumulative Drive receipt JSON are in `ARCHIVE/2026-11-13/manifests/`.
+
+**Separate visual QA:** recognizable full humanoid silhouettes with no obvious catastrophic missing limbs; recorded height bounds range 1.7334–1.8575 m (not anthropometric measurements). Textured clothing roles are recognizable. The newly converted brown dress, business vest, blue emergency responder uniform and security cap remain visibly distinguishable from source previews. Faces and some dark clothing look noticeably darker in the normalized Chromium renders than in the original preview PNGs: controlled material/lighting/color parity checks remain necessary. Two embedded animation clips and skinned skeletons load and advance, but static PNGs do not certify animation quality or retargeting.
+
+**Cumulative:** 115 indexed sources, 12 acquired original avatar archives, 10 GLBs passing headless Three.js smoke, 2 acquired but not converted sources (one FBX-only), 103 unacquired sources, 20 visual QA PNGs, **zero production-approved visual/mobile/lifecycle releases**. The ten demos, source ZIPs, `main`, and draft PR #2 are unchanged. Private Drive file IDs remain exclusively in Drive-controlled manifests.
