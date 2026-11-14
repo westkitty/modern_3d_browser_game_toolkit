@@ -15,9 +15,9 @@
         "TGA"
       ],
       "advertised_content": "115 rigged avatars and animation directories",
-      "source_status": "12_original_avatar_archives_provider_write_and_metadata_readback_verified; ten GLBs browser smoke tested",
-      "archive_status": "partial_acquired_12_of_115_avatars_10_browser_smoke_glbs",
-      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts. Completion run 43551948111 converted four earlier source-only batch02 models and smoke tested all ten GLBs, archived twenty separate Chrome render screenshots and private receipts. Darker browser-render facial/material exposure than source previews flagged for visual QA; no production approval. Source archive count unchanged.",
+      "source_status": "22 avatar source sets archived with private Drive provider readback; 93 remaining",
+      "archive_status": "partial_acquired_22_of_115_avatars_10_browser_smoke_glbs",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts. Completion run 43551948111 converted four earlier source-only batch02 models and smoke tested all ten GLBs, archived twenty separate Chrome render screenshots and private receipts. Darker browser-render facial/material exposure than source previews flagged for visual QA; no production approval. Source archive count unchanged. Cloud remaining-source pilot group0 acquired 10 original avatars into five Drive-verified nested transport packs; 93 original avatar sources remain. No new GLB conversion or visual signoff.",
       "pinned_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "archived_2026_11_13": {
         "individual_avatar_archives": 4,
@@ -84,6 +84,21 @@
         "manual_visual_release": "pending; face/material colors darker than source previews in normalized render",
         "mobile_GPU_resource_lifetime": "not_tested",
         "drive_postupload_hash_roundtrip": "not_performed"
+      },
+      "remaining_103_campaign": {
+        "pinned_plan": "catalog/humanoids/rocketbox-remaining-103-plan.json",
+        "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+        "batch_0": {
+          "run": 43553390313,
+          "source_archives": 10,
+          "drive_transport_packs": 5,
+          "source_bytes": 898988373,
+          "private_receipt": "ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json",
+          "verified": "10 full originals with Git blob SHA and individual SHA256, Drive write and metadata readback"
+        },
+        "remaining_unacquired": 93,
+        "production_GLBS_smoke_passed": 10,
+        "production_GLBS_approved": 0
       }
     },
     {
