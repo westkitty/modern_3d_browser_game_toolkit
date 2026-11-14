@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0.0",
+  "reviewed_local_date": "2026-11-13",
+  "sources": [
+    {
+      "id": "microsoft-rocketbox",
+      "name": "Microsoft Rocketbox Avatar Library",
+      "kind": "prebuilt humanoid avatars",
+      "official_url": "https://github.com/microsoft/Microsoft-Rocketbox",
+      "license": "MIT",
+      "license_url": "https://github.com/microsoft/Microsoft-Rocketbox/blob/master/LICENSE.md",
+      "access": "public GitHub",
+      "formats": [
+        "FBX",
+        "TGA"
+      ],
+      "advertised_content": "115 rigged avatars and animation directories",
+      "source_status": "source-enumerated",
+      "archive_status": "not_acquired",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing."
+    },
+    {
+      "id": "quaternius-universal-base-characters-standard",
+      "name": "Quaternius Universal Base Characters Standard",
+      "kind": "prebuilt stylized humanoid bases",
+      "official_url": "https://quaternius.itch.io/universal-base-characters",
+      "license": "CC0-1.0 as displayed on specific 2025 pack page",
+      "license_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "access": "free name-your-price download requires provider download flow",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ"
+      ],
+      "advertised_content": "Six bases across overall pack; Standard ZIP 122 MB; verify Standard contents on acquisition",
+      "source_status": "item-verified",
+      "archive_status": "not_acquired",
+      "notes": "Do not assume paid Source tier is included; newer Quaternius releases may use QAL, so evaluate per pack."
+    },
+    {
+      "id": "quaternius-ual1-standard",
+      "name": "Quaternius Universal Animation Library Standard",
+      "kind": "humanoid animation pack",
+      "official_url": "https://quaternius.itch.io/universal-animation-library",
+      "license": "CC0-1.0 per item",
+      "license_url": "https://quaternius.itch.io/universal-animation-library",
+      "access": "free name-your-price download requires provider download flow",
+      "formats": [
+        "GLB",
+        "FBX"
+      ],
+      "advertised_content": "120+ across full offering; Standard ZIP 15 MB; Standard exact tracks not verified",
+      "source_status": "item-verified",
+      "archive_status": "not_acquired",
+      "notes": "Root-motion and in-place variants; skeleton compatibility and individual animations require validation."
+    },
+    {
+      "id": "quaternius-ual2-standard",
+      "name": "Quaternius Universal Animation Library 2 Standard",
+      "kind": "humanoid animation pack",
+      "official_url": "https://quaternius.itch.io/universal-animation-library-2",
+      "license": "CC0-1.0 per item",
+      "license_url": "https://quaternius.com/packs/universalanimationlibrary2.html",
+      "access": "free name-your-price download requires provider download flow",
+      "formats": [
+        "GLB",
+        "FBX"
+      ],
+      "advertised_content": "130+ across full offering; Standard ZIP 17 MB; Standard exact tracks not verified",
+      "source_status": "item-verified",
+      "archive_status": "not_acquired",
+      "notes": "Do not infer current free subset or claim all full-library animations are in Standard."
+    },
+    {
+      "id": "makehuman",
+      "name": "MakeHuman / MPFB",
+      "kind": "character generator, not prebuilt library",
+      "official_url": "https://www.makehumancommunity.org/",
+      "license": "Core exported assets generally CC0; community assets vary",
+      "license_url": "https://www.makehumancommunity.org/content/license.html",
+      "access": "desktop software",
+      "formats": [
+        "FBX",
+        "DAE",
+        "Blender intermediary"
+      ],
+      "advertised_content": "Custom body and face generator; no pre-generated avatar ZIP cataloged",
+      "source_status": "tool-identified",
+      "archive_status": "not_applicable_without_export",
+      "notes": "Generated characters must be created, exported, and audited individually. Software license differs from model-export license."
+    },
+    {
+      "id": "vroid-studio",
+      "name": "VRoid Studio",
+      "kind": "character generator, not prebuilt library",
+      "official_url": "https://vroid.com/en/studio",
+      "license": "User-created VRM rights and third-party wardrobe terms are item-dependent",
+      "license_url": "https://vroid.com/en/studio",
+      "access": "desktop application",
+      "formats": [
+        "VRM"
+      ],
+      "advertised_content": "Anime-style avatar creation",
+      "source_status": "tool-identified",
+      "archive_status": "not_applicable_without_export",
+      "notes": "Do not treat third-party VRM avatars as CC0. Reuse in Three.js requires three-vrm."
+    },
+    {
+      "id": "adobe-mixamo",
+      "name": "Adobe Mixamo",
+      "kind": "account-gated animations and characters",
+      "official_url": "https://www.mixamo.com/",
+      "license": "Adobe/Mixamo terms: finished projects yes; stand-alone raw asset redistribution restricted",
+      "license_url": "https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html",
+      "access": "Adobe login; download requires user-controlled account",
+      "formats": [
+        "FBX"
+      ],
+      "advertised_content": "Character and animation selection service; no finite complete ZIP defined",
+      "source_status": "access-confirmed",
+      "archive_status": "requires_authenticated_export",
+      "notes": "Do not scrape or bulk-download through someone else's account. Preserve acquired file scope and provider usage restrictions."
+    }
+  ]
+}
