@@ -88,3 +88,20 @@ Blender 4.0.2 converted four representatives from working copies. Independent st
 The reproducible cloud source/conversion/browser/regression run is [GitHub Actions #43550104493](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/43550104493). The latest private browser report is `BATCH02_BROWSER_SMOKE_RESULT.json`; the Drive processed receipt is `BATCH02_DRIVE_PROCESSED_RECEIPTS.json`. Source/archive and runtime identities agree. Existing ten-demo toolkit `npm run typecheck`, `npm test`, `npm run build` passed.
 
 **Release verdict: PARTIAL.** A WebGL2 smoke test validates functionality but does not establish final visual appearance, separate animation-retarget quality, mobile performance, sustained memory disposal or live-game integration. All previously archived batch01 files and GLBs are preserved. No character source binaries or private Drive IDs are committed to this public repository.
+
+## Batch 02 preview-grounded visual search
+
+All eight original Rocketbox 1280×720 source preview PNG files were decoded and inspected, alongside the original hashes and model assets. The descriptions below characterize **those publisher-supplied previews**, not independent screenshots of the exported GLBs; they are search and selection aids, not visual acceptance certificates. Four converted model bounding boxes are recorded in `rocketbox-characters.json` as scene measurements including clothing/equipment, not anatomical proportions.
+
+| Stable asset ID | Observed source-preview appearance | Search tags |
+| --- | --- | --- |
+| `rocketbox/adults/female_adult_11` | Long-sleeve brown knee-length dress with dark belt, tall brown boots and tied-back dark hair. | `civilian`, `dress`, `boots`, `long-sleeves` |
+| `rocketbox/adults/male_adult_08` | Light-blue collared button-front shirt, dark trousers and dark shoes; short dark hair, ordinary civilian silhouette. | `civilian`, `collared-shirt`, `long-pants`, `casual-smart` |
+| `rocketbox/professions/business_male_04` | Gray buttoned vest over gray collared long-sleeve shirt, dark trousers and shoes; bald head. | `business`, `vest`, `collared-shirt`, `smart-casual` |
+| `rocketbox/professions/construction_female_01` | White safety hard hat, yellow high-visibility vest with reflective bands, blue workwear, protective gloves and tan boots. | `construction`, `high-visibility-vest`, `hard-hat`, `workwear`, `ppe` |
+| `rocketbox/professions/fire_male_04` | Tan firefighting turnout clothing with reflective yellow bands, white helmet, respiratory face covering, dark gloves and boots; bulky equipment silhouette. | `firefighting`, `emergency-responder`, `turnout-gear`, `respirator`, `helmet`, `ppe` |
+| `rocketbox/professions/medical_male_02` | Bright-blue emergency-response jacket and matching trousers with white reflective bands and dark boots; not a white lab coat. | `medical`, `emergency-responder`, `reflective-uniform`, `blue-workwear`, `not-doctor-coat` |
+| `rocketbox/professions/security_male_01` | Gray security shirt with black tie, dark trousers, black peaked uniform cap, belt and dark shoes; gray hair. | `security`, `guard-uniform`, `peaked-cap`, `tie`, `uniform` |
+| `rocketbox/professions/sports_female_01` | Pink floral two-piece swimwear, barefoot, hair pulled back; despite the Sports source label, this is swimwear rather than a gym or track uniform. | `swimwear`, `bikini`, `beach`, `barefoot`, `not-track-uniform` |
+
+The source category `Sports_Female_01` corresponds visually to a pink floral two-piece swimsuit, not conventional track or gym attire. `Medical_Male_02` resembles an emergency-response worker in reflective blue uniform rather than a physician in a lab coat. Search using the actual appearance tags before choosing a model for a scene.
