@@ -28,7 +28,7 @@ State: PARTIAL — 12 archived character source sets (11 complete plus one FBX-o
 - Visual human-quality approval, facial detail accuracy, animation quality, long-session GPU lifecycle, physical mobile testing, and integration into an actual game remain **unverified**. Browser smoke PASS is not full production release PASS.
 - Quaternius Universal Base Characters Standard (122 MB), Universal Animation Library Standard (15 MB), and Library 2 Standard (17 MB) are listed by the creator as CC0/free, but official itch.io interaction is needed for each download. No gated flow bypassed, no Quaternius binary claimed. Source and Pro tiers require payment.
 - MakeHuman and VRoid are character-generation tools, not automatically downloadable libraries; exports would need independent creation and license review. Mixamo requires an authenticated Adobe workflow.
-- Batch01 recorded an additive ~271 MiB Big Mac staging copy under `/Users/bigmac/ThreeJS_Humanoid_Staging_2026-11-13/`. Not rechecked or modified during batch02. Both Macs remained unused for this batch; conversion took place in disposable GitHub Actions.
+- Batch01 recorded additive temporary Big Mac staging, but public documentation intentionally omits its local absolute path. Not rechecked or modified during batch02. Both Macs remained unused for this batch; conversion took place in disposable GitHub Actions.
 
 ## Continuation boundary
 
