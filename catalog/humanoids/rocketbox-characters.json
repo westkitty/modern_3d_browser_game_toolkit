@@ -16,7 +16,10 @@
     "source_bytes_unique": 287445309,
     "source_binary_status": "PARTIAL: 4 of 115 avatars, 2 animation samples; one avatar FBX-only",
     "glb_conversions_static_pass": 2,
-    "glb_loader_tests_performed": 0
+    "glb_loader_tests_performed": 0,
+    "glb_browser_smoke_pass": 2,
+    "glb_production_release_verified": 0,
+    "browser_proof": "GitHub Actions run 43549437068, Three.js r185 WebGL2, two models loaded skinned animated rendered disposed reloaded; PASS_WITH_LIMITATIONS"
   },
   "records": [
     {
@@ -35,8 +38,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "static_glb_structure_pass_loader_and_visual_unverified",
-      "rig_animation_test": "static_reference_check_pass_visual_playback_unverified",
+      "conversion_glb": "threejs_r185_browser_loader_render_mixer_reload_PASS_WITH_LIMITATIONS",
+      "rig_animation_test": "browser_GLTFLoader_mesh_skin_80_bones_2_clips_mixer_advanced_and_reload_pass; visual_retarget_review_pending",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Female_Adult_01_Originals_Batch01_2026-11-13.zip",
       "archive_sha256": "23522f9ee27325881f91c0ade62154873ffb96482d016c562e18623faf23352a",
@@ -55,7 +58,31 @@
       "processed_glb_animation_clips": 2,
       "processed_glb_provider_readback": "Google Drive file size and parent verified",
       "glb_source_transform": "Blender 4.0.2 cloud, original FBX copied before conversion",
-      "runtime_integration": "not_performed"
+      "runtime_integration": "isolated_threejs_browser_smoke_pass_not_yet_deployed_to_game",
+      "browser_smoke_report_filename": "BROWSER_SMOKE_RESULT.json",
+      "browser_smoke_qa_run": 43549437068,
+      "browser_smoke_runtime": {
+        "threejs_revision": "185",
+        "webgl": "2.0",
+        "skeleton_joints": 80,
+        "geometry_vertices": 5563,
+        "drawn_triangles": 9400,
+        "animations": 2,
+        "materials_with_maps": 3,
+        "rendered_frame": true,
+        "disposed_and_reloaded": true,
+        "bounds_m": [
+          1.2172,
+          1.7433,
+          0.3761
+        ]
+      },
+      "restrictions": [
+        "human_visual_review_pending",
+        "no_real_mobile_device_test",
+        "no_long_session_gpu_memory_or_thermal_test",
+        "not_integrated_into_specific_game"
+      ]
     },
     {
       "asset_id": "rocketbox/adults/female_adult_02",
@@ -421,8 +448,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "static_glb_structure_pass_loader_and_visual_unverified",
-      "rig_animation_test": "static_reference_check_pass_visual_playback_unverified",
+      "conversion_glb": "threejs_r185_browser_loader_render_mixer_reload_PASS_WITH_LIMITATIONS",
+      "rig_animation_test": "browser_GLTFLoader_mesh_skin_80_bones_2_clips_mixer_advanced_and_reload_pass; visual_retarget_review_pending",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Male_Adult_01_Originals_Batch01_2026-11-13.zip",
       "archive_sha256": "6f8c51a379c73e8ebe0fa6099639a71fa6b019ed6c0d77b44d70c2321f41daed",
@@ -441,7 +468,31 @@
       "processed_glb_animation_clips": 2,
       "processed_glb_provider_readback": "Google Drive file size and parent verified",
       "glb_source_transform": "Blender 4.0.2 cloud, original FBX copied before conversion",
-      "runtime_integration": "not_performed"
+      "runtime_integration": "isolated_threejs_browser_smoke_pass_not_yet_deployed_to_game",
+      "browser_smoke_report_filename": "BROWSER_SMOKE_RESULT.json",
+      "browser_smoke_qa_run": 43549437068,
+      "browser_smoke_runtime": {
+        "threejs_revision": "185",
+        "webgl": "2.0",
+        "skeleton_joints": 80,
+        "geometry_vertices": 4802,
+        "drawn_triangles": 7934,
+        "animations": 2,
+        "materials_with_maps": 3,
+        "rendered_frame": true,
+        "disposed_and_reloaded": true,
+        "bounds_m": [
+          1.3482,
+          1.8237,
+          0.3398
+        ]
+      },
+      "restrictions": [
+        "human_visual_review_pending",
+        "no_real_mobile_device_test",
+        "no_long_session_gpu_memory_or_thermal_test",
+        "not_integrated_into_specific_game"
+      ]
     },
     {
       "asset_id": "rocketbox/adults/male_adult_02",
