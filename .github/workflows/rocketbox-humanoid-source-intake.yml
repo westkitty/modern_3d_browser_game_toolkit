@@ -33,7 +33,8 @@ jobs:
         continue-on-error: true
         run: |
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy
+          blender -b --factory-startup --python-expr 'import numpy; print("NUMPY_READY", numpy.__version__)'
 
       - name: Export two candidate character GLBs
         continue-on-error: true
