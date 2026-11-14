@@ -15,9 +15,21 @@
         "TGA"
       ],
       "advertised_content": "115 rigged avatars and animation directories",
-      "source_status": "source-enumerated",
-      "archive_status": "not_acquired",
-      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing."
+      "source_status": "original_binaries_verified_subset",
+      "archive_status": "partial_acquired_4_avatars_2_animation_samples",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated.",
+      "pinned_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "archived_2026_11_13": {
+        "individual_avatar_archives": 4,
+        "animation_sample_archives": 1,
+        "asset_records_updated": 4,
+        "unique_avatars_remain_pending": 111,
+        "source_files_with_hashes": 36,
+        "drive_metadata_readback": "5_of_5",
+        "private_receipts_filename": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
+        "binary_roundtrip_verification": "not_performed",
+        "glb_conversions_validated": 0
+      }
     },
     {
       "id": "quaternius-universal-base-characters-standard",
@@ -35,7 +47,8 @@
       "advertised_content": "Six bases across overall pack; Standard ZIP 122 MB; verify Standard contents on acquisition",
       "source_status": "item-verified",
       "archive_status": "not_acquired",
-      "notes": "Do not assume paid Source tier is included; newer Quaternius releases may use QAL, so evaluate per pack."
+      "notes": "Do not assume paid Source tier is included; newer Quaternius releases may use QAL, so evaluate per pack.",
+      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files"
     },
     {
       "id": "quaternius-ual1-standard",
@@ -52,7 +65,8 @@
       "advertised_content": "120+ across full offering; Standard ZIP 15 MB; Standard exact tracks not verified",
       "source_status": "item-verified",
       "archive_status": "not_acquired",
-      "notes": "Root-motion and in-place variants; skeleton compatibility and individual animations require validation."
+      "notes": "Root-motion and in-place variants; skeleton compatibility and individual animations require validation.",
+      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files"
     },
     {
       "id": "quaternius-ual2-standard",
@@ -69,7 +83,8 @@
       "advertised_content": "130+ across full offering; Standard ZIP 17 MB; Standard exact tracks not verified",
       "source_status": "item-verified",
       "archive_status": "not_acquired",
-      "notes": "Do not infer current free subset or claim all full-library animations are in Standard."
+      "notes": "Do not infer current free subset or claim all full-library animations are in Standard.",
+      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files"
     },
     {
       "id": "makehuman",
