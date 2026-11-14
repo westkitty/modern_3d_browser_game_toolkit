@@ -114,7 +114,7 @@ def main():
     a.add_argument("--group", type=int, required=True)
     a.add_argument("--root", default="/tmp/rocketbox-remaining")
     args=a.parse_args()
-    base=Path(args.root).resolve()/("group-%02d" % args.group)
+    base=Path(args.root).resolve()/("group-"+str(args.group))
     originals=base/"raw"
     source_packages=base/"source-zips"
     packs=base/"packs"
