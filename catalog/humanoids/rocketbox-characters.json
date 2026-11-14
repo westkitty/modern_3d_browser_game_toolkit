@@ -14,7 +14,9 @@
     "source_archive_packages_uploaded": 5,
     "drive_file_metadata_readback": "5_of_5_verified",
     "source_bytes_unique": 287445309,
-    "source_binary_status": "PARTIAL: 4 of 115 avatars, 2 animation samples; one avatar FBX-only"
+    "source_binary_status": "PARTIAL: 4 of 115 avatars, 2 animation samples; one avatar FBX-only",
+    "glb_conversions_static_pass": 2,
+    "glb_loader_tests_performed": 0
   },
   "records": [
     {
@@ -33,8 +35,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_validated",
-      "rig_animation_test": "not_performed",
+      "conversion_glb": "static_glb_structure_pass_loader_and_visual_unverified",
+      "rig_animation_test": "static_reference_check_pass_visual_playback_unverified",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Female_Adult_01_Originals_Batch01_2026-11-13.zip",
       "archive_sha256": "23522f9ee27325881f91c0ade62154873ffb96482d016c562e18623faf23352a",
@@ -42,7 +44,18 @@
       "archive_content_scope": "fbx-textures-preview",
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
-      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed."
+      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed.",
+      "processed_file_basename": "Female_Adult_01.glb",
+      "processed_glb_sha256": "4dd78525aa1175af4e87683e44b21cbfe655c6c6b126282032e7a6353801a40d",
+      "processed_glb_bytes": 32829304,
+      "processed_glb_format": "GLB/glTF 2.0",
+      "processed_glb_joint_references": 80,
+      "processed_glb_materials": 3,
+      "processed_glb_images_embedded": 7,
+      "processed_glb_animation_clips": 2,
+      "processed_glb_provider_readback": "Google Drive file size and parent verified",
+      "glb_source_transform": "Blender 4.0.2 cloud, original FBX copied before conversion",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/adults/female_adult_02",
@@ -408,8 +421,8 @@
       "stage": "source_archive_verified",
       "downloaded": true,
       "archive_drive_file_id": null,
-      "conversion_glb": "not_validated",
-      "rig_animation_test": "not_performed",
+      "conversion_glb": "static_glb_structure_pass_loader_and_visual_unverified",
+      "rig_animation_test": "static_reference_check_pass_visual_playback_unverified",
       "archive_status": "google_drive_originals_provider_write_and_size_verified",
       "archive_basename": "Rocketbox_Male_Adult_01_Originals_Batch01_2026-11-13.zip",
       "archive_sha256": "6f8c51a379c73e8ebe0fa6099639a71fa6b019ed6c0d77b44d70c2321f41daed",
@@ -417,7 +430,18 @@
       "archive_content_scope": "fbx-textures-preview",
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
-      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed."
+      "archive_note": "Drive IDs intentionally omitted from public GitHub; see access-controlled Drive receipt. SHA-256 verified pre-upload, Drive readback size verified; roundtrip byte hash not performed.",
+      "processed_file_basename": "Male_Adult_01.glb",
+      "processed_glb_sha256": "733d6b0396893d4d0111e39ecc247618436b88ec1f1cee74e026c1356000c44c",
+      "processed_glb_bytes": 30261844,
+      "processed_glb_format": "GLB/glTF 2.0",
+      "processed_glb_joint_references": 80,
+      "processed_glb_materials": 3,
+      "processed_glb_images_embedded": 7,
+      "processed_glb_animation_clips": 2,
+      "processed_glb_provider_readback": "Google Drive file size and parent verified",
+      "glb_source_transform": "Blender 4.0.2 cloud, original FBX copied before conversion",
+      "runtime_integration": "not_performed"
     },
     {
       "asset_id": "rocketbox/adults/male_adult_02",
