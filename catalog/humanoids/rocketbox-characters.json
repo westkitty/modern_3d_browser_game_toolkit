@@ -30,7 +30,10 @@
     "batch02_drive_glb_readback": "4_of_4_verified",
     "batch02_cloud_run": 43550104493,
     "batch02_runner_source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
-    "source_bytes_unique_legacy_scope": "287445309 is a batch01-only historical unique-source count; batch02 sum is in batch02_source_bytes_including_per_archive_license and is not additive as unique because licenses are repeated"
+    "source_bytes_unique_legacy_scope": "287445309 is a batch01-only historical unique-source count; batch02 sum is in batch02_source_bytes_including_per_archive_license and is not additive as unique because licenses are repeated",
+    "batch02_original_preview_pngs_validated": 8,
+    "batch02_source_preview_visual_tags_reviewed": 8,
+    "body_proportions_note": "Four converted browser-tested models have model bounds; unconverted model proportions remain unmeasured. Previews cannot prove GLB visual fidelity."
   },
   "records": [
     {
@@ -294,7 +297,23 @@
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
       "archive_note": "Original FBX/texture files rehashed before upload; Drive provider write, byte size and parent verified; Drive byte-level roundtrip hash not performed.",
-      "runtime_integration": "not_performed"
+      "runtime_integration": "not_performed",
+      "visual_preview_review": {
+        "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
+        "preview_filename": "Female_Adult_11.png",
+        "preview_dimensions_px": [
+          1280,
+          720
+        ],
+        "observed_clothing_and_silhouette": "Long-sleeve brown knee-length dress with dark belt, tall brown boots and tied-back dark hair.",
+        "verified_search_tags": [
+          "civilian",
+          "dress",
+          "boots",
+          "long-sleeves"
+        ],
+        "face_and_body_proportion_quality": "not formally reviewed"
+      }
     },
     {
       "asset_id": "rocketbox/adults/female_adult_12",
@@ -679,14 +698,36 @@
         "materials_with_maps": 3,
         "animations": 2,
         "rendered_frame": true,
-        "disposed_and_reloaded": true
+        "disposed_and_reloaded": true,
+        "bounds_xyz_m": [
+          1.3482,
+          1.8257,
+          0.3388
+        ],
+        "bounds_note": "world-aligned overall model bounding box includes clothing/equipment; not a body measurement or approved model scale"
       },
       "restrictions": [
         "human_visual_review_pending",
         "no_mobile_test",
         "no_long_session_gpu_memory_or_thermal_test",
         "not_integrated_into_specific_game"
-      ]
+      ],
+      "visual_preview_review": {
+        "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
+        "preview_filename": "Male_Adult_08.png",
+        "preview_dimensions_px": [
+          1280,
+          720
+        ],
+        "observed_clothing_and_silhouette": "Light-blue collared button-front shirt, dark trousers and dark shoes; short dark hair, ordinary civilian silhouette.",
+        "verified_search_tags": [
+          "civilian",
+          "collared-shirt",
+          "long-pants",
+          "casual-smart"
+        ],
+        "face_and_body_proportion_quality": "not formally reviewed"
+      }
     },
     {
       "asset_id": "rocketbox/adults/male_adult_09",
@@ -1172,7 +1213,23 @@
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
       "archive_note": "Original FBX/texture files rehashed before upload; Drive provider write, byte size and parent verified; Drive byte-level roundtrip hash not performed.",
-      "runtime_integration": "not_performed"
+      "runtime_integration": "not_performed",
+      "visual_preview_review": {
+        "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
+        "preview_filename": "Business_Male_04.png",
+        "preview_dimensions_px": [
+          1280,
+          720
+        ],
+        "observed_clothing_and_silhouette": "Gray buttoned vest over gray collared long-sleeve shirt, dark trousers and shoes; bald head.",
+        "verified_search_tags": [
+          "business",
+          "vest",
+          "collared-shirt",
+          "smart-casual"
+        ],
+        "face_and_body_proportion_quality": "not formally reviewed"
+      }
     },
     {
       "asset_id": "rocketbox/professions/business_male_05",
@@ -1299,14 +1356,37 @@
         "materials_with_maps": 3,
         "animations": 2,
         "rendered_frame": true,
-        "disposed_and_reloaded": true
+        "disposed_and_reloaded": true,
+        "bounds_xyz_m": [
+          1.2174,
+          1.7724,
+          0.3491
+        ],
+        "bounds_note": "world-aligned overall model bounding box includes clothing/equipment; not a body measurement or approved model scale"
       },
       "restrictions": [
         "human_visual_review_pending",
         "no_mobile_test",
         "no_long_session_gpu_memory_or_thermal_test",
         "not_integrated_into_specific_game"
-      ]
+      ],
+      "visual_preview_review": {
+        "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
+        "preview_filename": "Construction_Female_01.png",
+        "preview_dimensions_px": [
+          1280,
+          720
+        ],
+        "observed_clothing_and_silhouette": "White safety hard hat, yellow high-visibility vest with reflective bands, blue workwear, protective gloves and tan boots.",
+        "verified_search_tags": [
+          "construction",
+          "high-visibility-vest",
+          "hard-hat",
+          "workwear",
+          "ppe"
+        ],
+        "face_and_body_proportion_quality": "not formally reviewed"
+      }
     },
     {
       "asset_id": "rocketbox/professions/construction_male_01",
@@ -1650,14 +1730,38 @@
         "materials_with_maps": 6,
         "animations": 2,
         "rendered_frame": true,
-        "disposed_and_reloaded": true
+        "disposed_and_reloaded": true,
+        "bounds_xyz_m": [
+          1.3541,
+          1.8575,
+          0.4972
+        ],
+        "bounds_note": "world-aligned overall model bounding box includes clothing/equipment; not a body measurement or approved model scale"
       },
       "restrictions": [
         "human_visual_review_pending",
         "no_mobile_test",
         "no_long_session_gpu_memory_or_thermal_test",
         "not_integrated_into_specific_game"
-      ]
+      ],
+      "visual_preview_review": {
+        "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
+        "preview_filename": "Fire_Male_04.png",
+        "preview_dimensions_px": [
+          1280,
+          720
+        ],
+        "observed_clothing_and_silhouette": "Tan firefighting turnout clothing with reflective yellow bands, white helmet, respiratory face covering, dark gloves and boots; bulky equipment silhouette.",
+        "verified_search_tags": [
+          "firefighting",
+          "emergency-responder",
+          "turnout-gear",
+          "respirator",
+          "helmet",
+          "ppe"
+        ],
+        "face_and_body_proportion_quality": "not formally reviewed"
+      }
     },
     {
       "asset_id": "rocketbox/professions/fire_male_05",
@@ -1847,7 +1951,24 @@
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
       "archive_note": "Original FBX/texture files rehashed before upload; Drive provider write, byte size and parent verified; Drive byte-level roundtrip hash not performed.",
-      "runtime_integration": "not_performed"
+      "runtime_integration": "not_performed",
+      "visual_preview_review": {
+        "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
+        "preview_filename": "Medical_Male_02.png",
+        "preview_dimensions_px": [
+          1280,
+          720
+        ],
+        "observed_clothing_and_silhouette": "Bright-blue emergency-response jacket and matching trousers with white reflective bands and dark boots; not a white lab coat.",
+        "verified_search_tags": [
+          "medical",
+          "emergency-responder",
+          "reflective-uniform",
+          "blue-workwear",
+          "not-doctor-coat"
+        ],
+        "face_and_body_proportion_quality": "not formally reviewed"
+      }
     },
     {
       "asset_id": "rocketbox/professions/medical_male_03",
@@ -2352,7 +2473,24 @@
       "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
       "source_receipt_private": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
       "archive_note": "Original FBX/texture files rehashed before upload; Drive provider write, byte size and parent verified; Drive byte-level roundtrip hash not performed.",
-      "runtime_integration": "not_performed"
+      "runtime_integration": "not_performed",
+      "visual_preview_review": {
+        "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
+        "preview_filename": "Security_Male_01.png",
+        "preview_dimensions_px": [
+          1280,
+          720
+        ],
+        "observed_clothing_and_silhouette": "Gray security shirt with black tie, dark trousers, black peaked uniform cap, belt and dark shoes; gray hair.",
+        "verified_search_tags": [
+          "security",
+          "guard-uniform",
+          "peaked-cap",
+          "tie",
+          "uniform"
+        ],
+        "face_and_body_proportion_quality": "not formally reviewed"
+      }
     },
     {
       "asset_id": "rocketbox/professions/sports_female_01",
@@ -2403,14 +2541,37 @@
         "materials_with_maps": 2,
         "animations": 2,
         "rendered_frame": true,
-        "disposed_and_reloaded": true
+        "disposed_and_reloaded": true,
+        "bounds_xyz_m": [
+          1.2172,
+          1.7334,
+          0.3293
+        ],
+        "bounds_note": "world-aligned overall model bounding box includes clothing/equipment; not a body measurement or approved model scale"
       },
       "restrictions": [
         "human_visual_review_pending",
         "no_mobile_test",
         "no_long_session_gpu_memory_or_thermal_test",
         "not_integrated_into_specific_game"
-      ]
+      ],
+      "visual_preview_review": {
+        "basis": "original provider preview PNG inspected, not exported GLB rendered visual acceptance",
+        "preview_filename": "Sports_Female_01.png",
+        "preview_dimensions_px": [
+          1280,
+          720
+        ],
+        "observed_clothing_and_silhouette": "Pink floral two-piece swimwear, barefoot, hair pulled back; despite the Sports source label, this is swimwear rather than a gym or track uniform.",
+        "verified_search_tags": [
+          "swimwear",
+          "bikini",
+          "beach",
+          "barefoot",
+          "not-track-uniform"
+        ],
+        "face_and_body_proportion_quality": "not formally reviewed"
+      }
     },
     {
       "asset_id": "rocketbox/professions/sports_female_02",
