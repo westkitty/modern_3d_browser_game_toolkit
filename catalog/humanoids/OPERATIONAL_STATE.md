@@ -1,7 +1,7 @@
 # Three.js Humanoid Library — Operational State
 
 Date: 2026-11-13 America/Detroit (cloud runs crossed into 2026-11-14 UTC)
-State: PARTIAL — 12 archived character originals (11 complete plus one FBX-only); 10 GLBs passed real WebGL2/Three.js r185 browser smoke and have 20 rendered QA PNGs; 103 original avatars remain unacquired. No model has production visual/mobile/lifecycle approval.
+State: ACQUISITION COMPLETE — 115/115 unique Rocketbox original avatar directory archives indexed and preserved to private Drive; 10 GLBs passed real Three.js WebGL2 smoke, 105 have no GLB, and one archived original (Medical_Female_01) remains FBX-only without source textures. Zero models have production visual/mobile/lifecycle approval. Earlier partial counts below are historical.
 
 ## Authoritative locations
 
@@ -76,3 +76,27 @@ Owner request: acquire the remaining 103 distinct Microsoft Rocketbox avatar ori
 **Pilot cloud run:** GitHub Actions [43553390313](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/43553390313), initial group 0; the next ten batches must not be counted acquired until independently verified Drive writes and exact metadata readbacks. A cloud source artifact is ephemeral and does **not** count as an archive. Any group failures must remain explicit. No source, model GLB, demo, original archive, Mac, `main`, or draft PR merge was modified when this source-only intake started.
 
 **Current verified numerical baseline remains 12/115 original avatar sets and 10 browser-smoke-tested GLBs; 103 pending.** A completed source acquisition is not a completed GLB conversion. The existing two GLB-less source sets remain tracked separately.
+
+## Final 115-source acquisition completed — current authoritative state
+
+The user explicitly requested acquiring **all remaining** Rocketbox avatars, continuing the same `westkitty/modern_3d_browser_game_toolkit` feature branch `feat/humanoid-asset-catalog-20261113`, draft PR #2, and existing private Google Drive `ThreeJS_Humanoid_Library` archive. This acquisition is now fully completed **as a source-library archival operation**, not as conversion of all assets into runtime GLBs.
+
+**Source authority and inventory:** Microsoft's original `microsoft/Microsoft-Rocketbox` MIT licensed repository at *exact* commit `0943055db6ec570bcef9f2c8b41c9e5467c808f9`; 115 unique avatar directories in GitHub catalog. Previously 12 archived; 103 were newly acquired. Source tree was not truncated. New acquisitions covered 1,198 pinned official Git blob paths and 9,867,263,237 raw bytes (9.19 GiB) in 11 verified groups and one isolated retry. Original FBX, texture, preview bytes retained without modifications. Each downloaded source file was checked against expected size, file signature, official Git blob SHA-1 and full-file SHA-256; source ZIP files were then independently rehashed and CRC tested.
+
+**Cloud runs:** [group0 pilot 43553390313](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/43553390313); [groups1–10 run 43553780934](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/43553780934); [isolated single-asset retry 43554819035](https://github.com/westkitty/modern_3d_browser_game_toolkit/actions/runs/43554819035). The combined run's group4 reported failure for `Male_Adult_02` because a filename contained spaces. Nine successful group4 models were preserved; the code now encodes URL paths and the missing character passed isolated retry. Group4 failure remains in history but does not remain unresolved. All jobs used disposable GitHub-hosted Ubuntu, not local Macs.
+
+**Private Drive original archives:** Existing `GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-13/originals/` contains exactly 65 file objects: 52 verified new sub-100MiB nested transport pack ZIPs, and 13 historical originals packages (12 avatar originals, 1 separate animation samples pack). Pack layout is `outer GitHub artifact ZIP -> pack-NN.zip -> per-avatar source ZIP (sometimes partNN) -> Rocketbox/Avatars/... FBX/TGA/PNG and Microsoft LICENSE.md`. Each new transport pack has provider-confirmed Drive upload plus filename/size/MIME/parent metadata readback, and each character was reconciled to a verified archive receipt. **The Drive-stored bytes have not been fully downloaded and rehashed after upload**; do not label this "restore tested" or "Drive end-to-end SHA match".
+
+**Current complete private retrieval index:** The access-controlled `manifests/` folder now contains
+- `ROCKETBOX_115_PRIVATE_MASTER_LOOKUP.csv`: all 115 stable asset IDs with exact private Drive original archive pointers, all ten GLB pointers, and source archive SHA-256.
+- `ROCKETBOX_115_PRIVATE_MASTER_INDEX.json`: full structured 115-character provenance with per-model source details, file hashes, nested paths, private recovery locators and explicit status.
+- `ROCKETBOX_115_README.md`: restore steps, original-use terms, known caveats.
+- The twelve group/retry receipt files `ROCKETBOX_REMAINING_GROUP00_DRIVE_RECEIPT.json` through `ROCKETBOX_REMAINING_GROUP10_DRIVE_RECEIPT.json` and `ROCKETBOX_REMAINING_GROUP04_MALE02_RETRY_DRIVE_RECEIPT.json`. Readbacks confirmed their existence. These contain private Drive IDs and must remain in the private Drive library only.
+
+**GitHub current truth:** `rocketbox-characters.json`: exactly 115 records, every `downloaded=true`, `binaries_archived=115`, `rocketbox_avatar_originals_remaining=0`, `remaining_103_archived=103`, `glb_browser_smoke_pass=10`, `glb_production_release_verified=0`. `sources.json` and README now say acquisition complete. The pinned source manifest is `rocketbox-remaining-103-plan.json`, and source-acquisition scripts/workflows are under `catalog/humanoids/` and dedicated `.github/workflows/rocketbox-humanoid-...`. Exact private Drive IDs stay out of the public repository.
+
+**One important source completeness exception:** Historical batch01 `Medical_Female_01` is archived *FBX-only*, without its source textures. This source directory counts as represented/archived, but cannot be described as a complete textured model source. All 103 newly gathered sources preserve FBX and their official textures/previews. The two standalone archived sample animations remain independent; no new retargeted playback proof.
+
+**Separate runtime queue:** 10 preexisting GLBs with actual Three.js r185 WebGL2 browser-smoke tests and 20 preserved render screenshots; **105 of 115 source sets have no GLB**. No new GLBs were created in this 103-originals acquisition campaign. Face/material brightness mismatch versus publisher previews, animation deformation and retarget quality, mobile performance, sustained GPU resource lifecycle and live-game integration remain unverified. **Original source acquisition completion does not imply production release approval.**
+
+**Protected scope:** GitHub `main`, ten existing toolkit demonstrations, original Drive objects, previous archive receipts, MacBook and Big Mac were not modified; no paid assets, interactive/login-gated Quaternius acquisition, deployment, or PR merge. PR #2 remains open **draft**. Update/commit only source metadata and dedicated cloud workflows in existing feature branch. Date: Nov 13, 2026 in America/Detroit, Nov 14 UTC.
