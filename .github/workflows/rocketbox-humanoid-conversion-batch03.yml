@@ -33,7 +33,7 @@ jobs:
           assert len(plan['models'])==10 and len({m['asset_id'] for m in plan['models']})==10
           assert all(m['source_zip_sha256'] and len(m['source_zip_sha256'])==64 for m in plan['models'])
           pkg=json.loads(Path('package.json').read_text())
-          assert pkg['dependencies'].get('three')=='0.185.0' or pkg['dependencies'].get('three')=='0.185.1',pkg['dependencies']
+          assert pkg['dependencies'].get('three') in ('0.185.1','^0.185.1'),pkg['dependencies']
           print('IDENTITY_AND_TEN_SOURCE_CONTRACT_PASS')
           PY
       - name: Download only original byte-identical pinned cloud artifacts, no Drive tokens
