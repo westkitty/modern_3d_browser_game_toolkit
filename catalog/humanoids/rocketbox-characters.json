@@ -9,7 +9,7 @@
     "rocketbox_duplicate_aliases": 2,
     "source_families": 7,
     "binaries_archived": 115,
-    "glb_conversions_validated": 0,
+    "glb_conversions_validated": 115,
     "animation_samples_archived": 2,
     "source_archive_packages_uploaded": 66,
     "drive_file_metadata_readback": "Batch01 source ZIPs 5_of_5; batch02 source ZIPs 8_of_8; batch02 GLBs 4_of_4 (metadata readbacks, no Drive SHA256 roundtrip)",
@@ -33,7 +33,7 @@
     "source_bytes_unique_legacy_scope": "287445309 is a batch01-only historical unique-source count; batch02 sum is in batch02_source_bytes_including_per_archive_license and is not additive as unique because licenses are repeated",
     "batch02_original_preview_pngs_validated": 8,
     "batch02_source_preview_visual_tags_reviewed": 8,
-    "body_proportions_note": "Four converted browser-tested models have model bounds; unconverted model proportions remain unmeasured. Previews cannot prove GLB visual fidelity.",
+    "body_proportions_note": "All 115 real GLBs have finite bounds, skinned meshes and two real rendered QA views in archived Chromium browser reports. Publisher-preview appearance, facial lighting/color parity and animation retarget quality are not human-approved.",
     "batch02_completion_new_glbs": 4,
     "batch02_completion_glb_bytes": 130021668,
     "batch02_completion_browser_qa_run": 43551948111,
@@ -309,7 +309,11 @@
       "private_receipt": "ROCKETBOX_MEDICAL_FEMALE01_PRIVATE_COMPLETION_RECEIPT.json",
       "historical_fbx_only_archive_preserved": true,
       "visual_parity_warning": "White scrubs darker/gray and skin tone darker than publisher preview; no release approval"
-    }
+    },
+    "glb_conversions_validation_scope": "115 distinct real GLBs independently passed static GLB2 checks and Three.js r185 Chromium WebGL2 loader/texture/skinning/mixer/render/dispose/reload smoke. This is NOT production visual/mobile/sustained-GPU/retarget-quality approval; release-verified remains 0.",
+    "private_master_index_latest": "ROCKETBOX_115_PRIVATE_MASTER_INDEX_V4.json (private Google Drive manifests only; no private IDs in GitHub)",
+    "private_master_lookup_latest": "ROCKETBOX_115_PRIVATE_MASTER_LOOKUP_V4.csv (private Google Drive manifests only)",
+    "visual_evidence_audit": "ROCKETBOX_115_INDEPENDENT_RENDER_EVIDENCE_AUDIT.json (private; 15 archives, 115 distinct models, 230 individual PNG checksums verified)"
   },
   "records": [
     {
