@@ -356,6 +356,45 @@ def process_polygonalmind_r1_or_r2(round_num: int, work_dir: Path, out_dir: Path
     return manifest
 
 
+def pack_glb_external_images(src_glb: Path, out_glb: Path) -> dict:
+    gltf, bin_bytes = parse_glb_chunks(src_glb.read_bytes())
+    gltf = copy.deepcopy(gltf)
+    bin_chunks = bytearray(bin_bytes)
+    buffer_views = gltf.setdefault("bufferViews", [])
+    changed = False
+    for img in gltf.get("images", []):
+        uri = img.get("uri")
+        if not uri:
+            continue
+        if uri.startswith("data:"):
+            header, b64 = uri.split(",", 1)
+            raw_img = base64.b64decode(b64)
+            mime = header.split(";")[0].replace("data:", "") or "image/png"
+        else:
+            img_path = src_glb.parent / uri
+            if not img_path.exists():
+                raise FileNotFoundError(f"Missing external GLB image {img_path} from {src_glb}")
+            raw_img = img_path.read_bytes()
+            ext = img_path.suffix.lower()
+            mime = "image/jpeg" if ext in (".jpg", ".jpeg") else "image/png"
+        while len(bin_chunks) % 4 != 0:
+            bin_chunks.append(0)
+        offset = len(bin_chunks)
+        bin_chunks.extend(raw_img)
+        bv_idx = len(buffer_views)
+        buffer_views.append({"buffer": 0, "byteOffset": offset, "byteLength": len(raw_img)})
+        img.pop("uri", None)
+        img["bufferView"] = bv_idx
+        img["mimeType"] = mime
+        changed = True
+    if changed:
+        write_glb_bytes(gltf, bytes(bin_chunks), out_glb)
+    else:
+        out_glb.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src_glb, out_glb)
+    return extract_glb_stats(out_glb)
+
+
 def process_kenney_glb_pack(slug_name: str, source_id: str, category: str, skeleton_family: str, work_dir: Path, out_dir: Path) -> dict:
     orig_dir = work_dir / "originals" / source_id
     orig_dir.mkdir(parents=True, exist_ok=True)
@@ -375,13 +414,12 @@ def process_kenney_glb_pack(slug_name: str, source_id: str, category: str, skele
     for glb_src in sorted(ext_dir.rglob("*.glb")):
         stem = glb_src.stem
         rel = str(glb_src.relative_to(ext_dir))
-        if stem.startswith("aid-"):
+        if stem.startswith(("aid-", "aid_")):
             rejected.append({"source_rel_path": rel, "reason": "mobility_aid_or_prop_not_humanoid_rig"})
             continue
         slug = slugify(stem)
         dest = glb_dir / f"{slug}.glb"
-        shutil.copy2(glb_src, dest)
-        stats = extract_glb_stats(dest)
+        stats = pack_glb_external_images(glb_src, dest)
         assert not stats["external_uris"], f"External URIs in {dest}: {stats['external_uris']}"
         records.append({
             "asset_id": f"{source_id}/character/{slug}",

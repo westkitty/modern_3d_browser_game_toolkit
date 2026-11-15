@@ -122,9 +122,14 @@ chrome.stderr.on('data', (d) => { stderrBuf += d.toString(); });
 chrome.stdout.on('data', (d) => { stderrBuf += d.toString(); });
 
 let debugPort = null;
-for (let i = 0; i < 100; i++) {
+const dtFile = path.join(userDataDir, 'DevToolsActivePort');
+for (let i = 0; i < 300; i++) {
   const m = stderrBuf.match(/ws:\/\/127\.0\.0\.1:(\d+)\/devtools/);
   if (m) { debugPort = Number(m[1]); break; }
+  if (fs.existsSync(dtFile)) {
+    const firstLine = fs.readFileSync(dtFile, 'utf8').split(/\r?\n/)[0]?.trim();
+    if (/^\d+$/.test(firstLine)) { debugPort = Number(firstLine); break; }
+  }
   await new Promise((r) => setTimeout(r, 100));
 }
 if (!debugPort) {
@@ -240,9 +245,13 @@ for (const [srcKey, rel] of firstBySource.entries()) {
 }
 
 cdp.close();
-chrome.kill();
+chrome.kill('SIGKILL');
 server.close();
-fs.rmSync(userDataDir, { recursive: true, force: true });
+try {
+  fs.rmSync(userDataDir, { recursive: true, force: true, maxRetries: 3 });
+} catch {
+  // best-effort temp profile cleanup
+}
 
 const report = {
   generated_utc: new Date().toISOString(),
