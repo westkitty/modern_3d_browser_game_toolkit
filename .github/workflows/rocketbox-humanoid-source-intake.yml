@@ -1,0 +1,83 @@
+name: Rocketbox humanoid source intake (bounded batch)
+
+on:
+  push:
+    branches:
+      - feat/humanoid-asset-catalog-20261113
+    paths:
+      - .github/workflows/rocketbox-humanoid-source-intake.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rocketbox-humanoid-source-intake-20261113
+  cancel-in-progress: true
+
+jobs:
+  acquire:
+    name: Verify sources, acquire originals, inspect GLB candidates
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out source branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Acquire pinned Microsoft Rocketbox originals
+        run: |
+          python3 catalog/humanoids/tools/rocketbox_cloud_intake.py
+
+      - name: Install Blender on ephemeral Linux runner
+        continue-on-error: true
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy
+          blender -b --factory-startup --python-expr 'import numpy; print("NUMPY_READY", numpy.__version__)'
+
+      - name: Export two candidate character GLBs
+        continue-on-error: true
+        run: |
+          mkdir -p /tmp/rocketbox-batch/processed-glb
+          blender -b --factory-startup --python catalog/humanoids/tools/blender_convert_candidates.py -- --root /tmp/rocketbox-batch
+
+      - name: Validate actual GLB structure and record honest limitations
+        if: always()
+        continue-on-error: true
+        run: |
+          python3 catalog/humanoids/tools/inspect_glb_static.py
+
+      - name: Upload untouched source-file archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-originals-20261113-batch01
+          path: |
+            /tmp/rocketbox-batch/originals/
+            /tmp/rocketbox-batch/evidence/source_receipt.json
+            /tmp/rocketbox-batch/evidence/SHA256SUMS.txt
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 1
+
+      - name: Upload candidate GLBs and conversion proofs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-glb-candidates-20261113-batch01
+          path: |
+            /tmp/rocketbox-batch/processed-glb/
+            /tmp/rocketbox-batch/evidence/conversion_report.json
+            /tmp/rocketbox-batch/evidence/glb_static_validation.json
+          if-no-files-found: ignore
+          compression-level: 6
+          retention-days: 1
+
+      - name: Preserve existing ten-demo architecture
+        if: always()
+        continue-on-error: true
+        run: |
+          npm ci
+          npm run typecheck
+          npm test
+          npm run build

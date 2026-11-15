@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rocketbox genuine Three.js rendered evidence — campaign batch conversion</title>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+<style>body{margin:0;background:#e5e8ed;color:#1b2430;font:14px system-ui}#stage{width:768px;height:768px;margin:auto;}canvas{width:768px;height:768px;display:block;}#qa-result{white-space:pre-wrap;max-width:768px;margin:16px auto;overflow-wrap:anywhere}</style></head>
+<body><main id="stage"><canvas id="scene" width="768" height="768" aria-label="Single source-grounded humanoid GLB render"></canvas></main><pre id="qa-result">RUNNING</pre>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+const names=await (await fetch('/catalog/humanoids/qa-assets/model_names.json',{cache:'no-store'})).json();
+const name=new URLSearchParams(location.search).get('model');
+const report={model:name,revision:THREE.REVISION,finished:false,status:'IN_PROGRESS',viewpoints:['positive_z_oblique','negative_z_oblique'],source_type:'actual archived/conversion GLB',limitations:['Automated pixel evidence is not human visual approval','No physical mobile testing','No long session GPU resource lifecycle','No independently retargeted animation quality review']};
+const el=document.querySelector('#qa-result'),canvas=document.querySelector('#scene');
+window.__qaFrames={};
+function send(){el.textContent=JSON.stringify(report)}
+function insist(test,reason){if(!test)throw Error(reason)}
+function disposeScene(scene,mixer){
+  const geometry=new Set(),materials=new Set(),textures=new Set();
+  scene.traverse(o=>{
+    if(o.geometry&&!geometry.has(o.geometry)){geometry.add(o.geometry);o.geometry.dispose()}
+    if(o.material)for(const m of [].concat(o.material)){
+      if(materials.has(m))continue;
+      materials.add(m);
+      for(const v of Object.values(m))if(v?.isTexture&&!textures.has(v)){textures.add(v);v.dispose()}
+      m.dispose()
+    }
+  });
+  if(mixer){mixer.stopAllAction();mixer.uncacheRoot(scene)}
+  return {geometry:geometry.size,materials:materials.size,textures:textures.size}
+}
+async function main(){
+  let renderer;
+  try{
+    insist(names.includes(name),'model not in allowlist');
+    renderer=new THREE.WebGLRenderer({canvas,preserveDrawingBuffer:true,antialias:false,alpha:false});
+    renderer.setPixelRatio(1);renderer.setSize(768,768,false);
+    renderer.outputColorSpace=THREE.SRGBColorSpace;
+    insist(renderer.getContext().getParameter(renderer.getContext().VERSION).includes('WebGL 2'),'WebGL2 unavailable');
+    report.webGLVersion=renderer.getContext().getParameter(renderer.getContext().VERSION);
+    report.webglRenderer=renderer.getContext().getParameter(renderer.getContext().RENDERER);
+    const url='/catalog/humanoids/qa-assets/processed-glb/'+name+'.glb';
+    const loader=new GLTFLoader();
+    const gltf=await loader.loadAsync(url);
+    insist(gltf.scene&&gltf.animations.length>0,'no glTF scene or animation clips');
+    const skinned=[],meshes=[],matSet=new Set(),texSet=new Set();
+    let sourceTrackCount=0,uvMeshes=0;
+    gltf.scene.traverse(o=>{
+      if(o.isMesh){meshes.push(o);if(o.geometry?.getAttribute('uv'))uvMeshes++}
+      if(o.isSkinnedMesh)skinned.push(o);
+      if(o.material)for(const m of [].concat(o.material)){
+        matSet.add(m);
+        for(const v of Object.values(m))if(v?.isTexture)texSet.add(v)
+      }
+    });
+    insist(skinned.length>0&&skinned.some(x=>x.skeleton?.bones?.length>=40),'unskinned or missing skeleton');
+    insist(texSet.size>0,'no material textures');
+    insist(uvMeshes>0,'no UV-mapped meshes');
+    for(const clip of gltf.animations){sourceTrackCount+=clip.tracks.length}
+    insist(sourceTrackCount>0,'no animated tracks');
+    const mixer=new THREE.AnimationMixer(gltf.scene);
+    for(const clip of gltf.animations){const action=mixer.clipAction(clip);action.play();mixer.update(.13);action.stop()}
+    gltf.scene.updateMatrixWorld(true);
+    const bounds=new THREE.Box3().setFromObject(gltf.scene);
+    const size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3());
+    insist([size.x,size.y,size.z].every(Number.isFinite),'nonfinite bounds');
+    insist(size.y>0.55&&size.y<3.8,'implausible character height: '+size.y);
+    const aspect=size.x/size.y;
+    insist(aspect>.10&&aspect<1.75,'implausible model aspect '+aspect);
+    report.bounds_m=size.toArray().map(v=>Number(v.toFixed(4)));
+    report.bottom_y_m=Number(bounds.min.y.toFixed(4));
+    report.materials=matSet.size;report.texture_images=texSet.size;
+    report.meshes=meshes.length;report.skinned_meshes=skinned.length;
+    report.bones=Math.max(...skinned.map(x=>x.skeleton.bones.length));
+    report.clips=gltf.animations.length;report.clip_tracks=sourceTrackCount;
+    report.uv_meshes=uvMeshes;
+    const scene=new THREE.Scene();
+    scene.background=new THREE.Color(0xe5e8ed);
+    const world=new THREE.Group();world.add(gltf.scene);scene.add(world);
+    scene.add(new THREE.HemisphereLight(0xffffff,0xa7afbd,2.1));
+    const key=new THREE.DirectionalLight(0xffffff,2.6);key.position.set(4,8,9);scene.add(key);
+    const fill=new THREE.DirectionalLight(0xe2e9ff,1.2);fill.position.set(-5,3,-7);scene.add(fill);
+    const camera=new THREE.PerspectiveCamera(42,1,.02,100);
+    const gl=renderer.getContext();
+    const views=[
+      {label:'positive_z_oblique',sign:1},
+      {label:'negative_z_oblique',sign:-1}
+    ];
+    report.views=[];
+    const dist=Math.max(size.y*2.25,1.6);
+    for(const v of views){
+      camera.position.set(center.x+v.sign*dist*.20,center.y+size.y*.08,center.z+v.sign*dist);
+      camera.lookAt(center);camera.updateMatrixWorld(true);
+      renderer.render(scene,camera);
+      const triangles=renderer.info.render.triangles;
+      insist(triangles>0,'no triangles rendered for '+v.label);
+      const buffer=new Uint8Array(768*768*4);
+      gl.readPixels(0,0,768,768,gl.RGBA,gl.UNSIGNED_BYTE,buffer);
+      const base=buffer.slice(0,4);let differing=0;
+      for(let p=0;p<768*768;p+=16){
+        const i=p*4;
+        if(Math.abs(buffer[i]-base[0])+Math.abs(buffer[i+1]-base[1])+Math.abs(buffer[i+2]-base[2])>44)differing++;
+      }
+      const pixelShare=Number((differing/(768*768/16)).toFixed(5));
+      insist(pixelShare>.005&&pixelShare<.75,'rendered silhouette absent/unbounded '+pixelShare);
+      const image=canvas.toDataURL('image/png');
+      insist(image.startsWith('data:image/png;base64,')&&image.length>10000,'no valid PNG render');
+      window.__qaFrames[v.label]=image;
+      report.views.push({view:v.label,draw_calls:renderer.info.render.calls,triangles,
+                         visible_pixel_fraction_estimate:pixelShare,screenshot_dimensions:[768,768]});
+    }
+    report.dispose=disposeScene(gltf.scene,mixer);
+    scene.remove(world);
+    const retry=await loader.loadAsync(url);
+    let again=0;retry.scene.traverse(o=>{if(o.isSkinnedMesh)again++});
+    insist(again>0,'reload had no skinned mesh');
+    report.reloaded_skinned_meshes=again;
+    disposeScene(retry.scene,null);
+    report.status='THREEJS_RENDER_ANIMATION_RELOAD_PASS_WITH_LIMITATIONS';
+  }catch(e){report.status='FAILED';report.error=String(e?.stack||e)}
+  finally{if(renderer)renderer.dispose();report.finished=true;send()}
+}
+main();
+</script></body></html>

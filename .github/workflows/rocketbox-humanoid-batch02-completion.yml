@@ -1,0 +1,153 @@
+name: Rocketbox complete batch02 GLBs and visual QA
+on:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths: [.github/workflows/rocketbox-humanoid-batch02-completion.yml]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: rocketbox-b02-completion-20261113
+  cancel-in-progress: false
+jobs:
+  build-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout scoped feature branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch pinned existing source and GLB workflow artifacts
+        shell: bash
+        run: |
+          set -eu
+          command -v gh
+          R=/tmp/rocketbox-b02-completion
+          mkdir -p "$R/runner-input/source" "$R/runner-input/existing"
+          while IFS=: read -r n slug; do
+            test -n "$n" || continue
+            gh run download 43550104493 -R "$GITHUB_REPOSITORY" -n "rocketbox-b02-source-$slug" -D "$R/runner-input/source/$n"
+          done <<'SRC'
+          Female_Adult_11:female-adult-11
+          Business_Male_04:business-male-04
+          Medical_Male_02:medical-male-02
+          Security_Male_01:security-male-01
+          SRC
+          gh run download 43548963931 -R "$GITHUB_REPOSITORY" -n rocketbox-glb-candidates-20261113-batch01 -D "$R/runner-input/existing/b01"
+          for slug in male-adult-08 construction-female-01 fire-male-04 sports-female-01; do
+            gh run download 43550104493 -R "$GITHUB_REPOSITORY" -n "rocketbox-b02-glb-$slug" -D "$R/runner-input/existing/$slug"
+          done
+      - name: Prove source byte equivalence with retrieved Drive ZIPs and verify six existing GLBs
+        run: |
+          python3 catalog/humanoids/tools/verify_batch02_remainder_inputs.py
+          python3 catalog/humanoids/tools/verify_existing_six_glbs.py
+      - name: Install isolated Blender and numpy dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy
+          blender -b --factory-startup --python-expr 'import numpy;print("BLENDER_NUMPY_PASS",numpy.__version__)'
+      - name: Convert four missing character GLBs from FBX source working copies
+        run: |
+          set -eu
+          blender -b --factory-startup --python catalog/humanoids/tools/rocketbox_batch02_remainder_convert.py -- --root /tmp/rocketbox-b02-completion
+          python3 - <<'PY'
+          import json,pathlib
+          r=pathlib.Path('/tmp/rocketbox-b02-completion')
+          x=json.loads((r/'evidence/conversion_report.json').read_text())
+          assert len(x['records'])==4
+          assert {v['name'] for v in x['records']}=={'Female_Adult_11','Business_Male_04','Medical_Male_02','Security_Male_01'}
+          assert all(v['state']=='exported_unvalidated' for v in x['records']),x['records']
+          print('FOUR_BLENDER_EXPORTS_EXIST')
+          PY
+      - name: Inspect GLB mesh, skin, references and embedded images
+        env:
+          ROCKETBOX_OUTPUT: /tmp/rocketbox-b02-completion
+        run: |
+          python3 catalog/humanoids/tools/inspect_glb_static.py
+          python3 - <<'PY'
+          import json,pathlib,shutil
+          r=pathlib.Path('/tmp/rocketbox-b02-completion')
+          x=json.loads((r/'evidence/glb_static_validation.json').read_text())
+          assert len(x['reports'])==4,x
+          for item in x['reports']:
+            assert item['verdict']=='static_glb_structure_pass',item
+            assert item['skins']>0 and item['joint_references']>=40
+            assert item['images']>0 and item['textures']>0 and item['animations']>0 and not item['external_uris']
+          for f in (r/'processed-glb').glob('*.glb'):
+            dst=r/'qa-glbs'/f.name
+            assert not dst.exists(),'Would overwrite an existing verified GLB'
+            shutil.copy2(f,dst)
+          assert len(list((r/'qa-glbs').glob('*.glb')))==10
+          print('TEN_SOURCE_VERIFIED_GLBS_READY_FOR_VISUAL_QA')
+          PY
+      - name: Install pinned toolkit Three.js
+        run: npm ci
+      - name: Render actual ten-GLB WebGL2 screenshots and prove animations and reload
+        shell: bash
+        run: |
+          set -eu
+          mkdir -p catalog/humanoids/qa-assets catalog/humanoids/qa-evidence
+          ln -s /tmp/rocketbox-b02-completion/qa-glbs catalog/humanoids/qa-assets/processed-glb
+          python3 -m http.server 8911 --bind 127.0.0.1 > catalog/humanoids/qa-evidence/server.log 2>&1 &
+          server=$!
+          if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --remote-allow-origins='*' --remote-debugging-port=9222 --user-data-dir=/tmp/rocketbox-b02-cdp-complete "about:blank" \
+            >catalog/humanoids/qa-evidence/browser_stdout.log 2>catalog/humanoids/qa-evidence/browser_stderr.log &
+          chrome=$!
+          trap 'kill "$server" "$chrome" 2>/dev/null || true' EXIT
+          node catalog/humanoids/tools/render_qa_batch02_complete_cdp.mjs
+      - name: Verify all existing toolkit tests without modifying its ten demonstrations
+        run: |
+          npm run typecheck
+          npm test
+          npm run build
+      - name: Preserve new GLB Female_Adult_11
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-completion-glb-female-adult-11
+          path: /tmp/rocketbox-b02-completion/processed-glb/Female_Adult_11.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+      - name: Preserve new GLB Business_Male_04
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-completion-glb-business-male-04
+          path: /tmp/rocketbox-b02-completion/processed-glb/Business_Male_04.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+      - name: Preserve new GLB Medical_Male_02
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-completion-glb-medical-male-02
+          path: /tmp/rocketbox-b02-completion/processed-glb/Medical_Male_02.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+      - name: Preserve new GLB Security_Male_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-completion-glb-security-male-01
+          path: /tmp/rocketbox-b02-completion/processed-glb/Security_Male_01.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+      - name: Preserve independent QA evidence, 20 screenshots and checksums
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-completion-visual-and-provenance
+          path: |
+            /tmp/rocketbox-b02-completion/evidence/
+            catalog/humanoids/qa-evidence/
+          if-no-files-found: warn
+          compression-level: 4
+          retention-days: 2

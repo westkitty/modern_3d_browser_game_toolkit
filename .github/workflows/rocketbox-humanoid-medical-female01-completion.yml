@@ -1,0 +1,110 @@
+name: Rocketbox Medical Female 01 source completion and Chromium QA
+on:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths: [.github/workflows/rocketbox-humanoid-medical-female01-completion.yml]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: rocketbox-medical-female01-completion-20261114
+  cancel-in-progress: false
+jobs:
+  medical-female01-conversion-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ROCKETBOX_OUTPUT: /tmp/rocketbox-medical-female01
+    steps:
+      - name: Check out the authorized feature branch without persistent credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Retrieve old cloud-original FBX bytes for source equivalence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/rocketbox-medical-female01/cloud-artifact
+          gh run download 43548963931 -R "$GITHUB_REPOSITORY" -n rocketbox-originals-20261113-batch01 -D /tmp/rocketbox-medical-female01/cloud-artifact
+      - name: Fetch exact pinned official FBX, seven TGAs and preview; verify Git blob and SHA256 and new source ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 catalog/humanoids/tools/rocketbox_medical_female01_source_complete.py
+      - name: Install Blender on disposable GitHub Ubuntu, never Mac
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy
+          blender -b --factory-startup --python-expr 'import numpy; print("BLENDER_NUMPY_PASS",numpy.__version__)'
+      - name: Convert only verified original working copies to GLB
+        run: |
+          set -euo pipefail
+          blender -b --factory-startup --python catalog/humanoids/tools/rocketbox_medical_female01_convert.py
+      - name: Independently validate GLB 2 geometry, embedded textures, skinned armature and clips
+        run: |
+          set -euo pipefail
+          python3 catalog/humanoids/tools/inspect_glb_static.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('/tmp/rocketbox-medical-female01')
+          x=json.loads((root/'evidence/glb_static_validation.json').read_text())['reports']
+          assert len(x)==1 and x[0]['model']=='Medical_Female_01'
+          assert x[0]['verdict']=='static_glb_structure_pass',x
+          assert x[0]['skins']>0 and x[0]['joint_references']>=40
+          assert x[0]['images']>0 and x[0]['textures']>0 and x[0]['animations']>0
+          assert not x[0]['external_uris']
+          print('MEDICAL_FEMALE01_GLTF_STRUCTURAL_PASS',x[0]['size'])
+          PY
+      - name: Install existing toolkit Three.js r185
+        run: npm ci
+      - name: Render two real browser views and prove Three.js GLTFLoader texture skeleton animation disposal reload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p catalog/humanoids/qa-assets catalog/humanoids/medical-female01-qa-evidence
+          ln -s /tmp/rocketbox-medical-female01/processed-glb catalog/humanoids/qa-assets/processed-glb
+          python3 -m http.server 8911 --bind 127.0.0.1 >catalog/humanoids/medical-female01-qa-evidence/server.log 2>&1 &
+          server=$!
+          if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --remote-allow-origins='*' --remote-debugging-port=9222 --user-data-dir=/tmp/rocketbox-medical-female01-cdp "about:blank" >catalog/humanoids/medical-female01-qa-evidence/browser_stdout.log 2>catalog/humanoids/medical-female01-qa-evidence/browser_stderr.log &
+          chrome=$!
+          trap 'kill "$server" "$chrome" 2>/dev/null || true' EXIT
+          node catalog/humanoids/tools/render_qa_medical_female01_cdp.mjs
+      - name: Verify unchanged toolkit demos through typecheck, tests and build
+        run: |
+          set -euo pipefail
+          npm run typecheck
+          npm test
+          npm run build
+      - name: Preserve additive completed original-source ZIP (old FBX-only archive untouched)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-medical-female01-complete-source-ZIP
+          path: /tmp/rocketbox-medical-female01/source-archives/Rocketbox_Medical_Female_01_Complete_Source_2026-11-14.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve GLB candidate for independent validation before Drive upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-medical-female01-cloud-GLB
+          path: /tmp/rocketbox-medical-female01/processed-glb/Medical_Female_01.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud source equivalence, structural report, browser evidence and two rendered PNGs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-medical-female01-browser-visual-and-source-evidence
+          path: |
+            /tmp/rocketbox-medical-female01/evidence/
+            catalog/humanoids/medical-female01-qa-evidence/
+          if-no-files-found: warn
+          compression-level: 4
+          retention-days: 3

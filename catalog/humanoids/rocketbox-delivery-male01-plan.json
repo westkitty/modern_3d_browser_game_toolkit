@@ -1,0 +1,72 @@
+{
+  "schema": "rocketbox_historical_delivery_avatar_conversion_v1",
+  "avatar": "Delivery_Male_01",
+  "asset_id": "rocketbox/professions/delivery_male_01",
+  "source_repo": "microsoft/Microsoft-Rocketbox",
+  "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+  "license": "MIT Copyright (c) 2020 Microsoft",
+  "source_private_archive_filename": "Rocketbox_Delivery_Male_01_Originals_Batch01_2026-11-13.zip",
+  "source_private_archive_preupload_sha256": "454cbf72c52bd3a076d4f7650f66b364ed5ca5bf2eb319979d4c4f7e80bad924",
+  "source_private_archive_original_bytes": 29869348,
+  "license_path": "originals/rocketbox/LICENSE.md",
+  "license_sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
+  "github_actions_originals_run": 43548963931,
+  "github_actions_originals_artifact": "rocketbox-originals-20261113-batch01",
+  "source_equivalence_method": "Extract previously acquired original cloud files from pinned existing public GitHub Actions artifact, confirm each original source SHA-256 and Git blob match the source preserved in private Drive archive; no Drive credentials",
+  "source_files": [
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Delivery_Male_01.png",
+      "sha256": "44d2a93857ec67c5d24800627627b21d7cb4573d8cc512749c72b0696be87a9c",
+      "git_blob_sha": "0bcdc8f5f7a3f8da19a37330449390eeb3b142e5",
+      "bytes": 502652
+    },
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Export/Delivery_Male_01.fbx",
+      "sha256": "f45d05370f024308d577cb3a10586e775b8d2daf09249bb43fa9b316d7d5c20f",
+      "git_blob_sha": "b1d9677ab745d09b6807f12422db8dece3532dba",
+      "bytes": 511312
+    },
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Export/Delivery_Male_01_facial.fbx",
+      "sha256": "0fd3a0d51bcbf53e1cfb50ceb82ba708ae0728501613b3b33679e53723b5dd5b",
+      "git_blob_sha": "533da80312bcfc2943e20f8960d0b3481e6bffa4",
+      "bytes": 1804448
+    },
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Textures/m112_body_color.tga",
+      "sha256": "11a38aea3b9298570f534c4c496f5db7ecfbbcec158f844bfb2c194ebc6d632e",
+      "git_blob_sha": "a2453085d7c7050948e3b5a80a080f1c3ae329b2",
+      "bytes": 12582956
+    },
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Textures/m112_body_normal.tga",
+      "sha256": "95cbb7359a54740cbdf27af5929c45cb704f16c18063a35131e4ce2a065fbbe5",
+      "git_blob_sha": "d3fad9f6d29474e4173bd2e2215d838f891b084f",
+      "bytes": 12582956
+    },
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Textures/m112_body_specular.tga",
+      "sha256": "586bec04cbd911781a2a4f366286774a0aab64ee584add44118c9eecf4c0d2a2",
+      "git_blob_sha": "cf076816d3cb4e3f3ba59d49a70b778430c766e2",
+      "bytes": 12582956
+    },
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Textures/m112_head_color.tga",
+      "sha256": "b71fec9a9ed3afde8002b5f101056f52a93982ee733e2573b8041fd8f28bb1d8",
+      "git_blob_sha": "5e6ef334c1a4af3f8670201d35c0edf7d34725e2",
+      "bytes": 12582956
+    },
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Textures/m112_head_normal.tga",
+      "sha256": "a776ad07a2cc8f7db8a983d894f78dd36eb4163b99d48b968a58fdff5d63566a",
+      "git_blob_sha": "058e2dddab9027559cc0f025c669b8a0ea263d88",
+      "bytes": 12582956
+    },
+    {
+      "path": "originals/rocketbox/Avatars/Professions/Delivery_Male_01/Textures/m112_head_specular.tga",
+      "sha256": "558f4c866d5ac9b8ba61dd5c4d3b3ddfa97f14caf0817bb50df798c6f5f7bc4e",
+      "git_blob_sha": "be520f8c0709dc34f25978c4077448cdc5631440",
+      "bytes": 12582956
+    }
+  ]
+}

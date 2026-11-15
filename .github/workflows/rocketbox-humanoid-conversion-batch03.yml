@@ -1,0 +1,212 @@
+name: Rocketbox ten original-source GLB conversions and Chromium visual QA
+on:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths: [.github/workflows/rocketbox-humanoid-conversion-batch03.yml]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: rocketbox-b03-verified-20261113
+  cancel-in-progress: false
+jobs:
+  source-conversion-browser-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ROCKETBOX_OUTPUT: /tmp/rocketbox-b03
+    steps:
+      - name: Check out same feature branch, without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify Three.js version and source contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          plan=json.loads(Path('catalog/humanoids/rocketbox-conversion-batch03.json').read_text())
+          assert plan['source_commit']=='0943055db6ec570bcef9f2c8b41c9e5467c808f9'
+          assert len(plan['models'])==10 and len({m['asset_id'] for m in plan['models']})==10
+          assert all(m['source_zip_sha256'] and len(m['source_zip_sha256'])==64 for m in plan['models'])
+          pkg=json.loads(Path('package.json').read_text())
+          assert pkg['dependencies'].get('three') in ('0.185.1','^0.185.1'),pkg['dependencies']
+          print('IDENTITY_AND_TEN_SOURCE_CONTRACT_PASS')
+          PY
+      - name: Download only original byte-identical pinned cloud artifacts, no Drive tokens
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' > /tmp/rocketbox-b03-required-packs.tsv
+          import json
+          from pathlib import Path
+          p=json.loads(Path('catalog/humanoids/rocketbox-conversion-batch03.json').read_text())
+          for run,artifact in sorted({(m['actions_run_id'],m['actions_artifact_name']) for m in p['models']}):
+              print(f'{run}\t{artifact}')
+          PY
+          while IFS="$(printf '\t')" read -r run artifact; do
+            mkdir -p "/tmp/rocketbox-b03/artifact-input/$artifact"
+            gh run download "$run" -R "$GITHUB_REPOSITORY" -n "$artifact" -D "/tmp/rocketbox-b03/artifact-input/$artifact"
+          done < /tmp/rocketbox-b03-required-packs.tsv
+      - name: Admit only source ZIPs that match private archived pre-upload SHA-256 receipts and pinned Git blobs
+        run: |
+          set -euo pipefail
+          python3 catalog/humanoids/tools/rocketbox_batch03_source_admit.py
+      - name: Install Blender in disposable GitHub-hosted Ubuntu, never Mac
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy
+          blender -b --factory-startup --python-expr 'import numpy; print("BLENDER_NUMPY_PASS", numpy.__version__)'
+      - name: Convert ten source working copies, preserving originals unchanged
+        run: |
+          set -euo pipefail
+          blender -b --factory-startup --python catalog/humanoids/tools/rocketbox_batch03_convert.py
+      - name: Independently verify GLB2 geometry, skin, materials, embedded textures, animation and no external URIs
+        run: |
+          set -euo pipefail
+          python3 catalog/humanoids/tools/inspect_glb_static.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('/tmp/rocketbox-b03')
+          p=json.loads(Path('catalog/humanoids/rocketbox-conversion-batch03.json').read_text())
+          conversion=json.loads((root/'evidence/BATCH03_CONVERSION_REPORT.json').read_text())
+          inspection=json.loads((root/'evidence/glb_static_validation.json').read_text())
+          assert len(conversion['models'])==10
+          assert all(x['state']=='EXPORTED_NOT_YET_VALIDATED' for x in conversion['models']),conversion
+          assert len(inspection['reports'])==10,inspection
+          names={m['name'] for m in p['models']}
+          assert names=={m['model'] for m in inspection['reports']}
+          for item in inspection['reports']:
+              assert item['verdict']=='static_glb_structure_pass',item
+              assert item['primitive_count']>=1 and item['skins']>=1 and item['joint_references']>=40
+              assert item['images']>0 and item['textures']>0 and item['animations']>0 and not item['external_uris']
+          print('ALL_TEN_INDEPENDENT_STRUCTURAL_GLBS_PASS')
+          PY
+      - name: Install existing toolkit Three.js r185 and browser dependencies
+        run: npm ci
+      - name: Capture 20 actual browser renders plus mixer, rig, UV, texture, disposal and reload smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p catalog/humanoids/qa-assets catalog/humanoids/batch03-qa-evidence
+          ln -s /tmp/rocketbox-b03/processed-glb catalog/humanoids/qa-assets/processed-glb
+          python3 -m http.server 8911 --bind 127.0.0.1 > catalog/humanoids/batch03-qa-evidence/server.log 2>&1 &
+          server=$!
+          if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --remote-allow-origins='*' --remote-debugging-port=9222 --user-data-dir=/tmp/rocketbox-b03-cdp "about:blank" >catalog/humanoids/batch03-qa-evidence/browser_stdout.log 2>catalog/humanoids/batch03-qa-evidence/browser_stderr.log &
+          chrome=$!
+          trap 'kill "$server" "$chrome" 2>/dev/null || true' EXIT
+          node catalog/humanoids/tools/render_qa_batch03_cdp.mjs
+      - name: Verify untouched toolkit demos still typecheck, pass tests and build
+        run: |
+          set -euo pipefail
+          npm run typecheck
+          npm test
+          npm run build
+      - name: Preserve original-source, conversion, GLB static, browser and screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-10-models-evidence-and-20-rendered-views
+          path: |
+            /tmp/rocketbox-b03/evidence/
+            catalog/humanoids/batch03-qa-evidence/
+          if-no-files-found: warn
+          compression-level: 5
+          retention-days: 3
+      - name: Preserve cloud candidate Female_Adult_02
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-female-adult-02
+          path: /tmp/rocketbox-b03/processed-glb/Female_Adult_02.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Female_Child_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-female-child-01
+          path: /tmp/rocketbox-b03/processed-glb/Female_Child_01.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Business_Female_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-business-female-01
+          path: /tmp/rocketbox-b03/processed-glb/Business_Female_01.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Business_Male_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-business-male-01
+          path: /tmp/rocketbox-b03/processed-glb/Business_Male_01.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Male_Child_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-male-child-01
+          path: /tmp/rocketbox-b03/processed-glb/Male_Child_01.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Chef_Female_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-chef-female-01
+          path: /tmp/rocketbox-b03/processed-glb/Chef_Female_01.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Construction_Male_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-construction-male-01
+          path: /tmp/rocketbox-b03/processed-glb/Construction_Male_01.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Male_Adult_05
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-male-adult-05
+          path: /tmp/rocketbox-b03/processed-glb/Male_Adult_05.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Medical_Female_02
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-medical-female-02
+          path: /tmp/rocketbox-b03/processed-glb/Medical_Female_02.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Preserve cloud candidate Fire_Male_06
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b03-glb-fire-male-06
+          path: /tmp/rocketbox-b03/processed-glb/Fire_Male_06.glb
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+

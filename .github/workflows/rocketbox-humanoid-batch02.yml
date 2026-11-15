@@ -1,0 +1,222 @@
+name: Rocketbox humanoid batch 02 eight-avatar acquisition
+on:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths: [.github/workflows/rocketbox-humanoid-batch02.yml]
+permissions:
+  contents: read
+concurrency:
+  group: rocketbox-humanoid-batch02-20261113
+  cancel-in-progress: false
+jobs:
+  acquire-convert-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out exact feature branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Retrieve eight pinned Rocketbox originals and hash-check source ZIPs
+        run: |
+          set -eu
+          python3 catalog/humanoids/tools/rocketbox_batch02_acquire.py
+          python3 - <<'PY'
+          import json,pathlib
+          root=pathlib.Path("/tmp/rocketbox-batch02")
+          rec=json.loads((root/"evidence/BATCH02_RUNNER_SOURCE_RECEIPT.json").read_text())
+          assert rec["source_set_count"]==8
+          assert len({x["name"] for x in rec["avatars"]})==8
+          assert all(x["archive_bytes"]<104857600 for x in rec["avatars"])
+          assert all((root/"source-packages"/x["archive_filename"]).exists() for x in rec["avatars"])
+          print("EIGHT_SOURCE_ARCHIVES_VERIFIED",[(x["name"],x["archive_bytes"]) for x in rec["avatars"]])
+          PY
+      - name: Install Blender and Python numpy on disposable runner
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy
+          blender -b --factory-startup --python-expr 'import numpy; print("NUMPY_OK", numpy.__version__)'
+      - name: Convert four candidate GLBs from copied source FBX
+        run: |
+          set -eu
+          blender -b --factory-startup --python catalog/humanoids/tools/rocketbox_batch02_convert.py -- --root /tmp/rocketbox-batch02
+          python3 - <<'PY'
+          import json,pathlib
+          r=json.loads(pathlib.Path("/tmp/rocketbox-batch02/evidence/conversion_report.json").read_text())
+          expected={"Male_Adult_08","Construction_Female_01","Fire_Male_04","Sports_Female_01"}
+          assert len(r["records"])==4 and {x["name"] for x in r["records"]}==expected
+          failed=[x for x in r["records"] if x["state"]!="exported_unvalidated"]
+          print("CONVERSION_FAILURES",failed)
+          assert not failed,"A candidate conversion failed"
+          PY
+      - name: Validate actual GLB meshes, skinning, embedded textures and clips
+        env:
+          ROCKETBOX_OUTPUT: /tmp/rocketbox-batch02
+        run: |
+          set -eu
+          python3 catalog/humanoids/tools/inspect_glb_static.py
+          python3 - <<'PY'
+          import json,pathlib
+          r=json.loads(pathlib.Path("/tmp/rocketbox-batch02/evidence/glb_static_validation.json").read_text())
+          checks=r["reports"]
+          assert len(checks)==4
+          for x in checks:
+            assert x["verdict"]=="static_glb_structure_pass",x
+            assert x["skins"]>0 and x["joint_references"]>0 and x["skinned_mesh_nodes"]>0
+            assert x["images"]>0 and x["animations"]>0 and not x["external_uris"]
+          print("FOUR_STATIC_PROOFS_PASS")
+          PY
+      - name: Install pinned toolkit Three.js dependencies
+        run: npm ci
+      - name: Verify Chrome Three.js GLTFLoader mixer render disposal and reload
+        run: |
+          set -eu
+          mkdir -p catalog/humanoids/qa-assets catalog/humanoids/qa-evidence
+          ln -s /tmp/rocketbox-batch02/processed-glb catalog/humanoids/qa-assets/processed-glb
+          python3 -m http.server 8911 --bind 127.0.0.1 > catalog/humanoids/qa-evidence/server.log 2>&1 &
+          server=$!
+          if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --remote-allow-origins='*' --remote-debugging-port=9222 --user-data-dir=/tmp/rocketbox-b02-cdp \
+            "http://127.0.0.1:8911/catalog/humanoids/tools/browser_smoke_batch02.html" \
+            >catalog/humanoids/qa-evidence/browser_stdout.log \
+            2>catalog/humanoids/qa-evidence/browser_stderr.log &
+          chrome=$!
+          trap 'kill "$server" "$chrome" 2>/dev/null || true' EXIT
+          node catalog/humanoids/tools/chrome_cdp_wait_batch02.mjs
+          cp catalog/humanoids/qa-evidence/browser_smoke_result.json /tmp/rocketbox-batch02/evidence/BATCH02_BROWSER_SMOKE_RESULT.json
+      - name: Preserve exactly ten existing demonstration invariants
+        run: |
+          npm run typecheck
+          npm test
+          npm run build
+
+      - name: Preserve source Male_Adult_08
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-source-male-adult-08
+          path: /tmp/rocketbox-batch02/source-packages/Rocketbox_Male_Adult_08_Originals_Batch02_2026-11-13.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve source Female_Adult_11
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-source-female-adult-11
+          path: /tmp/rocketbox-batch02/source-packages/Rocketbox_Female_Adult_11_Originals_Batch02_2026-11-13.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve source Business_Male_04
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-source-business-male-04
+          path: /tmp/rocketbox-batch02/source-packages/Rocketbox_Business_Male_04_Originals_Batch02_2026-11-13.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve source Construction_Female_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-source-construction-female-01
+          path: /tmp/rocketbox-batch02/source-packages/Rocketbox_Construction_Female_01_Originals_Batch02_2026-11-13.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve source Fire_Male_04
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-source-fire-male-04
+          path: /tmp/rocketbox-batch02/source-packages/Rocketbox_Fire_Male_04_Originals_Batch02_2026-11-13.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve source Medical_Male_02
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-source-medical-male-02
+          path: /tmp/rocketbox-batch02/source-packages/Rocketbox_Medical_Male_02_Originals_Batch02_2026-11-13.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve source Sports_Female_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-source-sports-female-01
+          path: /tmp/rocketbox-batch02/source-packages/Rocketbox_Sports_Female_01_Originals_Batch02_2026-11-13.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve source Security_Male_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-source-security-male-01
+          path: /tmp/rocketbox-batch02/source-packages/Rocketbox_Security_Male_01_Originals_Batch02_2026-11-13.zip
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve glb Male_Adult_08
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-glb-male-adult-08
+          path: /tmp/rocketbox-batch02/processed-glb/Male_Adult_08.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve glb Construction_Female_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-glb-construction-female-01
+          path: /tmp/rocketbox-batch02/processed-glb/Construction_Female_01.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve glb Fire_Male_04
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-glb-fire-male-04
+          path: /tmp/rocketbox-batch02/processed-glb/Fire_Male_04.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve glb Sports_Female_01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-glb-sports-female-01
+          path: /tmp/rocketbox-batch02/processed-glb/Sports_Female_01.glb
+          if-no-files-found: warn
+          compression-level: 0
+          retention-days: 2
+
+      - name: Preserve runner receipt and QA evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-b02-provenance-and-qa
+          path: |
+            /tmp/rocketbox-batch02/evidence/
+            catalog/humanoids/qa-evidence/
+          if-no-files-found: warn
+          retention-days: 2

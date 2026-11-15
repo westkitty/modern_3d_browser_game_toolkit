@@ -1,0 +1,217 @@
+name: Rocketbox remaining 103 originals (pinned, bounded cloud batches)
+on:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths: [.github/workflows/rocketbox-humanoid-remaining-103.yml]
+permissions:
+  contents: read
+concurrency:
+  group: rocketbox-rest-103-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  source-archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        group: [1,2,3,4,5,6,7,8,9,10]
+    steps:
+      - name: Check out only the existing authorized feature branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Acquire selected pinned originals into bounded verified archive packs
+        run: |
+          set -eu
+          python3 catalog/humanoids/tools/rocketbox_remaining_103_cloud_acquire.py --group "${{ matrix.group }}"
+      - name: Always preserve full source receipt including failed individual items
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-source-receipt
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/evidence/
+          if-no-files-found: warn
+          compression-level: 6
+          retention-days: 1
+      - name: Publish verified pack 01 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-01
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-01.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 02 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-02
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-02.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 03 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-03
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-03.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 04 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-04
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-04.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 05 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-05
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-05.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 06 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-06
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-06.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 07 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-07
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-07.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 08 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-08
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-08.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 09 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-09
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-09.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 10 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-10
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-10.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 11 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-11
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-11.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 12 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-12
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-12.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 13 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-13
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-13.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 14 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-14
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-14.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 15 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-15
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-15.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 16 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-16
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-16.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 17 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-17
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-17.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 18 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-18
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-18.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 19 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-19
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-19.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
+      - name: Publish verified pack 20 if present
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-rest-group-${{ matrix.group }}-pack-20
+          path: /tmp/rocketbox-remaining/group-${{ matrix.group }}/packs/pack-20.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1

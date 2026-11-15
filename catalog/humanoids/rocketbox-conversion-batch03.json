@@ -1,0 +1,743 @@
+{
+  "schema": "rocketbox_browser_conversion_batch03_v1",
+  "source_repo": "microsoft/Microsoft-Rocketbox",
+  "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+  "source_license": "MIT Copyright (c) 2020 Microsoft",
+  "catalog_base_acquired": 115,
+  "catalog_base_browser_tested": 10,
+  "accounting": "All 10 selected models are among the 105 source-only cases; group0/2/5 artifacts are pinned to archived preupload source ZIP SHA256. Private Drive IDs are intentionally absent.",
+  "models": [
+    {
+      "asset_id": "rocketbox/adults/female_adult_02",
+      "name": "Female_Adult_02",
+      "source_directory": "Assets/Avatars/Adults/Female_Adult_02",
+      "category": "Adults",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Export/Female_Adult_02.fbx",
+          "bytes": 580800,
+          "git_blob_sha": "9a165315f36c7a34e339919f84419a9f0b90fa0a"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Export/Female_Adult_02_facial.fbx",
+          "bytes": 2050400,
+          "git_blob_sha": "8ddd0cbc2a3d706b8246bc2ca7fb7bf557d9d4ce"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Female_Adult_02.png",
+          "bytes": 415947,
+          "git_blob_sha": "9446975f5f04e5de5f8365b5c3205c9abc2e4848"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Textures/f002_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "5eb8ee83281a7526544a80ddf9804507670eb049"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Textures/f002_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "abf938f475ef06475fe8b9e4438c101a768bdfe1"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Textures/f002_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "4180db9edd1ddf97e87f1f313edd8a6c30cdbf4b"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Textures/f002_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "8f59bb553f24d3581de68bcf4683695c014bcc0f"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Textures/f002_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "87599b637b1816a17a02cadc0a74c944f1fe33ee"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Textures/f002_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "8ee35bf04070d796e76a950747f2832085108bea"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Female_Adult_02/Textures/f002_opacity_color.tga",
+          "bytes": 4194348,
+          "git_blob_sha": "3d930c42ed476ab3f58548e5ee33e10ea9f02a27"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Female_Adult_02_Originals_Remaining_Group00.zip",
+      "source_zip_sha256": "1b8b0b93e9e6ffb7974cef095c389f6f009d2c2f006a30869be10f17670b7535",
+      "original_source_bytes": 82739231,
+      "source_file_count": 10,
+      "group": 0,
+      "pack": 1,
+      "actions_run_id": 43553390313,
+      "actions_artifact_name": "rocketbox-rest-group-0-pack-01"
+    },
+    {
+      "asset_id": "rocketbox/children/female_child_01",
+      "name": "Female_Child_01",
+      "source_directory": "Assets/Avatars/Children/Female_Child_01",
+      "category": "Children",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Export/Female_Child_01.fbx",
+          "bytes": 521968,
+          "git_blob_sha": "24882ec1809ae617788ccc63c686479a5fea67e4"
+        },
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Export/Female_Child_01_facial.fbx",
+          "bytes": 1832640,
+          "git_blob_sha": "bf41529c7b030639c2db20353eb3451669c253f1"
+        },
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Female_Child_01.png",
+          "bytes": 396354,
+          "git_blob_sha": "4709e9f1d34ad5d7b96340b2effef17ccb892c91"
+        },
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Textures/cf001_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "ef91edfdcbc95ef6a26e5b3fa4b4f4f8388b0348"
+        },
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Textures/cf001_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "96f031026568aa1f48383b16e0b58335254104f4"
+        },
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Textures/cf001_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "0314af64a36bf9fc07910d608b90d43957854645"
+        },
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Textures/cf001_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "611ce1b19a1a12207b3ee1dc0a467e95af0e59c3"
+        },
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Textures/cf001_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "ad8667341cdffcd78ad6f02468a869eefc09a283"
+        },
+        {
+          "path": "Assets/Avatars/Children/Female_Child_01/Textures/cf001_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "a45eb1562dd736c54d8a154a726d47193f118b0b"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Female_Child_01_Originals_Remaining_Group00.zip",
+      "source_zip_sha256": "b44e4b7187cac1769554dc6c38b867dea0a55395ef1fc436adea9b970601b29e",
+      "original_source_bytes": 78248698,
+      "source_file_count": 9,
+      "group": 0,
+      "pack": 3,
+      "actions_run_id": 43553390313,
+      "actions_artifact_name": "rocketbox-rest-group-0-pack-03"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_female_01",
+      "name": "Business_Female_01",
+      "source_directory": "Assets/Avatars/Professions/Business_Female_01",
+      "category": "Professions",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Business_Female_01.png",
+          "bytes": 420187,
+          "git_blob_sha": "61b122e82ead5280082694fa04c13e6b9f271d36"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Export/Business_Female_01.fbx",
+          "bytes": 616576,
+          "git_blob_sha": "408977c02f0ccc970cbac76137d966569cb63914"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Export/Business_Female_01_facial.fbx",
+          "bytes": 2190000,
+          "git_blob_sha": "3bfeed6c33576bd4ffca433654bbcbb5154a7866"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Textures/f014_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "0af4f272bb58a0108eb5b67fca27a4529be9bc46"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Textures/f014_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "d99cb1bdc7cd1f1db627bee00ff6557d8596d173"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Textures/f014_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "e473d5077456d253ac988df3b9374b78a185e94d"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Textures/f014_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "e9c636056a5c8414347653757656f8af4b102b88"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Textures/f014_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "9861572ab4b683b9bf6b025ce048385821338806"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Textures/f014_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "ed2ac41bbeec3598f80d9e13b892d8479d70f39e"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Female_01/Textures/f014_opacity_color.tga",
+          "bytes": 16777260,
+          "git_blob_sha": "6b87a2b0f9e53a843a39112013ef9785e0110742"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Business_Female_01_Originals_Remaining_Group00.zip",
+      "source_zip_sha256": "00fd59f1ab4a263f6387fc31bbb7ad60b4379d345178bb1af07049290fb6f110",
+      "original_source_bytes": 95501759,
+      "source_file_count": 10,
+      "group": 0,
+      "pack": 3,
+      "actions_run_id": 43553390313,
+      "actions_artifact_name": "rocketbox-rest-group-0-pack-03"
+    },
+    {
+      "asset_id": "rocketbox/professions/business_male_01",
+      "name": "Business_Male_01",
+      "source_directory": "Assets/Avatars/Professions/Business_Male_01",
+      "category": "Professions",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Business_Male_01.png",
+          "bytes": 429864,
+          "git_blob_sha": "ddf8abe391cf47c70c5c8f9e130e36ca06bc6e22"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Export/Business_Male_01.fbx",
+          "bytes": 520704,
+          "git_blob_sha": "705ee1b9ce18c3ddb3e4e5850d9272f2e8607738"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Export/Business_Male_01_facial.fbx",
+          "bytes": 1942752,
+          "git_blob_sha": "8dd2c923eeb469b84cdc988142cbca4bdfe6876e"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Textures/m005_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "3ae157b9ee900809770d4754cc7fd5ccefbbe106"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Textures/m005_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "ea909bede4186c54d2dbd96ddd6534f0ea4d564c"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Textures/m005_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "6ddb098b5c6098e83543491ed6fa3dfc9b1f29e4"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Textures/m005_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "25473b6a8daf5b92f13be239ac6c758c41e9b466"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Textures/m005_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "bfe21707c2f4393bbe7a629191b232722077b2f3"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Textures/m005_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "aebf1755db451ddce90a4fe48bc3b82196d3ca9b"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Business_Male_01/Textures/m005_opacity_color.tga",
+          "bytes": 4194348,
+          "git_blob_sha": "85521bcee9b307ca431fdad86926e997ce7d3e0a"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Business_Male_01_Originals_Remaining_Group00.zip",
+      "source_zip_sha256": "633287b2d916e6c53876fc0640628ded431e348bcfbcaa741ce0ef8f7ea587b5",
+      "original_source_bytes": 82585404,
+      "source_file_count": 10,
+      "group": 0,
+      "pack": 5,
+      "actions_run_id": 43553390313,
+      "actions_artifact_name": "rocketbox-rest-group-0-pack-05"
+    },
+    {
+      "asset_id": "rocketbox/children/male_child_01",
+      "name": "Male_Child_01",
+      "source_directory": "Assets/Avatars/Children/Male_Child_01",
+      "category": "Children",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Export/Male_Child_01.fbx",
+          "bytes": 506912,
+          "git_blob_sha": "c203ce7399bc611f71e2cf7fe418e3706aa92fee"
+        },
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Export/Male_Child_01_facial.fbx",
+          "bytes": 1807104,
+          "git_blob_sha": "d9f79aaf4cd610f14f6cea4c53b709614835fa8c"
+        },
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Male_Child_01.png",
+          "bytes": 461151,
+          "git_blob_sha": "15d7e6b0c6ddc89ee594a068395bae93bab063d7"
+        },
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Textures/cm001_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "afee29cc2289eb1403cbe6e6a68c26b8d7618c31"
+        },
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Textures/cm001_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "2961be0dd27769dc438a48a6f06bec06868c9ba5"
+        },
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Textures/cm001_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "101e1a4af155faacd316992c38be3c2230d279b7"
+        },
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Textures/cm001_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "aa7d4cb1931eab13a6227562038b1ecb34110dbb"
+        },
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Textures/cm001_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "9c72c998d9e4e7704ae15ac2dbfd38a9fdc6fbc2"
+        },
+        {
+          "path": "Assets/Avatars/Children/Male_Child_01/Textures/cm001_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "f075debd4149b867b642758d0fede3d155b3da10"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Male_Child_01_Originals_Remaining_Group02.zip",
+      "source_zip_sha256": "97b492262b5ebe57a5f824733e5f10e6e82f58dd9bb55ce7063d111e42c491c1",
+      "original_source_bytes": 78272903,
+      "source_file_count": 9,
+      "group": 2,
+      "pack": 2,
+      "actions_run_id": 43553780934,
+      "actions_artifact_name": "rocketbox-rest-group-2-pack-02"
+    },
+    {
+      "asset_id": "rocketbox/professions/chef_female_01",
+      "name": "Chef_Female_01",
+      "source_directory": "Assets/Avatars/Professions/Chef_Female_01",
+      "category": "Professions",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Chef_Female_01.png",
+          "bytes": 285234,
+          "git_blob_sha": "010ee74cb2488a75fe61bcffb0975668a001f4cb"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Export/Chef_Female_01.fbx",
+          "bytes": 544192,
+          "git_blob_sha": "1815e2d6362e673dfd118e8f6d8f8636160806af"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Export/Chef_Female_01_facial.fbx",
+          "bytes": 1873312,
+          "git_blob_sha": "52fae52ac9a72fee02b304ddf97888f6de2cd08e"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Textures/f110_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "4dee4a0a54a06918cf17eff6801c8c9a17086d93"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Textures/f110_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "0a83acde0d10a53e1273baf255becf6f684a5731"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Textures/f110_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "e2095b9c45853ee57e722b46acbc4554765a9afe"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Textures/f110_head_color_a.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "4de4a886c8e92d20a085e47dfcc1e216961790bb"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Textures/f110_head_normal_a.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "113385b2b386dcf8768fd46783247d9f21483570"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Chef_Female_01/Textures/f110_head_specular_a.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "f7c65eea96df71df4747dc160ceb28885b776033"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Chef_Female_01_Originals_Remaining_Group02.zip",
+      "source_zip_sha256": "57623630084fc8ed6f7952fe48b0b66a8110268a0a5b55d48ad58ad706c16a57",
+      "original_source_bytes": 78200474,
+      "source_file_count": 9,
+      "group": 2,
+      "pack": 2,
+      "actions_run_id": 43553780934,
+      "actions_artifact_name": "rocketbox-rest-group-2-pack-02"
+    },
+    {
+      "asset_id": "rocketbox/professions/construction_male_01",
+      "name": "Construction_Male_01",
+      "source_directory": "Assets/Avatars/Professions/Construction_Male_01",
+      "category": "Professions",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Construction_Male_01.png",
+          "bytes": 516253,
+          "git_blob_sha": "a9694163605361e9df0cc4d6a13c484a4ee4f702"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Export/Construction_Male_01.fbx",
+          "bytes": 676496,
+          "git_blob_sha": "cfcf667eb5c712e5a1510a2ea3e46d157b49ea42"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Export/Construction_Male_01_facial.fbx",
+          "bytes": 2324144,
+          "git_blob_sha": "959d1f81fc2eeccbc6c3c2b5d25be7b50e8800b6"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "ea180a862d949f5f16c1c430362ae199b8d572df"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "500a390f9b8e390d153470e8272d91a48b2b8dd7"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "4a31c0778b741c11c2af799168d60cc80d8447b1"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "bb0038aba62407f7823420e1a6114f8980a81888"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "e39487ceee1de795906f90fa73e7bc509e23da10"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "8973d993e9365340b9ee2f446aae161f3d811d28"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_helmet_color.tga",
+          "bytes": 6291500,
+          "git_blob_sha": "45f8a87ad06cc30d215e4071b228622b1588c9e1"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_helmet_normal.tga",
+          "bytes": 6291500,
+          "git_blob_sha": "c0e59e8c934a0a64e169b00db7c115156fe9cf67"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_helmet_specular.tga",
+          "bytes": 6291500,
+          "git_blob_sha": "7500197e87a5804dfa1da3dd33463220dfde1d17"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_opacity_color.tga",
+          "bytes": 524332,
+          "git_blob_sha": "bf2c986d67533db898c19b2e9f0e695a0043623e"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_opacity_normal.tga",
+          "bytes": 393260,
+          "git_blob_sha": "0abd0308bf2384bfb6b0719f8d894c4f644dc41b"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_opacity_specular.tga",
+          "bytes": 393260,
+          "git_blob_sha": "032552f65435f59b3cd89381a18e751f5314a9fd"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_tools_color.tga",
+          "bytes": 3145772,
+          "git_blob_sha": "ae5872a6808aa115c84aff5a5d8859ac7bedab6f"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_tools_normal.tga",
+          "bytes": 3145772,
+          "git_blob_sha": "748260cd9aadd421032675eb92842564e9377935"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Construction_Male_01/Textures/m111_tools_specular.tga",
+          "bytes": 3145772,
+          "git_blob_sha": "866feabb559058b391bb90fe95f890c8e3fd0e75"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Construction_Male_01_Originals_Remaining_Group02.zip",
+      "source_zip_sha256": "dea4e2b85ec13561c9a88d42e24db1db39815917f2aeb0b19885970ec379e389",
+      "original_source_bytes": 108637297,
+      "source_file_count": 18,
+      "group": 2,
+      "pack": 3,
+      "actions_run_id": 43553780934,
+      "actions_artifact_name": "rocketbox-rest-group-2-pack-03"
+    },
+    {
+      "asset_id": "rocketbox/adults/male_adult_05",
+      "name": "Male_Adult_05",
+      "source_directory": "Assets/Avatars/Adults/Male_Adult_05",
+      "category": "Adults",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Export/Male_Adult_05.fbx",
+          "bytes": 536496,
+          "git_blob_sha": "41ae8205dfc179e1243c487ffd50c02461e02d01"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Export/Male_Adult_05_facial.fbx",
+          "bytes": 1978688,
+          "git_blob_sha": "21d15e0c72d26121b21e34b3ca8ceb8401a61bed"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Male_Adult_05.png",
+          "bytes": 488838,
+          "git_blob_sha": "06f4726e5f3b2629c3b742b9cb60455f170686d9"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Textures/m009_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "6ec8e41be51f762e55143b706bdde9636c74316e"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Textures/m009_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "9f69c6957943d60027d99c63aa0f2578af86b437"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Textures/m009_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "061e2e14f69c032bfec3df38121c648115c83394"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Textures/m009_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "beb0be85c3783d4fbb15e24aba253b67ed10fadc"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Textures/m009_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "351bf548aaaea5926467fbbfbae38f57541fa815"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Textures/m009_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "5a242341c002010323214d2764f866b13503bcbc"
+        },
+        {
+          "path": "Assets/Avatars/Adults/Male_Adult_05/Textures/m009_opacity_color.tga",
+          "bytes": 16777260,
+          "git_blob_sha": "1eda6be82167a0956c40000eaaabe96094c70dbd"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Male_Adult_05_Originals_Remaining_Group05.zip",
+      "source_zip_sha256": "2baff5e43095ac6339db43724f4d648ee53cc691ff3a169b8b94f6d91894553f",
+      "original_source_bytes": 95279018,
+      "source_file_count": 10,
+      "group": 5,
+      "pack": 1,
+      "actions_run_id": 43553780934,
+      "actions_artifact_name": "rocketbox-rest-group-5-pack-01"
+    },
+    {
+      "asset_id": "rocketbox/professions/medical_female_02",
+      "name": "Medical_Female_02",
+      "source_directory": "Assets/Avatars/Professions/Medical_Female_02",
+      "category": "Professions",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Export/Medical_Female_02.fbx",
+          "bytes": 629008,
+          "git_blob_sha": "1a7f1f167dd31ce8e9f8f9af7fe94036ee817d63"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Export/Medical_Female_02_facial.fbx",
+          "bytes": 2185632,
+          "git_blob_sha": "47996afb6947f0b01ef0b6f5e5a802a0d26391be"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Medical_Female_02.png",
+          "bytes": 353174,
+          "git_blob_sha": "0402ce76ced313fb0319aee3c49ac807784309f4"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "c2440cb565374f0e9780a9f36b14e286d8b77f58"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "d5d213541c7e7405b08caf2a1c4de0bb7f3f2c00"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "0d70ef00771fb8389f15ada5034d919f31a101dd"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "6a51a9a4970b1c8fbc5829ed8e88ad9c394aa3cb"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "c1cfd135a3866a36ecced60923435a61a450fbe9"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "3eb3f1315b40da53a08fbd0dd7dc0be412e97c9f"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_opacity_color.tga",
+          "bytes": 2097196,
+          "git_blob_sha": "e3d2d54055c606fac90d5c176a71377bd8d8bf60"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_stetoskop_color.tga",
+          "bytes": 786476,
+          "git_blob_sha": "9e5a7f7d898bdf8a1ec046dce5591664966ee0d9"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_stetoskop_normal.tga",
+          "bytes": 786476,
+          "git_blob_sha": "9aa25950dab804901f2440ef453b9fe52470169d"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Medical_Female_02/Textures/f153_stetoskop_specular.tga",
+          "bytes": 786476,
+          "git_blob_sha": "821baba1446a5700ecaba3ec57775247bdcc7d2c"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Medical_Female_02_Originals_Remaining_Group05.zip",
+      "source_zip_sha256": "f1092b140e074ee9039e1b5d4260d41546650bc720e40ea167e55a1065c01b2f",
+      "original_source_bytes": 83122174,
+      "source_file_count": 13,
+      "group": 5,
+      "pack": 4,
+      "actions_run_id": 43553780934,
+      "actions_artifact_name": "rocketbox-rest-group-5-pack-04"
+    },
+    {
+      "asset_id": "rocketbox/professions/fire_male_06",
+      "name": "Fire_Male_06",
+      "source_directory": "Assets/Avatars/Professions/Fire_Male_06",
+      "category": "Professions",
+      "expected_files": [
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Export/Fire_Male_06.fbx",
+          "bytes": 555680,
+          "git_blob_sha": "29a04e255f5ded7c2f84895cf2fb3cd00e0e8925"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Export/Fire_Male_06_facial.fbx",
+          "bytes": 1979104,
+          "git_blob_sha": "732c1ff17e1138dbb0d0b2988b853a199799a522"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Fire_Male_06.png",
+          "bytes": 538343,
+          "git_blob_sha": "a99888c2a912ec4a652c5f2cec6e723fdd5d0333"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_body_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "6d1cfa818276d011bae07d4c2fd241835a65bb8b"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_body_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "7145e24f3614c8e35aa212a9367680227c487675"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_body_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "3ca9e11379796f5e274ddb1ddc20518a78cd4c26"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_head_color.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "695a54a37c2a656b2c2a1df3b48f24c09e83c140"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_head_normal.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "6f4cf7622416921d7bf087c654b10f6496aef371"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_head_specular.tga",
+          "bytes": 12582956,
+          "git_blob_sha": "227f886067ac9e450435f150cf322b724e639e94"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_helmet_color.tga",
+          "bytes": 3145772,
+          "git_blob_sha": "19068edc11e187b29b2cdb1c4ef80a10f616d780"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_helmet_normal.tga",
+          "bytes": 3145772,
+          "git_blob_sha": "2bd5840308e31d024080f2eb6e612118231740e3"
+        },
+        {
+          "path": "Assets/Avatars/Professions/Fire_Male_06/Textures/m130_helmet_specular.tga",
+          "bytes": 3145772,
+          "git_blob_sha": "d6beaa389e2669d4540ddd16c735540cb299e0cf"
+        }
+      ],
+      "source_zip_name": "Rocketbox_Fire_Male_06_Originals_Remaining_Group05.zip",
+      "source_zip_sha256": "8caca3b10c28a5e0fc07b10fff6fed49bbbf35598d3d657833f50f1219ef3b94",
+      "original_source_bytes": 88008179,
+      "source_file_count": 12,
+      "group": 5,
+      "pack": 3,
+      "actions_run_id": 43553780934,
+      "actions_artifact_name": "rocketbox-rest-group-5-pack-03"
+    }
+  ],
+  "batches": [
+    {
+      "batch_id": 0,
+      "models": [
+        "rocketbox/adults/female_adult_02",
+        "rocketbox/children/female_child_01",
+        "rocketbox/professions/business_female_01",
+        "rocketbox/professions/business_male_01",
+        "rocketbox/children/male_child_01"
+      ]
+    },
+    {
+      "batch_id": 1,
+      "models": [
+        "rocketbox/professions/chef_female_01",
+        "rocketbox/professions/construction_male_01",
+        "rocketbox/adults/male_adult_05",
+        "rocketbox/professions/medical_female_02",
+        "rocketbox/professions/fire_male_06"
+      ]
+    }
+  ]
+}

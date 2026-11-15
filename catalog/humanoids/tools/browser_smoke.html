@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Humanoid GLB browser smoke</title>
+<script type="importmap">
+{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}
+</script></head><body>
+<pre id="qa-result">RUNNING</pre>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+const report={modelResults:[],runtimeVersion:THREE.REVISION,overall:'FAIL',limitations:['No independent human visual review','No real mobile device testing','No long-duration GPU leak or thermal profile']};
+const output=document.getElementById('qa-result');
+function emit(){output.textContent=JSON.stringify(report);}
+function assert(x,why){if(!x)throw new Error(why);}
+async function loadTest(name,renderer,canvas){
+  const loader=new GLTFLoader();
+  const model={name,status:'FAILED',actualThreeJSLoader:false};
+  report.modelResults.push(model);
+  try {
+    const gltf=await loader.loadAsync('/catalog/humanoids/qa-assets/processed-glb/'+name+'.glb');
+    model.actualThreeJSLoader=true;
+    assert(gltf.scene,'missing scene');
+    assert(Array.isArray(gltf.animations)&&gltf.animations.length>0,'no animation clips');
+    const meshes=[],skinned=[];let texturedMats=0,materials=0;
+    gltf.scene.traverse(obj=>{
+      if(obj.isMesh)meshes.push(obj);
+      if(obj.isSkinnedMesh)skinned.push(obj);
+      if(obj.material){for(const mat of [].concat(obj.material)){
+        materials++;
+        if(mat.map||mat.normalMap||mat.specularIntensityMap||mat.roughnessMap)texturedMats++;
+      }}
+    });
+    assert(meshes.length>0,'no meshes');
+    assert(skinned.length>0,'no skinned meshes');
+    assert(skinned.some(o=>o.skeleton?.bones?.length>=40),'skeleton bones missing');
+    assert(texturedMats>0,'no attached material textures');
+    let geometryVertexCount=0;
+    for (const mesh of meshes){
+      geometryVertexCount+=mesh.geometry.attributes.position.count;
+      assert(mesh.geometry.attributes.position.count>0,'empty geometry');
+    }
+    model.skinJoints=skinned.map(x=>x.skeleton?.bones?.length??0);
+    model.meshes=meshes.length;model.geometryVertexCount=geometryVertexCount;
+    model.materials=materials;model.materialsWithMaps=texturedMats;
+    model.animationClips=gltf.animations.length;
+    model.clipTracks=gltf.animations.map(x=>x.tracks.length);
+    assert(model.clipTracks.some(n=>n>0),'all animations empty');
+    const mixer=new THREE.AnimationMixer(gltf.scene);
+    for(const clip of gltf.animations){const a=mixer.clipAction(clip);a.play();mixer.update(0.05);a.stop();}
+    model.animationMixerAdvanced=true;
+    const scene=new THREE.Scene();scene.background=new THREE.Color(0x556677);
+    scene.add(gltf.scene);
+    const ambient=new THREE.AmbientLight(0xffffff,2.2);scene.add(ambient);
+    const light=new THREE.DirectionalLight(0xffffff,2.4);light.position.set(5,10,12);scene.add(light);
+    scene.updateMatrixWorld(true);
+    const bounds=new THREE.Box3().setFromObject(gltf.scene);
+    const size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3());
+    assert(size.length()>0&&Number.isFinite(size.length()),'invalid bounding box');
+    model.bounds=size.toArray().map(x=>Number(x.toFixed(4)));
+    const camera=new THREE.PerspectiveCamera(50,1,0.01,10000);
+    camera.position.set(center.x+Math.max(size.x,size.z,0.5)*1.8,center.y+size.y*0.3,center.z+Math.max(size.x,size.z,size.y,1)*2.1);
+    camera.lookAt(center);camera.updateMatrixWorld();
+    renderer.render(scene,camera);
+    model.drawCalls=renderer.info.render.calls;model.triangles=renderer.info.render.triangles;
+    assert(model.drawCalls>0&&model.triangles>0,'no rendered triangles');
+    const pixels=new Uint8Array(4);
+    renderer.getContext().readPixels(64,64,1,1,renderer.getContext().RGBA,renderer.getContext().UNSIGNED_BYTE,pixels);
+    model.renderPixelRGBA=Array.from(pixels);
+    model.rendererUsed='WebGLRenderer';
+    const doneTex=new Set();const doneMat=new Set();const doneGeo=new Set();
+    scene.traverse(obj=>{
+      if(obj.geometry&&!doneGeo.has(obj.geometry)){doneGeo.add(obj.geometry);obj.geometry.dispose();}
+      if(obj.material){for(const mat of [].concat(obj.material)){
+        if(doneMat.has(mat))continue;doneMat.add(mat);
+        for(const value of Object.values(mat))if(value?.isTexture&&!doneTex.has(value)){doneTex.add(value);value.dispose();}
+        mat.dispose();
+      }}
+    });
+    mixer.stopAllAction();mixer.uncacheRoot(gltf.scene);scene.remove(gltf.scene);
+    model.disposeInvoked={geometry:doneGeo.size,materials:doneMat.size,textures:doneTex.size};
+    const retry=await loader.loadAsync('/catalog/humanoids/qa-assets/processed-glb/'+name+'.glb');
+    let retryMesh=0;retry.scene.traverse(o=>{if(o.isSkinnedMesh)retryMesh++});
+    assert(retryMesh>0,'reloaded glb lost skeleton');
+    model.reloadSkinnedMeshes=retryMesh;
+    retry.scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material)for(const mat of [].concat(o.material))mat.dispose();});
+    model.status='THREEJS_LOADER_RENDER_MIXER_RELOAD_PASS';
+  } catch(e){model.error=String(e?.stack||e);}
+  emit();
+}
+async function main(){
+  let renderer;
+  try{
+    const canvas=document.createElement('canvas');canvas.width=128;canvas.height=128;
+    renderer=new THREE.WebGLRenderer({canvas,preserveDrawingBuffer:true,antialias:false});
+    renderer.setSize(128,128,false);
+    report.webGLVersion=renderer.getContext().getParameter(renderer.getContext().VERSION);
+    for(const name of ['Male_Adult_01','Female_Adult_01'])await loadTest(name,renderer,canvas);
+    report.overall=report.modelResults.every(x=>x.status==='THREEJS_LOADER_RENDER_MIXER_RELOAD_PASS')?'PASS_WITH_LIMITATIONS':'FAIL';
+  }catch(e){report.fatalError=String(e?.stack||e);}
+  finally{if(renderer)renderer.dispose();report.finished=true;emit();}
+}
+main();
+</script></body></html>

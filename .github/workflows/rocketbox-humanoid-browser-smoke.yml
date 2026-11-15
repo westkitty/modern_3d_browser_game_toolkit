@@ -1,0 +1,62 @@
+name: Rocketbox Three.js browser smoke (actual GLB)
+
+on:
+  push:
+    branches:
+      - feat/humanoid-asset-catalog-20261113
+    paths:
+      - .github/workflows/rocketbox-humanoid-browser-smoke.yml
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: rocketbox-threejs-browser-smoke
+  cancel-in-progress: true
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Download proven cloud-conversion artifact without reacquiring source
+        uses: actions/download-artifact@v4
+        with:
+          name: rocketbox-glb-candidates-20261113-batch01
+          run-id: 43548963931
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: catalog/humanoids/qa-assets
+
+      - name: Install pinned Three.js project dependencies
+        run: npm ci
+
+      - name: Load, animate, render, unload and reload actual GLBs in browser
+        shell: bash
+        run: |
+          set -eu
+          mkdir -p catalog/humanoids/qa-evidence
+          python3 -m http.server 8911 --bind 127.0.0.1 > catalog/humanoids/qa-evidence/server.log 2>&1 &
+          server=$!
+          if command -v google-chrome >/dev/null 2>&1; then browser=google-chrome; else browser=chromium; fi
+          "$browser" --headless=new --no-sandbox --disable-dev-shm-usage --enable-unsafe-swiftshader --use-angle=swiftshader --remote-allow-origins='*' --remote-debugging-port=9222 --user-data-dir=/tmp/rocketbox-threejs-cdp \
+            "http://127.0.0.1:8911/catalog/humanoids/tools/browser_smoke.html" \
+            >catalog/humanoids/qa-evidence/browser_stdout.log \
+            2>catalog/humanoids/qa-evidence/browser_stderr.log &
+          chrome=$!
+          trap 'kill "$server" "$chrome" 2>/dev/null || true' EXIT
+          node catalog/humanoids/tools/chrome_cdp_wait.mjs
+
+      - name: Preserve browser evidence whether check passed or failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-threejs-browser-evidence-20261113-batch01
+          path: |
+            catalog/humanoids/qa-evidence/
+          if-no-files-found: warn
+          retention-days: 2

@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "humanoid-skeleton-compatibility-matrix",
+  "generated_utc": "2026-11-15T01:55:00Z",
+  "threejs_runtime_notes": [
+    "Three.js GLTFLoader sanitizes node and bone names using THREE.PropertyBinding.sanitizeNodeName() (e.g. 'handslot.r' -> 'handslotr', 'Shoulder.L' -> 'ShoulderL', 'Bip01 Pelvis' -> 'Bip01_Pelvis'). Always resolve bone names or pass SkeletonUtils.retargetClip bone maps through sanitizeNodeName().",
+    "When disposing loaded SkinnedMesh characters, explicitly call obj.skeleton.dispose() alongside geometry, material, and material texture disposal; omitting skeleton.dispose() leaks one GPU boneTexture per SkinnedMesh reload cycle (empirically verified in Chromium/WebGL2)."
+  ],
+  "skeleton_families": {
+    "rocketbox-bip01": {
+      "joint_count_range": [
+        80,
+        81
+      ],
+      "authoring_convention": "3ds Max Biped Z-up authored in centimeters beneath a 0.01 scale 'Bip01' root transform node.",
+      "root_bone": "Bip01",
+      "pelvis_bone": "Bip01 Pelvis",
+      "member_sources": [
+        "microsoft-rocketbox"
+      ],
+      "embedded_animation_clips": 2,
+      "direct_clip_sharing": "Compatible within microsoft-rocketbox family (matching Bip01 naming). Not directly compatible with KayKit or Quaternius rigs."
+    },
+    "kaykit-rig-medium": {
+      "joint_count": 23,
+      "mannequin_exception": "Mannequin_Medium.glb has 21 skin joints (omits handslot.l and handslot.r; track filtering drops those 2 nodes cleanly).",
+      "authoring_convention": "Y-up meters, stylized humanoid proportions, lower-case dot-suffixed limbs (.l / .r) + handslot.l / handslot.r.",
+      "root_bone": "root",
+      "pelvis_bone": "hips",
+      "member_sources": [
+        "kaykit-adventurers",
+        "kaykit-skeletons",
+        "kaykit-character-animations (Rig_Medium & Mannequin_Medium)"
+      ],
+      "direct_clip_sharing": "100% directly shareable via AnimationMixer across all KayKit Adventurers, KayKit Skeletons, Mannequin_Medium, and all 8 Rig_Medium GLB packs (131 non-T-Pose clips)."
+    },
+    "kaykit-rig-large": {
+      "joint_count": 23,
+      "authoring_convention": "Y-up meters, heavy/bulky proportions matching Rig_Large animations.",
+      "root_bone": "root",
+      "pelvis_bone": "hips",
+      "member_sources": [
+        "kaykit-character-animations (Rig_Large & Mannequin_Large)"
+      ],
+      "direct_clip_sharing": "Directly shareable within Rig_Large (28 non-T-Pose clips + Mannequin_Large). Visually distinct translation offsets/proportions from Rig_Medium; do not blindly share Rig_Medium position tracks onto Rig_Large without bone-proportion verification."
+    },
+    "quaternius-universal-65": {
+      "joint_count": 65,
+      "authoring_convention": "Unreal Engine Mannequin naming convention (root, pelvis, spine_01..03, neck_01, Head, clavicle_l/r, upperarm_l/r, lowerarm_l/r, hand_l/r, 5-finger leaf chains, thigh_l/r, calf_l/r, foot_l/r, ball_l/r).",
+      "root_bone": "root",
+      "pelvis_bone": "pelvis",
+      "member_sources": [
+        "quaternius-universal-base-characters-standard",
+        "quaternius-modular-character-outfits-fantasy-standard",
+        "quaternius-ual1-standard",
+        "quaternius-ual2-standard"
+      ],
+      "direct_clip_sharing": "100% bit-exact 65-joint set identity across UBC Standard bases, UBC rigged hairstyles, Fantasy Outfits + all 20 modular parts, UAL1 Standard (43 clips), UAL2 Standard (43 clips), and Mannequin_F.",
+      "modular_assembly_rules": [
+        "Modular Fantasy Outfits (4 outfits, 20 parts) share identical 65-bone hierarchies and bind poses; bind a per-part AnimationMixer fed with the same filtered clip (or clone/rebind skeletons).",
+        "Per Quaternius Readme.txt, pair only the head of Universal Base Characters with full outfits to avoid skin poking through sleeves/torsos.",
+        "UBC Hairstyles in 'Rigged to Head Bone' share the 65-bone rig; 'Origin at 0' hairstyles require parenting directly to the Head bone."
+      ]
+    },
+    "quaternius-umw-62": {
+      "joint_count": 62,
+      "authoring_convention": "Blender armature with IK foot/pole-target controls (Foot.L/R and PT.L/R parented to Root instead of LowerLeg.L/R).",
+      "root_bone": "Root",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-ultimate-modular-women",
+        "quaternius-ultimate-modular-men"
+      ],
+      "direct_clip_sharing": "All 10 UMW + 11 UMM individual characters (62j), UMW+UMM modular FBX->GLB parts (62j/79j with _end leaf bones), and both UMW_Animations.glb & umm_animations.glb (24 clips) share the exact same 62 core bones and bind cleanly via filterClipToRoot.",
+      "retargeting_warning": "Rotation-only Three.js SkeletonUtils.retargetClip from FK-foot rigs (UAL1/UAL2) leaves Foot.L and Foot.R anchored at Root origin while legs bend, visibly stretching calves/boots (observed in Chromium QA case 15_retarget_ual1_to_umw_adventurer). Treat UMW as incompatible with FK rotation-only retargeting unless converted to FK feet or driving foot IK targets."
+    },
+    "quaternius-rpg-32": {
+      "joint_count": 32,
+      "authoring_convention": "Stylized RPG Blender armature with embedded Weapon.R and IK/PoleTarget.L/R bones; self-contained class clips (11-15 per character).",
+      "root_bone": "Root",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-rpg-characters"
+      ],
+      "direct_clip_sharing": "Each RPG character ships its own tailored animation set (11-15 clips). Not directly plug-compatible with UAL1/UAL2 or UMW due to distinct joint count (32) and Foot/PoleTarget hierarchy."
+    },
+    "polygonalmind-vrm-humanoid": {
+      "joint_count": "65 (R2) or VRM humanoid map (R1)",
+      "authoring_convention": "Polygonal Mind VRM-derived GLBs preserving 52-key vrm_meta.humanoid_bone_map across all 200 avatars (R1 exhibits 42 per-character node prefixes; R2 standardizes on mixamorig:*).",
+      "root_bone": "mixamorig:Hips (or prefixed *:mixamorig:Hips via vrm_meta.humanoid_bone_map)",
+      "pelvis_bone": "vrm_meta.humanoid_bone_map.hips",
+      "member_sources": [
+        "polygonalmind-100-avatars-r1",
+        "polygonalmind-100-avatars-r2"
+      ],
+      "direct_clip_sharing": "Static poses (0 embedded clips); map retargeted clips through vrm_meta.humanoid_bone_map rather than assuming unprefixed Mixamo names on R1."
+    },
+    "quaternius-kit-biped": {
+      "joint_count": "43 (33 on Captain Barbarossa hook-hand, 50 on zombie_basic/zombie_chubby w/ face bones)",
+      "authoring_convention": "Quaternius game-kit IK armature (Root, Foot.L, Body, Hips, Abdomen, Torso, Neck, Head, Shoulder..Pinky/Thumb, UpperLeg/LowerLeg, PoleTarget.L/R).",
+      "root_bone": "Root",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-pirate-kit",
+        "quaternius-toon-shooter-kit",
+        "quaternius-zombie-apocalypse-kit",
+        "quaternius-ultimate-space-kit"
+      ],
+      "direct_clip_sharing": "Shared core 43-bone kit rig across 23 admitted kit characters with 14-20 embedded clips per model."
+    },
+    "quaternius-uac-biped": {
+      "joint_count": 23,
+      "authoring_convention": "Quaternius Ultimate Animated Character compact IK rig (Bone, Foot.L/R, PoleTarget.L/R, Fist.L/R).",
+      "root_bone": "Bone",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-ultimate-animated-character"
+      ],
+      "direct_clip_sharing": "Shared across 47 admitted UAC characters (16-17 embedded clips each); note Cube World Kit 23j uses Root instead of Bone."
+    },
+    "quaternius-legacy-biped": {
+      "joint_count": 42,
+      "authoring_convention": "Quaternius legacy IK biped (Bone, Foot.L/R, Fingers.L/R, Thumb1/2.L/R).",
+      "root_bone": "Bone",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-animated-men",
+        "quaternius-animated-women"
+      ],
+      "direct_clip_sharing": "Exact 42-bone parity between all 8 Animated Men and 8 Animated Women (11 embedded clips each)."
+    },
+    "quaternius-knight-biped-42": {
+      "joint_count": 42,
+      "authoring_convention": "Legacy 42-bone IK rig using Thumb.L/R instead of Thumb1.L/R.",
+      "root_bone": "Bone",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-animated-knight"
+      ],
+      "direct_clip_sharing": "12 embedded clips on KnightCharacter; companion 8 weapon/helmet accessories attach via bone sockets."
+    },
+    "quaternius-mixamo-48": {
+      "joint_count": 48,
+      "authoring_convention": "Mixamo FK hierarchy (Hips, Spine..HeadTop_End, LeftUpLeg..LeftFoot..LeftHand..); scaled ~4.8m-8.1m in source FBX units.",
+      "root_bone": "Hips",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-animated-man",
+        "quaternius-animated-woman",
+        "quaternius-animated-zombie"
+      ],
+      "direct_clip_sharing": "Exact 48-bone parity across Animated Man, Animated Woman, and Animated Zombie; compatible with Mixamo FK clips."
+    },
+    "quaternius-legacy-robot-58": {
+      "joint_count": 58,
+      "authoring_convention": "Fingered 58-bone robot rig using Palm1/2/3 naming.",
+      "root_bone": "Bone",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-animated-robot"
+      ],
+      "direct_clip_sharing": "14 embedded clips; distinct finger names from Animated Alien."
+    },
+    "quaternius-legacy-alien-58": {
+      "joint_count": 58,
+      "authoring_convention": "Fingered 58-bone alien rig using Index/Middle/Pinky naming.",
+      "root_bone": "Bone",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-animated-alien"
+      ],
+      "direct_clip_sharing": "14 embedded clips shared between Alien and Alien_Helmet."
+    },
+    "quaternius-cyberpunk-biped-25": {
+      "joint_count": 25,
+      "authoring_convention": "25-bone Cyberpunk protagonist rig with Hand.L/R and Weapon mount bone.",
+      "root_bone": "Root",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-cyberpunk-kit"
+      ],
+      "direct_clip_sharing": "22 embedded shooter/melee clips on Cyberpunk Character."
+    },
+    "quaternius-cube-biped-23": {
+      "joint_count": 23,
+      "authoring_convention": "Cube World 23-bone protagonist IK rig (Root root bone instead of Bone).",
+      "root_bone": "Root",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "quaternius-cube-world-kit"
+      ],
+      "direct_clip_sharing": "Shared across the 4 Cube World male/female humanoids (18 clips each)."
+    },
+    "quaternius-cube-biped-7": {
+      "joint_count": 7,
+      "authoring_convention": "Minimal 7-bone voxel humanoid rig (Root, Leg.L, Leg.R, Body, Head, Arm.L, Arm.R).",
+      "root_bone": "Root",
+      "pelvis_bone": "Body",
+      "member_sources": [
+        "quaternius-cube-world-kit"
+      ],
+      "direct_clip_sharing": "Shared across 8 Cube World enemies/skeletons (7 clips each)."
+    },
+    "kenney-character-medium-fbx": {
+      "joint_count": 58,
+      "authoring_convention": "Kenney Mixamo-named 58-bone FBX rig with foot IK controls (idle/jump/run).",
+      "root_bone": "HipsCtrl",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "kenney-animated-protagonists",
+        "kenney-animated-retro",
+        "kenney-animated-survivors"
+      ],
+      "direct_clip_sharing": "Exact 58-bone parity across all 12 Protagonists/Retro/Survivors skins."
+    },
+    "kenney-mini-rig": {
+      "joint_count": 7,
+      "authoring_convention": "7-bone miniature rig (root, torso, head, arm-left, arm-right, leg-left, leg-right) with 32 clips.",
+      "root_bone": "root",
+      "pelvis_bone": "torso",
+      "member_sources": [
+        "kenney-mini-characters"
+      ],
+      "direct_clip_sharing": "Shared across all 20 rigged Mini Characters (32 embedded clips each)."
+    },
+    "kenney-blocky-node-rig": {
+      "joint_count": 0,
+      "authoring_convention": "Node-hierarchy transform animation (0 Skin objects; 27 clip animations driving limb Object3D nodes).",
+      "root_bone": "root node",
+      "pelvis_bone": "body node",
+      "member_sources": [
+        "kenney-blocky-characters"
+      ],
+      "direct_clip_sharing": "27 embedded node clips across all 18 Blocky characters."
+    },
+    "gdquest-mannequin-45": {
+      "joint_count": 45,
+      "authoring_convention": "GDQuest 45-bone dot-suffixed Godot Mannequin rig (pelvis, thigh.l/r, calf.l/r, foot.l/r, spine_01..).",
+      "root_bone": "pelvis",
+      "pelvis_bone": "pelvis",
+      "member_sources": [
+        "gdquest-open-3d-mannequin"
+      ],
+      "direct_clip_sharing": "Exact 45-bone parity between Mannequiny v0.3.0 (10 clips) and v0.4.0 (11 clips); requires CC-BY-4.0 attribution."
+    },
+    "oga-fps-arms-51": {
+      "joint_count": 51,
+      "authoring_convention": "First-person partial rig (clavicle/upper/lower arm and 5 fingers per hand; no lower body/head).",
+      "root_bone": "clavicle.L / clavicle.R",
+      "pelvis_bone": null,
+      "member_sources": [
+        "oga-rigged-fps-arms"
+      ],
+      "direct_clip_sharing": "Partial upper-limb FPS rig only; incompatible with full-body locomotion."
+    },
+    "barnabe-wild-ik-rig": {
+      "joint_count": 25,
+      "authoring_convention": "French-named IK Blender armature (Bras_L, Main_L, Pied_L, etc.) exported at ~7.38m height.",
+      "root_bone": "bassin",
+      "pelvis_bone": "bassin",
+      "member_sources": [
+        "barnabe-wild-lowpoly-character"
+      ],
+      "direct_clip_sharing": "2 embedded clips; scale ~0.24x to normalize to ~1.8m."
+    },
+    "barnabe-wild-mixamo-51": {
+      "joint_count": 51,
+      "authoring_convention": "Standard Mixamo FK armature exported at ~1.80m height (Hips, LeftUpLeg, ...).",
+      "root_bone": "Hips",
+      "pelvis_bone": "Hips",
+      "member_sources": [
+        "barnabe-wild-lowpoly-character"
+      ],
+      "direct_clip_sharing": "3 embedded mocap preview clips; Mixamo FK compatible."
+    },
+    "polygonalmind-xyz-custom": {
+      "joint_count": "21-32 per character",
+      "authoring_convention": "Per-creature custom bipedal Blender rigs (Arm.L/R, ForeArm.L/R, Hand.L/R, Leg/Foot.L/R, custom head/eyestalks); 1-14 embedded clips.",
+      "root_bone": "Hips / Root",
+      "pelvis_bone": "Hips / Torso",
+      "member_sources": [
+        "polygonalmind-xyz-creatures"
+      ],
+      "direct_clip_sharing": "Per-character custom joint sets; use embedded clips rather than cross-character sharing."
+    }
+  },
+  "retargeting_workflows": [
+    {
+      "id": "ual1_to_kaykit_rig_medium",
+      "source_family": "quaternius-universal-65",
+      "target_family": "kaykit-rig-medium",
+      "status": "SUPPORTED_ROTATION_RETARGET_WITH_REST_OFFSETS",
+      "verified_in_chromium": "17_retarget_ual1_to_kaykit_knight (Visual inspection confirmed clean Jog_Fwd_Loop leg/arm stride without mesh twist or clipping).",
+      "method": "SkeletonUtils.retargetClip with explicit UAL_TO_KAYKIT bone map, computed bind-pose world rotation offsets (R_src^-1 * R_dst), preservePosition=false, and strip '.position' tracks (rotation-only retarget preserves stylized KayKit limb proportions).",
+      "hip_target": "hips",
+      "bone_map_target_to_source": {
+        "hips": "pelvis",
+        "spine": "spine_01",
+        "chest": "spine_03",
+        "head": "Head",
+        "upperarm.l": "upperarm_l",
+        "lowerarm.l": "lowerarm_l",
+        "hand.l": "hand_l",
+        "upperarm.r": "upperarm_r",
+        "lowerarm.r": "lowerarm_r",
+        "hand.r": "hand_r",
+        "upperleg.l": "thigh_l",
+        "lowerleg.l": "calf_l",
+        "foot.l": "foot_l",
+        "upperleg.r": "thigh_r",
+        "lowerleg.r": "calf_r",
+        "foot.r": "foot_r"
+      }
+    },
+    {
+      "id": "ual1_to_rocketbox_bip01",
+      "source_family": "quaternius-universal-65",
+      "target_family": "rocketbox-bip01",
+      "status": "SUPPORTED_WITH_SCALE_WRAPPER_AND_REST_POSE_CAVEATS",
+      "verified_in_chromium": "16_retarget_ual1_to_rocketbox_male01 (Legs/torso/head stride cleanly; minor left-forearm inward tuck noted from Bip01 rest-pose roll / A-to-T pose offset).",
+      "method": "SkeletonUtils.retargetClip with UAL_TO_ROCKETBOX map, computed rest-pose localOffsets, strip '.position' tracks, AND restore target bone scales after retargetClip so Bip01's 0.01 parent scale does not leave 100x scale matrices on child bones.",
+      "hip_target": "Bip01 Pelvis",
+      "bone_map_target_to_source": {
+        "Bip01 Pelvis": "pelvis",
+        "Bip01 Spine": "spine_01",
+        "Bip01 Spine1": "spine_02",
+        "Bip01 Spine2": "spine_03",
+        "Bip01 Neck": "neck_01",
+        "Bip01 Head": "Head",
+        "Bip01 L Clavicle": "clavicle_l",
+        "Bip01 L UpperArm": "upperarm_l",
+        "Bip01 L Forearm": "lowerarm_l",
+        "Bip01 L Hand": "hand_l",
+        "Bip01 R Clavicle": "clavicle_r",
+        "Bip01 R UpperArm": "upperarm_r",
+        "Bip01 R Forearm": "lowerarm_r",
+        "Bip01 R Hand": "hand_r",
+        "Bip01 L Thigh": "thigh_l",
+        "Bip01 L Calf": "calf_l",
+        "Bip01 L Foot": "foot_l",
+        "Bip01 R Thigh": "thigh_r",
+        "Bip01 R Calf": "calf_r",
+        "Bip01 R Foot": "foot_r"
+      }
+    },
+    {
+      "id": "ual1_to_quaternius_umw",
+      "source_family": "quaternius-universal-65",
+      "target_family": "quaternius-umw-62",
+      "status": "INCOMPATIBLE_LOWER_BODY_IK_ROTATION_ONLY",
+      "verified_in_chromium": "15_retarget_ual1_to_umw_adventurer (Visual inspection showed detached IK Foot.L/R remaining anchored at floor origin while legs moved, stretching boots vertically).",
+      "recommendation": "Use the 24 native UMW clips included in Individual Characters/*.glb and UMW_Animations.glb, or bake FK foot hierarchy in Blender before retargeting."
+    }
+  ],
+  "incompatible_pairs_explicit": [
+    {
+      "pair": [
+        "kaykit-rig-medium",
+        "quaternius-universal-65"
+      ],
+      "reason": "Completely disjoint bone counts (23 vs 65), naming (.l/.r vs UE _l/_r), and rest proportions; requires explicit rotation-only retargeting."
+    },
+    {
+      "pair": [
+        "kaykit-rig-medium",
+        "kaykit-rig-large"
+      ],
+      "reason": "Translation curves in Rig_Large are scaled for larger proportions; keep clips paired to their own Rig_Medium / Rig_Large family unless retargeted."
+    },
+    {
+      "pair": [
+        "rocketbox-bip01",
+        "quaternius-rpg-32"
+      ],
+      "reason": "3ds Max cm Biped (80-81 bones) vs Blender 32-bone IK rig."
+    },
+    {
+      "pair": [
+        "quaternius-umw-62",
+        "quaternius-rpg-32"
+      ],
+      "reason": "Distinct joint counts (62 vs 32) and distinct rig layouts."
+    }
+  ],
+  "updated_utc": "2026-11-15T04:55:00Z"
+}

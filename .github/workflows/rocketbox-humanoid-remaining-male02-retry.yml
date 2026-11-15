@@ -1,0 +1,63 @@
+name: Rocketbox Male Adult 02 exact source retry
+on:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths: [.github/workflows/rocketbox-humanoid-remaining-male02-retry.yml]
+permissions:
+  contents: read
+jobs:
+  repair-one-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Acquire only the previously blocked pinned original and verify all source hashes
+        run: |
+          set -eu
+          python3 catalog/humanoids/tools/rocketbox_remaining_103_cloud_acquire.py --group 4 --only-asset rocketbox/adults/male_adult_02
+      - name: Preserve retry source identity and validation receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-male-adult-02-retry-source-receipt
+          path: /tmp/rocketbox-remaining/group-4/evidence/
+          if-no-files-found: warn
+          retention-days: 2
+      - name: Preserve isolated retry pack 01
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-male-adult-02-retry-pack-01
+          path: /tmp/rocketbox-remaining/group-4/packs/pack-01.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 2
+      - name: Preserve isolated retry pack 02
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-male-adult-02-retry-pack-02
+          path: /tmp/rocketbox-remaining/group-4/packs/pack-02.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 2
+      - name: Preserve isolated retry pack 03
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-male-adult-02-retry-pack-03
+          path: /tmp/rocketbox-remaining/group-4/packs/pack-03.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 2
+      - name: Preserve isolated retry pack 04
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rocketbox-male-adult-02-retry-pack-04
+          path: /tmp/rocketbox-remaining/group-4/packs/pack-04.zip
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 2

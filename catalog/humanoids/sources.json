@@ -1,0 +1,1340 @@
+{
+  "schema_version": "2.0.0",
+  "catalog_id": "humanoid-sources",
+  "updated_utc": "2026-11-15T04:55:00Z",
+  "notes": [
+    "Preserves Microsoft Rocketbox (115 CC/MIT avatars) and the 9 prior free/Standard KayKit & Quaternius packs (181 GLBs), plus 3 generator/account-dependent sources.",
+    "Adds all 30 expansion sources: 28 acquired/converted/WebGL2-validated, 1 inspected with 0 humanoids (quaternius-sci-fi-essentials-kit), and 1 honestly marked BLOCKED (blender-human-base-meshes Cloudflare HTTP 403 challenge).",
+    "gdquest-open-3d-mannequin carries CC-BY-4.0 attribution requirement (GDQuest and contributors); all other admitted expansion assets carry CC0-1.0 / MIT."
+  ],
+  "sources": [
+    {
+      "id": "microsoft-rocketbox",
+      "name": "Microsoft Rocketbox Avatar Library",
+      "kind": "prebuilt humanoid avatars",
+      "official_url": "https://github.com/microsoft/Microsoft-Rocketbox",
+      "license": "MIT",
+      "license_url": "https://github.com/microsoft/Microsoft-Rocketbox/blob/master/LICENSE.md",
+      "access": "public GitHub",
+      "formats": [
+        "FBX",
+        "TGA"
+      ],
+      "advertised_content": "115 rigged avatars and animation directories",
+      "source_status": "115 unique source directories archived in original private Drive library; historical Medical_Female_01 FBX-only ZIP retained and full 2-FBX/7-TGA completion ZIP archived separately with independent post-upload SHA256; 115 GLBs smoke tested in Chromium/Three.js r185",
+      "archive_status": "original_source_COMPLETE_115_of_115_full_textures_additively_preserved_GLBS_browser_smoke_115_of_115",
+      "notes": "Public repository archived 2026-10-02; multi-GB and source assets are not GLB-ready. Keep license notice when distributing. Partial source acquisition 2026-11-13: four archived model ZIPs (medical FBX-only), two sample animation FBXs in one archive; exact Drive IDs confined to private receipt; GLB conversion initially failed due missing Blender numpy and is not yet validated. Two GLBs in Drive passed actual WebGL2/Three.js r185 loader, mixer, rendered triangles and reload checks; not fully released. Batch02 added eight more complete original avatar archives to Drive (103 of 115 still pending), and four additional GLBs passed Chromium Three.js r185 skinned texture and animation-mixer render/reload smoke. Source/package SHA-256 verified before upload; Google Drive metadata readback confirmed size/parent; no Drive roundtrip byte hash, visual approval, mobile benchmark or long-session proof. See batch02 private receipts. Completion run 43551948111 converted four earlier source-only batch02 models and smoke tested all ten GLBs, archived twenty separate Chrome render screenshots and private receipts. Darker browser-render facial/material exposure than source previews flagged for visual QA; no production approval. Source archive count unchanged. Cloud remaining-source pilot group0 acquired 10 original avatars into five Drive-verified nested transport packs; 93 original avatar sources remain. No new GLB conversion or visual signoff. FINAL ACQUISITION 2026-11-13 local (2026-11-14 UTC): 103 further original sources obtained in 11 cloud batches (group4 had one filename whitespace issue fixed by isolated retry) and archived to original private Drive originals. 52 new transport-pack files, 65 originals-folder objects total; all 115 stable source IDs have private archive references. Source SHA256/Git blobs verified pre-upload, Drive provider filename/size/MIME/parent readbacks passed. Historical Medical_Female_01 source FBX-only; 105 sources have no GLB yet; only 10 GLBs smoke tested and none production approved. Master retrieval records are in private Drive, not public repo. Batch03: 10 additional distinct full-texture source models converted to GLB in GitHub-hosted Ubuntu, actual Chromium Three.js 0.185.1 WebGL2 loader/mixer/render/dispose/reload plus 20 PNGs; pre-upload source/GLB SHA256 and provider Drive metadata verified. 20 browser smoke GLBs cumulative; 95 source-only remain. 93 source-complete models queued/running in 11 cloud groups; no success asserted pending provider readback. No visual production approval. FINAL CONVERSION CHECKPOINT 2026-11-14: 10 batch03 + 93 group conversion + 1 historical delivery = 104 new GLBs, added to ten earlier browser-tested originals, making 114 Chrome/Three.js r185 GLB smoke-pass models. All new GLBs have recorded original source hashes, 2 actual Chromium PNGs per model, independent structure proof, and private Drive metadata readbacks; NO human visual signoff, mobile hardware test, or sustained GPU memory proof. Medical_Female_01 remains blocked by missing textures in historical FBX-only source. No Mac used and no demonstration files modified. Earlier '10 GLB/105 remaining' notes are historical snapshots. FINAL verified completion: Medical_Female_01 historical FBX-only ZIP remains preserved, exact pinned official seven TGAs and both FBXs plus preview/unchanged MIT license archived in separate additive complete-source ZIP. Blender/GLB2/Three.js r185 real Chromium WebGL2 tests passed, source and new GLB downloaded back from Drive with matching full-file SHA256. All 115 models now have browser-smoke-tested GLBs; still zero production visual/mobile/lifecycle approvals. See private completion receipt.",
+      "pinned_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+      "archived_2026_11_13": {
+        "individual_avatar_archives": 4,
+        "animation_sample_archives": 1,
+        "asset_records_updated": 4,
+        "unique_avatars_remain_pending": 111,
+        "source_files_with_hashes": 36,
+        "drive_metadata_readback": "5_of_5",
+        "private_receipts_filename": "DRIVE_ACQUISITION_RECEIPTS_Batch01.json",
+        "binary_roundtrip_verification": "not_performed",
+        "glb_conversions_validated": 0,
+        "glb_browser_smoke_pass": 2,
+        "glb_production_release_pass": 0,
+        "browser_smoke_run": 43549437068,
+        "browser_qa": "Three.js 185 GLTFLoader, 80 bones, textures, two clips, mixer, render, dispose/reload passed; visual/mobile/long-session review pending",
+        "record_scope": "historical_batch01_only"
+      },
+      "archived_batch02": {
+        "source_license": "MIT Copyright (c) 2020 Microsoft",
+        "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+        "original_avatar_archives": 8,
+        "source_originals_uncompressed_bytes": 750604203,
+        "source_archive_zip_bytes": 276019102,
+        "independent_source_hashes_verified": true,
+        "original_drive_provider_writes_verified": 8,
+        "original_drive_metadata_readbacks": 8,
+        "glb_conversions_structural_pass": 4,
+        "glb_threejs_r185_browser_smoke_pass": 4,
+        "glb_drive_provider_writes_verified": 4,
+        "glb_drive_metadata_readbacks": 4,
+        "browser_qa_run": 43550104493,
+        "regression_tests": "typecheck, npm tests and production build passed in same runner",
+        "private_source_receipts": "BATCH02_DRIVE_ORIGINALS_RECEIPTS.json",
+        "private_processed_receipts": "BATCH02_DRIVE_PROCESSED_RECEIPTS.json",
+        "private_search_index": "BATCH02_LIBRARY_INDEX.csv",
+        "private_browser_report": "BATCH02_BROWSER_SMOKE_RESULT.json",
+        "archive_roundtrip_sha256": "not_performed",
+        "visual_mobile_production_release": "unverified",
+        "remaining_avatar_sources": 103
+      },
+      "batch02_completion": {
+        "source_archive_count_unchanged": 12,
+        "new_GLBS_from_already_archived_sources": 4,
+        "new_glb_names": [
+          "Female_Adult_11.glb",
+          "Business_Male_04.glb",
+          "Medical_Male_02.glb",
+          "Security_Male_01.glb"
+        ],
+        "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+        "cloud_run_id": 43551948111,
+        "source_zip_full_sha256_matched_drive_copies": 4,
+        "original_glbs_sha256_matched_archived_existing": 6,
+        "new_glb_static_structure_pass": 4,
+        "new_glb_browser_r185_webgl2_pass": 4,
+        "cumulative_glb_browser_pass": 10,
+        "cumulative_glb_production_approved": 0,
+        "individual_png_screenshots": 20,
+        "individual_png_drive_metadata_readbacks": 20,
+        "glb_drive_writes_readback_confirmed": 4,
+        "qa_private_folder_name": "Visual_QA_2026-11-13_Batch02_Completion",
+        "private_glb_lookup": "BATCH02_COMPLETION_10_GLB_PRIVATE_LOOKUP.csv",
+        "private_source_archive_receipts": "BATCH02_COMPLETION_PRIVATE_DRIVE_RECEIPTS.json",
+        "manual_visual_release": "pending; face/material colors darker than source previews in normalized render",
+        "mobile_GPU_resource_lifetime": "not_tested",
+        "drive_postupload_hash_roundtrip": "not_performed"
+      },
+      "remaining_103_campaign": {
+        "pinned_plan": "catalog/humanoids/rocketbox-remaining-103-plan.json",
+        "source_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+        "source_ids_targeted": 103,
+        "source_ids_archived": 103,
+        "remaining_unacquired": 0,
+        "grouping": "11 bounded groups (10x10 and final 3), one isolated retry Male_Adult_02",
+        "new_nested_transport_pack_count": 52,
+        "new_source_asset_hash_verification": "each source file checked against official Git blob SHA-1 and independently computed SHA-256 before Drive transport",
+        "github_workflow_runs": [
+          43553390313,
+          43553780934,
+          43554819035
+        ],
+        "private_receipts": "ROCKETBOX_REMAINING_GROUP00..10_DRIVE_RECEIPT.json; ROCKETBOX_REMAINING_GROUP04_MALE02_RETRY_DRIVE_RECEIPT.json",
+        "private_master_index": "ROCKETBOX_115_PRIVATE_MASTER_INDEX.json",
+        "private_master_csv": "ROCKETBOX_115_PRIVATE_MASTER_LOOKUP.csv",
+        "private_howto": "ROCKETBOX_115_README.md",
+        "source_models_content_exception": "Historical Medical_Female_01 original ZIP FBX-only (retained unchanged); separate complete source ZIP archived on 2026-11-14 with seven official TGA textures, preview and MIT license",
+        "verified_originals_drive_objects": 65,
+        "avatar_relevant_archive_objects": 64,
+        "source_provider_write_and_drive_metadata_readback": "all 52 new transport packs and 13 historical original/archive objects",
+        "full_postupload_sha256_restoration_check": "not_performed",
+        "browser_smoke_glbs": 115,
+        "unconverted_source_sets": 0,
+        "production_visual_mobile_lifecycle_approved": 0
+      },
+      "conversion_campaign_20261113": {
+        "baseline_smoke_GLBS": 10,
+        "batch03_ten_conversion": 10,
+        "batch04_93_group_conversion": 93,
+        "historical_delivery_conversion": 1,
+        "total_original_source_archives": 115,
+        "source_complete_converted_increment": 104,
+        "final_browser_smoke_GLBS": 114,
+        "final_browser_smoke_QA_screenshots": 228,
+        "concurrent_runner_max": 3,
+        "gitHub_cloud_batches": 11,
+        "first_ten_run": 43557244473,
+        "bulk_93_run": 43558118152,
+        "historical_delivery_run": 43611309285,
+        "nonconverted_and_blocked": [
+          "Medical_Female_01"
+        ],
+        "historical_blocker": "FBX-only archive missing source TGA textures; separate source-completion and then GLB conversion",
+        "glb_private_drive_recovered": 114,
+        "license": "MIT Microsoft Copyright (c) 2020",
+        "source_SHA256_and_GitBlob_verified": true,
+        "postupload_Drive_full_file_SHA256_roundtrip": "NOT_PERFORMED; file name size MIME and parent metadata verified",
+        "visual_release_approval": 0,
+        "mobile_hardware_proof": 0,
+        "sustained_GPU_lifecycle_proof": 0,
+        "private_master_lookup_next_revision": "V3 should incorporate the 114 GLB records; existing V2 historical snapshot has 20"
+      },
+      "medical_female01_source_completion": {
+        "old_original_archive_retained": "Rocketbox_Medical_Female_01_Originals_Batch01_2026-11-13.zip",
+        "new_completed_archive": "Rocketbox_Medical_Female_01_Complete_Source_2026-11-14.zip",
+        "source_git_commit": "0943055db6ec570bcef9f2c8b41c9e5467c808f9",
+        "license": "Microsoft MIT",
+        "fbx": 2,
+        "original_textures": 7,
+        "preview": 1,
+        "original_files_verified": 10,
+        "original_zip_bytes": 34332018,
+        "original_zip_sha256": "24689a165d6befa553b0e04534fe5916461f4ef4c8755497174963a7afb837ad",
+        "glb_name": "Medical_Female_01.glb",
+        "glb_bytes": 31743080,
+        "glb_sha256": "2c9d879fb60124579651eb8967cedafb86176c4f96d14317edec3beb82e7ee5f",
+        "source_and_glb_drive_full_byte_roundtrip_sha256_verified": true,
+        "cloud_run": 43644401403,
+        "webgl2_browser_pass": true,
+        "screenshots": 2,
+        "private_receipt": "ROCKETBOX_MEDICAL_FEMALE01_PRIVATE_COMPLETION_RECEIPT.json",
+        "visual_approval": false,
+        "known_material_lighting_warning": true
+      }
+    },
+    {
+      "id": "kaykit-adventurers",
+      "name": "KayKit Character Pack: Adventurers (2.0 FREE)",
+      "kind": "prebuilt stylized low-poly rigged humanoid characters and accessories",
+      "official_url": "https://kaylousberg.itch.io/kaykit-adventurers",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free 2.0 edition via official itch.io download flow (EXTRA/SOURCE paid tiers exist separately)",
+      "formats": [
+        "GLB",
+        "FBX",
+        "OBJ",
+        "glTF+BIN+PNG (accessories)"
+      ],
+      "advertised_content": "5 free rigged animated characters (Barbarian, Knight, Mage, Ranger, Rogue + Rogue_Hooded variant), accessories, CC0",
+      "actual_verified_content": {
+        "edition": "2.0 FREE",
+        "character_glbs": 6,
+        "character_names": [
+          "Barbarian",
+          "Knight",
+          "Mage",
+          "Ranger",
+          "Rogue",
+          "Rogue_Hooded"
+        ],
+        "animation_glbs": 2,
+        "animation_clips_included": 26,
+        "accessory_gltfs_packed_to_glb": 31,
+        "total_processed_glbs": 39
+      },
+      "skeleton_family": "kaykit-rig-medium",
+      "joint_count": 23,
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "KayKit_Adventurers_2.0_FREE.zip",
+      "archive_bytes": 13024345,
+      "archive_sha256": "abe48f4763fba0896bab486ee9e6d08ca6b5b3884b9601f235c8847ae94dc479",
+      "license_file_rel": "KayKit_Adventurers_2.0_FREE/License.txt",
+      "license_file_sha256": "d4adc31660d1db22eb60eba648e01db41577548f6fa1a3576cb4a6283dae0a58",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/kaykit/KayKit_Adventurers_2.0_FREE.zip"
+    },
+    {
+      "id": "kaykit-skeletons",
+      "name": "KayKit Character Pack: Skeletons (1.1 FREE)",
+      "kind": "specialized stylized skeletal humanoid characters and accessories",
+      "humanoid_classification": "specialized_skeletal_humanoid",
+      "official_url": "https://kaylousberg.itch.io/kaykit-skeletons",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free 1.1 edition via official itch.io download flow",
+      "formats": [
+        "GLB",
+        "FBX",
+        "OBJ",
+        "glTF+BIN+PNG (accessories)"
+      ],
+      "advertised_content": "4 free rigged skeleton characters, basic animations, accessories, CC0",
+      "actual_verified_content": {
+        "edition": "1.1 FREE",
+        "character_glbs": 4,
+        "character_names": [
+          "Skeleton_Mage",
+          "Skeleton_Minion",
+          "Skeleton_Rogue",
+          "Skeleton_Warrior"
+        ],
+        "animation_glbs": 2,
+        "animation_clips_included": 26,
+        "accessory_gltfs_packed_to_glb": 13,
+        "total_processed_glbs": 19
+      },
+      "skeleton_family": "kaykit-rig-medium",
+      "joint_count": 23,
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "KayKit_Skeletons_1.1_FREE.zip",
+      "archive_bytes": 8177445,
+      "archive_sha256": "21fbad59ee6cc1d7bed12d0e425acab8ebe564b8620bbc1d017aedb29dd8a3d2",
+      "license_file_rel": "KayKit_Skeletons_1.1_FREE/License.txt",
+      "license_file_sha256": "327a1aac6e6ff1259d82d0024cdaf088bcef302f8d7a116b5142538ac2b5cf8d",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/kaykit/KayKit_Skeletons_1.1_FREE.zip"
+    },
+    {
+      "id": "kaykit-character-animations",
+      "name": "KayKit Character Animations (1.1 FREE)",
+      "kind": "stylized humanoid animation library and test mannequins",
+      "official_url": "https://kaylousberg.itch.io/kaykit-character-animations",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free 1.1 edition via official itch.io download flow",
+      "formats": [
+        "GLB",
+        "FBX"
+      ],
+      "advertised_content": "161 animations across publisher's offering; Rig_Medium and Rig_Large compatibility families, CC0",
+      "actual_verified_content": {
+        "edition": "1.1 FREE",
+        "mannequin_glbs": 2,
+        "mannequins": [
+          "Mannequin_Medium (21 joints, lacks handslot.l/r)",
+          "Mannequin_Large (23 joints)"
+        ],
+        "rig_medium_animation_glbs": 8,
+        "rig_medium_raw_clips": 139,
+        "rig_medium_non_tpose_clips": 131,
+        "rig_large_animation_glbs": 6,
+        "rig_large_raw_clips": 34,
+        "rig_large_non_tpose_clips": 28,
+        "total_raw_clips_in_archive": 173,
+        "total_non_tpose_clips": 159,
+        "distinct_non_tpose_names_combined": 155,
+        "total_processed_glbs": 16,
+        "note": "Each sub-pack includes a T-Pose reference clip (counted in raw 139+34=173). Non-T-Pose count is 131 (Rig_Medium) + 28 (Rig_Large) = 159 (155 unique names when deduplicating Rig_Medium vs Rig_Large overlaps, compared to 161 advertised)."
+      },
+      "skeleton_family": "kaykit-rig-medium / kaykit-rig-large",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "KayKit_Character_Animations_1.1.zip",
+      "archive_bytes": 14858957,
+      "archive_sha256": "65882f31f905ad2e953819648a59287cdeab8f623908d5ef701971d3758be20f",
+      "license_file_rel": "KayKit_Character_Animations_1.1/License.txt",
+      "license_file_sha256": "373b159044d1a886ed15f57ca5a7673ba14e2623c460283452705f2056912ed9",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/kaykit/KayKit_Character_Animations_1.1.zip"
+    },
+    {
+      "id": "quaternius-universal-base-characters-standard",
+      "name": "Quaternius Universal Base Characters Standard",
+      "kind": "prebuilt stylized humanoid bases",
+      "official_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": "CC0-1.0 (verified in License_Standard.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition via official itch.io name-your-price download flow (Source paid tier exists separately; not purchased)",
+      "formats": [
+        "glTF (.gltf + .bin + .png)",
+        "FBX"
+      ],
+      "advertised_content": "Full pack advertises 6 bases and 20 hairstyles; Standard ZIP contains only a subset",
+      "source_status": "source-verified-free-standard-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "notes": "Do not assume paid Source tier is included; newer Quaternius releases may use QAL, so evaluate per pack.",
+      "distribution_url": "https://quaternius.itch.io/universal-base-characters",
+      "actual_verified_content": {
+        "edition": "Standard (FREE)",
+        "characters": 2,
+        "character_names": [
+          "Superhero_Female_FullBody",
+          "Superhero_Male_FullBody"
+        ],
+        "hairstyles_rigged_to_head_bone": 8,
+        "hairstyles_origin_at_zero": 8,
+        "total_processed_glbs": 18
+      },
+      "skeleton_family": "quaternius-universal-65",
+      "joint_count": 65,
+      "archive_basename": "Universal_Base_Characters_Standard_.zip",
+      "archive_bytes": 128968391,
+      "archive_sha256": "fdbf1804c90dfc1ea03e992bff7da2dfd1a79318e13270a660180f9308455f40",
+      "license_file_rel": "Universal Base Characters[Standard]/License_Standard.txt",
+      "license_file_sha256": "0f4beaf0fe360a7732e58bbe3dbf60a2422367fbea60cb9ea4add968f383268e",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Universal_Base_Characters_Standard_.zip",
+      "known_upstream_defects": [
+        "Superhero_Female_FullBody.gltf references T_Eye_Normal_png.png and Superhero_Male_FullBody.gltf references T_Hair_1_Normal_png.png and T_Eye_Normal_png.png, whereas the archive ships T_Eye_Normal.png and T_Hair_1_Normal.png. Repaired on working copy during GLB packing; original ZIP preserved unchanged."
+      ]
+    },
+    {
+      "id": "quaternius-ual1-standard",
+      "name": "Quaternius Universal Animation Library Standard",
+      "kind": "humanoid animation pack",
+      "official_url": "https://quaternius.itch.io/universal-animation-library",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition via official itch.io download flow",
+      "formats": [
+        "GLB",
+        "FBX"
+      ],
+      "advertised_content": "45 animations advertised on pack page",
+      "source_status": "source-verified-free-standard-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "notes": "Root-motion and in-place variants; skeleton compatibility and individual animations require validation.",
+      "actual_verified_content": {
+        "edition": "Standard (FREE)",
+        "glbs": 2,
+        "files": [
+          "UAL1_Standard.glb (in-place)",
+          "UAL1_Standard_RM.glb (root motion)"
+        ],
+        "clips_per_glb": 43,
+        "note": "Clip names include A_TPose reference pose + 42 motion clips = 43 total tracks per GLB."
+      },
+      "skeleton_family": "quaternius-universal-65",
+      "joint_count": 65,
+      "archive_basename": "Universal_Animation_Library_Standard_.zip",
+      "archive_bytes": 15904933,
+      "archive_sha256": "cc73fc4e495b82958207316596317a3f40b9fa38065bde1027937452da537724",
+      "license_file_rel": "Universal Animation Library[Standard]/License.txt",
+      "license_file_sha256": "6d01f55c6e4c49a2c9963e147e561945ae2c83958c8ca667d90a6bffdbfac061",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Universal_Animation_Library_Standard_.zip"
+    },
+    {
+      "id": "quaternius-ual2-standard",
+      "name": "Quaternius Universal Animation Library 2 Standard",
+      "kind": "humanoid animation pack",
+      "official_url": "https://quaternius.itch.io/universal-animation-library-2",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition via official itch.io download flow",
+      "formats": [
+        "GLB",
+        "FBX",
+        "Blend"
+      ],
+      "advertised_content": "Additional universal animation library clips plus Female Mannequin",
+      "source_status": "source-verified-free-standard-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "notes": "Do not infer current free subset or claim all full-library animations are in Standard.",
+      "actual_verified_content": {
+        "edition": "Standard (FREE)",
+        "glbs": 3,
+        "files": [
+          "UAL2_Standard.glb (in-place, 43 clips)",
+          "UAL2_Standard_RM.glb (root motion, 43 clips)",
+          "Mannequin_F.glb (0 clips, 65 joints)"
+        ],
+        "clips_per_animation_glb": 43
+      },
+      "skeleton_family": "quaternius-universal-65",
+      "joint_count": 65,
+      "archive_basename": "Universal_Animation_Library_2_Standard_.zip",
+      "archive_bytes": 18735003,
+      "archive_sha256": "4008ea208a604773a2b2177d965f0f5d3195498b5bf838c3f5785d68e95f2a68",
+      "license_file_rel": "Universal Animation Library 2[Standard]/License.txt",
+      "license_file_sha256": "6d01f55c6e4c49a2c9963e147e561945ae2c83958c8ca667d90a6bffdbfac061",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Universal_Animation_Library_2_Standard_.zip"
+    },
+    {
+      "id": "quaternius-modular-character-outfits-fantasy-standard",
+      "name": "Quaternius Modular Character Outfits - Fantasy (Standard)",
+      "kind": "modular humanoid clothing and body outfit parts compatible with Universal Base Characters",
+      "official_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "distribution_url": "https://quaternius.itch.io/modular-character-outfits-fantasy",
+      "license": "CC0-1.0 (verified in License_Standard.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition via official itch.io download flow (Source paid version exists separately)",
+      "formats": [
+        "glTF (.gltf + .bin + .png)",
+        "FBX"
+      ],
+      "advertised_content": "Full Source pack advertises 12 outfits, 62 modular components, texture variations; Standard contains a subset",
+      "actual_verified_content": {
+        "edition": "Standard (FREE)",
+        "complete_outfits": 4,
+        "outfit_names": [
+          "Female_Peasant",
+          "Female_Ranger",
+          "Male_Peasant",
+          "Male_Ranger"
+        ],
+        "modular_components": 20,
+        "texture_variations_included": {
+          "Peasant": [
+            "T_Peasant_BaseColor.png",
+            "T_Peasant_2_BaseColor.png"
+          ],
+          "Ranger": [
+            "T_Ranger_BaseColor.png",
+            "T_Ranger_3_BaseColor.png"
+          ]
+        },
+        "note": "Readme.txt instructs pairing only the head of Universal Base Characters to avoid body clipping. Standard ZIP also includes an accidental single Jog_Fwd_Loop animation on Female_Peasant_Body.gltf.",
+        "total_processed_glbs": 24
+      },
+      "skeleton_family": "quaternius-universal-65",
+      "joint_count": 65,
+      "source_status": "source-verified-free-standard-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "Modular_Character_Outfits_-_Fantasy_Standard_.zip",
+      "archive_bytes": 294347394,
+      "archive_sha256": "c3468b18871cc8c8f05ab14df7712baf22cb9f389cbd870babf130e595187f70",
+      "license_file_rel": "Modular Character Outfits - Fantasy[Standard]/License_Standard.txt",
+      "license_file_sha256": "2202cc2f608c4210790b112e5f121bc2e7f8dced7b5b1c7f4be6203461bdebbb",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Modular_Character_Outfits_-_Fantasy_Standard_.zip"
+    },
+    {
+      "id": "quaternius-ultimate-modular-women",
+      "name": "Quaternius Ultimate Modular Women",
+      "kind": "stylized low-poly modular and individual female humanoid characters with embedded animations",
+      "official_url": "https://quaternius.com/packs/ultimatemodularwomen.html",
+      "license": "CC0-1.0 (verified in License.txt inside publisher Google Drive folder)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive link",
+      "formats": [
+        "glTF (individual characters, 10)",
+        "FBX (all-together, humanoid rigs, individual, separate modular parts + Animations.fbx + Gun.fbx + Sword.fbx)",
+        "Blend"
+      ],
+      "advertised_content": "10 character designs, 24 animations, interchangeable body/head/legs/feet modular sections, FBX/glTF/Blender, CC0",
+      "actual_verified_content": {
+        "edition": "Full Free Release",
+        "individual_characters": 10,
+        "designs": [
+          "Adventurer",
+          "Casual",
+          "Formal",
+          "Medieval",
+          "Punk",
+          "SciFi",
+          "Soldier",
+          "Suit",
+          "Witch",
+          "Worker"
+        ],
+        "animations_per_character": 24,
+        "modular_parts_converted_from_fbx": 41,
+        "weapon_accessories_converted_from_fbx": [
+          "Gun",
+          "Sword"
+        ],
+        "standalone_animation_glb": "UMW_Animations.glb (24 animations)",
+        "total_processed_glbs": 54
+      },
+      "skeleton_family": "quaternius-umw-62",
+      "joint_count": 62,
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "Quaternius_Ultimate_Modular_Women_Original_2026-11-14.zip",
+      "archive_bytes": 45615869,
+      "archive_sha256": "d53027e8b4a9d877bf75a29270c45c64026af5497e9ad1a20a7a75a7ef8ab6b9",
+      "license_file_rel": "License.txt",
+      "license_file_sha256": "e8dbf915a2b82229913e301a0787696611241bdefec4832bc084f54161db1efe",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Quaternius_Ultimate_Modular_Women_Original_2026-11-14.zip",
+      "known_upstream_defects": [
+        "License.txt header contains an author copy-paste typo ('Ultimate Modular Males by @Quaternius') while granting CC0 1.0.",
+        "FBX exports in Separate Skeletal Meshes and Animations/ import with Principled BSDF Alpha=0.0 (Maya transparency inversion), making meshes invisible in glTF MASK mode unless normalized to Alpha=1.0 during Blender conversion (fixed in processed GLBs).",
+        "Rig uses detached IK control bones (Foot.L/R, PT.L/R parented to Root) instead of FK child foot bones."
+      ]
+    },
+    {
+      "id": "quaternius-rpg-characters",
+      "name": "Quaternius RPG Characters",
+      "kind": "stylized fantasy RPG humanoid characters with embedded weapon/class animations",
+      "official_url": "https://quaternius.com/packs/rpgcharacters.html",
+      "license": "CC0-1.0 (verified in License.txt inside publisher Google Drive folder)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive link",
+      "formats": [
+        "glTF (6 characters with embedded images/buffers)",
+        "FBX (characters, Humanoid Rig Versions, Only Weapons)",
+        "OBJ",
+        "Blend",
+        "PNG textures"
+      ],
+      "advertised_content": "6 rigged and animated fantasy characters, CC0",
+      "actual_verified_content": {
+        "edition": "Full Free Release",
+        "characters": 6,
+        "character_clip_counts": {
+          "Cleric": 11,
+          "Monk": 11,
+          "Ranger": 14,
+          "Rogue": 12,
+          "Warrior": 13,
+          "Wizard": 15
+        },
+        "total_processed_glbs": 6
+      },
+      "skeleton_family": "quaternius-rpg-32",
+      "joint_count": 32,
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "Quaternius_RPG_Characters_Original_2026-11-14.zip",
+      "archive_bytes": 31317694,
+      "archive_sha256": "82dc634abb74af2612f43dac5d69588560d400cc8f7ec863fbdfb079b76af09f",
+      "license_file_rel": "License.txt",
+      "license_file_sha256": "83d8959f9fc56353ed571fbe2dc52e4bcd64508e2399501cd45ac2ce3df0bf8c",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Quaternius_RPG_Characters_Original_2026-11-14.zip"
+    },
+    {
+      "id": "polygonalmind-100-avatars-r1",
+      "name": "Polygonal Mind 100 Avatars - Round 1",
+      "kind": "rigged voxel/stylized VRM humanoid avatars",
+      "official_url": "https://github.com/PolygonalMind/initiative-opensource-release/releases/tag/230412.1",
+      "license": "CC0-1.0 (verified in License.md inside 2003_100AvatarsR1AssetPack.zip)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct public GitHub release archive",
+      "formats": [
+        "VRM (converted cleanly to glTF 2.0 GLB with vrm_meta.humanoid_bone_map)"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 100,
+        "humanoid_bone_map_keys_each": 52,
+        "distinct_root_prefixes": 42
+      },
+      "skeleton_family": "polygonalmind-vrm-humanoid",
+      "source_archive_basename": "2003_100AvatarsR1AssetPack.zip",
+      "source_archive_bytes": 145482533,
+      "source_archive_sha256": "4a18b876ecb094ce97b9d448830471b78581241d889f5f4feb1a46c41736d3a7",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "polygonalmind-100-avatars-r2",
+      "name": "Polygonal Mind 100 Avatars - Round 2",
+      "kind": "rigged stylized VRM humanoid avatars",
+      "official_url": "https://github.com/PolygonalMind/initiative-opensource-release/releases/tag/230412.2",
+      "license": "CC0-1.0 (verified in License.md inside 2103_100AvatarsR2AssetPack.zip)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct public GitHub release archive (tag 230412.2 hosts 2103_100AvatarsR2AssetPack.zip)",
+      "formats": [
+        "VRM (converted cleanly to glTF 2.0 GLB with vrm_meta.humanoid_bone_map)"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 100,
+        "joint_count": 65,
+        "humanoid_bone_map_keys_each": 52
+      },
+      "skeleton_family": "polygonalmind-vrm-humanoid",
+      "source_archive_basename": "2103_100AvatarsR2AssetPack.zip",
+      "source_archive_bytes": 227420519,
+      "source_archive_sha256": "f1f1193d0843e3564516a754cbb67195e76976b40907e364ee3bf99fae174cd4",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "polygonalmind-xyz-creatures",
+      "name": "Polygonal Mind XYZ Character Collection (Humanoid Subset)",
+      "kind": "stylized bipedal creature humanoids filtered from 60 mixed creature rigs",
+      "official_url": "https://github.com/PolygonalMind/initiative-opensource-release/releases/tag/230526",
+      "license": "CC0-1.0 (verified in License.md inside 2006_XYZAssetPack.zip)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct public GitHub release archive",
+      "formats": [
+        "FBX (converted via Blender to GLB)"
+      ],
+      "actual_verified_content": {
+        "inspected_fbx_count": 60,
+        "admitted_bipedal_humanoids": 6,
+        "rejected_non_humanoids": 54,
+        "admitted_designs": [
+          "001_Triangulon",
+          "004_Xenguin",
+          "008_Vguy",
+          "015_Slothocto",
+          "046_Mushroomy",
+          "053_Penguiton"
+        ]
+      },
+      "skeleton_family": "polygonalmind-xyz-custom",
+      "source_archive_basename": "2006_XYZAssetPack.zip",
+      "source_archive_bytes": 3494448,
+      "source_archive_sha256": "5b8e1efa2a579773e45294428cb59722b9efa6d8875c0544d53a3c2349733996",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "kenney-mini-characters",
+      "name": "Kenney Mini Characters",
+      "kind": "Kenney CC0 character assets",
+      "official_url": "https://kenney.nl/assets/mini-characters",
+      "license": "CC0-1.0 (verified in License.txt inside ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct public Kenney CDN ZIP download",
+      "formats": [
+        "GLB"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 33,
+        "note": "20 rigged 7j characters + 13 0-joint accessories (items/weapons/wheelchairs); 10 aid-* files excluded."
+      },
+      "skeleton_family": "kenney-mini-rig",
+      "source_archive_basename": "kenney-mini-characters.zip",
+      "source_archive_bytes": 4024187,
+      "source_archive_sha256": "add348e98ab9e23d9973c4740ef2c5cceb229c742106aca2d56b30a8f1241bb7",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "kenney-blocky-characters",
+      "name": "Kenney Blocky Characters",
+      "kind": "Kenney CC0 character assets",
+      "official_url": "https://kenney.nl/assets/blocky-characters",
+      "license": "CC0-1.0 (verified in License.txt inside ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct public Kenney CDN ZIP download",
+      "formats": [
+        "GLB"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 18,
+        "note": "18 node-hierarchy animated characters (0 skin joints, 27 animations)."
+      },
+      "skeleton_family": "kenney-blocky-node-rig",
+      "source_archive_basename": "kenney-blocky-characters.zip",
+      "source_archive_bytes": 2148510,
+      "source_archive_sha256": "5e123859aa0c1598342b600c6db197024a1d63eb9ec531398b310725f589887e",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "kenney-animated-protagonists",
+      "name": "Kenney Animated Characters - Protagonists",
+      "kind": "Kenney CC0 character assets",
+      "official_url": "https://kenney.nl/assets/animated-characters-protagonists",
+      "license": "CC0-1.0 (verified in License.txt inside ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct public Kenney CDN ZIP download",
+      "formats": [
+        "FBX + PNG skins"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 4,
+        "note": "4 skin-mapped FBX->GLB characters (58j, 3 animations)."
+      },
+      "skeleton_family": "kenney-character-medium-fbx",
+      "source_archive_basename": "kenney-animated-protagonists.zip",
+      "source_archive_bytes": 581441,
+      "source_archive_sha256": "ec3787de70fa2200256848d74201b10f6b6c3126594e9857bf989753312c2b84",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "kenney-animated-retro",
+      "name": "Kenney Animated Characters - Retro",
+      "kind": "Kenney CC0 character assets",
+      "official_url": "https://kenney.nl/assets/animated-characters-retro",
+      "license": "CC0-1.0 (verified in License.txt inside ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct public Kenney CDN ZIP download",
+      "formats": [
+        "FBX + PNG skins"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 4,
+        "note": "4 skin-mapped FBX->GLB characters (58j, 3 animations)."
+      },
+      "skeleton_family": "kenney-character-medium-fbx",
+      "source_archive_basename": "kenney-animated-retro.zip",
+      "source_archive_bytes": 706472,
+      "source_archive_sha256": "1d03f1fb001f3cf629425b69c898df58261a316616220ea25b58bd35298e6882",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "kenney-animated-survivors",
+      "name": "Kenney Animated Characters - Survivors",
+      "kind": "Kenney CC0 character assets",
+      "official_url": "https://kenney.nl/assets/animated-characters-survivors",
+      "license": "CC0-1.0 (verified in License.txt inside ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct public Kenney CDN ZIP download",
+      "formats": [
+        "FBX + PNG skins"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 4,
+        "note": "4 skin-mapped FBX->GLB characters (58j, 3 animations)."
+      },
+      "skeleton_family": "kenney-character-medium-fbx",
+      "source_archive_basename": "kenney-animated-survivors.zip",
+      "source_archive_bytes": 718027,
+      "source_archive_sha256": "fdadced07a0454c9b7f0b46507be6144a072b4d03b4ffa37f225893c76c62845",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-ultimate-animated-character",
+      "name": "Quaternius Ultimate Animated Character Pack",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/ultimatedanimatedcharacter.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "FBX",
+        "glTF",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 50,
+        "rejected_or_excluded_count": 2,
+        "notes": "52 advertised animated models; 47 bipedal characters + 3 accessories admitted; Cow and Pug excluded."
+      },
+      "skeleton_family": "quaternius-uac-biped",
+      "source_archive_basename": "quaternius-ultimate-animated-character.zip",
+      "source_archive_bytes": 82529245,
+      "source_archive_sha256": "a5a419a0ad23cc77a664ac9348fbde0cbe5dc69a838a8d3e6b423da16c659459",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-ultimate-modular-men",
+      "name": "Quaternius Ultimate Modular Men",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 59,
+        "rejected_or_excluded_count": 1,
+        "notes": "11 advertised character designs, 24 animations, swappable modular sections; Horse_Head animal mask excluded."
+      },
+      "skeleton_family": "quaternius-umw-62",
+      "source_archive_basename": "quaternius-ultimate-modular-men.zip",
+      "source_archive_bytes": 58947192,
+      "source_archive_sha256": "db5ada3ff825f4c5f356809b33381118d8fb4cbd940dc83735cc268cecc36676",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-background-posed-humans",
+      "name": "Quaternius Background Posed Humans",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/backgroundposedhumans.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 28,
+        "rejected_or_excluded_count": 0,
+        "notes": "20 static posed background humans and 8 standalone static hairstyles (rig-free)."
+      },
+      "skeleton_family": "none-static-pose",
+      "source_archive_basename": "quaternius-background-posed-humans.zip",
+      "source_archive_bytes": 5902437,
+      "source_archive_sha256": "81cf99bd641491391c791d038797d0eacaab95c5b536e3f4432f44bbf6d5ff1c",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-animated-men",
+      "name": "Quaternius Animated Men Pack",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/animatedmen.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 8,
+        "rejected_or_excluded_count": 0,
+        "notes": "4 base designs with 8 texture variants, 42-joint legacy IK rig, 11 clips."
+      },
+      "skeleton_family": "quaternius-legacy-biped",
+      "source_archive_basename": "quaternius-animated-men.zip",
+      "source_archive_bytes": 18423604,
+      "source_archive_sha256": "a13ed904f01e195e00b9d92f89be72caad97c83adee719b39531f059133662e5",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-animated-women",
+      "name": "Quaternius Animated Women Pack",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/animatedwomen.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 8,
+        "rejected_or_excluded_count": 0,
+        "notes": "4 base designs with 8 variants, 42-joint legacy IK rig, 11 clips."
+      },
+      "skeleton_family": "quaternius-legacy-biped",
+      "source_archive_basename": "quaternius-animated-women.zip",
+      "source_archive_bytes": 8621352,
+      "source_archive_sha256": "3dbc76963d8d0f31396585af7c0a1c25f50ae571b9113fd8e497bb1b7d3d2286",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-animated-man",
+      "name": "Quaternius Animated Man",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/animatedman.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 6,
+        "rejected_or_excluded_count": 0,
+        "notes": "Animated human male FBX with 6 skin textures, 48-joint Mixamo FK rig, 9 clips."
+      },
+      "skeleton_family": "quaternius-mixamo-48",
+      "source_archive_basename": "quaternius-animated-man.zip",
+      "source_archive_bytes": 9525838,
+      "source_archive_sha256": "9ef27c92eb762e7cc82576a5be169bfded00aa0d3d670e2a39debebb22403a37",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-animated-woman",
+      "name": "Quaternius Animated Woman",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/animatedwoman.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 4,
+        "rejected_or_excluded_count": 0,
+        "notes": "2 female FBX poses x 2 skin textures (LightSkin1/DarkSkin1), 48-joint Mixamo FK rig, 10 clips."
+      },
+      "skeleton_family": "quaternius-mixamo-48",
+      "source_archive_basename": "quaternius-animated-woman.zip",
+      "source_archive_bytes": 14157377,
+      "source_archive_sha256": "e8c9446511f0f68ef26a411188f4f9d7501eb3edf924b80a9abe90de82a1a1a9",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-animated-knight",
+      "name": "Quaternius Animated Knight",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/animatedknight.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "FBX",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 9,
+        "rejected_or_excluded_count": 0,
+        "notes": "KnightCharacter (42j/12 clips) + 8 weapon/helmet accessories."
+      },
+      "skeleton_family": "quaternius-knight-biped-42",
+      "source_archive_basename": "quaternius-animated-knight.zip",
+      "source_archive_bytes": 3931171,
+      "source_archive_sha256": "86a66d0b9ea3784bf75fa21cc237ce46cb248f6323c3b1497505d040201bab36",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-animated-zombie",
+      "name": "Quaternius Animated Zombie",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/animatedzombie.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "FBX",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 2,
+        "rejected_or_excluded_count": 0,
+        "notes": "2 skin variants (Zombie + Zombie_NoShirt), 48-joint Mixamo FK rig, 5 clips."
+      },
+      "skeleton_family": "quaternius-mixamo-48",
+      "source_archive_basename": "quaternius-animated-zombie.zip",
+      "source_archive_bytes": 10287474,
+      "source_archive_sha256": "f350d56bbc12fedcaa78e8b846d2acf908e180c54d852e27cac7f7f30310b613",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-animated-robot",
+      "name": "Quaternius Animated Robot",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/animatedrobot.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "FBX",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 1,
+        "rejected_or_excluded_count": 0,
+        "notes": "Single 58-joint fingered robot, 14 clips."
+      },
+      "skeleton_family": "quaternius-legacy-robot-58",
+      "source_archive_basename": "quaternius-animated-robot.zip",
+      "source_archive_bytes": 7139286,
+      "source_archive_sha256": "678bd721b0dfa5481ca962c2d32220d25013fb51e6a01e709a94bc022b433a75",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-animated-alien",
+      "name": "Quaternius Animated Alien",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/animatedalien.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "FBX",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 2,
+        "rejected_or_excluded_count": 0,
+        "notes": "2 variants (Alien + Alien_Helmet, both full characters), 58-joint fingered rig, 14 clips."
+      },
+      "skeleton_family": "quaternius-legacy-alien-58",
+      "source_archive_basename": "quaternius-animated-alien.zip",
+      "source_archive_bytes": 7685483,
+      "source_archive_sha256": "1b88331285e0966d6535c4f26fb99340eca7efbbf8405d528004021a2cb8dc0f",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-pirate-kit",
+      "name": "Quaternius Pirate Kit",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/piratekit.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 7,
+        "rejected_or_excluded_count": 65,
+        "notes": "5 humanoid pirates + 2 specialized Skeleton variants admitted (43j/33j); Characters_Shark (swimming shark), Characters_Tentacle, and 64 environment/UI assets excluded."
+      },
+      "skeleton_family": "quaternius-kit-biped",
+      "source_archive_basename": "quaternius-pirate-kit.zip",
+      "source_archive_bytes": 46487047,
+      "source_archive_sha256": "1b627d119a8dc2abde7c3bfc97d3e17e5a51230fba96865f1137198b0bf42cb7",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-zombie-apocalypse-kit",
+      "name": "Quaternius Zombie Apocalypse Kit",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/zombieapocalypsekit.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 10,
+        "rejected_or_excluded_count": 54,
+        "notes": "8 survivor variants (43j) + 2 full zombies (50j) admitted; Zombie_Ribcage (legs-only), GermanShepherd, Pug, Zombie_Arm, and 50 vehicles/props excluded."
+      },
+      "skeleton_family": "quaternius-kit-biped",
+      "source_archive_basename": "quaternius-zombie-apocalypse-kit.zip",
+      "source_archive_bytes": 43687571,
+      "source_archive_sha256": "4655ff6bddb35753e52d0930fb5bd11257f5e2133585320081b74cf3cf402dfb",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-toon-shooter-kit",
+      "name": "Quaternius Toon Shooter Game Kit",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/toonshooter.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 3,
+        "rejected_or_excluded_count": 71,
+        "notes": "3 cartoon shooter humanoids (43j, 17 clips) admitted; 71 environment/weapon/prop entries excluded."
+      },
+      "skeleton_family": "quaternius-kit-biped",
+      "source_archive_basename": "quaternius-toon-shooter-kit.zip",
+      "source_archive_bytes": 23095083,
+      "source_archive_sha256": "b311850c6ec108759fba8c3f30077510f8cac2c8f189828f9e29e61309fce1aa",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-cyberpunk-kit",
+      "name": "Quaternius Cyberpunk Game Kit",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/cyberpunkgamekit.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 1,
+        "rejected_or_excluded_count": 70,
+        "notes": "1 bipedal humanoid character (25j, 22 clips) admitted; Enemy_2Legs*, Enemy_Large*, Enemy_Flying*, and 64 platforms/props excluded."
+      },
+      "skeleton_family": "quaternius-cyberpunk-biped-25",
+      "source_archive_basename": "quaternius-cyberpunk-kit.zip",
+      "source_archive_bytes": 33931764,
+      "source_archive_sha256": "3f2ef0e3d8e4f90b1c693c9f1ef8f16b254e71a3793ddf26ced834614944e31c",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-ultimate-space-kit",
+      "name": "Quaternius Ultimate Space Kit",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/ultimatespacekit.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 5,
+        "rejected_or_excluded_count": 87,
+        "notes": "4 Astronauts + Enemy_Large (43j bipeds) admitted; flying blobs (Enemy_Small/ExtraSmall), armless cockpit Mech_* walkers, and 81 vehicles/props excluded."
+      },
+      "skeleton_family": "quaternius-kit-biped",
+      "source_archive_basename": "quaternius-ultimate-space-kit.zip",
+      "source_archive_bytes": 39334279,
+      "source_archive_sha256": "9ed724a6a0c4cf66b346b39aa9bd90684fe6842b8768d08d726ed1b219c15421",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-cube-world-kit",
+      "name": "Quaternius Cube World Kit",
+      "kind": "Quaternius CC0 asset pack",
+      "official_url": "https://quaternius.com/packs/cubeworldkit.html",
+      "license": "CC0-1.0 (verified against publisher License.txt where included)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive folder",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 12,
+        "rejected_or_excluded_count": 95,
+        "notes": "4 23-joint Cube humanoids + 8 7-joint Cube characters/skeletons admitted; Hedgehog, farm animals, and tools/environment excluded."
+      },
+      "skeleton_family": "quaternius-cube-biped-23 / quaternius-cube-biped-7",
+      "source_archive_basename": "quaternius-cube-world-kit.zip",
+      "source_archive_bytes": 27666886,
+      "source_archive_sha256": "9085dd0c9c2e1dd609f9b7f7595f9d47074ddec1ac9f990e1426e8a2201ed553",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "quaternius-sci-fi-essentials-kit",
+      "name": "Quaternius Sci-Fi Essentials Kit (Standard)",
+      "kind": "modular sci-fi prop and non-humanoid enemy kit",
+      "official_url": "https://quaternius.com/packs/scifiessentials.html",
+      "license": "CC0-1.0 (verified Standard tier archive archived privately)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition acquired via itch.io",
+      "formats": [
+        "glTF",
+        "FBX",
+        "OBJ"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 0,
+        "archive_entries_inspected": 292,
+        "candidate_creatures_found": [
+          "Enemy_EyeDrone",
+          "Enemy_QuadShell",
+          "Enemy_Trilobite"
+        ],
+        "rejection_reason": "Free Standard tier contains only non-humanoid drones/arthropods (Enemy_EyeDrone, Enemy_QuadShell, Enemy_Trilobite), guns, and modular sci-fi props; 0 humanoid characters present."
+      },
+      "skeleton_family": null,
+      "source_archive_basename": "Sci-Fi_Essentials_Kit_Standard_.zip",
+      "source_archive_bytes": 166910545,
+      "source_archive_sha256": "a08346d538aa39fbea9fa492e03620d1860fc6214eedd62a4f5db373ac6fca01",
+      "source_status": "source-verified-zero-humanoids",
+      "archive_status": "archived_private_drive_original_only"
+    },
+    {
+      "id": "blender-human-base-meshes",
+      "name": "Blender Studio Human Base Meshes",
+      "kind": "sculpt/base humanoid meshes",
+      "official_url": "https://www.blender.org/download/demo-files/",
+      "license": "CC0-1.0 advertised on blender.org",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access_gate": "BLOCKED: www.blender.org/download/demo-files/ returned HTTP/2 403 cf-mitigated: challenge (Cloudflare anti-bot verification); never bypassed.",
+      "actual_verified_content": {
+        "total_processed_glbs": 0,
+        "blocked_status": "CLOUDFLARE_ANTI_BOT_CHALLENGE"
+      },
+      "skeleton_family": null,
+      "source_status": "blocked_anti_bot_challenge",
+      "archive_status": "not_archived_blocked"
+    },
+    {
+      "id": "barnabe-wild-lowpoly-character",
+      "name": "Barnabe Wild Low-Poly Rigged Character",
+      "kind": "stylized low-poly Blend character with IK and Mixamo mocap rigs",
+      "official_url": "https://barnabe-wild.itch.io/low-poly-rigged-character",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct free itch.io downloads (char_rigged_-_IK_no_floor.zip + mocap_preview.zip)",
+      "formats": [
+        "Blend (converted via Blender to GLB)"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 2,
+        "variants": [
+          "char_rigged_ik (25 French IK bones, 2 clips, ~7.38m scale in original units)",
+          "mocap_preview (51 Mixamo bones, 3 clips, ~1.80m tall)"
+        ]
+      },
+      "skeleton_family": "barnabe-wild-ik-rig / barnabe-wild-mixamo-51",
+      "source_archive_basename": "char_rigged_-_IK_no_floor.zip + mocap_preview.zip",
+      "source_archive_bytes": 7600223,
+      "source_archive_sha256": "a90e78e5bae2ad19f13bd6d255b9158bd47abeb175b6e58cef3b7a687cd45453",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "oga-rigged-fps-arms",
+      "name": "OpenGameArt Rigged FPS Arms",
+      "kind": "first-person partial rigged arms (partial_humanoid_fps_arms)",
+      "official_url": "https://opengameart.org/content/rigged-fps-arms",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Direct OpenGameArt 7z download",
+      "formats": [
+        "Blend (converted via Blender to GLB)"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 1,
+        "joint_count": 51,
+        "animation_count": 2
+      },
+      "skeleton_family": "oga-fps-arms-51",
+      "source_archive_basename": "fps_arms.7z",
+      "source_archive_bytes": 1406250,
+      "source_archive_sha256": "31f6c7bd5caea8856c4aafca8461f38a3c8bfdd3d8f05c898e403b9475e54562",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "gdquest-open-3d-mannequin",
+      "name": "GDQuest Open 3D Mannequin",
+      "kind": "open-source game mannequin characters and rig-free base mesh",
+      "official_url": "https://github.com/gdquest-demos/godot-3d-mannequin",
+      "license": "CC-BY-4.0 (attribution required: GDQuest and contributors; verified in LICENSE)",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution_required": "GDQuest and contributors",
+      "access": "Direct GitHub repository + release downloads (v0.3.0 GLB + v0.4.0 Blend)",
+      "formats": [
+        "GLB",
+        "Blend"
+      ],
+      "actual_verified_content": {
+        "total_processed_glbs": 3,
+        "assets": [
+          "mannequiny_v0_3_0_rigged (45j, 10 clips)",
+          "mannequiny_v0_4_0_rigged (45j, 11 clips)",
+          "mannequiny_v0_4_0_mesh_only (base_mesh, 0j)"
+        ]
+      },
+      "skeleton_family": "gdquest-mannequin-45",
+      "source_archive_basename": "mannequiny-0.4.0.blend",
+      "source_archive_bytes": 13620300,
+      "source_archive_sha256": "1a1ed14c176e5e60e69f52f517c88627554e517b4548aab504d92a67c6e9ce0c",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs"
+    },
+    {
+      "id": "makehuman",
+      "name": "MakeHuman / MPFB",
+      "kind": "character generator, not prebuilt library",
+      "official_url": "https://www.makehumancommunity.org/",
+      "license": "Core exported assets generally CC0; community assets vary",
+      "license_url": "https://www.makehumancommunity.org/content/license.html",
+      "access": "desktop software",
+      "formats": [
+        "FBX",
+        "DAE",
+        "Blender intermediary"
+      ],
+      "advertised_content": "Custom body and face generator; no pre-generated avatar ZIP cataloged",
+      "source_status": "tool-identified",
+      "archive_status": "not_applicable_without_export",
+      "notes": "Generated characters must be created, exported, and audited individually. Software license differs from model-export license."
+    },
+    {
+      "id": "vroid-studio",
+      "name": "VRoid Studio",
+      "kind": "character generator, not prebuilt library",
+      "official_url": "https://vroid.com/en/studio",
+      "license": "User-created VRM rights and third-party wardrobe terms are item-dependent",
+      "license_url": "https://vroid.com/en/studio",
+      "access": "desktop application",
+      "formats": [
+        "VRM"
+      ],
+      "advertised_content": "Anime-style avatar creation",
+      "source_status": "tool-identified",
+      "archive_status": "not_applicable_without_export",
+      "notes": "Do not treat third-party VRM avatars as CC0. Reuse in Three.js requires three-vrm."
+    },
+    {
+      "id": "adobe-mixamo",
+      "name": "Adobe Mixamo",
+      "kind": "account-gated animations and characters",
+      "official_url": "https://www.mixamo.com/",
+      "license": "Adobe/Mixamo terms: finished projects yes; stand-alone raw asset redistribution restricted",
+      "license_url": "https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html",
+      "access": "Adobe login; download requires user-controlled account",
+      "formats": [
+        "FBX"
+      ],
+      "advertised_content": "Character and animation selection service; no finite complete ZIP defined",
+      "source_status": "access-confirmed",
+      "archive_status": "requires_authenticated_export",
+      "notes": "Do not scrape or bulk-download through someone else's account. Preserve acquired file scope and provider usage restrictions."
+    }
+  ]
+}
