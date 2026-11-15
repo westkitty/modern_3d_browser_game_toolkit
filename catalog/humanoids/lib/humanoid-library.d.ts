@@ -5,6 +5,26 @@ export const SKELETON_FAMILIES: {
   readonly QUATERNIUS_UNIVERSAL_65: 'quaternius-universal-65';
   readonly QUATERNIUS_UMW_62: 'quaternius-umw-62';
   readonly QUATERNIUS_RPG_32: 'quaternius-rpg-32';
+  readonly QUATERNIUS_KIT_BIPED: 'quaternius-kit-biped';
+  readonly QUATERNIUS_UAC_BIPED: 'quaternius-uac-biped';
+  readonly QUATERNIUS_LEGACY_BIPED: 'quaternius-legacy-biped';
+  readonly QUATERNIUS_KNIGHT_BIPED_42: 'quaternius-knight-biped-42';
+  readonly QUATERNIUS_MIXAMO_48: 'quaternius-mixamo-48';
+  readonly QUATERNIUS_LEGACY_ROBOT_58: 'quaternius-legacy-robot-58';
+  readonly QUATERNIUS_LEGACY_ALIEN_58: 'quaternius-legacy-alien-58';
+  readonly QUATERNIUS_CYBERPUNK_BIPED_25: 'quaternius-cyberpunk-biped-25';
+  readonly QUATERNIUS_CUBE_BIPED_23: 'quaternius-cube-biped-23';
+  readonly QUATERNIUS_CUBE_BIPED_7: 'quaternius-cube-biped-7';
+  readonly POLYGONALMIND_VRM_HUMANOID: 'polygonalmind-vrm-humanoid';
+  readonly POLYGONALMIND_XYZ_CUSTOM: 'polygonalmind-xyz-custom';
+  readonly KENNEY_CHARACTER_MEDIUM_FBX: 'kenney-character-medium-fbx';
+  readonly KENNEY_MINI_RIG: 'kenney-mini-rig';
+  readonly KENNEY_BLOCKY_NODE_RIG: 'kenney-blocky-node-rig';
+  readonly GDQUEST_MANNEQUIN_45: 'gdquest-mannequin-45';
+  readonly OGA_FPS_ARMS_51: 'oga-fps-arms-51';
+  readonly BARNABE_WILD_IK_RIG: 'barnabe-wild-ik-rig';
+  readonly BARNABE_WILD_MIXAMO_51: 'barnabe-wild-mixamo-51';
+  readonly NONE_STATIC_POSE: 'none-static-pose';
 };
 
 export interface HumanoidCatalogFilter {

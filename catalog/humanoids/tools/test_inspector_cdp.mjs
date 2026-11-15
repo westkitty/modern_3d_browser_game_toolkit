@@ -155,11 +155,11 @@ async function main() {
   srv.close();
   try { fs.rmSync(userDataDir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 }); } catch {}
 
-  if (errors.length > 0 || check.result.value.initialCount !== '296' || !check.result.value.metrics.includes('Knight.glb')) {
+  if (errors.length > 0 || check.result.value.initialCount !== '786' || !check.result.value.metrics.includes('Knight.glb')) {
     console.error('Inspector smoke test failed!', errors);
     process.exit(1);
   }
-  console.log('INSPECTOR SMOKE PASSED (296 catalog items + search + local GLB parse/render/dispose)');
+  console.log('INSPECTOR SMOKE PASSED (786 catalog items + search + local GLB parse/render/dispose)');
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

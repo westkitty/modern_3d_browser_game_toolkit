@@ -166,19 +166,31 @@ const allGlbs = listGlbs(PROCESSED_ROOT).filter((f) => {
 
 const bySourceShotCount = new Map();
 const firstBySource = new Map();
+for (const glbPath of allGlbs) {
+  const rel = path.relative(PROCESSED_ROOT, glbPath);
+  const srcKey = rel.split(path.sep)[0];
+  const relNorm = rel.split(path.sep).join('/');
+  const isAnimOnly = relNorm.includes('/animations/');
+  const isModular = relNorm.includes('/modular-parts/');
+  if (!isAnimOnly && (!firstBySource.has(srcKey) || (!isModular && firstBySource.get(srcKey).includes('/modular-parts/')))) {
+    firstBySource.set(srcKey, relNorm);
+  }
+}
+
 const results = [];
 const failures = [];
 
 for (const glbPath of allGlbs) {
   const rel = path.relative(PROCESSED_ROOT, glbPath);
+  const relNorm = rel.split(path.sep).join('/');
   const srcKey = rel.split(path.sep)[0];
-  if (!firstBySource.has(srcKey)) firstBySource.set(srcKey, rel);
+  const isAnimOnly = relNorm.includes('/animations/');
+  const baseRel = firstBySource.get(srcKey) || relNorm;
+  const toUrl = (r) => `/__processed_glb/${r.split('/').map(encodeURIComponent).join('/')}`;
 
-  const cfg = {
-    id: rel.replace(/\.glb$/i, ''),
-    modelUrl: `/__processed_glb/${rel.split(path.sep).map(encodeURIComponent).join('/')}`,
-    sampleTime: 0.25,
-  };
+  const cfg = isAnimOnly
+    ? { id: rel.replace(/\.glb$/i, ''), modelUrl: toUrl(baseRel), animUrl: toUrl(relNorm), sampleTime: 0.25 }
+    : { id: rel.replace(/\.glb$/i, ''), modelUrl: toUrl(relNorm), sampleTime: 0.25 };
   const evalRes = await cdp.send('Runtime.evaluate', {
     expression: `window.__runCase(${JSON.stringify(cfg)})`,
     awaitPromise: true,
@@ -190,14 +202,16 @@ for (const glbPath of allGlbs) {
     continue;
   }
   const val = evalRes.result?.value;
-  if (!val || !val.ok || !val.isWebGL2 || val.glError !== 0 || !(val.coveragePositiveZ?.ratio > 0.001) || !(val.coverageNegativeZ?.ratio > 0.001)) {
+  const animCheckOk = !isAnimOnly || (val?.clipFilterReport?.keptTracks > 0);
+  if (!val || !val.ok || !val.isWebGL2 || val.glError !== 0 || !(val.coveragePositiveZ?.ratio > 0.001) || !(val.coverageNegativeZ?.ratio > 0.001) || !animCheckOk) {
     failures.push({
       rel,
-      error: 'render_or_coverage_check_failed',
+      error: animCheckOk ? 'render_or_coverage_check_failed' : 'animation_clip_zero_matched_tracks',
       isWebGL2: val?.isWebGL2,
       glError: val?.glError,
       covPos: val?.coveragePositiveZ?.ratio,
       covNeg: val?.coverageNegativeZ?.ratio,
+      clipFilterReport: val?.clipFilterReport,
     });
   }
 
@@ -222,6 +236,7 @@ for (const glbPath of allGlbs) {
     glError: val?.glError,
     stats: val?.stats,
     activeClipName: val?.activeClipName,
+    clipFilterReport: val?.clipFilterReport,
     coveragePositiveZ: val?.coveragePositiveZ,
     coverageNegativeZ: val?.coverageNegativeZ,
     screenshots: shotPosRel ? [shotPosRel, shotNegRel] : [],
@@ -231,7 +246,7 @@ for (const glbPath of allGlbs) {
 // 5-cycle GPU disposal leak check for one representative per source pack
 const disposalTests = [];
 for (const [srcKey, rel] of firstBySource.entries()) {
-  const modelUrl = `/__processed_glb/${rel.split(path.sep).map(encodeURIComponent).join('/')}`;
+  const modelUrl = `/__processed_glb/${rel.split(/[/\\]/).map(encodeURIComponent).join('/')}`;
   const evalRes = await cdp.send('Runtime.evaluate', {
     expression: `window.__runDisposalCycle(${JSON.stringify(modelUrl)}, 5)`,
     awaitPromise: true,

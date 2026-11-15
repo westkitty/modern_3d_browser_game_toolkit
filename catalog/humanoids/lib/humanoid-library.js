@@ -10,6 +10,26 @@ export const SKELETON_FAMILIES = Object.freeze({
   QUATERNIUS_UNIVERSAL_65: 'quaternius-universal-65',
   QUATERNIUS_UMW_62: 'quaternius-umw-62',
   QUATERNIUS_RPG_32: 'quaternius-rpg-32',
+  QUATERNIUS_KIT_BIPED: 'quaternius-kit-biped',
+  QUATERNIUS_UAC_BIPED: 'quaternius-uac-biped',
+  QUATERNIUS_LEGACY_BIPED: 'quaternius-legacy-biped',
+  QUATERNIUS_KNIGHT_BIPED_42: 'quaternius-knight-biped-42',
+  QUATERNIUS_MIXAMO_48: 'quaternius-mixamo-48',
+  QUATERNIUS_LEGACY_ROBOT_58: 'quaternius-legacy-robot-58',
+  QUATERNIUS_LEGACY_ALIEN_58: 'quaternius-legacy-alien-58',
+  QUATERNIUS_CYBERPUNK_BIPED_25: 'quaternius-cyberpunk-biped-25',
+  QUATERNIUS_CUBE_BIPED_23: 'quaternius-cube-biped-23',
+  QUATERNIUS_CUBE_BIPED_7: 'quaternius-cube-biped-7',
+  POLYGONALMIND_VRM_HUMANOID: 'polygonalmind-vrm-humanoid',
+  POLYGONALMIND_XYZ_CUSTOM: 'polygonalmind-xyz-custom',
+  KENNEY_CHARACTER_MEDIUM_FBX: 'kenney-character-medium-fbx',
+  KENNEY_MINI_RIG: 'kenney-mini-rig',
+  KENNEY_BLOCKY_NODE_RIG: 'kenney-blocky-node-rig',
+  GDQUEST_MANNEQUIN_45: 'gdquest-mannequin-45',
+  OGA_FPS_ARMS_51: 'oga-fps-arms-51',
+  BARNABE_WILD_IK_RIG: 'barnabe-wild-ik-rig',
+  BARNABE_WILD_MIXAMO_51: 'barnabe-wild-mixamo-51',
+  NONE_STATIC_POSE: 'none-static-pose',
 });
 
 export function createHumanoidCatalog(data) {
@@ -87,11 +107,14 @@ export function createHumanoidCatalog(data) {
   function getCompatibility(animationOrSource, targetCharacter) {
     const srcFam = resolveSkeletonFamily(animationOrSource);
     const dstFam = resolveSkeletonFamily(targetCharacter);
-    if (!srcFam || !dstFam) {
+    if (!srcFam || !dstFam || srcFam === 'none-static-pose' || dstFam === 'none-static-pose') {
       return {
-        status: 'unknown',
+        status: srcFam === 'none-static-pose' || dstFam === 'none-static-pose' ? 'static-unrigged' : 'unknown',
         compatible: false,
-        reason: 'Missing skeleton family metadata on source or target.',
+        reason:
+          srcFam === 'none-static-pose' || dstFam === 'none-static-pose'
+            ? 'Static posed mesh or accessory has no humanoid skeleton.'
+            : 'Missing skeleton family metadata on source or target.',
         sourceFamily: srcFam,
         targetFamily: dstFam,
       };

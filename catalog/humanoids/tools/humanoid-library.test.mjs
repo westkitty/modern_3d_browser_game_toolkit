@@ -25,13 +25,13 @@ const rocketbox = loadJson('rocketbox-characters.json');
 
 const api = createHumanoidCatalog({ catalog, sources, compatibility, extended, rocketbox });
 
-test('preserves all 115 Rocketbox avatars and totals 296 unique catalog assets', () => {
+test('preserves all 115 Rocketbox avatars and totals 786 unique catalog assets', () => {
   assert.equal(rocketbox.records.length, 115);
-  assert.equal(extended.records.length, 181);
-  assert.equal(catalog.records.length, 296);
+  assert.equal(extended.records.length, 671);
+  assert.equal(catalog.records.length, 786);
 
   const ids = catalog.records.map((r) => r.asset_id);
-  assert.equal(new Set(ids).size, 296, 'All asset_ids must be unique');
+  assert.equal(new Set(ids).size, 786, 'All asset_ids must be unique');
 
   const rbIds = new Set(rocketbox.records.map((r) => r.asset_id));
   for (const id of rbIds) {
@@ -39,8 +39,9 @@ test('preserves all 115 Rocketbox avatars and totals 296 unique catalog assets',
   }
 });
 
-test('all 9 free/Standard packs + 4 legacy/generator entries exist without duplication in sources.json', () => {
+test('all 40 campaign packs + 3 reference/generator entries exist without duplication in sources.json', () => {
   const sourceIds = sources.sources.map((s) => s.id);
+  assert.equal(sourceIds.length, 43);
   assert.equal(new Set(sourceIds).size, sourceIds.length, 'Duplicate source ids');
   for (const expectedId of [
     'microsoft-rocketbox',
@@ -53,15 +54,52 @@ test('all 9 free/Standard packs + 4 legacy/generator entries exist without dupli
     'quaternius-modular-character-outfits-fantasy-standard',
     'quaternius-ultimate-modular-women',
     'quaternius-rpg-characters',
+    'polygonalmind-100-avatars-r1',
+    'polygonalmind-100-avatars-r2',
+    'polygonalmind-xyz-creatures',
+    'kenney-mini-characters',
+    'kenney-blocky-characters',
+    'kenney-animated-protagonists',
+    'kenney-animated-retro',
+    'kenney-animated-survivors',
+    'quaternius-ultimate-animated-character',
+    'quaternius-ultimate-modular-men',
+    'quaternius-background-posed-humans',
+    'quaternius-animated-men',
+    'quaternius-animated-women',
+    'quaternius-animated-man',
+    'quaternius-animated-woman',
+    'quaternius-animated-knight',
+    'quaternius-animated-zombie',
+    'quaternius-animated-robot',
+    'quaternius-animated-alien',
+    'quaternius-pirate-kit',
+    'quaternius-zombie-apocalypse-kit',
+    'quaternius-toon-shooter-kit',
+    'quaternius-cyberpunk-kit',
+    'quaternius-ultimate-space-kit',
+    'quaternius-cube-world-kit',
+    'quaternius-sci-fi-essentials-kit',
+    'blender-human-base-meshes',
+    'barnabe-wild-lowpoly-character',
+    'oga-rigged-fps-arms',
+    'gdquest-open-3d-mannequin',
     'makehuman',
     'vroid-studio',
     'adobe-mixamo',
   ]) {
     assert.ok(api.getSource(expectedId), `Missing expected source: ${expectedId}`);
   }
-  // Ensure every catalog record links to a declared source
+  assert.equal(api.getSource('quaternius-sci-fi-essentials-kit').source_status, 'source-verified-zero-humanoids');
+  assert.equal(api.getSource('blender-human-base-meshes').source_status, 'blocked_anti_bot_challenge');
+  assert.equal(api.getSource('gdquest-open-3d-mannequin').attribution_required, 'GDQuest and contributors');
+  // Ensure every catalog record links to a declared source and known SKELETON_FAMILIES constant
+  const knownFamilies = new Set(Object.values(SKELETON_FAMILIES));
   for (const rec of catalog.records) {
     assert.ok(api.getSource(rec.source_id), `Orphan source_id on ${rec.asset_id}: ${rec.source_id}`);
+    if (rec.skeleton_family !== null) {
+      assert.ok(knownFamilies.has(rec.skeleton_family), `Unknown SKELETON_FAMILIES value on ${rec.asset_id}: ${rec.skeleton_family}`);
+    }
   }
 });
 
@@ -88,6 +126,11 @@ test('compatibility API separates exact, retarget-with-offsets, UMW IK-incompati
 
   const rpgWiz = api.getById('quaternius-rpg-characters/character/wizard');
   assert.equal(api.getCompatibility(ual1, rpgWiz).compatible, false);
+
+  const staticHuman = api.search({ sourceId: 'quaternius-background-posed-humans', assetType: 'static_posed_humanoid' })[0];
+  assert.ok(staticHuman);
+  assert.equal(api.getCompatibility(staticHuman, staticHuman).compatible, false);
+  assert.equal(api.getCompatibility(staticHuman, staticHuman).status, 'static-unrigged');
 });
 
 test('modular outfit groups and specialized skeletons are preserved accurately', () => {
@@ -96,6 +139,7 @@ test('modular outfit groups and specialized skeletons are preserved accurately',
   const modGroups = api.getModularGroups();
   assert.equal(modGroups.quaternius_fantasy_outfits_standard.length, 4);
   assert.equal(modGroups.quaternius_ultimate_modular_women_designs.length, 10);
+  assert.equal(modGroups.quaternius_ultimate_modular_men_designs.length, 11);
 });
 
 test('runtime helpers handle bone name sanitization and SkinnedMesh skeleton disposal cleanly', () => {
