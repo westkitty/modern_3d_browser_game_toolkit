@@ -1,0 +1,102 @@
+name: Cloud expansion GLB conversion and Chromium WebGL2 validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/humanoid-asset-catalog-20261113]
+    paths:
+      - '.github/workflows/humanoid-expansion-cloud.yml'
+      - 'catalog/humanoids/tools/expansion_cloud_process.py'
+      - 'catalog/humanoids/tools/expansion_blender_jobs.py'
+      - 'catalog/humanoids/tools/expansion_validate_cdp.mjs'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: humanoid-expansion-cloud-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  cloud-process:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [pm_r1, pm_r2, direct_blender]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install toolkit dependencies
+        run: npm ci
+
+      - name: Install Blender and 7z for direct_blender lane
+        if: matrix.lane == 'direct_blender'
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender p7zip-full
+
+      - name: Process pm_r1 or pm_r2 VRM packs
+        if: matrix.lane == 'pm_r1' || matrix.lane == 'pm_r2'
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/exp-work /tmp/exp-out
+          python3 catalog/humanoids/tools/expansion_cloud_process.py \
+            --task "${{ matrix.lane }}" \
+            --work-dir /tmp/exp-work \
+            --out-dir /tmp/exp-out
+
+      - name: Prepare and Blender-convert XYZ, GDQuest, OGA FPS Arms, and Kenney packs
+        if: matrix.lane == 'direct_blender'
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/exp-work /tmp/exp-out
+          python3 catalog/humanoids/tools/expansion_cloud_process.py \
+            --task direct_prepare \
+            --work-dir /tmp/exp-work \
+            --out-dir /tmp/exp-out
+          blender -b --factory-startup --python catalog/humanoids/tools/expansion_blender_jobs.py -- \
+            --mode direct_blender \
+            --work-dir /tmp/exp-work \
+            --out-dir /tmp/exp-out
+
+      - name: Validate every generated GLB in Chromium SwiftShader WebGL2 + Three.js 0.185.1
+        env:
+          PROCESSED_ROOT: /tmp/exp-out/processed-glb
+          QA_OUT: /tmp/exp-out/visual-qa
+          REPORT_PATH: /tmp/exp-out/reports/${{ matrix.lane }}_webgl2_report.json
+          MAX_SHOTS_PER_SOURCE: ${{ matrix.lane == 'direct_blender' && '15' || '8' }}
+        run: |
+          set -euo pipefail
+          node catalog/humanoids/tools/expansion_validate_cdp.mjs
+
+      - name: Upload bounded processed GLBs and reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expansion-${{ matrix.lane }}-glbs
+          path: |
+            /tmp/exp-out/processed-glb/
+            /tmp/exp-out/reports/
+          if-no-files-found: warn
+          compression-level: 6
+          retention-days: 3
+
+      - name: Upload Chromium WebGL2 QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expansion-${{ matrix.lane }}-qa
+          path: /tmp/exp-out/visual-qa/
+          if-no-files-found: ignore
+          compression-level: 6
+          retention-days: 3
