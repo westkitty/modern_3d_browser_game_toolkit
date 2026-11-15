@@ -68,8 +68,12 @@ def normalize_materials(texture_path: Path | None = None, pack_images: bool = Tr
             nt.links.new(tex_node.outputs["Color"], bsdf.inputs["Base Color"])
 
     if pack_images:
-        for img in bpy.data.images:
+        for img in list(bpy.data.images):
             if img.source == "FILE" and not img.packed_file:
+                resolved = Path(bpy.path.abspath(img.filepath))
+                if not resolved.exists():
+                    bpy.data.images.remove(img)
+                    continue
                 try:
                     img.pack()
                 except Exception:
@@ -182,7 +186,7 @@ def process_xyz(work_dir: Path, out_dir: Path) -> dict:
     rejected = []
     for fbx_path in sorted(models_dir.glob("*.fbx")):
         clear_scene()
-        bpy.ops.import_scene.fbx(filepath=str(fbx_path))
+        bpy.ops.import_scene.fbx(filepath=str(fbx_path), global_scale=0.01)
         arms = [o for o in bpy.data.objects if o.type == "ARMATURE"]
         bones = [b.name for b in arms[0].data.bones] if arms else []
         ok, reason = is_xyz_bipedal_humanoid(bones)
