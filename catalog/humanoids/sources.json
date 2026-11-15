@@ -1,6 +1,12 @@
 {
-  "schema_version": "1.0.0",
-  "reviewed_local_date": "2026-11-13",
+  "schema_version": "2.0.0",
+  "catalog_id": "humanoid-sources",
+  "updated_utc": "2026-11-15T01:55:00Z",
+  "notes": [
+    "Preserves Microsoft Rocketbox (115 CC/MIT avatars at commit 0943055db6ec570bcef9f2c8b41c9e5467c808f9) and generator/account-dependent entries (MakeHuman, VRoid Studio, Adobe Mixamo).",
+    "All 9 free/Standard packs from KayKit and Quaternius have been acquired through official publisher flows, verified against License.txt / License_Standard.txt (all CC0-1.0), packed/converted to 181 self-contained GLBs, Chromium/WebGL2 validated, and staged for private Google Drive archival.",
+    "Quaternius QAL-restricted animation assets are NOT included in QAL-restricted form; only CC0 Standard editions are archived and cataloged here."
+  ],
   "sources": [
     {
       "id": "microsoft-rocketbox",
@@ -166,56 +172,382 @@
       "id": "quaternius-universal-base-characters-standard",
       "name": "Quaternius Universal Base Characters Standard",
       "kind": "prebuilt stylized humanoid bases",
-      "official_url": "https://quaternius.itch.io/universal-base-characters",
-      "license": "CC0-1.0 as displayed on specific 2025 pack page",
-      "license_url": "https://quaternius.com/packs/universalbasecharacters.html",
-      "access": "free name-your-price download requires provider download flow",
+      "official_url": "https://quaternius.com/packs/universalbasecharacters.html",
+      "license": "CC0-1.0 (verified in License_Standard.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition via official itch.io name-your-price download flow (Source paid tier exists separately; not purchased)",
       "formats": [
-        "glTF",
-        "FBX",
-        "OBJ"
+        "glTF (.gltf + .bin + .png)",
+        "FBX"
       ],
-      "advertised_content": "Six bases across overall pack; Standard ZIP 122 MB; verify Standard contents on acquisition",
-      "source_status": "item-verified",
-      "archive_status": "not_acquired",
+      "advertised_content": "Full pack advertises 6 bases and 20 hairstyles; Standard ZIP contains only a subset",
+      "source_status": "source-verified-free-standard-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
       "notes": "Do not assume paid Source tier is included; newer Quaternius releases may use QAL, so evaluate per pack.",
-      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files"
+      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files",
+      "distribution_url": "https://quaternius.itch.io/universal-base-characters",
+      "actual_verified_content": {
+        "edition": "Standard (FREE)",
+        "characters": 2,
+        "character_names": [
+          "Superhero_Female_FullBody",
+          "Superhero_Male_FullBody"
+        ],
+        "hairstyles_rigged_to_head_bone": 8,
+        "hairstyles_origin_at_zero": 8,
+        "total_processed_glbs": 18
+      },
+      "skeleton_family": "quaternius-universal-65",
+      "joint_count": 65,
+      "archive_basename": "Universal_Base_Characters_Standard_.zip",
+      "archive_bytes": 128968391,
+      "archive_sha256": "fdbf1804c90dfc1ea03e992bff7da2dfd1a79318e13270a660180f9308455f40",
+      "license_file_rel": "Universal Base Characters[Standard]/License_Standard.txt",
+      "license_file_sha256": "0f4beaf0fe360a7732e58bbe3dbf60a2422367fbea60cb9ea4add968f383268e",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Universal_Base_Characters_Standard_.zip",
+      "known_upstream_defects": [
+        "Superhero_Female_FullBody.gltf references T_Eye_Normal_png.png and Superhero_Male_FullBody.gltf references T_Hair_1_Normal_png.png and T_Eye_Normal_png.png, whereas the archive ships T_Eye_Normal.png and T_Hair_1_Normal.png. Repaired on working copy during GLB packing; original ZIP preserved unchanged."
+      ]
     },
     {
       "id": "quaternius-ual1-standard",
       "name": "Quaternius Universal Animation Library Standard",
       "kind": "humanoid animation pack",
       "official_url": "https://quaternius.itch.io/universal-animation-library",
-      "license": "CC0-1.0 per item",
-      "license_url": "https://quaternius.itch.io/universal-animation-library",
-      "access": "free name-your-price download requires provider download flow",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition via official itch.io download flow",
       "formats": [
         "GLB",
         "FBX"
       ],
-      "advertised_content": "120+ across full offering; Standard ZIP 15 MB; Standard exact tracks not verified",
-      "source_status": "item-verified",
-      "archive_status": "not_acquired",
+      "advertised_content": "45 animations advertised on pack page",
+      "source_status": "source-verified-free-standard-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
       "notes": "Root-motion and in-place variants; skeleton compatibility and individual animations require validation.",
-      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files"
+      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files",
+      "actual_verified_content": {
+        "edition": "Standard (FREE)",
+        "glbs": 2,
+        "files": [
+          "UAL1_Standard.glb (in-place)",
+          "UAL1_Standard_RM.glb (root motion)"
+        ],
+        "clips_per_glb": 43,
+        "note": "Clip names include A_TPose reference pose + 42 motion clips = 43 total tracks per GLB."
+      },
+      "skeleton_family": "quaternius-universal-65",
+      "joint_count": 65,
+      "archive_basename": "Universal_Animation_Library_Standard_.zip",
+      "archive_bytes": 15904933,
+      "archive_sha256": "cc73fc4e495b82958207316596317a3f40b9fa38065bde1027937452da537724",
+      "license_file_rel": "Universal Animation Library[Standard]/License.txt",
+      "license_file_sha256": "6d01f55c6e4c49a2c9963e147e561945ae2c83958c8ca667d90a6bffdbfac061",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Universal_Animation_Library_Standard_.zip"
     },
     {
       "id": "quaternius-ual2-standard",
       "name": "Quaternius Universal Animation Library 2 Standard",
       "kind": "humanoid animation pack",
       "official_url": "https://quaternius.itch.io/universal-animation-library-2",
-      "license": "CC0-1.0 per item",
-      "license_url": "https://quaternius.com/packs/universalanimationlibrary2.html",
-      "access": "free name-your-price download requires provider download flow",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition via official itch.io download flow",
+      "formats": [
+        "GLB",
+        "FBX",
+        "Blend"
+      ],
+      "advertised_content": "Additional universal animation library clips plus Female Mannequin",
+      "source_status": "source-verified-free-standard-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "notes": "Do not infer current free subset or claim all full-library animations are in Standard.",
+      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files",
+      "actual_verified_content": {
+        "edition": "Standard (FREE)",
+        "glbs": 3,
+        "files": [
+          "UAL2_Standard.glb (in-place, 43 clips)",
+          "UAL2_Standard_RM.glb (root motion, 43 clips)",
+          "Mannequin_F.glb (0 clips, 65 joints)"
+        ],
+        "clips_per_animation_glb": 43
+      },
+      "skeleton_family": "quaternius-universal-65",
+      "joint_count": 65,
+      "archive_basename": "Universal_Animation_Library_2_Standard_.zip",
+      "archive_bytes": 18735003,
+      "archive_sha256": "4008ea208a604773a2b2177d965f0f5d3195498b5bf838c3f5785d68e95f2a68",
+      "license_file_rel": "Universal Animation Library 2[Standard]/License.txt",
+      "license_file_sha256": "6d01f55c6e4c49a2c9963e147e561945ae2c83958c8ca667d90a6bffdbfac061",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Universal_Animation_Library_2_Standard_.zip"
+    },
+    {
+      "id": "kaykit-adventurers",
+      "name": "KayKit Character Pack: Adventurers (2.0 FREE)",
+      "kind": "prebuilt stylized low-poly rigged humanoid characters and accessories",
+      "official_url": "https://kaylousberg.itch.io/kaykit-adventurers",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free 2.0 edition via official itch.io download flow (EXTRA/SOURCE paid tiers exist separately)",
+      "formats": [
+        "GLB",
+        "FBX",
+        "OBJ",
+        "glTF+BIN+PNG (accessories)"
+      ],
+      "advertised_content": "5 free rigged animated characters (Barbarian, Knight, Mage, Ranger, Rogue + Rogue_Hooded variant), accessories, CC0",
+      "actual_verified_content": {
+        "edition": "2.0 FREE",
+        "character_glbs": 6,
+        "character_names": [
+          "Barbarian",
+          "Knight",
+          "Mage",
+          "Ranger",
+          "Rogue",
+          "Rogue_Hooded"
+        ],
+        "animation_glbs": 2,
+        "animation_clips_included": 26,
+        "accessory_gltfs_packed_to_glb": 31,
+        "total_processed_glbs": 39
+      },
+      "skeleton_family": "kaykit-rig-medium",
+      "joint_count": 23,
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "KayKit_Adventurers_2.0_FREE.zip",
+      "archive_bytes": 13024345,
+      "archive_sha256": "abe48f4763fba0896bab486ee9e6d08ca6b5b3884b9601f235c8847ae94dc479",
+      "license_file_rel": "KayKit_Adventurers_2.0_FREE/License.txt",
+      "license_file_sha256": "d4adc31660d1db22eb60eba648e01db41577548f6fa1a3576cb4a6283dae0a58",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/kaykit/KayKit_Adventurers_2.0_FREE.zip"
+    },
+    {
+      "id": "kaykit-skeletons",
+      "name": "KayKit Character Pack: Skeletons (1.1 FREE)",
+      "kind": "specialized stylized skeletal humanoid characters and accessories",
+      "humanoid_classification": "specialized_skeletal_humanoid",
+      "official_url": "https://kaylousberg.itch.io/kaykit-skeletons",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free 1.1 edition via official itch.io download flow",
+      "formats": [
+        "GLB",
+        "FBX",
+        "OBJ",
+        "glTF+BIN+PNG (accessories)"
+      ],
+      "advertised_content": "4 free rigged skeleton characters, basic animations, accessories, CC0",
+      "actual_verified_content": {
+        "edition": "1.1 FREE",
+        "character_glbs": 4,
+        "character_names": [
+          "Skeleton_Mage",
+          "Skeleton_Minion",
+          "Skeleton_Rogue",
+          "Skeleton_Warrior"
+        ],
+        "animation_glbs": 2,
+        "animation_clips_included": 26,
+        "accessory_gltfs_packed_to_glb": 13,
+        "total_processed_glbs": 19
+      },
+      "skeleton_family": "kaykit-rig-medium",
+      "joint_count": 23,
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "KayKit_Skeletons_1.1_FREE.zip",
+      "archive_bytes": 8177445,
+      "archive_sha256": "21fbad59ee6cc1d7bed12d0e425acab8ebe564b8620bbc1d017aedb29dd8a3d2",
+      "license_file_rel": "KayKit_Skeletons_1.1_FREE/License.txt",
+      "license_file_sha256": "327a1aac6e6ff1259d82d0024cdaf088bcef302f8d7a116b5142538ac2b5cf8d",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/kaykit/KayKit_Skeletons_1.1_FREE.zip"
+    },
+    {
+      "id": "kaykit-character-animations",
+      "name": "KayKit Character Animations (1.1 FREE)",
+      "kind": "stylized humanoid animation library and test mannequins",
+      "official_url": "https://kaylousberg.itch.io/kaykit-character-animations",
+      "license": "CC0-1.0 (verified in License.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free 1.1 edition via official itch.io download flow",
       "formats": [
         "GLB",
         "FBX"
       ],
-      "advertised_content": "130+ across full offering; Standard ZIP 17 MB; Standard exact tracks not verified",
-      "source_status": "item-verified",
-      "archive_status": "not_acquired",
-      "notes": "Do not infer current free subset or claim all full-library animations are in Standard.",
-      "access_gate": "official Standard/free download requires provider interactive itch.io download flow; no purchase, login, or terms acceptance attempted; acquisition blocked pending legitimate user-controlled download or source files"
+      "advertised_content": "161 animations across publisher's offering; Rig_Medium and Rig_Large compatibility families, CC0",
+      "actual_verified_content": {
+        "edition": "1.1 FREE",
+        "mannequin_glbs": 2,
+        "mannequins": [
+          "Mannequin_Medium (21 joints, lacks handslot.l/r)",
+          "Mannequin_Large (23 joints)"
+        ],
+        "rig_medium_animation_glbs": 8,
+        "rig_medium_raw_clips": 139,
+        "rig_medium_non_tpose_clips": 131,
+        "rig_large_animation_glbs": 6,
+        "rig_large_raw_clips": 34,
+        "rig_large_non_tpose_clips": 28,
+        "total_raw_clips_in_archive": 173,
+        "total_non_tpose_clips": 159,
+        "distinct_non_tpose_names_combined": 155,
+        "total_processed_glbs": 16,
+        "note": "Each sub-pack includes a T-Pose reference clip (counted in raw 139+34=173). Non-T-Pose count is 131 (Rig_Medium) + 28 (Rig_Large) = 159 (155 unique names when deduplicating Rig_Medium vs Rig_Large overlaps, compared to 161 advertised)."
+      },
+      "skeleton_family": "kaykit-rig-medium / kaykit-rig-large",
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "KayKit_Character_Animations_1.1.zip",
+      "archive_bytes": 14858957,
+      "archive_sha256": "65882f31f905ad2e953819648a59287cdeab8f623908d5ef701971d3758be20f",
+      "license_file_rel": "KayKit_Character_Animations_1.1/License.txt",
+      "license_file_sha256": "373b159044d1a886ed15f57ca5a7673ba14e2623c460283452705f2056912ed9",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/kaykit/KayKit_Character_Animations_1.1.zip"
+    },
+    {
+      "id": "quaternius-modular-character-outfits-fantasy-standard",
+      "name": "Quaternius Modular Character Outfits - Fantasy (Standard)",
+      "kind": "modular humanoid clothing and body outfit parts compatible with Universal Base Characters",
+      "official_url": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "distribution_url": "https://quaternius.itch.io/modular-character-outfits-fantasy",
+      "license": "CC0-1.0 (verified in License_Standard.txt inside downloaded ZIP)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free Standard edition via official itch.io download flow (Source paid version exists separately)",
+      "formats": [
+        "glTF (.gltf + .bin + .png)",
+        "FBX"
+      ],
+      "advertised_content": "Full Source pack advertises 12 outfits, 62 modular components, texture variations; Standard contains a subset",
+      "actual_verified_content": {
+        "edition": "Standard (FREE)",
+        "complete_outfits": 4,
+        "outfit_names": [
+          "Female_Peasant",
+          "Female_Ranger",
+          "Male_Peasant",
+          "Male_Ranger"
+        ],
+        "modular_components": 20,
+        "texture_variations_included": {
+          "Peasant": [
+            "T_Peasant_BaseColor.png",
+            "T_Peasant_2_BaseColor.png"
+          ],
+          "Ranger": [
+            "T_Ranger_BaseColor.png",
+            "T_Ranger_3_BaseColor.png"
+          ]
+        },
+        "note": "Readme.txt instructs pairing only the head of Universal Base Characters to avoid body clipping. Standard ZIP also includes an accidental single Jog_Fwd_Loop animation on Female_Peasant_Body.gltf.",
+        "total_processed_glbs": 24
+      },
+      "skeleton_family": "quaternius-universal-65",
+      "joint_count": 65,
+      "source_status": "source-verified-free-standard-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "Modular_Character_Outfits_-_Fantasy_Standard_.zip",
+      "archive_bytes": 294347394,
+      "archive_sha256": "c3468b18871cc8c8f05ab14df7712baf22cb9f389cbd870babf130e595187f70",
+      "license_file_rel": "Modular Character Outfits - Fantasy[Standard]/License_Standard.txt",
+      "license_file_sha256": "2202cc2f608c4210790b112e5f121bc2e7f8dced7b5b1c7f4be6203461bdebbb",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Modular_Character_Outfits_-_Fantasy_Standard_.zip"
+    },
+    {
+      "id": "quaternius-ultimate-modular-women",
+      "name": "Quaternius Ultimate Modular Women",
+      "kind": "stylized low-poly modular and individual female humanoid characters with embedded animations",
+      "official_url": "https://quaternius.com/packs/ultimatemodularwomen.html",
+      "license": "CC0-1.0 (verified in License.txt inside publisher Google Drive folder)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive link",
+      "formats": [
+        "glTF (individual characters, 10)",
+        "FBX (all-together, humanoid rigs, individual, separate modular parts + Animations.fbx + Gun.fbx + Sword.fbx)",
+        "Blend"
+      ],
+      "advertised_content": "10 character designs, 24 animations, interchangeable body/head/legs/feet modular sections, FBX/glTF/Blender, CC0",
+      "actual_verified_content": {
+        "edition": "Full Free Release",
+        "individual_characters": 10,
+        "designs": [
+          "Adventurer",
+          "Casual",
+          "Formal",
+          "Medieval",
+          "Punk",
+          "SciFi",
+          "Soldier",
+          "Suit",
+          "Witch",
+          "Worker"
+        ],
+        "animations_per_character": 24,
+        "modular_parts_converted_from_fbx": 41,
+        "weapon_accessories_converted_from_fbx": [
+          "Gun",
+          "Sword"
+        ],
+        "standalone_animation_glb": "UMW_Animations.glb (24 animations)",
+        "total_processed_glbs": 54
+      },
+      "skeleton_family": "quaternius-umw-62",
+      "joint_count": 62,
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "Quaternius_Ultimate_Modular_Women_Original_2026-11-14.zip",
+      "archive_bytes": 45615869,
+      "archive_sha256": "d53027e8b4a9d877bf75a29270c45c64026af5497e9ad1a20a7a75a7ef8ab6b9",
+      "license_file_rel": "License.txt",
+      "license_file_sha256": "e8dbf915a2b82229913e301a0787696611241bdefec4832bc084f54161db1efe",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Quaternius_Ultimate_Modular_Women_Original_2026-11-14.zip",
+      "known_upstream_defects": [
+        "License.txt header contains an author copy-paste typo ('Ultimate Modular Males by @Quaternius') while granting CC0 1.0.",
+        "FBX exports in Separate Skeletal Meshes and Animations/ import with Principled BSDF Alpha=0.0 (Maya transparency inversion), making meshes invisible in glTF MASK mode unless normalized to Alpha=1.0 during Blender conversion (fixed in processed GLBs).",
+        "Rig uses detached IK control bones (Foot.L/R, PT.L/R parented to Root) instead of FK child foot bones."
+      ]
+    },
+    {
+      "id": "quaternius-rpg-characters",
+      "name": "Quaternius RPG Characters",
+      "kind": "stylized fantasy RPG humanoid characters with embedded weapon/class animations",
+      "official_url": "https://quaternius.com/packs/rpgcharacters.html",
+      "license": "CC0-1.0 (verified in License.txt inside publisher Google Drive folder)",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "access": "Free complete download via official quaternius.com public Google Drive link",
+      "formats": [
+        "glTF (6 characters with embedded images/buffers)",
+        "FBX (characters, Humanoid Rig Versions, Only Weapons)",
+        "OBJ",
+        "Blend",
+        "PNG textures"
+      ],
+      "advertised_content": "6 rigged and animated fantasy characters, CC0",
+      "actual_verified_content": {
+        "edition": "Full Free Release",
+        "characters": 6,
+        "character_clip_counts": {
+          "Cleric": 11,
+          "Monk": 11,
+          "Ranger": 14,
+          "Rogue": 12,
+          "Warrior": 13,
+          "Wizard": 15
+        },
+        "total_processed_glbs": 6
+      },
+      "skeleton_family": "quaternius-rpg-32",
+      "joint_count": 32,
+      "source_status": "source-verified-free-acquired",
+      "archive_status": "archived_private_drive_originals_and_glbs",
+      "archive_basename": "Quaternius_RPG_Characters_Original_2026-11-14.zip",
+      "archive_bytes": 31317694,
+      "archive_sha256": "82dc634abb74af2612f43dac5d69588560d400cc8f7ec863fbdfb079b76af09f",
+      "license_file_rel": "License.txt",
+      "license_file_sha256": "83d8959f9fc56353ed571fbe2dc52e4bcd64508e2399501cd45ac2ce3df0bf8c",
+      "private_archive_rel": "GPT/ThreeJS_Humanoid_Library/ARCHIVE/2026-11-14/originals/quaternius/Quaternius_RPG_Characters_Original_2026-11-14.zip"
     },
     {
       "id": "makehuman",

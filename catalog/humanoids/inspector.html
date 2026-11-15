@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Humanoid Character Library — Catalog &amp; Local GLB Inspector</title>
+  <link rel="icon" href="data:," />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../../node_modules/three/build/three.module.js",
+        "three/addons/": "../../node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #0f141b;
+      --panel: #161d26;
+      --border: #283344;
+      --text: #e6edf3;
+      --muted: #93a1b5;
+      --accent: #4aa3ff;
+      --ok: #3fb950;
+      --warn: #d29922;
+      --bad: #f85149;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; width: 100%; height: 100%;
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 13px; overflow: hidden;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 350px 1fr 340px;
+      height: 100vh;
+    }
+    .panel {
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    .panel:last-child { border-right: none; border-left: 1px solid var(--border); }
+    .panel-header {
+      padding: 12px 14px; border-bottom: 1px solid var(--border);
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .panel-header h1, .panel-header h2 { margin: 0; font-size: 14px; font-weight: 600; }
+    .controls-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    input, select, button {
+      background: #0d1218; color: var(--text); border: 1px solid var(--border);
+      border-radius: 6px; padding: 6px 8px; font-size: 12px;
+    }
+    button { cursor: pointer; background: #1e2a38; font-weight: 500; }
+    button:hover { border-color: var(--accent); }
+    button.primary { background: #1c4e80; border-color: #2f7ac7; }
+    .list { flex: 1; overflow-y: auto; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+    .item {
+      border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px;
+      cursor: pointer; background: #11171f; display: flex; flex-direction: column; gap: 4px;
+    }
+    .item:hover, .item.active { border-color: var(--accent); background: #172230; }
+    .item-title { font-weight: 600; font-size: 12.5px; }
+    .item-sub { color: var(--muted); font-size: 11px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .pill {
+      padding: 1px 6px; border-radius: 999px; font-size: 10.5px;
+      background: #202b3a; color: #b9c7d9; border: 1px solid #2e3d52;
+    }
+    .pill.ok { color: var(--ok); border-color: rgba(63,185,80,0.4); }
+    .pill.warn { color: var(--warn); border-color: rgba(210,153,34,0.4); }
+    .viewport-wrap { position: relative; display: flex; flex-direction: column; background: #0c1016; }
+    #viewport { flex: 1; width: 100%; height: 100%; display: block; }
+    .toolbar {
+      display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+      padding: 8px 12px; border-bottom: 1px solid var(--border); background: #131922;
+    }
+    .drop-banner {
+      position: absolute; bottom: 12px; left: 12px; right: 12px;
+      padding: 8px 12px; background: rgba(15, 20, 27, 0.86);
+      border: 1px dashed var(--border); border-radius: 6px;
+      font-size: 11.5px; color: var(--muted); pointer-events: none;
+    }
+    .detail-scroll { flex: 1; overflow-y: auto; padding: 12px 14px; display: flex; flex-direction: column; gap: 12px; }
+    .kv { display: grid; grid-template-columns: 115px 1fr; gap: 4px 8px; font-size: 12px; }
+    .k { color: var(--muted); }
+    .v { word-break: break-word; font-family: ui-monospace, monospace; font-size: 11.5px; }
+    .section-title { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 0 0 6px; }
+    code.blk {
+      display: block; white-space: pre-wrap; background: #0b0f14; border: 1px solid var(--border);
+      padding: 8px; border-radius: 6px; font-size: 11px; color: #c9d1d9; overflow-x: auto;
+    }
+    @media (max-width: 1050px) {
+      .layout { grid-template-columns: 1fr; grid-template-rows: 34vh 40vh 26vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="panel">
+      <div class="panel-header">
+        <h1>Humanoid Catalog (<span id="count-badge">0</span>)</h1>
+        <input id="search-input" type="search" placeholder="Search id, name, tag, bone..." />
+        <div class="controls-row">
+          <select id="filter-source"><option value="">All Sources</option></select>
+          <select id="filter-type"><option value="">All Asset Types</option></select>
+        </div>
+        <div class="controls-row">
+          <select id="filter-skeleton"><option value="">All Skeleton Families</option></select>
+          <select id="filter-qa"><option value="">All QA States</option></select>
+        </div>
+      </div>
+      <div id="catalog-list" class="list"></div>
+    </aside>
+
+    <main class="viewport-wrap">
+      <div class="toolbar">
+        <label style="display:inline-flex;align-items:center;gap:6px;">
+          <input id="glb-file-input" type="file" accept=".glb,.gltf" style="max-width:205px;" />
+        </label>
+        <select id="clip-select" disabled><option value="">No Clips Loaded</option></select>
+        <button id="btn-play-pause" disabled>Pause</button>
+        <button id="btn-skeleton">Skeleton: Off</button>
+        <button id="btn-reset-cam">Reset View</button>
+        <button id="btn-dispose">Dispose GLB</button>
+      </div>
+      <canvas id="viewport"></canvas>
+      <div id="drop-banner" class="drop-banner">
+        Drop an authorized local .glb file onto the viewport (or pick via file input) to inspect geometry, joints, clips, and bounds locally. No files leave your machine and no Drive credentials are stored here.
+      </div>
+    </main>
+
+    <aside class="panel">
+      <div class="panel-header">
+        <h2>Selection &amp; Runtime Details</h2>
+      </div>
+      <div id="detail-panel" class="detail-scroll">
+        <div>
+          <p class="section-title">Loaded Local GLB Metrics</p>
+          <div id="local-glb-metrics" class="kv">
+            <span class="k">Status</span><span class="v">No local GLB loaded</span>
+          </div>
+        </div>
+        <div>
+          <p class="section-title">Selected Catalog Record</p>
+          <div id="catalog-detail" class="kv">
+            <span class="k">Status</span><span class="v">Loading catalog...</span>
+          </div>
+        </div>
+        <div>
+          <p class="section-title">Compatibility &amp; Usage</p>
+          <div id="compat-detail" class="v" style="color:var(--muted);">Select an entry to view compatible animations, modular groups, and retargeting rules.</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <script type="module" src="./inspector.js"></script>
+</body>
+</html>
