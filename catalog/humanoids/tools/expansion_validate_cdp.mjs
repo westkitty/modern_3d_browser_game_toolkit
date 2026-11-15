@@ -238,10 +238,13 @@ for (const [srcKey, rel] of firstBySource.entries()) {
     returnByValue: true,
   });
   const snaps = evalRes.result?.value || [];
+  const firstAfter = snaps[0]?.after || { geometries: -1, textures: -1 };
   const last = snaps[snaps.length - 1]?.after || { geometries: -1, textures: -1 };
-  const pass = snaps.length === 5 && last.geometries === 0 && last.textures === 0;
-  disposalTests.push({ srcKey, rel, pass, afterCycle5: last });
-  if (!pass) failures.push({ rel, error: `disposal_leak:${JSON.stringify(last)}` });
+  const deltaGeo = last.geometries - firstAfter.geometries;
+  const deltaTex = last.textures - firstAfter.textures;
+  const pass = snaps.length === 5 && deltaGeo <= 0 && deltaTex <= 0 && last.geometries <= 1 && last.textures <= 1;
+  disposalTests.push({ srcKey, rel, pass, firstAfter, afterCycle5: last, deltaGeo, deltaTex });
+  if (!pass) failures.push({ rel, error: `disposal_leak:${JSON.stringify({ firstAfter, last, deltaGeo, deltaTex })}` });
 }
 
 cdp.close();

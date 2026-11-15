@@ -43,7 +43,7 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender p7zip-full
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq blender python3-numpy p7zip-full
 
       - name: Process pm_r1 or pm_r2 VRM packs
         if: matrix.lane == 'pm_r1' || matrix.lane == 'pm_r2'
@@ -64,7 +64,7 @@ jobs:
             --task direct_prepare \
             --work-dir /tmp/exp-work \
             --out-dir /tmp/exp-out
-          blender -b --factory-startup --python catalog/humanoids/tools/expansion_blender_jobs.py -- \
+          blender -b --factory-startup --python-exit-code 1 --python catalog/humanoids/tools/expansion_blender_jobs.py -- \
             --mode direct_blender \
             --work-dir /tmp/exp-work \
             --out-dir /tmp/exp-out
