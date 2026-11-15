@@ -78,6 +78,11 @@ def normalize_materials(texture_path: Path | None = None, pack_images: bool = Tr
 
 def export_glb(out_path: Path, export_animations: bool = True) -> dict:
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    if bpy.context.active_object and bpy.context.active_object.mode != "OBJECT":
+        try:
+            bpy.ops.object.mode_set(mode="OBJECT")
+        except Exception:
+            pass
     kwargs = dict(
         filepath=str(out_path),
         export_format="GLB",
@@ -280,7 +285,6 @@ def process_gdquest(work_dir: Path, out_dir: Path) -> dict:
         if obj.type != "MESH" or obj.name.startswith(("WGT-", "CS_")):
             if obj.type != "ARMATURE":
                 bpy.data.objects.remove(obj, do_unlink=True)
-    bpy.ops.object.select_all(action="DESELECT")
     for obj in list(bpy.data.objects):
         if obj.type == "MESH":
             obj.hide_set(False)
